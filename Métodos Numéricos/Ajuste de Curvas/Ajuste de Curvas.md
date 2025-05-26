@@ -1,4 +1,5 @@
 %% Begin Waypoint %%
-- **[[Álgebra Linear]]**
+
+- [[Ajuste de Curvas]]
 
 %% End Waypoint %%

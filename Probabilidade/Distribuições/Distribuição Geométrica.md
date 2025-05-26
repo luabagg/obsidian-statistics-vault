@@ -102,7 +102,7 @@ $$
 E(X) = \frac{1}{p}
 $$
 
-## **Observações Finais**
+## Observações Finais
 
 - A distribuição geométrica é **sem memória**, ou seja, a probabilidade de obter um sucesso nos próximos ensaios **não depende** de quantos fracassos já ocorreram. Formalmente:
 $$

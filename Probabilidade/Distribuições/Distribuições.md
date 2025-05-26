@@ -4,7 +4,8 @@ dg-show-local-graph: true
 ---
 
 %% Begin Waypoint %%
-- **[[Distribuições]]**
+
+- [[Distribuições]]
 	- [[Binômio de Newton]]
 	- [[Distribuição Binomial Negativa]]
 	- [[Distribuição Binomial]]

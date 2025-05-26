@@ -8,5 +8,8 @@
     "landscape": false,
     "margin": "0",
     "downscalePercent": 100
-  }
+  },
+  "vimMode": false,
+  "propertiesInDocument": "visible",
+  "showUnsupportedFiles": true
 }
