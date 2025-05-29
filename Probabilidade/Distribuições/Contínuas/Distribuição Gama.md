@@ -20,7 +20,7 @@ $$
    f(x; k, \theta) = \frac{x^{k-1}e^{-\frac{x}{\theta}}}{\theta^k \Gamma(k)}
 $$
    - Aqui, $k$ é o parâmetro shape e $\theta$ é o parâmetro scale.
-   - $\Gamma(k)$ é a [[função gama]].
+   - $\Gamma(k)$ é a [[Função Gama]].
 
 4. **Momentos**:
    - A esperança (média) da distribuição Gama é $E(X) = k\theta$.
@@ -31,8 +31,8 @@ $$
    - Exemplos comuns incluem o tempo entre eventos em processos de Poisson, duração de falhas em componentes eletrônicos e volumes de vendas.
 
 6. **Relação com Outras Distribuições**:
-   - A distribuição Gama é uma generalização da [[distribuição exponencial]].
-   - Quando $k = 1$, a distribuição Gama se torna a [[distribuição exponencial]].
+   - A distribuição Gama é uma generalização da [[Distribuição Exponencial]].
+   - Quando $k = 1$, a distribuição Gama se torna a [[Distribuição Exponencial]].
    - Para valores inteiros de $k$, a distribuição Gama pode ser expressa como a soma de $k$ variáveis exponenciais independentes.
 
 7. **Estimativa dos Parâmetros**:

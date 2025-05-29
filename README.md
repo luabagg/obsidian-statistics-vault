@@ -45,10 +45,10 @@ For more info check [[Exemplos Latex (MathJax)]]
 1. Navigate to your forked repository.  
 2. Click **"Compare & pull request"** on the repository page.  
 3. Fill in the form:
-   - **Title:** Clear and concise.
-   - **Description:** Explain your changes and link relevant issues.
-   - **Branch:** Choose the target branch (usually `main` or `develop`).
-4. Review the comparison and click **"Create pull request."**  
+	- **Title:** Clear and concise.
+	- **Description:** Explain your changes.
+	- **Branch:** Choose the target branch (`main`).
+4. Review the comparison and click **"Create pull request."**
 
 ### Best Practices
 

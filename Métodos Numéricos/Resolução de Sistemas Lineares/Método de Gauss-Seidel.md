@@ -2,64 +2,110 @@
 dg-publish: true
 ---
 
-O método iterativo de Gauss-Seidel é uma técnica utilizada para resolver sistemas lineares de equações do tipo $Ax = b$, onde $A$ é uma matriz quadrada, $x$ e $b$ são vetores. Este método é especialmente útil quando a matriz $A$ é grande e esparsa.
+O **método de Gauss-Seidel** é um método iterativo utilizado para resolver sistemas lineares do tipo:
 
-## Formulando o Método
+$Ax = b$
 
-Considere um sistema linear $Ax = b$. A matriz $A$ pode ser decomposta em sua forma triangular superior $U$ e inferior $L$, onde $A = L + D + U^T$, com $D$ sendo a diagonal de $A$. O método Gauss-Seidel é baseado na seguinte iteração:
+Ele é uma melhoria do método de Jacobi, pois utiliza os valores mais recentes disponíveis para acelerar a convergência.
 
-$$
-x^{(k+1)}_i = \frac{1}{a_{ii}} \left(b_i - \sum_{j=1}^{i-1} a_{ij} x_j^{(k+1)} - \sum_{j=i+1}^n a_{ij} x_j^{(k)}\right)
-$$
+---
 
-Aqui, $x^{(k)}$ representa o vetor de soluções no $k$-ésimo passo. A iteração é realizada até que as diferenças entre os valores das soluções em duas iterações consecutivas sejam menores do que um valor tolerância pré-definido.
+## Formulação
 
-### Exemplo
-
-Considere o sistema linear:
+Dado um sistema com matriz A $\in \mathbb{R}^{n \times n}$, vetor b $\in \mathbb{R}^n$, e uma aproximação inicial $x^{(0)}$, o método atualiza cada componente da solução x segundo a fórmula:
 
 $$
-\begin{cases}
-2x_1 + x_2 - x_3 = 8 \\
--3x_1 + 5x_2 + 2x_3 = -1 \\
-x_1 - 2x_2 + 4x_3 = 7
-\end{cases}
+x_i^{(k+1)} = \frac{1}{a_{ii}} \left( b_i - \sum_{j=1}^{i-1} a_{ij} x_j^{(k+1)} - \sum_{j=i+1}^{n} a_{ij} x_j^{(k)} \right)
 $$
 
-A matriz $A$ e o vetor $b$ são:
+### Critério da Norma Linha (Norma ∞)
+
+Esse critério é **matemático** e envolve a matriz de iteração T do método. Por exemplo, no Gauss-Jacobi:
+
+$T = D^{-1}(L + U)$
+
+Onde:
+
+- D: diagonal da matriz A
+- L: parte inferior de A (sem a diagonal)
+- U: parte superior de A (sem a diagonal)
+
+A **norma linha** (ou norma infinita) de uma matriz T é o **máximo das somas dos módulos dos elementos de cada linha**:
 
 $$
-A = \begin{pmatrix}
-2 & 1 & -1 \\
--3 & 5 & 2 \\
-1 & -2 & 4
-\end{pmatrix}, \quad b = \begin{pmatrix} 8 \\ -1 \\ 7 \end{pmatrix}
+\|T\|\infty = \max{1 \leq i \leq n} \sum_{j=1}^{n} |t_{ij}|
 $$
 
-A decomposição de $A$ em $L$, $D$, e $U^T$ é:
+### Se $\|T\|_\infty < 1$, o Método Converge
+
+---
+
+### Exemplo (Critério da Norma Linha)
+
+Considere o sistema:
 
 $$
-L = \begin{pmatrix}
-0 & 0 & 0 \\
--3/2 & 0 & 0 \\
-1/2 & -2/5 & 0
-\end{pmatrix}, \quad D = \begin{pmatrix}
-2 & 0 & 0 \\
-0 & 5 & 0 \\
-0 & 0 & 4
-\end{pmatrix}, \quad U^T = \begin{pmatrix}
-1/2 & -3/2 & 1 \\
--1 & 5 & 2 \\
--1 & 2 & 4
-\end{pmatrix}
+\begin{aligned} 4x_1 + x_2 + x_3 &= 7 \\ x_1 + 5x_2 + 2x_3 &= -8 \\ 2x_1 + 3x_2 + 10x_3 &= 6 \end{aligned}
 $$
 
-A iteração inicial pode ser $x^{(0)} = (0, 0, 0)^T$. A iteração Gauss-Seidel é então realizada até convergência.
+A matriz A é:
 
-## Convergência e Aplicações
+$$
+A = \begin{bmatrix} 4 & 1 & 1 \\ 1 & 5 & 2 \\ 2 & 3 & 10 \end{bmatrix}
+$$
 
-O método de Gauss-Seidel converge para a solução do sistema linear se a matriz $A$ satisfizer certas condições, como ser simétrica positiva definida ou ter uma norma spectral menor que 1. Este método é amplamente utilizado em aplicações práticas, como na resolução de problemas de equilíbrio de redes elétricas e na solução de sistemas de equações diferenciais parciais.
+Para o **Jacobi**, a matriz de iteração é $T = D^{-1}(L + U)$. Calculando isso (ou com código), você obterá algo como:
 
-## Limitações
+$$
+T = \begin{bmatrix} 0 & -0.25 & -0.25 \\ -0.2 & 0 & -0.4 \\ -0.2 & -0.3 & 0 \end{bmatrix}
+$$
 
-Um dos principais desafios do método Gauss-Seidel é a dependência da ordem das variáveis. A escolha inadequada pode levar a uma convergência muito lenta ou até mesmo não convergência. Além disso, o método requer a decomposição de $A$ em $L$, $D$, e $U^T$, que pode ser computacionalmente caro para matrizes grandes.
+Agora, calcule a soma dos módulos dos elementos de cada linha:
+
+- linha 1: $|0| + |{-0.25}| + |{-0.25}| = 0.5$
+- linha 2: $|{-0.2}| + |0| + |{-0.4}| = 0.6$
+- linha 3: $|{-0.2}| + |{-0.3}| + |0| = 0.5$
+
+**Maior valor**: $\|T\|_\infty = 0.6 < 1$
+
+O método de Jacobi (e provavelmente o de Gauss-Seidel) converge.
+
+---
+
+## Critério de Sassenfeld
+
+Esse critério é mais **fácil de aplicar manualmente** e muito útil, principalmente para o método de **Gauss-Seidel**.
+
+Ele define uma sequência de valores $\beta_i$, onde:
+
+$$
+\beta_i = \frac{1}{|a_{ii}|} \left( \sum_{j=1}^{i-1} |a_{ij}| \beta_j + \sum_{j=i+1}^{n} |a_{ij}| \right)
+$$
+
+Você **usa os** $\beta$**’s anteriores** conforme vai calculando. É uma espécie de “feedback” para estimar o quanto cada linha depende das outras.
+
+### Se $\max(\beta_1, \dots, \beta_n) < 1$, o Método Converge
+
+---
+
+### Exemplo (Critério de Sassenfeld)
+
+Use a mesma matriz A:
+
+$$
+A = \begin{bmatrix} 4 & 1 & 1 \\ 1 & 5 & 2 \\ 2 & 3 & 10 \end{bmatrix}
+$$
+
+Vamos calcular os $\beta_i$:
+
+- $\beta_1 = \frac{1}{4} (|1| + |1|) = \frac{2}{4} = 0.5$
+- $\beta_2 = \frac{1}{5} (|1| \cdot 0.5 + |2|) = \frac{1}{5}(0.5 + 2) = 0.5$
+- $\beta_3 = \frac{1}{10} (|2| \cdot 0.5 + |3| \cdot 0.5) = \frac{1}{10}(1 + 1.5) = 0.25$
+
+Logo:
+
+$$
+\max(\beta_1, \beta_2, \beta_3) = 0.5 < 1
+$$
+
+O método de Gauss-Seidel **converge**!

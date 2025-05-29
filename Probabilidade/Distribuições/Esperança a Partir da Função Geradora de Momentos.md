@@ -38,7 +38,7 @@ $$
      M_X''(0) = E[X^2]
 $$
 2. **Exemplo**:
-   Considere uma variável aleatória discreta $X$ com [[distribuição de Bernoulli]], onde $P(X=1) = p$ e $P(X=0) = 1-p$. A função geradora de momentos é:
+   Considere uma variável aleatória discreta $X$ com [[Distribuição de Bernoulli]], onde $P(X=1) = p$ e $P(X=0) = 1-p$. A função geradora de momentos é:
 $$
    M_X(t) = E[e^{tX}] = (1-p) + pe^t
 $$
