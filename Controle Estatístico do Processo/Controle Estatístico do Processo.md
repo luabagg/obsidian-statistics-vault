@@ -7,8 +7,8 @@ dg-show-local-graph: true
 - **[[Controle Estatístico do Processo]]**
 	- **[[Cartas de Controle]]**
 	- **[[Ferramentas da Qualidade]]**
+	- **[[Função Perda Quadrática]]**
 	- [[O que é CEP]]
-	- **[[R Quadrado]]**
 
 %% End Waypoint %%
 

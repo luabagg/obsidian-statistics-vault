@@ -3,8 +3,7 @@ dg-publish: true
 ---
 
 %% Begin Waypoint %%
-
-- [[R Quadrado]]
+- **[[Função Perda Quadrática]]**
 
 %% End Waypoint %%
 
