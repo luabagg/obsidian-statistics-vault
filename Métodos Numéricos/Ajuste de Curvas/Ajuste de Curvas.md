@@ -1,5 +1,5 @@
 %% Begin Waypoint %%
-
-- [[Ajuste de Curvas]]
+- **[[Ajuste de Curvas]]**
+	- [[Quadrados Mínimos]]
 
 %% End Waypoint %%

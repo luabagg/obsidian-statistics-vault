@@ -28,7 +28,7 @@ H = \begin{pmatrix}
 \end{pmatrix}
 $$
 
-A matriz Hessiana é simétrica, então podemos usar o determinante e a primeira minorante para classificar os pontos críticos:
+A matriz Hessiana é simétrica, então podemos usar o determinante e a egunda derivada parcialpara classificar os pontos críticos:
 
 1. **Determinante da Matriz Hessiana:**
 $$

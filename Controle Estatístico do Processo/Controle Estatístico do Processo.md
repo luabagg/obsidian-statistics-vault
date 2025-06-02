@@ -8,6 +8,7 @@ dg-show-local-graph: true
 	- **[[Cartas de Controle]]**
 	- **[[Ferramentas da Qualidade]]**
 	- [[O que é CEP]]
+	- **[[R Quadrado]]**
 
 %% End Waypoint %%
 

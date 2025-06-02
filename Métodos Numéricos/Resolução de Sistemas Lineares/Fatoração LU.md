@@ -2,7 +2,30 @@
 dg-publish: true
 ---
 
-## Fatoração Lu (Lower-Upper)
+A **fatoração LU** é um método direto para resolver sistemas lineares, calcular determinantes e inverter matrizes. Consiste em decompor uma matriz quadrada $A$ como o produto de duas matrizes triangulares:
+
+$$
+A = LU
+$$
+
+onde:
+
+- $L$ é uma **matriz triangular inferior**, com 1s na diagonal principal ($l_{ii} = 1$);
+- $U$ é uma **matriz triangular superior** (pode conter qualquer valor na diagonal).
+
+Essa fatoração permite reescrever o sistema $Ax = b$ como:
+
+$$
+LUx = b \Rightarrow Ly = b \Rightarrow Ux = y
+$$
+
+resolvendo-se primeiro por **substituição direta** ($Ly = b$) e depois por **substituição retroativa** ($Ux = y$).
+
+---
+
+## Requisitos para a Fatoração Lu
+
+A fatoração LU **sem pivoteamento** só é possível se todos os **pivôs parciais** (valores $U[i, i]$) forem **não nulos**. Caso contrário, é necessário realizar **pivoteamento parcial** para garantir a estabilidade numérica e evitar divisões por zero.
 
 A **fatoração LU** é um método que decompõe uma matriz quadrada $A$ como o produto de duas matrizes triangulares:
 
@@ -17,16 +40,11 @@ onde:
 
 ---
 
-### Passo a Passo da Fatoração Lu (sem pivoteamento)
+## Passo a Passo da Fatoração Lu (sem pivoteamento)
 
 Seja $A$ uma matriz quadrada de ordem $n$.
 
-#### **1. Inicialização**
-
-- Crie uma matriz identidade $L$ de ordem $n$.
-- Faça uma cópia da matriz $A$ e chame-a de $U$.
-
-#### **2. Eliminação de Gauss para Formar $U$ e Preencher $L$**
+### Eliminação de Gauss para Formar $U$ e Preencher $L$
 
 Para cada linha $i = 0$ até $n - 1$:
 
@@ -43,7 +61,6 @@ $$
 $$
 L[j, i] = m
 $$
----
 
 ### Exemplo Numérico
 
@@ -57,14 +74,7 @@ A = \begin{pmatrix}
 \end{pmatrix}
 $$
 
-#### **Passo 1: Inicialização**
-
-- $L = I_3$ (matriz identidade 3×3)
-- $U = A$
-
-#### **Passo 2: Eliminação**
-
-##### Iteração $i = 0$
+#### Iteração $i = 0$
 
 - $m_{10} = 4/2 = 2$
 - Linha 1: $U[1] = U[1] - 2 \cdot U[0]$
@@ -73,13 +83,13 @@ $$
 - Linha 2: $U[2] = U[2] - 3 \cdot U[0]$
 - $L[2, 0] = 3$
 
-##### Iteração $i = 1$
+#### Iteração $i = 1$
 
 - $m_{21} = (U[2, 1]) / (U[1, 1]) = 9 / 1 = 9$
 - Linha 2: $U[2] = U[2] - 9 \cdot U[1]$
 - $L[2, 1] = 9$
 
-#### **Resultado Final**
+#### Resultado Final
 
 $$
 L = \begin{pmatrix}
@@ -101,17 +111,15 @@ $$
 
 O **pivoteamento parcial** é uma técnica utilizada na fatoração LU para **evitar divisões por zero** e **minimizar erros numéricos** causados por pivôs pequenos. Ele consiste em **trocar linhas da matriz** $A$ (e consequentemente de $L$ e $b$, se estiver resolvendo $Ax = b$) de modo que o maior valor absoluto na coluna corrente seja usado como pivô.
 
----
-
 ### Passo a Passo com Pivoteamento Parcial
 
 Dado $A \in \mathbb{R}^{n \times n}$, o algoritmo com pivoteamento parcial segue:
 
-#### **1. Inicialização**
+#### 1. Inicialização
 
 - Crie $L = I_n$ (matriz identidade), $U = A.copy()$, e $P = I_n$ (matriz de permutação).
 
-#### **2. Para Cada Coluna $i$ de $0$ Até $n-1$:**
+#### 2. Para Cada Coluna $i$ de $0$ Até $n-1$
 
 1. **Escolha do Pivô:**
 
@@ -139,8 +147,6 @@ $$
 
      - $L[j, i] = m$
 
----
-
 ### Forma Final da Decomposição com Pivoteamento
 
 A fatoração LU com pivoteamento parcial produz:
@@ -154,7 +160,41 @@ $$
 
 ---
 
-### Exemplo em Python com Pivoteamento
+## Validação da Fatoração
+
+A multiplicação $LU$ deve recuperar a matriz original:
+
+$$
+LU = \begin{pmatrix}
+
+1 & 0 & 0 \\
+
+2 & 1 & 0 \\
+
+3 & 9 & 1
+
+\end{pmatrix}
+
+\begin{pmatrix}
+
+2 & 3 & 1 \\
+
+0 & 1 & 5 \\
+
+0 & 0 & 2
+
+\end{pmatrix}
+
+= A
+$$
+
+## Observações
+
+- A fatoração LU **não é única** se não houver restrição em $L$ ou $U$.
+- A convenção comum é impor que $L$ tenha 1s na diagonal.
+- O método **é eficiente** para sistemas lineares com múltiplos vetores $b$, pois o custo da fatoração ($O(n^3)$) é feito uma única vez
+
+## Exemplo em Python com Pivoteamento
 
 ```python
 import numpy as np
@@ -252,3 +292,130 @@ if __name__ == "__main__":
     print("\nFinal residual norm =", result['residual'])
     print("\nVerification: A·x =\n", np.dot(A, result['solution']))
 ```
+
+## Resolução de Sistemas com Fatoração Lu
+
+Após decompor a matriz $A$ em $A = LU$, podemos resolver o sistema linear $Ax = b$ em **duas etapas**:
+
+1. Resolver o sistema intermediário $Ly = b$ (**substituição para frente**)
+2. Resolver o sistema $Ux = y$ (**substituição para trás**)
+
+Esse processo é eficiente porque $L$ e $U$ são matrizes triangulares, o que permite resolver os sistemas de forma sequencial, sem necessidade de inversão de matrizes.
+
+---
+
+### 1. Resolver $Ly = b$ (Substituição para Frente)
+
+Seja $L$ uma matriz triangular inferior com 1s na diagonal:
+
+$$
+L = \begin{pmatrix}
+1 & 0 & 0 \\
+\ell_{21} & 1 & 0 \\
+\ell_{31} & \ell_{32} & 1
+\end{pmatrix}, \quad
+b = \begin{pmatrix}
+b_1 \\
+b_2 \\
+b_3
+\end{pmatrix}
+$$
+
+Resolvemos sequencialmente:
+
+- $y_1 = b_1$
+- $y_2 = b_2 - \ell_{21} y_1$
+- $y_3 = b_3 - \ell_{31} y_1 - \ell_{32} y_2$
+
+Mais genericamente:
+
+$$
+y_i = b_i - \sum_{j=1}^{i-1} L_{i,j} y_j
+$$
+
+---
+
+### 2. Resolver $Ux = y$ (Substituição para Trás)
+
+Seja $U$ uma matriz triangular superior:
+
+$$
+U = \begin{pmatrix}
+u_{11} & u_{12} & u_{13} \\
+0 & u_{22} & u_{23} \\
+0 & 0 & u_{33}
+\end{pmatrix}, \quad
+y = \begin{pmatrix}
+y_1 \\
+y_2 \\
+y_3
+\end{pmatrix}
+$$
+
+Resolvemos de trás para frente:
+
+- $x_3 = y_3 / u_{33}$
+- $x_2 = (y_2 - u_{23} x_3) / u_{22}$
+- $x_1 = (y_1 - u_{12} x_2 - u_{13} x_3) / u_{11}$
+
+Mais genericamente:
+
+$$
+x_i = \frac{1}{U_{i,i}} \left( y_i - \sum_{j=i+1}^{n} U_{i,j} x_j \right)
+$$
+
+---
+
+### Exemplo Numérico
+
+Considere a decomposição:
+
+$$
+L = \begin{pmatrix}
+1 & 0 & 0 \\
+2 & 1 & 0 \\
+3 & 9 & 1
+\end{pmatrix}, \quad
+U = \begin{pmatrix}
+2 & 3 & 1 \\
+0 & 1 & 5 \\
+0 & 0 & 2
+\end{pmatrix}, \quad
+b = \begin{pmatrix}
+1 \\
+2 \\
+3
+\end{pmatrix}
+$$
+
+#### Etapa 1: Resolver $Ly = b$
+
+- $y_1 = 1$
+- $y_2 = 2 - 2 \cdot 1 = 0$
+- $y_3 = 3 - 3 \cdot 1 - 9 \cdot 0 = 0$
+
+Logo,
+
+$$
+y = \begin{pmatrix}
+1 \\
+0 \\
+0
+\end{pmatrix}
+$$
+
+#### Etapa 2: Resolver $Ux = y$
+
+- $x_3 = 0 / 2 = 0$
+- $x_2 = (0 - 5 \cdot 0) / 1 = 0$
+- $x_1 = (1 - 3 \cdot 0 - 1 \cdot 0) / 2 = 0.5$
+
+Logo,
+
+$$
+x = \begin{pmatrix}
+0.5 \\
+0 \\
+0
+\end{pmatrix}
+$$

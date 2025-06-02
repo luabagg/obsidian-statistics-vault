@@ -6,11 +6,11 @@
     "emojiStyle": "native",
     "iconColor": null,
     "recentlyUsedIcons": [
-      "LiBook",
-      "LiDatabase",
-      "LiDatabaseZap",
-      "LiDice6",
-      "LiAxis3d"
+      "LiAxis3d",
+      "LiX",
+      "LiLintMath",
+      "LiMathXDivideY2",
+      "LiMath"
     ],
     "recentlyUsedIconsSize": 5,
     "rules": [],
@@ -44,5 +44,7 @@
   "Estatística Básica": "LiAreaChart",
   "Análise de Dados": "LiDatabaseZap",
   "DSA": "LiDatabase",
-  "Readings": "LiBook"
+  "Readings": "LiBook",
+  "Pré-Cálculo": "LiX",
+  "Geometria Analítica": "LiAxis3d"
 }

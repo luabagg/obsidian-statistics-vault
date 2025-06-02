@@ -5,6 +5,7 @@ dg-show-local-graph:
 
 %% Begin Waypoint %%
 - **[[Integrais]]**
+	- [[Integrais Duplas em Coordenadas Polares]]
 	- [[Integrais Duplas Sobre Regiões Gerais]]
 	- [[Integrais Duplas]]
 	- [[Soma de Riemann]]
