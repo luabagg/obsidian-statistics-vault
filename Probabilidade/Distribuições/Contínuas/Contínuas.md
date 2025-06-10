@@ -3,13 +3,15 @@ dg-publish: true
 ---
 
 %% Begin Waypoint %%
-
-- [[Contínuas]]
+- **[[Contínuas]]**
 	- [[Densidade de Probabilidade]]
 	- [[Distribuição Exponencial]]
+	- [[Distribuição F]]
 	- [[Distribuição Gama]]
 	- [[Distribuição Log-Normal]]
 	- [[Distribuição Normal]]
+	- [[Distribuição Qui-Quadrado]]
+	- [[Distribuição T-Student]]
 	- [[Distribuição Weibull]]
 	- [[Função de Distribuição Acumulada]]
 	- [[Função Gama]]

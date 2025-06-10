@@ -4,11 +4,11 @@ dg-show-local-graph: true
 ---
 
 %% Begin Waypoint %%
-
-- [[Distribuições]]
+- **[[Distribuições]]**
 	- [[Binômio de Newton]]
-	- [[Contínuas]]
-	- [[Discretas]]
+	- **[[Contínuas]]**
+	- **[[Discretas]]**
 	- [[Esperança a Partir da Função Geradora de Momentos]]
+	- [[Função Característica]]
 
 %% End Waypoint %%

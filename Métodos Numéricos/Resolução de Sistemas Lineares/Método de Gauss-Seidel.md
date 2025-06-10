@@ -36,7 +36,9 @@ $$
 \|T\|\infty = \max{1 \leq i \leq n} \sum_{j=1}^{n} |t_{ij}|
 $$
 
-### Se $\|T\|_\infty < 1$, o Método Converge
+### Convergência
+
+Se $\|T\|_\infty < 1$, o Método Converge
 
 ---
 
@@ -84,9 +86,9 @@ $$
 
 Você **usa os** $\beta$**’s anteriores** conforme vai calculando. É uma espécie de “feedback” para estimar o quanto cada linha depende das outras.
 
-### Se $\max(\beta_1, \dots, \beta_n) < 1$, o Método Converge
+### Convergência
 
----
+Se $\max(\beta_1, \dots, \beta_n) < 1$, o Método Converge
 
 ### Exemplo (Critério de Sassenfeld)
 
