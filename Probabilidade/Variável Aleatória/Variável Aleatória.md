@@ -4,8 +4,7 @@ dg-show-local-graph: true
 ---
 
 %% Begin Waypoint %%
-
-- [[Variável Aleatória]]
+- **[[Variável Aleatória]]**
 	- [[Espaço de Probabilidade Produzido por Variável Aleatória]]
 	- [[Esperança de uma Variável Aleatória]]
 	- [[Funções de Variáveis Aleatórias]]

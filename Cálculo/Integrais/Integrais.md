@@ -1,13 +1,12 @@
 ---
 dg-publish: true
-dg-show-local-graph:
+dg-show-local-graph: null
 ---
 
 %% Begin Waypoint %%
 - **[[Integrais]]**
-	- [[Integrais Duplas em Coordenadas Polares]]
-	- [[Integrais Duplas Sobre Regiões Gerais]]
-	- [[Integrais Duplas]]
+	- **[[Integrais Duplas]]**
+	- **[[Integrais Triplas]]**
 	- [[Soma de Riemann]]
 	- [[Teorema de Fubini]]
 

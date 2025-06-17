@@ -3,8 +3,9 @@ dg-publish: true
 ---
 
 %% Begin Waypoint %%
-
-- [[Interpolação Polinimial]]
+- **[[Interpolação Polinimial]]**
+	- [[Polinômio de Lagrange]]
+	- [[Polinômio de Newton]]
 	- [[Teorema de Existência e Unicidade do Polinômio de Interpolação]]
 
 %% End Waypoint %%

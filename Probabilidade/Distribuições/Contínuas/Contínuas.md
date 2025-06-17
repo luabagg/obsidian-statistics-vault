@@ -12,6 +12,7 @@ dg-publish: true
 	- [[Distribuição Normal]]
 	- [[Distribuição Qui-Quadrado]]
 	- [[Distribuição T-Student]]
+	- [[Distribuição Uniforme]]
 	- [[Distribuição Weibull]]
 	- [[Função de Distribuição Acumulada]]
 	- [[Função Gama]]
