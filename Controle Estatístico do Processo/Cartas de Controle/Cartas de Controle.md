@@ -3,9 +3,10 @@ dg-publish: true
 ---
 
 %% Begin Waypoint %%
-
-- [[Cartas de Controle]]
+- **[[Cartas de Controle]]**
 	- [[Capacidade do Processo]]
+	- **Gráfico de controle de VMAX para o monitoramento da matriz de covariâncias**
+
 	- [[Média e Amplitude]]
 	- [[Média e Desvio Padrão]]
 	- [[Para Dados Autocorrelacionados]]

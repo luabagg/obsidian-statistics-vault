@@ -7,6 +7,9 @@ dg-show-local-graph: true
 - **[[Métodos Numéricos]]**
 	- **[[Ajuste de Curvas]]**
 	- **Integração Numérica**
+		- [[Regra de Simpson (três oitavos)]]
+		- [[Regra de Simpson (um terço)]]
+		- [[Regra do Ponto Médio]]
 		- [[Regra dos Trapézios]]
 	- **[[Interpolação Polinimial]]**
 	- **[[Resolução de Sistemas Lineares]]**

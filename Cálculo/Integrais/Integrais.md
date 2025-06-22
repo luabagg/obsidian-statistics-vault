@@ -7,6 +7,7 @@ dg-show-local-graph: null
 - **[[Integrais]]**
 	- **[[Integrais Duplas]]**
 	- **[[Integrais Triplas]]**
+	- [[Integral por Partes]]
 	- [[Soma de Riemann]]
 	- [[Teorema de Fubini]]
 
