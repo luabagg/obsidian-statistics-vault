@@ -1,4 +1,6 @@
-
+---
+dg-publish: true
+---
 
 A densidade de probabilidade é uma medida importante em teoria da probabilidade que descreve a distribuição de probabilidade de uma variável aleatória contínua. Ela fornece informações sobre a probabilidade de que a variável aleatória assuma valores dentro de um intervalo específico.
 
@@ -29,25 +31,23 @@ f(x) = \frac{d}{dx} F(x) = \frac{1}{\sqrt{2\pi}} e^{-x^2/2}
 $$
 
 **Relação com Funções de Probabilidade**
---------------------------------------
 
-A densidade de probabilidade está relacionada às funções de probabilidade (FP) por meio da seguinte equação:
+A densidade de probabilidade está relacionada às funções de probabilidade ($FP$) por meio da seguinte equação:
 
 $$
 P(a \leq X \leq b) = \int_{a}^{b} f(x) dx
 $$
 
-onde P(a ≤ X ≤ b) é a probabilidade de que a variável aleatória X assuma valores entre a e b.
+onde $P(a ≤ X ≤ b)$ é a probabilidade de que a variável aleatória X assuma valores entre a e b.
 
 **Caso Discreto**
------------------
 
-No caso de uma variável aleatória discreta, a densidade de probabilidade não existe. Em vez disso, usamos as funções de probabilidade (FP) para descrever a distribuição da variável aleatória. A FP é definida como:
+No caso de uma variável aleatória discreta, a densidade de probabilidade não existe. Em vez disso, usamos as funções de probabilidade ($FP$) para descrever a distribuição da variável aleatória. A $FP$ é definida como:
 
 $$
 P(X = x_i) = p_i
 $$
 
-onde x_i são os valores possíveis da variável aleatória e p_i são as probabilidades associadas a esses valores.
+onde $x_i$ são os valores possíveis da variável aleatória e $p_i$ são as probabilidades associadas a esses valores.
 
 A densidade de probabilidade pode ser vista como uma generalização das funções de probabilidade para o caso contínuo. Ela fornece informações sobre a distribuição da variável aleatória em um intervalo específico, enquanto as FP descrevem a distribuição da variável aleatória nos valores discretos.
