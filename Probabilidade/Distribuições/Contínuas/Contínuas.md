@@ -6,7 +6,7 @@ dg-publish: true
 - **[[Contínuas]]**
 	- [[Densidade de Probabilidade]]
 	- [[Distribuição Exponencial]]
-	- [[Distribuição F]]
+	- [[Distribuição F (Distribuição de Freira)]]
 	- [[Distribuição Gama]]
 	- [[Distribuição Log-Normal]]
 	- [[Distribuição Normal]]
