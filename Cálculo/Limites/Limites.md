@@ -4,9 +4,9 @@ dg-show-local-graph: true
 ---
 
 %% Begin Waypoint %%
-
-- [[Limites]]
+- **[[Limites]]**
 	- [[Limites e Continuidade de Funções de 2 Variáveis]]
+	- [[Limites Fundamentais do Cálculo]]
 	- [[Teorema do Confronto]]
 
 %% End Waypoint %%
