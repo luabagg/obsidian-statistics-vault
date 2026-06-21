@@ -2,7 +2,7 @@
 dg-publish: true
 ---
 
-O **método da bisseção** é um método numérico para encontrar uma raiz de uma função contínua $f(x)$ dentro de um intervalo $[a, b]$ onde ocorre uma mudança de sinal, ou seja, $f(a) \cdot f(b) < 0$. O método é baseado no [[Teorema de Bolzano]], que garante a existência de pelo menos uma raiz nesse intervalo.  
+O **método da bisseção** é um método numérico para encontrar uma raiz de uma função contínua $f(x)$ dentro de um intervalo $[a, b]$ onde ocorre uma mudança de sinal, ou seja, $f(a) \cdot f(b) < 0$. O método é baseado no [[Teorema De Bolzano]], que garante a existência de pelo menos uma raiz nesse intervalo.  
 
 ## Definição Formal
 
