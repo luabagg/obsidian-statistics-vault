@@ -7,3 +7,7 @@
 .obsidian/plugins/copilot/data.json
 .obsidian/plugins/digitalgarden
 .DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+._*
