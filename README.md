@@ -16,12 +16,12 @@ This Obsidian vault is being migrated into a concise English learning center for
 
 ## Main Hubs
 
-- [[Cálculo]]
-- [[Controle Estatístico do Processo]]
-- [[Métodos Numéricos]]
-- [[Probabilidade]]
-- [[Álgebra Linear]]
-- [[Geometria Analítica]]
+- [[Calculus]]
+- [[Statistical Process Control]]
+- [[Numerical Methods]]
+- [[Probability]]
+- [[Linear Algebra]]
+- [[Analytic Geometry]]
 
 ## Validation
 

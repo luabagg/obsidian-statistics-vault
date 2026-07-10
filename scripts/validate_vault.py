@@ -27,7 +27,7 @@ UTILITY_MARKDOWN = {
     "LEARNING_PATHS.md",
     "adjust-info.md",
     "plan.md",
-    "Exemplos Latex (MathJax).md",
+    "LaTeX Examples.md",
 }
 PLACEHOLDER_RE = re.compile(
     r"TODO_TEMPLATE\b|\{\{[^}\n]+\}\}|<([A-Za-z][A-Za-z0-9 _./-]{1,60})>"

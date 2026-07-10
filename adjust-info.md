@@ -39,47 +39,47 @@ Fix these first because they contain factual or mathematical errors.
 
 ### Probability and Measure Theory
 
-- [x] [[Probabilidade/Sigma-Álgebra|Sigma-Álgebra]]: the example saying that all open and closed subintervals of $[0,1]$ form a sigma-algebra is incorrect. Intervals are not closed under countable unions. Replace with the Borel sigma-algebra or the power set in a finite case.
-- [x] [[Probabilidade/Sigma-Álgebra De Borel|Sigma-Álgebra De Borel]]: the claim that every Borel set can be written as the difference between a closed set and an open set is incorrect. Replace with the correct generated-sigma-algebra definition and examples.
-- [x] [[Probabilidade/Sigma-Álgebra De Borel|Sigma-Álgebra De Borel]]: replace "reta irracional" with standard terminology such as "set of irrational numbers".
+- [x] [[Probability/Sigma-Algebra|Sigma-Álgebra]]: the example saying that all open and closed subintervals of $[0,1]$ form a sigma-algebra is incorrect. Intervals are not closed under countable unions. Replace with the Borel sigma-algebra or the power set in a finite case.
+- [x] [[Probability/Borel Sigma-Algebra|Sigma-Álgebra De Borel]]: the claim that every Borel set can be written as the difference between a closed set and an open set is incorrect. Replace with the correct generated-sigma-algebra definition and examples.
+- [x] [[Probability/Borel Sigma-Algebra|Sigma-Álgebra De Borel]]: replace "reta irracional" with standard terminology such as "set of irrational numbers".
 
 ### Random Variables and Moments
 
-- [x] [[Probabilidade/Variável Aleatória/Variância de uma Variável Aleatória|Variância de uma Variável Aleatória]]: correct the variance transformation formula. The correct identity is:
+- [x] [[Probability/Random Variable/Variance of a Random Variable|Variância de uma Variável Aleatória]]: correct the variance transformation formula. The correct identity is:
 
 $$
 \operatorname{Var}(a + bX) = b^2\operatorname{Var}(X)
 $$
 
-- [x] [[Probabilidade/Variável Aleatória/Funções Geradoras de Momento|Funções Geradoras de Momento]]: remove nonstandard concepts currently called CGF and AGF. Use standard concepts: moment generating function and cumulant generating function.
-- [x] [[Probabilidade/Distribuições/Esperança a Partir da Função Geradora de Momentos|Esperança a Partir da Função Geradora de Momentos]]: keep this as the reliable basis for MGF derivations, then link it from distribution notes.
+- [x] [[Probability/Random Variable/Moment Generating Functions|Funções Geradoras de Momento]]: remove nonstandard concepts currently called CGF and AGF. Use standard concepts: moment generating function and cumulant generating function.
+- [x] [[Probability/Distributions/Expectation from the MGF|Esperança a Partir da Função Geradora de Momentos]]: keep this as the reliable basis for MGF derivations, then link it from distribution notes.
 
 ### Continuous Distributions
 
-- [x] [[Probabilidade/Distribuições/Contínuas/Distribuição Exponencial|Distribuição Exponencial]]: remove the claim that the exponential distribution is symmetric. It is right-skewed.
-- [x] [[Probabilidade/Distribuições/Contínuas/Distribuição Qui-Quadrado|Distribuição Qui-Quadrado]]: remove the claim that the chi-square distribution is symmetric. It is right-skewed, especially for small degrees of freedom.
-- [x] [[Probabilidade/Distribuições/Contínuas/Distribuição F (Distribuição de Freira)|Distribuição F]]: rename the note. "Freira" is wrong; the distribution is named after Fisher and is often called the Fisher-Snedecor F distribution.
-- [x] [[Probabilidade/Distribuições/Contínuas/Distribuição F (Distribuição de Freira)|Distribuição F]]: correct the definition. A chi-square random variable is a sum of squared independent standard normal variables, not a cube.
-- [x] [[Probabilidade/Distribuições/Contínuas/Distribuição F (Distribuição de Freira)|Distribuição F]]: remove the claims that the F distribution is symmetric and has finite limits. It is right-skewed and has support $(0, \infty)$.
-- [x] [[Probabilidade/Distribuições/Contínuas/Distribuição T-Student|Distribuição T-Student]]: define the t-distribution as a distribution, not only as a test statistic. It has one parameter: degrees of freedom.
-- [x] [[Probabilidade/Distribuições/Contínuas/Distribuição Gama|Distribuição Gama]]: correct the MGF parameterization. For shape $k$ and scale $\theta$:
+- [x] [[Probability/Distributions/Continuous/Exponential Distribution|Distribuição Exponencial]]: remove the claim that the exponential distribution is symmetric. It is right-skewed.
+- [x] [[Probability/Distributions/Continuous/Chi-Square Distribution|Distribuição Qui-Quadrado]]: remove the claim that the chi-square distribution is symmetric. It is right-skewed, especially for small degrees of freedom.
+- [x] [[Probability/Distributions/Continuous/F Distribution|Distribuição F]]: rename the note. "Freira" is wrong; the distribution is named after Fisher and is often called the Fisher-Snedecor F distribution.
+- [x] [[Probability/Distributions/Continuous/F Distribution|Distribuição F]]: correct the definition. A chi-square random variable is a sum of squared independent standard normal variables, not a cube.
+- [x] [[Probability/Distributions/Continuous/F Distribution|Distribuição F]]: remove the claims that the F distribution is symmetric and has finite limits. It is right-skewed and has support $(0, \infty)$.
+- [x] [[Probability/Distributions/Continuous/Student t Distribution|Distribuição T-Student]]: define the t-distribution as a distribution, not only as a test statistic. It has one parameter: degrees of freedom.
+- [x] [[Probability/Distributions/Continuous/Gamma Distribution|Distribuição Gama]]: correct the MGF parameterization. For shape $k$ and scale $\theta$:
 
 $$
 M_X(t) = (1 - \theta t)^{-k}, \quad t < \frac{1}{\theta}
 $$
 
-- [x] [[Probabilidade/Distribuições/Contínuas/Distribuição Gama|Distribuição Gama]]: correct the moment derivation. For shape $k$ and scale $\theta$:
+- [x] [[Probability/Distributions/Continuous/Gamma Distribution|Distribuição Gama]]: correct the moment derivation. For shape $k$ and scale $\theta$:
 
 $$
 E[X] = k\theta, \qquad \operatorname{Var}(X) = k\theta^2
 $$
 
-- [x] [[Probabilidade/Distribuições/Contínuas/Distribuição Log-Normal|Distribuição Log-Normal]]: remove the false existence condition $m-r^2<0$. A log-normal distribution exists for $m \in \mathbb{R}$ and $r>0$.
-- [x] [[Probabilidade/Distribuições/Contínuas/Distribuição Log-Normal|Distribuição Log-Normal]]: make parameter notation consistent. Do not mix $m$, $r$, $\mu$, and $\sigma$ unless each is defined clearly.
+- [x] [[Probability/Distributions/Continuous/Log-Normal Distribution|Distribuição Log-Normal]]: remove the false existence condition $m-r^2<0$. A log-normal distribution exists for $m \in \mathbb{R}$ and $r>0$.
+- [x] [[Probability/Distributions/Continuous/Log-Normal Distribution|Distribuição Log-Normal]]: make parameter notation consistent. Do not mix $m$, $r$, $\mu$, and $\sigma$ unless each is defined clearly.
 
 ### Discrete Distributions
 
-- [x] [[Probabilidade/Distribuições/Discretas/Distribuição de Bernoulli|Distribuição de Bernoulli]]: fix the example section. The expected value of a Bernoulli random variable is $p$. If two coin flips are used, the random variable is binomial, not Bernoulli.
+- [x] [[Probability/Distributions/Discrete/Bernoulli Distribution|Distribuição de Bernoulli]]: fix the example section. The expected value of a Bernoulli random variable is $p$. If two coin flips are used, the random variable is binomial, not Bernoulli.
 
 ## Priority 1: Standardization
 
@@ -131,14 +131,14 @@ Every distribution note should include:
 
 ## Suggested Rewrite Order
 
-1. [[Probabilidade/Sigma-Álgebra|Sigma-Álgebra]]
+1. [[Probability/Sigma-Algebra|Sigma-Álgebra]]
 2. Probability space note: create if missing.
-3. [[Probabilidade/Variável Aleatória/Variável Aleatória|Variável Aleatória]]
-4. [[Probabilidade/Distribuições/Contínuas/Densidade de Probabilidade|Densidade de Probabilidade]]
-5. [[Probabilidade/Distribuições/Contínuas/Função de Distribuição Acumulada|Função de Distribuição Acumulada]]
-6. [[Probabilidade/Variável Aleatória/Esperança de uma Variável Aleatória|Esperança de uma Variável Aleatória]]
-7. [[Probabilidade/Variável Aleatória/Variância de uma Variável Aleatória|Variância de uma Variável Aleatória]]
-8. [[Probabilidade/Variável Aleatória/Funções Geradoras de Momento|Funções Geradoras de Momento]]
+3. [[Probability/Random Variable/Random Variable|Variável Aleatória]]
+4. [[Probability/Distributions/Continuous/Probability Density|Densidade de Probabilidade]]
+5. [[Probability/Distributions/Continuous/Cumulative Distribution Function|Função de Distribuição Acumulada]]
+6. [[Probability/Random Variable/Expectation of a Random Variable|Esperança de uma Variável Aleatória]]
+7. [[Probability/Random Variable/Variance of a Random Variable|Variância de uma Variável Aleatória]]
+8. [[Probability/Random Variable/Moment Generating Functions|Funções Geradoras de Momento]]
 9. Discrete distributions.
 10. Continuous distributions.
 11. Statistical inference topics.
