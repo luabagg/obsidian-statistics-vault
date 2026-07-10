@@ -34,17 +34,8 @@
     "debugMode": false,
     "useInternalPlugins": false
   },
-  "Controle Estatístico do Processo": "LiSettings",
-  "Probabilidade": "LiPercent",
   "Copilot Custom Prompts": "LiTextSelection",
-  "Cálculo": "LiChartSpline",
-  "Álgebra Linear": "LiAxis3d",
-  "Métodos Numéricos": "🔢",
   "Excalidraw": "LiPenTool",
-  "Estatística Básica": "LiAreaChart",
-  "Análise de Dados": "LiDatabaseZap",
   "DSA": "LiDatabase",
-  "Readings": "LiBook",
-  "Pré-Cálculo": "LiX",
-  "Geometria Analítica": "LiAxis3d"
+  "Readings": "LiBook"
 }
