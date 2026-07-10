@@ -1,51 +1,72 @@
 ---
 dg-publish: true
 dg-show-local-graph: true
+aliases:
+  - Quality Tools
+  - Seven Basic Quality Tools
 ---
 
-%% Begin Waypoint %%
+# Quality Tools
 
-- [[Ferramentas da Qualidade]]
-	- [[Caso - Discos Gheno]]
+Quality tools help teams understand process flow, collect evidence, and investigate causes.
+They never replace statistical control limits.[^montgomery-tools]
 
-%% End Waypoint %%
+## Prerequisites
 
-## Fluxograma
+Prerequisites: none.
+
+## Core Tools
+
+| Tool | Use |
+|---|---|
+| Flowchart | Map process steps and decision points |
+| Check sheet | Collect structured frequency data |
+| Defect concentration diagram | Mark defect locations on a product sketch |
+| Cause-and-effect diagram | Organize possible causes of a problem |
+| Histogram | See distribution shape, center, and spread |
+| Pareto chart | Rank categories by frequency or cost |
+| Scatter plot | Explore association between two variables |
+| Nominal group technique | Prioritize ideas with structured team voting |
+| Force-field analysis | Compare forces supporting and resisting a change |
+
+## Examples in This Vault
 
 ![[exemplo-fluxograma.webp]]
 
-## Folha de Verificação
-
-A folha de verificação é um procedimento usado para responder a pergunta: "com que frequência certos eventos acontecem?"
-
 ![[folha-de-verificacao-exemplo.webp]]
 
-## Diagrama de Concentração de Defeitos
+| Defect concentration diagram |
+|---|
+| ![[diagrama-de-concentracao-de-defeitos.webp]] |
 
-Figura da unidade mostrando todas as partes relevantes do produto. Os defeitos, então, são assinalados na figura, conforme a sua localização
-
-![[diagrama-de-concentracao-de-defeitos.webp]]
-
-## Brainstorming
-
-São reuniões com o pessoal envolvido com o problema em estudo a fim de se coletar o máximo de opiniões ou idéias sobre as causas, bem como todas as soluções possíveis, ainda que pareçam inviáveis a princípio
-
-## Técnica Nominal de Grupo
-
-1. Cada membro do grupo deve escrever ou falar sobre o problema que julgar mais
-importante. Depois que todos escreverem a sua escolha de problemas recolha o papel
-com os problemas.
-2. Escreva os problemas descritos onde todos possam ver.
-3. Se houver duplicidade combine-os em um são, mas de acordo com os autores.
-4. Peça para cada membro do grupo ordenar os problemas pelo grau de importância
-crescente, segundo o critério de cada um.
-5. O problema cuja soma dos pontos for a mais alta é o escolhido, primeiramente. Da
-mesma forma, se ao invés de problemas o que se pediu foi sugestões, idéias, a mais
-votada deve ser considerada primeiro para discussão e depois as seguintes.
 ![[tecnica-nominal-de-grupo.webp]]
-
-## Análise Do Campo de Forças
 
 ![[campo-de-forcas.webp]]
 
-## Histograma
+## Worked Example
+
+One p chart signals an unusual increase in nonconforming rotors.
+The team uses check sheets to separate defects by shift.
+They use flowcharts to verify process steps and cause-and-effect diagrams to organize possible causes.
+Only after evidence points to one material batch should the team change the process.
+
+## Common Mistakes
+
+- Brainstorming causes before defining the observed problem.
+- Treating cause-and-effect diagrams like proof.
+- Collecting check-sheet categories without decision support.
+- Using a Pareto chart without checking whether category definitions are consistent.
+- Replacing control charts with static quality tools.
+
+## Connections
+
+| Related note | Use |
+|---|---|
+| [[Caso - Discos Gheno|Discos Gheno case]] | Applied example |
+| [[Common-Cause and Special-Cause Variation]] | Decide when cause investigation is appropriate |
+| [[Cartas de Controle|Control charts]] | Statistical monitoring |
+| [[Controle Estatístico do Processo|Statistical Process Control]] | Main hub |
+
+## References
+
+[^montgomery-tools]: Douglas C. Montgomery, *Introduction to Statistical Quality Control*, 8th ed., Wiley, ISBN 978-1-119-39930-8.

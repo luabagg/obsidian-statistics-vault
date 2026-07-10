@@ -1,46 +1,85 @@
 ---
 dg-publish: true
+aliases:
+  - Quadratic Loss Function
+  - Taguchi Loss Function
 ---
 
-%% Begin Waypoint %%
-- **[[Função Perda Quadrática]]**
+# Quadratic Loss Function
 
-%% End Waypoint %%
+The quadratic loss function models quality loss increasing with squared distance from the target.
+Loss can exist even when an item is inside specification limits.
+This supports the SPC goal of reducing target variation, not merely sorting good from bad at tolerance boundaries.[^taguchi-loss]
 
-## Perda Quadrática no Controle Estatístico Do Processo
+## Prerequisites
 
-A **função de perda quadrática** foi proposta por **Genichi Taguchi** e é usada para quantificar a perda de qualidade causada por variações no processo, mesmo quando o produto está dentro das especificações. Diferente da abordagem tradicional do CEP, que considera um produto "bom" se ele estiver dentro dos limites de especificação, Taguchi defende que **qualquer desvio da meta (valor nominal)** implica em perda para o cliente ou para a sociedade.
+Prerequisites: target value, specification limits, process variation.
 
-### Forma da Função de Perda
+## Definition
 
-A função de perda quadrática é expressa como:
+For measured value \(y\), target \(T\), and proportionality constant \(k\):
 
 $$
-L(y) = k (y - T)^2
+L(y)=k(y-T)^2.
 $$
 
-Onde:
+The constant \(k\) converts squared deviation into money, warranty cost, performance loss, or another loss scale.
 
-- $L(y)$: perda associada ao valor $y$
-- $T$: valor-alvo ou valor nominal do processo (meta)
-- $y$: valor real observado do processo
-- $k$: constante de proporcionalidade (depende do custo associado à não conformidade)
+## Assumptions / Requirements
 
-Essa função mostra que a perda aumenta quadraticamente conforme o valor $y$ se afasta da meta $T$, independentemente de estar ou não dentro dos limites de especificação.
+- The target value is meaningful.
+- Loss increases symmetrically when \(y\) moves away from \(T\), unless asymmetric loss is justified.
+- The cost at a known deviation can be used to estimate \(k\).
+- Specification limits remain requirements; the loss function does not replace conformance decisions.
 
-### Importância no Cep
+## Notation
 
-A função de perda reforça a ideia de que a **melhoria contínua** deve ser um objetivo central. Mesmo pequenas variações dentro das especificações podem causar impacto no desempenho, custo ou satisfação do cliente. Assim, não basta manter o processo "dentro dos limites", é desejável que ele esteja **centrado na meta** e com **baixa variabilidade**.
+| Symbol | Meaning |
+|---|---|
+| \(y\) | Observed quality characteristic |
+| \(T\) | Target or nominal value |
+| \(L(y)\) | Loss at value \(y\) |
+| \(k\) | Loss constant |
 
-### Exemplo de Aplicação
+## Worked Example
 
-Suponha que o diâmetro ideal de uma peça seja $T = 10 \, \text{mm}$. Dois lotes produzem peças entre 9,8 mm e 10,2 mm, dentro dos limites aceitáveis. Porém:
+Rotor thickness target is \(T=2.00\) mm.
+Deviation of \(0.10\) mm is estimated to cost 20 monetary units, so:
 
-- Lote A tem a maioria das peças em torno de 10 mm (bem centrado).
-- Lote B tem grande variabilidade (mais peças afastadas de 10 mm).
+$$
+k=\frac{20}{0.10^2}=2000.
+$$
 
-Mesmo que ambos estejam "conformes", o Lote B gera maior perda (mais produtos com desempenho inferior), o que pode significar maior desgaste, falhas ou custo para o cliente.
+If one rotor measures \(2.04\) mm:
 
-### Conclusão
+$$
+L(2.04)=2000(2.04-2.00)^2=3.2.
+$$
 
-A perda quadrática reforça a visão de que a **qualidade deve ser medida em termos de desempenho em torno de uma meta**, e não apenas pela conformidade com limites. Essa abordagem incentiva a **redução da variabilidade** e o **aperfeiçoamento contínuo dos processos**.
+The part may still be inside specification, but it is not loss-free.
+
+## Interpretation
+
+- Lower variation around the target reduces expected loss.
+- Centering matters even when capability spread looks acceptable.
+- The function supports continuous improvement rather than threshold-only thinking.
+
+## Common Mistakes
+
+- Treating all in-spec values as equally good.
+- Using Taguchi loss without defining \(k\).
+- Ignoring asymmetric customer loss when one side of the target is more costly.
+- Confusing target value with control-chart center line.
+
+## Connections
+
+| Related note | Use |
+|---|---|
+| [[Capacidade do Processo|Process capability]] | Capability and target centering |
+| [[Control Limits and Specification Limits]] | Specification distinction |
+| [[Controle Estatístico do Processo|Statistical Process Control]] | Variation reduction context |
+| [[Common-Cause and Special-Cause Variation]] | Process improvement logic |
+
+## References
+
+[^taguchi-loss]: Genichi Taguchi, Elsayed A. Elsayed, and Thomas Hsiang, *Quality Engineering in Production Systems*, McGraw-Hill, ISBN 978-0-07-062830-2.

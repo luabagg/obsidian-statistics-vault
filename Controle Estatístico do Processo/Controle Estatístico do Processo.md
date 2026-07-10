@@ -1,52 +1,73 @@
 ---
 dg-publish: true
 dg-show-local-graph: true
+aliases:
+  - Statistical Process Control
+  - SPC
+  - CEP
 ---
 
-%% Begin Waypoint %%
-- **[[Controle Estatístico do Processo]]**
-	- **[[Cartas de Controle]]**
-	- **[[Ferramentas da Qualidade]]**
-	- **[[Função Perda Quadrática]]**
-	- [[O que é CEP]]
+# Statistical Process Control
 
-%% End Waypoint %%
+Statistical process control (SPC) uses data over time to decide whether a process is stable, predictable, and worth improving. Its central idea is not "meet the specification every time"; it is "separate routine process noise from evidence that the process changed."[^nist-control]
 
-## Introdução ao Controle Estatístico de Processos (CEP)
+## Prerequisites
 
-O **Controle Estatístico de Processos** (CEP) é um conjunto de técnicas e métodos estatísticos utilizados para monitorar, controlar e melhorar a qualidade de processos industriais. Este método permite identificar anomalias ou variações nos processos que podem afetar a qualidade do produto final.
+Prerequisites: basic descriptive statistics and sampling.
 
-### Objetivos Principais
+## Core Ideas
 
-- **Monitoramento**: Realizar o acompanhamento contínuo dos processos para detectar qualquer desvio da norma.
-- **Prevenção de Problemas**: Antecipar e corrigir problemas antes que eles afetem significativamente a qualidade do produto.
-- **Melhoria Contínua**: Utilizar os dados coletados para identificar áreas de melhoria nos processos.
+- Process systems combine inputs, equipment, methods, measurements, people, and environment to produce output.
+- Common-cause variation is the routine variation built into a stable process.
+- Special-cause variation is evidence that a nonroutine source changed the process.
+- Control limits are statistical limits estimated from process data.
+- Specification limits are engineering, customer, or regulatory requirements.
+- Capability is assessed only after the process is statistically stable.
 
-### Principais Técnicas
+## Typical Workflow
 
-1. **Gráficos de Control Chart**:
-   - **Uso**: Para monitorar o desempenho de um processo ao longo do tempo.
-   - **Tipos**: Gráfico de controle individual ($\bar{x}$), gráfico de controle de média e desvio padrão ($\bar{x} \pm R$), gráfico de controle de propriedades ($p$, $np$, $c$, $u$).
-   - **Exemplo**: Um fabricante de peças automotivas pode usar um gráfico de controle individual para monitorar a precisão das dimensões de uma peça.
+1. Define the quality characteristic, unit, sampling plan, and business decision.
+2. Choose the chart from the data type and rational subgrouping.
+3. Estimate control limits from stable Phase I data.
+4. Investigate special-cause signals instead of adjusting every point.
+5. After stability, compare process output to specification limits.
+6. Improve centering, variation, measurement, or process design.
 
-2. **Análise de Distribuição de Frequência**:
-   - **Uso**: Para verificar se os dados seguem uma distribuição normal ou outra.
-   - **Exemplo**: Usando um histograma, pode-se analisar se as medidas de comprimento de peças estão distribuídas normalmente.
+## Chart Taxonomy
 
-3. **Testes Estatísticos**:
-   - **Uso**: Para testar hipóteses sobre a qualidade do processo.
-   - **Exemplo**: Teste t de Student para comparar a média amostral com uma média populacional conhecida.
+| Data and sampling | Correct chart family |
+|---|---|
+| One measurement at a time | Individuals and moving range: I-MR or X-MR |
+| Variable data in small rational subgroups | Xbar-R for subgroup mean and range |
+| Variable data in larger rational subgroups | Xbar-S for subgroup mean and standard deviation |
+| Attribute data: nonconforming proportion | p chart |
+| Attribute data: number nonconforming with fixed sample size | np chart |
+| Attribute data: nonconformities per constant inspection unit | c chart |
+| Attribute data: nonconformities per variable inspection unit | u chart |
 
-4. **Análise de Causa e Efeito (Fishbone Diagram)**:
-   - **Uso**: Para identificar as causas potenciais de problemas em um processo.
-   - **Exemplo**: Identificando os fatores que podem afetar a qualidade da produção, como máquinas, materiais, métodos, meio ambiente e pessoas.
+## Worked Example
 
-### Importância Do Cep
+A machining cell records one shaft diameter per hour. Because there is no rational subgroup at each hour, the correct starting chart is I-MR, not Xbar-R. If the chart shows no special-cause signal, capability can then compare the stable diameter distribution with the lower and upper specification limits.
 
-- **Redução de Custos**: Ao prevenir defeitos, o CEP ajuda a reduzir custos associados à rejeição ou reparo de produtos.
-- **Melhoria da Qualidade**: Permite uma produção mais consistente e de alta qualidade.
-- **Compliance Regulatório**: Muitas indústrias são obrigadas a seguir normas de controle de qualidade, o CEP ajuda a atender esses requisitos.
+## Common Mistakes
 
-### Aplicações Práticas
+- Treating specification limits as if they were control limits.
+- Treating every high or low point like justification for process adjustment.
+- Calculating capability before the control chart shows statistical stability.
+- Using Xbar-R when the data are individual observations.
+- Mixing defective units and defects; those require different attribute charts.
 
-O CEP é amplamente utilizado em diversas áreas industriais, incluindo manufatura, serviços, saúde e segurança. Por exemplo, na indústria farmacêutica, o CEP é crucial para garantir que os medicamentos sejam produzidos com consistência e qualidade.
+## Connections
+
+| Related note | Use |
+|---|---|
+| [[O que é CEP|What is SPC]] | Plain-language overview |
+| [[Common-Cause and Special-Cause Variation]] | Variation taxonomy |
+| [[Control Limits and Specification Limits]] | Limit taxonomy |
+| [[Cartas de Controle|Control charts]] | Chart selection |
+| [[Capacidade do Processo|Process capability]] | Stable-process specification comparison |
+| [[Ferramentas da Qualidade|Quality tools]] | Diagnostic tools around SPC |
+
+## References
+
+[^nist-control]: NIST/SEMATECH, *e-Handbook of Statistical Methods*, "Process or Product Monitoring and Control", https://www.itl.nist.gov/div898/handbook/pmc/pmc.htm

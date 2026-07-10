@@ -1,43 +1,71 @@
 ---
 dg-publish: true
+aliases:
+  - What is SPC
+  - What is CEP
+  - SPC overview
 ---
 
-CEP pode ser definido como a junção dos significados da palavra que compõem seu nome, Controle, Estatística e Processo
+# What Is Statistical Process Control?
 
-**Controle**: manter algo dentro dos limites (padrões) ou fazer algo se comportar de forma adequada.
+Statistical process control is disciplined monitoring with time-ordered data.
+It asks whether current data still look like they came from the same stable process used to set chart limits.[^nist-process-control]
 
-**Estatística**: obter conclusões com base em dados e números que trazem informações.
+## Prerequisites
 
-**Controle Estatístico**: fazer com que os resultados se mantenham conforme o previsto pelos padrões com a ajuda de estatísticas obtidas de dados numéricos.
+Prerequisites: none.
 
-**Processo**: é uma combinação entre o homem, os materiais, as máquinas, os equipamentos e o meio ambiente para fabricar um determinado produto ou para fornecer um serviço. Em outras palavras, um processo é qualquer conjunto de condições ou conjunto de causas (sistema de causas) que trabalham simultaneamente para produzir um determinado resultado.
+## Definition
 
-## Objetivos Do Cep
+SPC combines:
 
-- Realizar um **diagnóstico inicial do processo**, por meio de coleta de dados e da análise desses for meio das ferramentas estatísticas da qualidade (histograma, gráfico de pareto, gráfico de controle, etc.).
-- Identificar, atuar sobre e prevenir as **causas especiais** de um processo.
-- Estabelecer **limites de controle** e controlar o processo.
-- Monitorar as características de interesse, assegurando que elas irão se manter dentro de limites preestabelecidos e indicando quando devem ser tomadas ações de correção e melhoria. Quanto mais cedo se detectar os defeitos, menos matéria-prima será colocada fora e a mão-de-obra não será perdida com um produto defeituoso.
-- Verificar a **capacidade do processo** sob controle e atuar nele (na centralização ou na variação) para melhorar a capacidade.
-- Aumentar a capacidade dos processos. Consequentemente, se reduz o refugo e o retrabalho, e o chamado “custo da má qualidade”. Assim, ele proporciona às empresas a base para melhorar a qualidade de produtos e serviços e, simultaneamente, reduzir substancialmente o custo da má qualidade
-- Possibilitar um controle eficaz da qualidade, feito pelo próprio operador em tempo real. Consequentemente, isso aumenta o comprometimento do operador com a qualidade do que está sendo produzido e permite com que a gerência não se ocupe com os problemas operacionais e esteja disponível para se dedicar às tarefas de melhoria.
+- Control: act on a process only when evidence supports action.
+- Statistics: use data, variation, and probability instead of isolated impressions.
+- Process thinking: treat output like the result of system causes.
 
-### Etapas para a Implantação Do Cep
+SPC is useful because it prevents two costly errors: ignoring real process changes and overreacting to common-cause variation.
 
-a) não utilizar um número excessivo de cartas de controle, sob risco do CEP transformar-se em atividade-gargalo na produção
+## What SPC Does
 
-b) aplicar o CEP em etapas prioritárias do processo, determinadas sob o ponto de vista da demanda de qualidade dos clientes;
+- Detects special-cause signals early.
+- Supports operator-level monitoring with clear escalation rules.
+- Makes improvement work more targeted.
+- Provides a stability requirement before process capability studies.
+- Helps distinguish process behavior from customer or engineering specifications.
 
-c) associar o CEP à uma estratégia de ação; coletar dados e não agir implica em desperdício de tempo e recursos.
+## Implementation Notes
 
-### Qfd (Quality Function Deployment)
+- Start with the few characteristics that matter most to customers or safety.
+- Define an out-of-control action plan before collecting chart data.
+- Use charts where action is possible; charting without response wastes attention.
+- Use Quality Function Deployment only for planning bridges from customer needs to process characteristics, not instead of control charts.
 
-Desdobramento da Função Qualidade, o qual permite estabelecer relações entre a qualidade demandada pelo cliente e os processos responsáveis pelo atendimento desta demanda.
-
-#### Matriz da Qualidade (MQ)
-
-Permite identificar características de qualidade que contribuem para o atendimento dos itens de qualidade demandada. Na MQ, os itens da qualidade demandada são cruzados com as características de qualidade. Os elementos principais da matriz da qualidade estão apresentados no cabeçalho das linhas (itens de qualidade demandada) e no cabeçalho das colunas (características de qualidade).
-
+```image-layout-a
 ![[matriz-de-qualidade.webp]]
-
 ![[exemplo-matriz-qualidade.webp]]
+```
+
+## Worked Example
+
+A brake rotor producer wants to monitor rotor thickness. SPC starts by defining the measurement method, sampling frequency, and chart type. If one rotor is measured every 30 minutes, use an I-MR chart; if five consecutive rotors are sampled from the same short production run, use Xbar-R.
+
+## Common Mistakes
+
+- Starting with many charts instead of a few actionable characteristics.
+- Calling a process "good" because it is stable even when it misses specifications.
+- Calling process behavior "bad" because one value is near a specification limit while chart behavior remains stable.
+- Adding QFD matrices without connecting them to measurable control characteristics.
+
+## Connections
+
+| Related note | Use |
+|---|---|
+| [[Controle Estatístico do Processo|Statistical Process Control]] | Main hub |
+| [[Cartas de Controle|Control charts]] | Monitoring method |
+| [[Control Limits and Specification Limits]] | Required distinction |
+| [[Common-Cause and Special-Cause Variation]] | Required variation language |
+| [[Ferramentas da Qualidade|Quality tools]] | Problem exploration tools |
+
+## References
+
+[^nist-process-control]: NIST/SEMATECH, *e-Handbook of Statistical Methods*, "What is Process Control?", https://www.itl.nist.gov/div898/handbook/pmc/section1/pmc13.htm

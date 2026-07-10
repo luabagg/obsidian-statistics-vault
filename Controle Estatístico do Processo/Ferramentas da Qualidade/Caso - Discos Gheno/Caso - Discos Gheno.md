@@ -1,77 +1,84 @@
 ---
 dg-publish: true
 dg-show-local-graph: true
+aliases:
+  - Discos Gheno Case
+  - GHENOrtrs Case
 ---
 
-%% Begin Waypoint %%
+# Discos Gheno Case
 
-- [[Caso - Discos Gheno]]
-	- **Fluxograma do Processo**
-		- [[Diagrama de Causa e Efeito.excalidraw]]
-		- [[Fluxograma do Processo.excalidraw]]
-		- [[Parte 1 - Projeto.excalidraw]]
-		- [[Parte 2 - Compra do Material.excalidraw]]
-		- [[Parte 3 - Prototipação.excalidraw]]
-		- [[Parte 4 - Teste do Protótipo.excalidraw]]
-		- [[Parte 5 - Produção.excalidraw]]
-		- [[Parte 6 - Marketing, Vendas e Pós-venda.excalidraw]]
+This case maps the process for producing GHENOrtrs downhill bicycle brake rotors and uses quality tools to frame one likely business/process problem. The note is an application index; theory stays in the linked concept notes.[^montgomery-tools-case]
 
-%% End Waypoint %%
+## Prerequisites
 
-## Fluxograma Do Processo
+Prerequisites: quality tools and SPC basics.
 
-Fluxograma do processo da produção de discos de frenagem para bicicletas de Downhill por GHENOrtrs.
+## Process Context
 
 ```image-layout-a
 ![[catálogo-GHENOrtrs.webp]]
 ![[disco-em-roda-traseira.webp]]
 ```
 
-### Processo Completo
+The product is a bicycle brake rotor. The case artifacts show product design, material purchase, prototyping, testing, production, marketing, sales, and post-sale feedback.
 
-![[Fluxograma do Processo.excalidraw]]
+## Process Map
 
-#### Parte 1: Projeto
+| Diagram | Purpose |
+|---|---|
+| [[Fluxograma do Processo.excalidraw]] | Whole process |
+| [[Parte 1 - Projeto.excalidraw]] | Design |
+| [[Parte 2 - Compra do Material.excalidraw]] | Material purchasing |
+| [[Parte 3 - Prototipação.excalidraw]] | Prototyping |
+| [[Parte 4 - Teste do Protótipo.excalidraw]] | Prototype testing |
+| [[Parte 5 - Produção.excalidraw]] | Production |
+| [[Parte 6 - Marketing, Vendas e Pós-venda.excalidraw]] | Market and post-sale loop |
 
-![[Parte 1 - Projeto.excalidraw]]
+## Cause Investigation
 
-#### Parte 2: Compra Do Material
+The selected problem is insufficient market pre-validation before committing to production. The cause-and-effect diagram is stored separately:
 
-![[Parte 2 - Compra do Material.excalidraw]]
+| Diagram |
+|---|
+| ![[Diagrama de Causa e Efeito.excalidraw]] |
 
-#### Parte 3: Prototipação
+## Force-Field Summary
 
-![[Parte 3 - Prototipação.excalidraw]]
+| Driving forces | Restraining forces |
+|---|---|
+| Conduct market research | Technical uncertainty |
+| Validate the product with target riders | Design difficulty |
+| Study competitors | High prototyping cost |
+| Define pricing method | Low market influence |
 
-#### Parte 4: Teste Do Protótipo
+## SPC Follow-Up
 
-![[Parte 4 - Teste do Protótipo.excalidraw]]
+Useful measurable characteristics for future SPC work:
 
-#### Parte 5: Produção
+- Rotor thickness or runout as variable measurements.
+- Surface defect counts per rotor for c or u chart candidates.
+- Final-inspection failure proportion for p chart candidates.
+- Customer complaint rate after sale as an attribute or time-series monitoring candidate.
 
-![[Parte 5 - Produção.excalidraw]]
+## Common Mistakes
 
-#### Parte 6 - Marketing, Vendas e Pós-venda
+- Duplicating control-chart theory inside a case note.
+- Treating diagrams as evidence without measurement data.
+- Choosing corrective action from one possible cause without verification.
+- Choosing SPC metrics that the team cannot act on.
 
-![[Parte 6 - Marketing, Vendas e Pós-venda.excalidraw]]
+## Connections
 
----
+| Related note | Use |
+|---|---|
+| [[Ferramentas da Qualidade|Quality tools]] | Tool definitions |
+| [[Cartas de Controle|Control charts]] | Candidate monitoring charts |
+| [[Proporção de Não-Conformes|p chart]] | Final inspection proportion |
+| [[Número de Defeitos|c chart]] | Defect counts per constant unit |
+| [[Defeitos por Unidade|u chart]] | Defects with variable opportunity |
+| [[Control Limits and Specification Limits]] | Keep requirements separate from signals |
 
-## Diagrama de Causa e Efeito
+## References
 
-Identifique um problema que possa ocorrer nesse processo, associe todas as possíveis causas que podem ter contribuído para a ocorrência desse problema e as represente por meio de um Diagrama de Causa e Efeito.
-
-### Possível Problema Identificado: Falta de Pré-validação Do Mercado
-
-![[Diagrama de Causa e Efeito.excalidraw]]
-
----
-
-### Análise Do Campo de Forças
-
-| <span style="color:rgb(146, 208, 80)">Forças Indutoras</span> | <span style="color:rgb(255, 0, 0)">Forças Restritivas</span> |
-|:------------------------------------------------------------- |:------------------------------------------------------------ |
-| Efetuar pesquisa de mercado                                   | Domínio de questões técnicas                                 |
-| Fazer validação do produto com público-alvo                   | Dificuldade na criação de projetos                           |
-| Estudar concorrência                                          | Alto custo para prototipagem                                 |
-| Definir método de precificação                                | Pouca influência no mercado                                  |
+[^montgomery-tools-case]: Douglas C. Montgomery, *Introduction to Statistical Quality Control*, 8th ed., Wiley, ISBN 978-1-119-39930-8.
