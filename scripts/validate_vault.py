@@ -65,7 +65,7 @@ PORTUGUESE_WORD_RE = re.compile(
     r"fun[cç][aã]o|fun[cç][oõ]es|integra[cç][aã]o|m[eé]dia|m[eé]todo|"
     r"n[aã]o|n[uú]mero|n[uú]meros|probabilidade|processo|resolu[cç][aã]o|"
     r"sistema|soma|teorema|vari[aá]vel|vari[aá]veis"
-    r")\\b",
+    r")\b",
     re.IGNORECASE,
 )
 ACCENT_RE = re.compile(r"[ãõáéíóúâêôàç]")
