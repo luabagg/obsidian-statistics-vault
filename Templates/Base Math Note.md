@@ -7,80 +7,47 @@ tags:
 aliases: []
 ---
 
-# {{title}}
+# TODO_TEMPLATE: Replace with note title
 
 ## Summary
 
-Write 2-4 sentences explaining what this note is about and why it matters.
+TODO_TEMPLATE: Write 2-4 sentences explaining the concept and why it matters.
+
+## Prerequisites
+
+TODO_TEMPLATE: Link prerequisites, or write `Prerequisites: None`.
 
 ## Definition / Statement
 
-State the concept, theorem, object, or method precisely.
-
-Use standard notation and define every symbol that appears.
-
-## Intuition
-
-Explain the idea in plain language.
-
-Focus on what the concept means before showing computations.
+TODO_TEMPLATE: State the concept, theorem, object, or method precisely.
 
 ## Notation
 
+TODO_TEMPLATE: Define every symbol before using it in formulas.
+
 | Symbol | Meaning |
 |---|---|
-| `<symbol>` | `<meaning>` |
 
 ## Conditions / Assumptions
 
-- `<condition or assumption>`
+TODO_TEMPLATE: List only assumptions needed for the result.
 
 ## Main Result / Formula
 
-$$
-<formula>
-$$
-
-## Derivation / Proof Sketch
-
-Show the reasoning behind the result.
-
-Keep this section short unless the proof itself is the purpose of the note.
+TODO_TEMPLATE: Add the core result if a formula is useful.
 
 ## Worked Example
 
-### Problem
-
-State the problem clearly.
-
-### Solution
-
-Show each relevant step.
-
-### Interpretation
-
-Explain what the result means.
+TODO_TEMPLATE: Optional. Keep only when an example teaches the concept.
 
 ## Common Mistakes
 
-- `<mistake>`: `<correction>`
+TODO_TEMPLATE: Optional. Keep only high-value mistakes.
 
 ## Connections
 
-- Related notes: [[<related-note>]]
-- Prerequisites: [[<prerequisite-note>]]
-- Used in: [[<application-note>]]
+TODO_TEMPLATE: Link related notes and next steps.
 
 ## References
 
-- `<book, article, lecture note, or URL>`
-
-## Review Checklist
-
-- [ ] Definitions match a reliable source.
-- [ ] All symbols are defined.
-- [ ] Assumptions are explicit.
-- [ ] Formulas use standard notation.
-- [ ] Examples are computed correctly.
-- [ ] Common mistakes are listed.
-- [ ] References are included.
+TODO_TEMPLATE: Cite sources with inline footnotes and definitions, for example `[^source-1]`.

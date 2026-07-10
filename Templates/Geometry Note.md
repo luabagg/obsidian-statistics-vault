@@ -7,94 +7,56 @@ tags:
 aliases: []
 ---
 
-# {{title}}
+# TODO_TEMPLATE: Replace with note title
 
 ## Summary
 
-Explain the geometric object, relation, or method in 2-4 sentences.
+TODO_TEMPLATE: Explain the geometric object, relation, or method in 2-4 sentences.
+
+## Prerequisites
+
+TODO_TEMPLATE: Link prerequisites, or write `Prerequisites: None`.
 
 ## Object / Concept
 
-Define the geometric object or concept precisely.
-
-## Intuition
-
-Explain what it represents visually.
+TODO_TEMPLATE: Define the object or concept precisely.
 
 ## Coordinate System
 
-State the coordinate system being used, if relevant.
-
-- Cartesian
-- Polar
-- Cylindrical
-- Spherical
-- Other: `<system>`
+TODO_TEMPLATE: Optional. State the coordinate system when it matters.
 
 ## Notation
 
-| Symbol | Meaning |
-|---|---|
-| `<symbol>` | `<meaning>` |
+TODO_TEMPLATE: Define every symbol before equations.
 
 ## Equations
 
-$$
-<equation>
-$$
+TODO_TEMPLATE: Optional. Include equations that define or characterize the object.
 
 ## Conditions / Assumptions
 
-- `<condition or assumption>`
+TODO_TEMPLATE: State restrictions, domains, and special cases.
 
 ## Visual / Geometric Interpretation
 
-Describe shape, position, orientation, distance, angle, projection, intersection, or transformation.
+TODO_TEMPLATE: Optional. Describe shape, position, distance, angle, projection, or transformation.
 
 ## Procedure
 
-Use this section for methods such as completing the square, finding intersections, or changing coordinates.
-
-1. `<step>`
-2. `<step>`
-3. `<step>`
+TODO_TEMPLATE: Optional. Use for computational methods.
 
 ## Worked Example
 
-### Problem
-
-State the geometry problem.
-
-### Solution
-
-Show equations, substitutions, and simplifications.
-
-### Interpretation
-
-Explain the final geometric meaning.
+TODO_TEMPLATE: Optional. Include one example when it clarifies use.
 
 ## Common Mistakes
 
-- Mixing coordinate systems without converting correctly.
-- Dropping domain restrictions.
-- Confusing equation form with geometric meaning.
-- Ignoring degenerate cases.
+TODO_TEMPLATE: Optional. Keep only high-value mistakes.
 
 ## Connections
 
-- Related notes: [[<related-note>]]
-- Prerequisites: [[<prerequisite-note>]]
-- Used in: [[<application-note>]]
+TODO_TEMPLATE: Link related geometry notes, prerequisites, and next steps.
 
 ## References
 
-- `<book, article, lecture note, or URL>`
-
-## Review Checklist
-
-- [ ] The object is defined precisely.
-- [ ] Coordinate system is clear.
-- [ ] Equations match the stated object.
-- [ ] Restrictions and special cases are listed.
-- [ ] A visual interpretation is included.
-- [ ] References are included.
+TODO_TEMPLATE: Cite sources with inline footnotes and definitions, for example `[^source-1]`.

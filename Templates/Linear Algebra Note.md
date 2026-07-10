@@ -7,90 +7,59 @@ tags:
 aliases: []
 ---
 
-# {{title}}
+# TODO_TEMPLATE: Replace with note title
 
 ## Summary
 
-Explain the linear algebra concept, object, theorem, or method in 2-4 sentences.
+TODO_TEMPLATE: Explain the linear algebra concept, object, theorem, or method in 2-4 sentences.
+
+## Prerequisites
+
+TODO_TEMPLATE: Link prerequisites, or write `Prerequisites: None`.
 
 ## Definition / Statement
 
-State the definition or theorem precisely.
-
-## Intuition
-
-Explain the geometric or algebraic meaning.
+TODO_TEMPLATE: State the definition or theorem precisely.
 
 ## Objects and Dimensions
 
+TODO_TEMPLATE: Optional. Include when dimensions matter.
+
 | Object | Meaning | Dimensions |
 |---|---|---|
-| `<object>` | `<meaning>` | `<dimensions>` |
 
 ## Notation
 
-| Symbol | Meaning |
-|---|---|
-| `<symbol>` | `<meaning>` |
+TODO_TEMPLATE: Define every symbol before matrix or vector formulas.
 
 ## Conditions / Assumptions
 
-- `<field, dimension, rank, invertibility, independence, or orthogonality condition>`
+TODO_TEMPLATE: State field, dimension, rank, invertibility, independence, or orthogonality conditions.
 
 ## Matrix / Vector Form
 
-$$
-<formula>
-$$
+TODO_TEMPLATE: Optional. Include only central formulas.
 
 ## Geometric Interpretation
 
-Describe subspaces, transformations, projections, rotations, bases, or coordinate changes.
+TODO_TEMPLATE: Optional. Keep when geometry improves understanding.
 
 ## Procedure
 
-Use this section for computational methods such as row reduction, LU factorization, eigenvalue computation, or basis changes.
-
-1. `<step>`
-2. `<step>`
-3. `<step>`
+TODO_TEMPLATE: Optional. Use for row reduction, LU factorization, eigenvalue computation, or basis changes.
 
 ## Worked Example
 
-### Problem
-
-State the problem.
-
-### Solution
-
-Show matrices, dimensions, row operations, or vector calculations.
-
-### Interpretation
-
-Explain what the result means.
+TODO_TEMPLATE: Optional. Include one example when it clarifies use.
 
 ## Common Mistakes
 
-- Multiplying matrices with incompatible dimensions.
-- Confusing linear independence with orthogonality.
-- Assuming a matrix is invertible without checking rank or determinant.
-- Forgetting that basis-dependent coordinates are not the vector itself.
+TODO_TEMPLATE: Optional. Keep only high-value mistakes.
 
 ## Connections
 
-- Related notes: [[<related-note>]]
-- Prerequisites: [[<prerequisite-note>]]
-- Used in: [[<application-note>]]
+TODO_TEMPLATE: Link related linear algebra notes, prerequisites, and next steps.
 
 ## References
 
-- `<book, article, lecture note, or URL>`
-
-## Review Checklist
-
-- [ ] Dimensions are stated and consistent.
-- [ ] Conditions such as invertibility or independence are explicit.
-- [ ] Matrix notation is consistent.
-- [ ] Computations are checked step by step.
-- [ ] Geometric meaning is explained when useful.
-- [ ] References are included.
+TODO_TEMPLATE: Cite sources with inline footnotes and definitions, for example `[^source-1]`.

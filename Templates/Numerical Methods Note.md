@@ -7,99 +7,60 @@ tags:
 aliases: []
 ---
 
-# {{title}}
+# TODO_TEMPLATE: Replace with method name
 
 ## Summary
 
-Explain the numerical method, what problem it solves, and when it is useful.
+TODO_TEMPLATE: Explain the method, the problem it solves, and when it is useful.
+
+## Prerequisites
+
+TODO_TEMPLATE: Link prerequisites, or write `Prerequisites: None`.
 
 ## Problem Type
 
-State the mathematical problem being approximated or solved.
-
-Examples: root finding, interpolation, numerical integration, curve fitting, linear systems.
+TODO_TEMPLATE: State the mathematical problem being approximated or solved.
 
 ## Method Definition
 
-Define the method precisely.
+TODO_TEMPLATE: Define the method precisely.
 
 ## Assumptions / Requirements
 
-- `<continuity, differentiability, initial guess, interval, matrix property, or data requirement>`
+TODO_TEMPLATE: State continuity, differentiability, interval, matrix, initial guess, or data requirements.
 
 ## Algorithm
 
-1. `<step>`
-2. `<step>`
-3. `<step>`
+TODO_TEMPLATE: Give inspectable steps or delete this section.
 
 ## Pseudocode
 
-```text
-input: <inputs>
-output: <outputs>
-
-<pseudocode>
-```
+TODO_TEMPLATE: Optional. Include only when it clarifies implementation.
 
 ## Formula / Iteration Rule
 
-$$
-<formula>
-$$
+TODO_TEMPLATE: Optional. Include central update formulas.
 
 ## Convergence
 
-State when the method converges and what can cause failure.
+TODO_TEMPLATE: Distinguish mathematical guarantees from heuristics.
 
 ## Error / Accuracy
 
-Define the error measure, approximation order, or stopping criterion.
-
-$$
-<error formula>
-$$
+TODO_TEMPLATE: Define the error measure and stopping criterion.
 
 ## Worked Example
 
-### Problem
+TODO_TEMPLATE: Optional. Show reproducible iterations or computations.
 
-State the numerical problem.
+## Common Failure Modes
 
-### Solution
-
-Show iterations or computations in a table when useful.
-
-| Iteration | Approximation | Error |
-|---|---:|---:|
-| 0 | `<value>` | `<error>` |
-
-### Interpretation
-
-Explain whether the approximation is acceptable and why.
-
-## Common Mistakes
-
-- Using the method without checking convergence conditions.
-- Stopping based only on iteration count.
-- Confusing absolute error and relative error.
-- Reporting too many digits for an approximate result.
+TODO_TEMPLATE: Optional. Keep failures that help users choose the method.
 
 ## Connections
 
-- Related notes: [[<related-note>]]
-- Prerequisites: [[<prerequisite-note>]]
-- Used in: [[<application-note>]]
+TODO_TEMPLATE: Link related methods, prerequisites, and applications.
 
 ## References
 
-- `<book, article, lecture note, or URL>`
-
-## Review Checklist
-
-- [ ] Inputs and outputs are clear.
-- [ ] Assumptions and convergence conditions are explicit.
-- [ ] Stopping criterion is defined.
-- [ ] Error measure is stated.
-- [ ] Example computations are reproducible.
-- [ ] References are included.
+TODO_TEMPLATE: Cite sources with inline footnotes and definitions, for example `[^source-1]`.

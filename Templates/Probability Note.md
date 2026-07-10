@@ -7,25 +7,23 @@ tags:
 aliases: []
 ---
 
-# {{title}}
+# TODO_TEMPLATE: Replace with note title
 
 ## Summary
 
-Explain the probability concept in 2-4 sentences.
+TODO_TEMPLATE: Explain the probability concept in 2-4 sentences.
+
+## Prerequisites
+
+TODO_TEMPLATE: Link prerequisites, or write `Prerequisites: None`.
 
 ## Formal Definition
 
-State the definition using a probability space when relevant:
+TODO_TEMPLATE: State the definition using a probability space when relevant:
 
 $$
 (\Omega, \mathcal{F}, P)
 $$
-
-Define all symbols.
-
-## Intuition
-
-Explain what the concept means in plain language.
 
 ## Notation
 
@@ -34,57 +32,32 @@ Explain what the concept means in plain language.
 | $\Omega$ | Sample space |
 | $\mathcal{F}$ | Sigma-algebra of events |
 | $P$ | Probability measure |
-| `<symbol>` | `<meaning>` |
 
 ## Conditions / Assumptions
 
-- `<condition or assumption>`
+TODO_TEMPLATE: State independence, measurability, support, or parameter assumptions before formulas.
 
 ## Key Properties
 
-- `<property>`
+TODO_TEMPLATE: Optional. Keep only properties used by learners later.
 
-## Formulas
+## Formula
 
-$$
-<formula>
-$$
+TODO_TEMPLATE: Optional. Add only formulas that are central to the note.
 
 ## Worked Example
 
-### Problem
-
-State the probability problem.
-
-### Solution
-
-Show the event definition, formula, substitution, and result.
-
-### Interpretation
-
-Explain the result in context.
+TODO_TEMPLATE: Optional. Show event definition, formula choice, substitution, and interpretation.
 
 ## Common Mistakes
 
 - Confusing an event with an outcome.
-- Forgetting to state the sample space.
-- Using formulas without checking independence or other assumptions.
+- Using independence without checking it.
 
 ## Connections
 
-- Related notes: [[<related-note>]]
-- Prerequisites: [[Sigma-Álgebra]], [[Variável Aleatória]]
-- Used in: [[<application-note>]]
+TODO_TEMPLATE: Link related probability notes, prerequisites, and next steps.
 
 ## References
 
-- `<book, article, lecture note, or URL>`
-
-## Review Checklist
-
-- [ ] The probability space is stated when needed.
-- [ ] Events and random variables are not confused.
-- [ ] Independence assumptions are explicit.
-- [ ] Notation is consistent with related notes.
-- [ ] Examples are computed correctly.
-- [ ] References are included.
+TODO_TEMPLATE: Cite sources with inline footnotes and definitions, for example `[^source-1]`.

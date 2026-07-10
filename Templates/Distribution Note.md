@@ -8,133 +8,63 @@ tags:
 aliases: []
 ---
 
-# {{title}}
+# TODO_TEMPLATE: Replace with distribution name
 
 ## Summary
 
-Describe what this distribution models and when it is useful.
+TODO_TEMPLATE: Describe what the distribution models and when it is useful.
+
+## Prerequisites
+
+TODO_TEMPLATE: Link prerequisites, or write `Prerequisites: None`.
 
 ## Definition
 
-State the distribution and its notation.
-
-Example:
-
-$$
-X \sim <Distribution>(<parameters>)
-$$
+TODO_TEMPLATE: Declare one parameterization and use it throughout.
 
 ## Parameters
 
-| Parameter | Meaning | Valid Values |
+| Parameter | Meaning | Valid values |
 |---|---|---|
-| `<parameter>` | `<meaning>` | `<domain>` |
 
 ## Support
 
-State the possible values of $X$.
+TODO_TEMPLATE: State the possible values of the random variable.
 
-$$
-\operatorname{supp}(X) = <support>
-$$
+## PMF or PDF
 
-## Probability Function
-
-Use one of the following, depending on the distribution.
-
-### PMF
-
-For discrete distributions:
-
-$$
-p_X(x) = P(X = x) = <formula>
-$$
-
-### PDF
-
-For continuous distributions:
-
-$$
-f_X(x) = <formula>
-$$
+TODO_TEMPLATE: Keep only the correct subsection for the distribution.
 
 ## CDF
 
-$$
-F_X(x) = P(X \leq x) = <formula>
-$$
+TODO_TEMPLATE: Optional. Include when useful or standard for the distribution.
 
 ## Moments
 
-| Quantity | Formula |
-|---|---|
-| Mean | $E[X] = <formula>$ |
-| Variance | $\operatorname{Var}(X) = <formula>$ |
-| Standard deviation | $\sigma_X = <formula>$ |
-
-## Generating Functions
-
-Include only if useful and correct.
-
-### Moment Generating Function
-
-$$
-M_X(t) = E[e^{tX}] = <formula>
-$$
-
-State the values of $t$ where it exists.
-
-### Characteristic Function
-
-$$
-\varphi_X(t) = E[e^{itX}] = <formula>
-$$
+TODO_TEMPLATE: Include mean and variance when they exist under the stated parameterization.
 
 ## Relationships With Other Distributions
 
-- `<relationship>`
+TODO_TEMPLATE: Optional. Keep only relationships that help learning order.
 
 ## Assumptions / Modeling Conditions
 
-- `<assumption>`
+TODO_TEMPLATE: State when this distribution is an appropriate model.
 
 ## Worked Example
 
-### Problem
-
-State the problem.
-
-### Solution
-
-Show parameter identification, formula choice, substitution, and result.
-
-### Interpretation
-
-Explain the probability or statistic in context.
+TODO_TEMPLATE: Optional. Show parameter identification, formula choice, substitution, and interpretation.
 
 ## Common Mistakes
 
-- Confusing PMF and PDF.
-- Forgetting the support.
-- Mixing parameterizations without stating them.
-- Claiming symmetry without checking the shape.
+- Confusing a PMF with a PDF.
+- Forgetting support.
+- Mixing parameterizations.
 
 ## Connections
 
-- Related notes: [[<related-note>]]
-- Prerequisites: [[Função de Distribuição Acumulada]], [[Densidade de Probabilidade]]
-- Used in: [[<application-note>]]
+TODO_TEMPLATE: Link related distributions, prerequisites, and applications.
 
 ## References
 
-- `<book, article, lecture note, or URL>`
-
-## Review Checklist
-
-- [ ] Parameters and support are explicit.
-- [ ] PMF/PDF integrates or sums to 1.
-- [ ] Mean and variance match a reliable source.
-- [ ] MGF uses the same parameterization as the PDF/PMF.
-- [ ] Symmetry/skewness claims are correct.
-- [ ] Worked example checks assumptions and units.
-- [ ] References are included.
+TODO_TEMPLATE: Cite sources with inline footnotes and definitions, for example `[^source-1]`.

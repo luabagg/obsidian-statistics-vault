@@ -7,7 +7,7 @@ tags:
 
 # Template Index
 
-Use these templates when rewriting or creating notes in this vault.
+Use these templates when rewriting or creating notes. Template source files may contain `TODO_TEMPLATE` markers; finished notes must not.
 
 ## Folder Mapping
 
@@ -22,19 +22,17 @@ Use these templates when rewriting or creating notes in this vault.
 | `Controle Estatístico do Processo/` | [[Statistical Process Control Note]] |
 | Any other mathematical topic | [[Base Math Note]] |
 
-## Editing Rule
+## Required In Finished Notes
 
-Do not force every section to appear in every note. Keep only the sections that make the note clearer, more accurate, and easier to review.
+- Clear English prose.
+- Prerequisites near the top, or `Prerequisites: None`.
+- Defined notation before formulas.
+- Assumptions before results or algorithms.
+- A `## Connections` section with useful wikilinks.
+- Markdown footnote citations and definitions.
 
-## Minimum Standard
+## Optional Sections
 
-Every finished note should answer:
+Keep only sections that improve the note. Delete unused optional sections instead of leaving empty headings.
 
-- What is the concept?
-- When does it apply?
-- What notation is being used?
-- What assumptions are required?
-- What are the main formulas or results?
-- What is a correct worked example?
-- What common mistakes should be avoided?
-- Which reliable sources were used?
+[^template-index-source]: OpenStax, *Introductory Statistics*, https://openstax.org/details/books/introductory-statistics

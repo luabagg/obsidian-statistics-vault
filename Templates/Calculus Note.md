@@ -7,88 +7,56 @@ tags:
 aliases: []
 ---
 
-# {{title}}
+# TODO_TEMPLATE: Replace with note title
 
 ## Summary
 
-Explain the calculus concept, theorem, or technique in 2-4 sentences.
+TODO_TEMPLATE: Explain the calculus concept, theorem, or technique in 2-4 sentences.
+
+## Prerequisites
+
+TODO_TEMPLATE: Link prerequisites, or write `Prerequisites: None`.
 
 ## Definition / Theorem
 
-State the definition or theorem precisely.
-
-## Intuition
-
-Explain the geometric or analytic meaning.
+TODO_TEMPLATE: State the result precisely before using it.
 
 ## Notation
 
-| Symbol | Meaning |
-|---|---|
-| `<symbol>` | `<meaning>` |
+TODO_TEMPLATE: Define symbols, domains, intervals, and variables.
 
 ## Conditions / Assumptions
 
-- `<continuity, differentiability, integrability, domain, or interval condition>`
+TODO_TEMPLATE: State continuity, differentiability, integrability, domain, or interval conditions.
 
 ## Formula
 
-$$
-<formula>
-$$
+TODO_TEMPLATE: Optional. Include only central formulas.
 
 ## Geometric Interpretation
 
-Describe the curve, surface, area, volume, slope, tangent plane, or limiting behavior.
+TODO_TEMPLATE: Optional. Keep when geometry improves understanding.
 
 ## Derivation / Proof Sketch
 
-Show why the formula or theorem works.
+TODO_TEMPLATE: Optional. Keep only if the proof teaches a reusable idea.
 
 ## Procedure
 
-Use this section for techniques such as integration by parts, chain rule, Lagrange multipliers, or coordinate changes.
-
-1. `<step>`
-2. `<step>`
-3. `<step>`
+TODO_TEMPLATE: Optional. Use for techniques such as integration by parts, chain rule, or coordinate changes.
 
 ## Worked Example
 
-### Problem
-
-State the problem.
-
-### Solution
-
-Show each algebraic, derivative, integral, or limit step.
-
-### Interpretation
-
-Explain the result.
+TODO_TEMPLATE: Optional. Include one example when it clarifies use.
 
 ## Common Mistakes
 
-- Forgetting domain restrictions.
-- Applying a theorem without checking its hypotheses.
-- Losing constants of integration.
-- Confusing local and global extrema.
+TODO_TEMPLATE: Optional. Keep only high-value mistakes.
 
 ## Connections
 
-- Related notes: [[<related-note>]]
-- Prerequisites: [[<prerequisite-note>]]
-- Used in: [[<application-note>]]
+TODO_TEMPLATE: Link related calculus notes, prerequisites, and next steps.
 
 ## References
 
-- `<book, article, lecture note, or URL>`
-
-## Review Checklist
-
-- [ ] Hypotheses are stated before the theorem/formula.
-- [ ] Domains and intervals are explicit.
-- [ ] The example checks all needed conditions.
-- [ ] Algebra and calculus steps are correct.
-- [ ] Geometric meaning is explained when useful.
-- [ ] References are included.
+TODO_TEMPLATE: Cite sources with inline footnotes and definitions, for example `[^source-1]`.
