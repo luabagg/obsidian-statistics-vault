@@ -1,45 +1,52 @@
 ---
 dg-publish: true
+tags:
+  - calculus
+  - series
 ---
 
-## Introdução à Série de Maclaurin
+# Maclaurin Series
 
-A **Série de Maclaurin** é um caso especial da [[Série de Taylor]], que permite aproximar uma função matemática usando um polinômio infinito. Essa série é particularmente útil para calcular valores aproximados de funções complexas, especialmente quando a função pode ser expressa em termos de sua derivada no ponto zero.
+## Summary
 
-A forma geral da **Série de Maclaurin** para uma função $f(x)$ é dada por:
+A Maclaurin series is a Taylor series centered at $0$. Many elementary functions have simple Maclaurin expansions used for approximation and analysis.
 
-$$
-f(x) = f(0) + \frac{f'(0)}{1!}x + \frac{f''(0)}{2!}x^2 + \frac{f'''(0)}{3!}x^3 + \cdots
-$$
+## Prerequisites
 
-### Exemplos de Série de Maclaurin
+[[Série de Taylor]], [[Séries de Potências]], [[Derivadas de Ordem Superior]]
 
-1. **Exemplo 1: Função $e^x$**
-   A função exponencial $e^x$ tem uma série de Maclaurin que é bastante simples e útil:
-$$
-   e^x = \sum_{n=0}^{\infty} \frac{x^n}{n!}
-$$
-2. **Exemplo 2: Função $\sin(x)$**
-   A função seno tem a seguinte série de Maclaurin:
-$$
-   \sin(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \cdots
-$$
-3. **Exemplo 3: Função $\cos(x)$**
-   A função cosseno também pode ser representada por uma série de Maclaurin:
-$$
-   \cos(x) = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \frac{x^6}{6!} + \cdots
-$$
+## Formula
 
-### Raio de Convergência
-
-O **Raio de Convergência** é um valor $R$ que determina o intervalo em torno do ponto zero onde a série converge. Para uma série de Maclaurin, se a série converge para $x = R$, então ela converge absolutamente para todos os valores $|x| < R$. O raio de convergência pode ser calculado usando testes como o Teste da Raiz ou o Teste do Termo Consecutivo.
-
-Por exemplo, considerando a série de Maclaurin para $e^x$:
+If $f$ is infinitely differentiable at $0$, its Maclaurin series is
 
 $$
-e^x = \sum_{n=0}^{\infty} \frac{x^n}{n!}
+f(x)=\sum_{n=0}^\infty\frac{f^{(n)}(0)}{n!}x^n,
 $$
 
-Podemos usar o Teste da Raiz para encontrar que o raio de convergência é infinito, indicando que a série converge para todos os valores de $x$.
+when the series equals $f$ on an interval (checked via remainder theorems).
 
-Em resumo, as séries de Maclaurin são ferramentas poderosas na matemática aplicada e teórica, permitindo a aproximação de funções complexas por polinômios. O raio de convergência é crucial para entender em qual intervalo essas aproximações são válidas.
+## Worked Example
+
+$$
+e^x=\sum_{n=0}^\infty\frac{x^n}{n!},\qquad
+\sin x=\sum_{n=0}^\infty(-1)^n\frac{x^{2n+1}}{(2n+1)!},\qquad
+\cos x=\sum_{n=0}^\infty(-1)^n\frac{x^{2n}}{(2n)!}.
+$$
+
+Each of these converges for all real $x$ (radius $R=\infty$).
+
+## Common Mistakes
+
+- Assuming every $C^\infty$ function equals its Maclaurin series (counterexamples exist; check remainders).
+- Using degree-truncated polynomials without an error bound when accuracy matters.
+
+## Connections
+
+- General center: [[Série de Taylor]]
+- Special case: [[Série Binomial]] for $(1+x)^\alpha$
+
+## References
+
+Maclaurin series are in OpenStax Calculus Volume 2.[^openstax-mac]
+
+[^openstax-mac]: OpenStax, *Calculus Volume 2*, Section 6.3, https://openstax.org/details/books/calculus-volume-2

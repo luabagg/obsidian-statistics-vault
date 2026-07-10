@@ -1,70 +1,59 @@
 ---
 dg-publish: true
+tags:
+  - calculus
+  - series
 ---
 
-O **Critério da Razão** (ou Teste da Razão) é um método útil para determinar a convergência absoluta de uma série infinita. Este critério é particularmente eficaz quando os termos da série são expressos em função de números positivos e crescentes.
+# Ratio Test
 
-## Formulação Do Critério
+## Summary
 
-Considere uma série infinita $\sum_{n=1}^{\infty} a_n$, onde $a_n > 0$ para todo $n$. O critério da razão é aplicado ao calcular o limite:
+The ratio test examines $L=\lim|a_{n+1}/a_n|$. Absolute convergence holds if $L<1$; divergence if $L>1$; the test is inconclusive if $L=1$.
 
-$$
-L = \lim_{n \to \infty} \left| \frac{a_{n+1}}{a_n} \right|
-$$
-- Se $L < 1$, a série converge absolutamente.
-- Se $L > 1$, a série diverge.
-- Se $L = 1$, o critério não fornece informações sobre a convergência.
+## Prerequisites
 
-## Exemplos de Aplicação
+[[Convergência Absoluta]], factorials and exponentials helpful
 
-### Exemplo 1: Série Geométrica
+## Theorem
 
-Considere a série geométrica $\sum_{n=0}^{\infty} \left(\frac{1}{2}\right)^n$.
-
-- Termos da série: $a_n = \left(\frac{1}{2}\right)^n$
-- Razão entre termos consecutivos: $\frac{a_{n+1}}{a_n} = \frac{\left(\frac{1}{2}\right)^{n+1}}{\left(\frac{1}{2}\right)^n} = \frac{1}{2}$
-
-Calculando o limite:
+For $\sum a_n$, if
 
 $$
-L = \lim_{n \to \infty} \left| \frac{a_{n+1}}{a_n} \right| = \frac{1}{2}
+L=\lim_{n\to\infty}\Bigl|\frac{a_{n+1}}{a_n}\Bigr|
 $$
 
-Como $L < 1$, a série converge absolutamente.
+exists, then:
 
-### Exemplo 2: Série de Fatorial
+- $L<1$: absolute convergence;
+- $L>1$ or $L=\infty$: divergence;
+- $L=1$: inconclusive (e.g. all $p$-series).
 
-Considere a série $\sum_{n=1}^{\infty} \frac{n!}{(2n)!}$.
+## Worked Example
 
-- Termos da série: $a_n = \frac{n!}{(2n)!}$
-- Razão entre termos consecutivos:
-$$
-\frac{a_{n+1}}{a_n} = \frac{(n+1)!(2n)!}{(2(n+1))!n!} = \frac{(n+1)(2n)!}{(2n+2)(2n+1)(2n)!} = \frac{n+1}{(2n+2)(2n+1)}
-$$
+$\sum (1/2)^n$: $L=1/2<1$, absolute convergence.
 
-Calculando o limite:
+$\sum n!/(2n)!$:
 
 $$
-L = \lim_{n \to \infty} \left| \frac{a_{n+1}}{a_n} \right| = \lim_{n \to \infty} \frac{n+1}{(2n+2)(2n+1)} = \lim_{n \to \infty} \frac{\frac{n+1}{n^2}}{\left(\frac{2n+2}{n}\right)\left(\frac{2n+1}{n}\right)} = \lim_{n \to \infty} \frac{\frac{1}{n} + \frac{1}{n^2}}{4 + \frac{2}{n} + \frac{1}{n^2}} = 0
+\Bigl|\frac{a_{n+1}}{a_n}\Bigr|=\frac{n+1}{(2n+2)(2n+1)}\to 0<1,
 $$
 
-Como $L < 1$, a série converge absolutamente.
+so absolute convergence.
 
-### Exemplo 3: Série de Potências
+For $\sum x^n/n$, $L=|x|$: absolute convergence when $|x|<1$, divergence when $|x|>1$; endpoints need separate checks.
 
-Considere a série $\sum_{n=1}^{\infty} \left(\frac{x^n}{n}\right)$, onde $x$ é um número real.
+## Common Mistakes
 
-- Termos da série: $a_n = \frac{x^n}{n}$
-- Razão entre termos consecutivos:
-$$
-\frac{a_{n+1}}{a_n} = \frac{\frac{x^{n+1}}{n+1}}{\frac{x^n}{n}} = \frac{n x^{n+1}}{(n+1) x^n} = \frac{n x}{n+1}
-$$
+- Concluding anything from $L=1$.
+- Dropping absolute values for alternating terms when testing absolute convergence.
 
-Calculando o limite:
+## Connections
 
-$$
-L = \lim_{n \to \infty} \left| \frac{a_{n+1}}{a_n} \right| = \lim_{n \to \infty} \left| \frac{n x}{n+1} \right| = |x|
-$$
-- Se $|x| < 1$, a série converge absolutamente.
-- Se $|x| > 1$, a série diverge.
-- Se $|x| = 1$, o critério não fornece informações sobre a convergência.
+- [[Teste da Raíz]], [[Séries de Potências]] (radius via ratios of coefficients)
+
+## References
+
+The ratio test is in OpenStax Calculus Volume 2.[^openstax-ratio]
+
+[^openstax-ratio]: OpenStax, *Calculus Volume 2*, Section 5.6, https://openstax.org/details/books/calculus-volume-2

@@ -2,205 +2,129 @@
 dg-publish: true
 ---
 
-O Método de Eliminação de Gauss é uma técnica fundamental utilizada para resolver sistemas lineares de equações. Este método consiste em transformar um sistema linear em uma forma triangular superior, facilitando a resolução do mesmo através da substituição retroativa.
+# Gaussian Elimination
 
-## Passos Básicos Do Método
+## Summary
 
-1. **Forma Triangular Superior:**
-   - O objetivo é transformar o sistema linear original em uma matriz triangular superior.
-   - Isso é feito através de operações elementares nas linhas do sistema, sem alterar a solução do mesmo.
+Gaussian elimination transforms $Ax=b$ into an upper-triangular system $Ux=c$ by elementary row operations, then recovers $x$ by back substitution. Partial pivoting improves numerical stability.
 
-2. **Operações Elementares:**
-   - Adição múltipla de uma linha à outra.
-   - Troca de duas linhas entre si.
-   - Multiplicação de uma linha por um escalar não nulo.
+## Prerequisites
 
-3. **Etapa de Eliminação:**
-   - Para cada coluna, a ideia é eliminar os elementos abaixo da diagonal principal.
-   - Isso é feito multiplicando a primeira equação pelo fator adequado e subtraindo-a das demais equações correspondentes.
+- [[Métodos Diretos - Sistema Triangular]]
+- Elementary row operations
 
-4. **Etapa de Substituição Retroativa:**
-   - Após obter a forma triangular superior, o sistema pode ser resolvido facilmente através da substituição retroativa.
-   - Começa pela última equação e resolve para a última variável, depois usa esse valor na penúltima equação, e assim por diante.
+## Problem Type
 
-### Exemplo de Aplicação Do Método de Eliminação de Gauss
+Solve a square linear system $Ax=b$.
 
-Considere o seguinte sistema linear de equações:
+## Method Definition
+
+Form the augmented matrix $[A|b]$. For each column $k=1,\ldots,n-1$, eliminate entries below the pivot $a_{kk}$ using multipliers $m_{ik}=a_{ik}/a_{kk}$. After triangularization, apply back substitution.[^burden]
+
+With partial pivoting, swap row $k$ with the row of largest $|a_{ik}|$ for $i\ge k$ before eliminating.
+
+## Assumptions / Requirements
+
+- $A$ nonsingular (all pivots nonzero after possible row swaps)
+- Prefer partial pivoting in floating-point arithmetic
+
+## Algorithm
+
+1. For $k=1$ to $n-1$:
+   - Pivot: choose $p\ge k$ maximizing $|a_{pk}|$; swap rows $k$ and $p$ (and entries of $b$).
+   - For $i=k+1$ to $n$: $m\leftarrow a_{ik}/a_{kk}$; row $i\leftarrow$ row $i - m\cdot$ row $k$.
+2. Back-substitute on the resulting upper-triangular system.
+
+## Convergence
+
+Direct method: finishes in finitely many arithmetic operations ($O(n^3)$). No iteration.
+
+## Error / Accuracy
+
+Primary check: residual $r=b-Ax$. In exact arithmetic $r=0$. In floating point, small $\|r\|$ relative to $\|A\|\|x\|+\|b\|$ indicates a consistent solve.
+
+## Worked Example
+
+Solve
 
 $$
 \begin{cases}
-2x + 3y - z = 1 \\
-4x - y + 2z = 7 \\
--2x + 2y + 5z = 0
+2x+3y-z=1\\
+4x-y+2z=7\\
+-2x+2y+5z=0
 \end{cases}
 $$
 
-#### Passos Básicos Do Método
-
-1. **Forma Triangular Superior:**
-
-   Primeiro, transformamos o sistema em uma matriz aumentada:
+Augmented matrix:
 
 $$
 \left[\begin{array}{ccc|c}
-2 & 3 & -1 & 1 \\
-4 & -1 & 2 & 7 \\
--2 & 2 & 5 & 0
-\end{array}\right]
-$$
-   **Etapa de Eliminação:**
-
-   - **Eliminando $x$ na segunda linha:**
-     Multiplicamos a primeira linha por 2 e subtraímos da segunda linha:
-$$
-R_2 = R_2 - 2R_1
-$$
-    Resultado:
-$$
-\left[\begin{array}{ccc|c}
-2 & 3 & -1 & 1 \\
-0 & -7 & 4 & 5 \\
--2 & 2 & 5 & 0
-\end{array}\right]
-$$
-   - **Eliminando $x$ na terceira linha:**
-     Multiplicamos a primeira linha por 1 e somamos à terceira linha:
-$$
-R_3 = R_3 + R_1
-$$
-    Resultado:
-$$
-\left[\begin{array}{ccc|c}
-2 & 3 & -1 & 1 \\
-0 & -7 & 4 & 5 \\
-0 & 5 & 4 & 1
-\end{array}\right]
-$$
-   - **Eliminando $y$ na terceira linha:**
-     Multiplicamos a segunda linha por $\frac{5}{7}$ e subtraímos da terceira linha:
-$$
-R_3 = R_3 - \frac{5}{7}R_2
-$$
-    Resultado:
-$$
-\left[\begin{array}{ccc|c}
-2 & 3 & -1 & 1 \\
-0 & -7 & 4 & 5 \\
-0 & 0 & \frac{8}{7} & -\frac{18}{7}
+2&3&-1&1\\
+4&-1&2&7\\
+-2&2&5&0
 \end{array}\right]
 $$
 
-   Agora, temos a matriz triangular superior:
+Eliminate column 1:
+
+$$
+R_2\leftarrow R_2-2R_1,\quad R_3\leftarrow R_3+R_1
+$$
 
 $$
 \left[\begin{array}{ccc|c}
-2 & 3 & -1 & 1 \\
-0 & -7 & 4 & 5 \\
-0 & 0 & \frac{8}{7} & -\frac{18}{7}
+2&3&-1&1\\
+0&-7&4&5\\
+0&5&4&1
 \end{array}\right]
 $$
-2. **Etapa de Substituição Retroativa:**
 
-   - **Resolvendo a última equação:**
+Eliminate $y$ in row 3. Multiplier $m=5/(-7)=-5/7$, so
+
 $$
-\frac{8}{7}z = -\frac{18}{7} \implies z = -\frac{18}{7} \cdot \frac{7}{8} = -\frac{9}{4}
-$$
-   - **Resolvendo a segunda equação:**
-     Substituindo $z$ na segunda equação:
-$$
--7y + 4\left(-\frac{9}{4}\right) = 5 \implies -7y - 9 = 5 \implies -7y = 14 \implies y = -2
-$$
-   - **Resolvendo a primeira equação:**
-     Substituindo $y$ e $z$ na primeira equação:
-$$
-2x + 3(-2) - \left(-\frac{9}{4}\right) = 1 \implies 2x - 6 + \frac{9}{4} = 1 \implies 2x - \frac{24}{4} + \frac{9}{4} = 1 \implies 2x - \frac{15}{4} = 1
+R_3\leftarrow R_3-m R_2 = R_3+\frac{5}{7}R_2:
 $$
 
 $$
-2x = 1 + \frac{15}{4} \implies 2x = \frac{4}{4} + \frac{15}{4} \implies 2x = \frac{19}{4} \implies x = \frac{19}{8}
+\left[\begin{array}{ccc|c}
+2&3&-1&1\\
+0&-7&4&5\\
+0&0&\dfrac{48}{7}&\dfrac{32}{7}
+\end{array}\right]
 $$
-	Portanto, a solução do sistema é:
+
+Back substitution:
+
 $$
-x = \frac{19}{8}, \quad y = -2, \quad z = -\frac{9}{4}
+z=\frac{32/7}{48/7}=\frac{2}{3},
 $$
 
-## Código em Python
+$$
+-7y+4\cdot\frac{2}{3}=5\Rightarrow -7y=\frac{7}{3}\Rightarrow y=-\frac{1}{3},
+$$
 
-```python
-def print_matrix(a, b):
-    """
-    Print the augmented matrix [A|b] in a readable format.
-    """
-    n = len(b)
-    for i in range(n):
-        row = "  ".join(f"{a[i][j]:8.4f}" for j in range(n))
-        print(f"[ {row} ] | {b[i]:8.4f}")
-    print()
+$$
+2x+3\left(-\frac{1}{3}\right)-\frac{2}{3}=1\Rightarrow 2x=\frac{8}{3}\Rightarrow x=\frac{4}{3}.
+$$
 
-def gauss_elimination_verbose(a, b):
-    """
-    Solve the linear system Ax = b using Gaussian elimination with partial pivoting.
-    Prints each step of the elimination and back substitution process.
+Solution: $\left(\frac{4}{3},-\frac{1}{3},\frac{2}{3}\right)$. Residual:
 
-    Parameters:
-    a -- Coefficient matrix (list of lists, will be modified in-place)
-    b -- Right-hand side vector (list, will be modified in-place)
+$$
+A\begin{pmatrix}4/3\\-1/3\\2/3\end{pmatrix}-\begin{pmatrix}1\\7\\0\end{pmatrix}=\mathbf{0}.
+$$
 
-    Returns:
-    x -- Solution vector (list)
-    """
-    n = len(b)
+## Common Failure Modes
 
-    print("Initial augmented matrix:")
-    print_matrix(a, b)
+- Zero/tiny pivot without swapping
+- Arithmetic sign errors in multipliers (classic source of wrong $z$)
+- Accepting $x$ without checking $b-Ax$
 
-	# Forward Elimination
-    for i in range(n):
-		# Partial Pivoting: Find The Row With The Largest Value In Column I
-        max_row = i + max(range(n - i), key=lambda k: abs(a[i + k][i]))
-        if abs(a[max_row][i]) < 1e-12:
-            raise ValueError("Matrix is singular or nearly singular")
+## Connections
 
-		# Swap Rows If Needed
-        if max_row != i:
-            a[i], a[max_row] = a[max_row], a[i]
-            b[i], b[max_row] = b[max_row], b[i]
-            print(f"Swapped row {i} with row {max_row}")
-            print_matrix(a, b)
+- [[Fatoração LU]] records the same multipliers in $L$
+- [[Métodos Iterativos]] for large sparse alternatives
+- [[Resolução de Sistemas Lineares]]
 
-		# Eliminate Entries Below The Pivot
-        for j in range(i + 1, n):
-            factor = a[j][i] / a[i][i]
-            for k in range(i, n):
-                a[j][k] -= factor * a[i][k]
-            b[j] -= factor * b[i]
-            print(f"Eliminated row {j} using row {i} with factor {factor:.4f}")
-            print_matrix(a, b)
+## References
 
-	# Back Substitution
-    x = [0 for _ in range(n)]
-    print("Back substitution:")
-    for i in reversed(range(n)):
-        s = sum(a[i][j] * x[j] for j in range(i + 1, n))
-        x[i] = (b[i] - s) / a[i][i]
-        print(f"x[{i}] = {x[i]:.4f}")
-
-    print("\nFinal solution:", x)
-    return x
-
-if __name__ == "__main__":
-    A = [
-        [1, 2, 1, 1, 2],
-        [0, 1, 2, 2, 3],
-        [1, 0, 2, 3, 2],
-        [1, 1, 1, 2, 1],
-        [2, 1, 0, 1, 1]
-    ]
-    B = [31, 31, 27, 23, 22]
-
-    solution = gauss_elimination_verbose([row[:] for row in A], B[:])
-```
-
-## Extra
-
-![[Escalonamento.pdf]]
+[^burden]: Burden & Faires, *Numerical Analysis*, Gaussian elimination; NIST DLMF Ch. 3, https://dlmf.nist.gov/3

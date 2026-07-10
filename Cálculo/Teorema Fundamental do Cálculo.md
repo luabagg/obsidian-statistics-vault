@@ -1,40 +1,71 @@
 ---
 dg-publish: true
 tags:
-  - Derivadas
-  - Integrais
-  - Limites
+  - calculus
+  - derivatives
+  - integrals
+  - limits
 ---
 
-O Teorema Fundamental do Cálculo é uma das ideias mais importantes e poderosas em matemática, estabelecendo a relação entre a [derivada](Derivadas) e a [integral](Integrais). Ele consiste em dois princípios fundamentais:
+# Fundamental Theorem of Calculus
 
-1. **Princípio I (Parte 1):** Se $f$ é uma função contínua em um intervalo fechado $[a, b]$, então a função $F$ definida por
-$$
-   F(x) = \int_a^x f(t) \, dt
-$$
+## Summary
 
-   é uma antiderivada de $f$. Isso significa que $F'(x) = f(x)$ para todo $x$ no intervalo $[a, b]$.
+The Fundamental Theorem of Calculus (FTC) links differentiation and integration. Part 1 says that the integral-from-a-fixed-lower-limit defines an antiderivative. Part 2 evaluates definite integrals using any antiderivative.
 
-2. **Princípio II (Parte 2):** Se $f$ é uma função contínua em um intervalo fechado $[a, b]$, e se $F$ é qualquer antiderivada de $f$ no intervalo $[a, b]$, então
-$$
-   \int_a^b f(x) \, dx = F(b) - F(a).
-$$
+## Prerequisites
 
-## Exemplos
+[[Limites]], [[Derivadas]], [[Integrais]], [[Soma de Riemann]]
 
-**Exemplo 1:** Considere a função $f(x) = x^2$. Podemos encontrar uma antiderivada de $f$, que é $F(x) = \frac{x^3}{3} + C$. De acordo com o Princípio I, se $G(x) = \int_0^x t^2 \, dt$, então
+## Definition / Theorem
+
+Let $f$ be continuous on the closed interval $[a,b]$.
+
+### Part 1
+
+Define
+
 $$
-   G'(x) = x^2.
-$$
-**Exemplo 2:** Para calcular a integral definida $\int_1^3 (2x + 1) \, dx$, podemos usar o Princípio II. Uma antiderivada de $2x + 1$ é $F(x) = x^2 + x$. Então,
-$$
-   \int_1^3 (2x + 1) \, dx = F(3) - F(1) = (3^2 + 3) - (1^2 + 1) = 9 + 3 - 1 - 1 = 10.
+F(x)=\int_a^x f(t)\,dt,\qquad x\in[a,b].
 $$
 
-## Aplicações Práticas
+Then $F$ is differentiable on $(a,b)$ and $F'(x)=f(x)$. (At the endpoints one uses one-sided derivatives.)
 
-O Teorema Fundamental do Cálculo é crucial em muitas áreas da ciência e engenharia, pois permite a avaliação de integrais definidas sem o uso de limites de somatórios. Isso facilita enormemente o cálculo de áreas sob curvas, volumes de sólidos de revolução, e soluções de problemas envolvendo fluxos, trabalho, energia, entre outros.
+### Part 2
 
-## Conclusão
+If $F$ is any antiderivative of $f$ on $[a,b]$ (so $F'=f$), then
 
-O Teorema Fundamental do Cálculo é uma ferramenta essencial que conecta a teoria da derivada com a teoria da integral, permitindo um entendimento mais profundo dos conceitos fundamentais do cálculo.
+$$
+\int_a^b f(x)\,dx=F(b)-F(a).
+$$
+
+## Conditions / Assumptions
+
+- Continuity of $f$ on $[a,b]$ is a standard sufficient hypothesis for both parts as stated in elementary calculus.
+- Part 2 still holds under weaker integrability conditions if $F'=f$ almost everywhere and $F$ is absolutely continuous, but that is beyond this note.
+- The lower limit in Part 1 may be any fixed point in the interval; changing it only shifts $F$ by a constant.
+
+## Worked Example
+
+1. If $G(x)=\int_0^x t^2\,dt$, then $G'(x)=x^2$ by Part 1.
+2. $\int_1^3(2x+1)\,dx$: an antiderivative is $F(x)=x^2+x$, so
+
+$$
+F(3)-F(1)=(9+3)-(1+1)=10.
+$$
+
+## Common Mistakes
+
+- Applying Part 2 without an antiderivative that is valid on the whole interval.
+- Forgetting the chain rule when the upper limit is a function: $\frac{d}{dx}\int_a^{u(x)}f(t)\,dt=f(u(x))u'(x)$.
+
+## Connections
+
+- Builds on [[Soma de Riemann]] and [[Derivadas]]
+- Used constantly in [[Integrais]] and applications
+
+## References
+
+Both parts appear with continuity hypotheses in OpenStax Calculus Volume 1.[^openstax-ftc]
+
+[^openstax-ftc]: OpenStax, *Calculus Volume 1*, Section 5.3, https://openstax.org/details/books/calculus-volume-1

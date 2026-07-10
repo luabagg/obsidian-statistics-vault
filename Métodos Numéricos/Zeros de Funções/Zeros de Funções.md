@@ -1,32 +1,48 @@
 ---
 dg-publish: true
 dg-show-local-graph: true
+tags:
+  - numerical-methods
+  - roots
+  - hub
+aliases:
+  - Roots of Functions
 ---
 
-%% Begin Waypoint %%
+# Roots of Functions
 
-- [[Zeros de Funções]]
-	- [[Método da Bisseção]]
-	- [[Método da Falsa Posição]]
-	- [[Método das Secantes]]
-	- [[Método de Newton-Raphson]]
-	- [[Método Gráfico]]
-	- [[Teorema De Bolzano]]
+## Summary
 
-%% End Waypoint %%
+Root-finding algorithms approximate solutions of \(f(x)=0\). Bracket methods need a sign change; open methods need a good initial guess and often a derivative.
 
-## Verificação da Existência de Zeros
+## Prerequisites
 
-Antes de aplicar métodos numéricos para determinar os zeros de uma função, é essencial verificar se há pelo menos uma raiz no intervalo considerado. Duas abordagens comuns para essa verificação são o **método gráfico** e o **Teorema de Bolzano**.
+[[Limites]], [[Derivadas]], continuity concepts.
 
-## Determinação de Zeros de Função com Métodos Numéricos
+## Learning Order
 
-Determinar os zeros de uma função é um problema fundamental em matemática aplicada, especialmente quando a função não pode ser resolvida analiticamente. Métodos numéricos são ferramentas poderosas para encontrar esses zeros aproximadamente.
+1. [[Teorema De Bolzano]] / [[Método Gráfico]] — existence and rough location
+2. [[Método da Bisseção]] — guaranteed linear convergence on a bracket
+3. [[Método da Falsa Posição]] — bracket with secant-like updates
+4. [[Método das Secantes]] — derivative-free open method
+5. [[Método de Newton-Raphson]] — locally quadratic for simple roots
 
-### Tipos de Métodos Numéricos
+## Comparison Snapshot
 
-Os métodos numéricos para determinação de zeros de funções são técnicas utilizadas para encontrar aproximações das raízes de uma equação quando não é possível resolvê-la analiticamente. Entre os principais métodos estão:
+| Method | Needs | Speed | Guarantee |
+|---|---|---|---|
+| Bisection | sign change | slow | yes on bracket |
+| False position | sign change | often faster than bisection | stays bracketed |
+| Secant | two starts | superlinear typical | local |
+| Newton | \(f'\) and one start | quadratic near simple root | local |
 
-- Método da bisseção: utiliza o Teorema de Bolzano para dividir sucessivamente um intervalo onde há mudança de sinal
-- Método de Newton-Raphson: usa a derivada para iterar em direção à raiz
-- Método da secante: aproxima a derivada por diferenças finitas
+## Connections
+
+- Hub: [[Métodos Numéricos]]
+- Optimization uses roots of derivatives: [[Valores de Máximo e Mínimo]]
+
+## References
+
+Root-finding methods are classical numerical analysis.[^dlmf3]
+
+[^dlmf3]: NIST DLMF, *Chapter 3 Numerical Methods*, https://dlmf.nist.gov/3

@@ -1,85 +1,74 @@
 ---
 dg-publish: true
+tags:
+  - calculus
+  - integrals
 ---
 
-## Soma de Riemann
+# Riemann Sums
 
-A **soma de Riemann** é um método fundamental na teoria da integral, utilizado para aproximar a área sob uma curva. É especialmente útil em cálculo multivariável.
+## Summary
 
-![](soma-de-riemann.webp)
+A Riemann sum approximates a definite integral by summing sample heights times subinterval widths. Refining the partition makes the sum approach the integral when $f$ is Riemann integrable.
 
-### Definição e Intuição
+## Prerequisites
 
-A soma de Riemann consiste em dividir o domínio de integração em subintervalos pequenos e calcular a soma das áreas dos retângulos formados por esses subintervalos. A ideia é que, à medida que os subintervalos se tornam mais finos, a soma dessas áreas se aproxima cada vez mais da área real sob a curva.
+[[Limites]], [[Integrais]]
 
-### Funções de Uma Variável
+## Definition
 
-Para uma função $f(x)$ definida em um intervalo $[a, b]$, a soma de Riemann pode ser expressa como:
-
-$$
-\sum_{i=1}^{n} f(x_i^*) \Delta x
-$$
-
-onde:
-
-- $\Delta x = \frac{b-a}{n}$ é o comprimento do subintervalo,
-- $x_i^*$ é um ponto no $i$-ésimo subintervalo.
-
-**Exemplo:**
-
-Considere a função $f(x) = x^2$ em $[0, 1]$. Dividamos este intervalo em 4 subintervalos iguais:
+Partition $[a,b]$ into $n$ subintervals of width $\Delta x=(b-a)/n$ (equal partitions for simplicity). Choose sample points $x_i^*$ in the $i$-th subinterval. The Riemann sum is
 
 $$
-\Delta x = \frac{1-0}{4} = 0.25
+\sum_{i=1}^n f(x_i^*)\Delta x.
 $$
 
-Os pontos de divisão são: $x_1=0.25$, $x_2=0.5$, $x_3=0.75$, e $x_4=1$. Se escolhemos os pontos médios como $x_i^*$, temos:
+Common choices: left endpoints, right endpoints, or midpoints.
 
-- $f(0.125) = 0.015625$
-- $f(0.375) = 0.140625$
-- $f(0.625) = 0.390625$
-- $f(0.875) = 0.765625$
-
-A soma de Riemann é:
+For a rectangle $[a,b]\times[c,d]$ and $f(x,y)$,
 
 $$
-S_4 = \sum_{i=1}^{4} f(x_i^*) \Delta x = (0.015625 + 0.140625 + 0.390625 + 0.765625) \cdot 0.25 = 0.3125
+\sum_{i=1}^{m}\sum_{j=1}^{n} f(x_i^*,y_j^*)\,\Delta x\,\Delta y.
 $$
 
-### Funções de Duas Variáveis
+## Conditions / Assumptions
 
-Para funções de duas variáveis, a soma de Riemann é estendida para volumes sob superfícies em $\mathbb{R}^3$. Considere uma função $f(x, y)$ definida sobre um retângulo $[a, b] \times [c, d]$.
+- Continuous functions on compact rectangles are Riemann integrable; the mesh of the partition must tend to zero.
+- State whether left, right, or midpoint samples are used—do not mix them inconsistently.
 
-A soma de Riemann pode ser escrita como:
+## Worked Example
 
-$$
-\sum_{i=1}^{m} \sum_{j=1}^{n} f(x_i^*, y_j^*) \Delta x \Delta y
-$$
-
-onde:
-
-- $\Delta x = \frac{b-a}{m}$ e $\Delta y = \frac{d-c}{n}$ são os comprimentos dos subintervalos,
-- $(x_i^*, y_j^*)$ é um ponto no $i$-ésimo subintervalo em $x$ e $j$-ésimo subintervalo em $y$.
-
-**Exemplo:**
-
-Considere a função $f(x, y) = xy$ sobre o retângulo $[0, 1] \times [0, 1]$. Dividamos este retângulo em 4 subretângulos iguais:
+Approximate $\int_0^1 x^2\,dx$ with $n=4$ **midpoint** rule: $\Delta x=1/4$, midpoints $1/8,3/8,5/8,7/8$.
 
 $$
-\Delta x = \frac{1-0}{2} = 0.5, \quad \Delta y = \frac{1-0}{2} = 0.5
+\begin{aligned}
+S_4&=\Bigl[\bigl(\tfrac{1}{8}\bigr)^2+\bigl(\tfrac{3}{8}\bigr)^2+\bigl(\tfrac{5}{8}\bigr)^2+\bigl(\tfrac{7}{8}\bigr)^2\Bigr]\cdot\frac{1}{4}\\
+&=\bigl(\tfrac{1+9+25+49}{64}\bigr)\cdot\frac{1}{4}=\frac{84}{64}\cdot\frac{1}{4}=\frac{21}{64}=0.328125.
+\end{aligned}
 $$
 
-Os pontos de divisão são: $x_1=0.25$, $x_2=0.75$ e $y_1=0.25$, $y_2=0.75$. Se escolhemos os pontos médios como $(x_i^*, y_j^*)$, temos:
+The exact value is $1/3\approx 0.333\ldots$.
 
-- $f(0.375, 0.375) = 0.140625$
-- $f(0.875, 0.375) = 0.328125$
-- $f(0.375, 0.875) = 0.328125$
-- $f(0.875, 0.875) = 0.765625$
-
-A soma de Riemann é:
+Double integral midpoint sample for $\iint_{[0,1]^2}xy\,dA$ with a $2\times 2$ grid: midpoints $(1/4,1/4)$, $(3/4,1/4)$, $(1/4,3/4)$, $(3/4,3/4)$, and $\Delta x\Delta y=(1/2)(1/2)=1/4$.
 
 $$
-S_4 = \sum_{i=1}^{2} \sum_{j=1}^{2} f(x_i^*, y_j^*) \Delta x \Delta y = (0.140625 + 0.328125 + 0.328125 + 0.765625) \cdot 0.25 \cdot 0.25 = 0.1875
+S=\bigl(\tfrac{1}{16}+\tfrac{3}{16}+\tfrac{3}{16}+\tfrac{9}{16}\bigr)\cdot\frac{1}{4}=\bigl(1\bigr)\cdot\frac{1}{4}=\frac{1}{4},
 $$
 
-Esses exemplos ilustram como a soma de Riemann pode ser aplicada tanto para funções de uma variável quanto para funções de duas variáveis, aproximando áreas e volumes respectivamente.
+which matches $\int_0^1\int_0^1 xy\,dx\,dy=1/4$ exactly for this function and grid.
+
+## Common Mistakes
+
+- Using wrong sample points (e.g. calling endpoints “midpoints”).
+- Multiplying by $\Delta x\Delta y$ incorrectly (using $0.25\cdot 0.25$ when each side step is $0.5$).
+
+## Connections
+
+- Limit of Riemann sums: definition of [[Integrais]]
+- Multivariable: [[Integrais Duplas]], [[Teorema de Fubini]]
+
+## References
+
+Riemann sums are introduced in OpenStax Calculus Volume 1.[^openstax-riemann]
+
+[^openstax-riemann]: OpenStax, *Calculus Volume 1*, Section 5.1–5.2, https://openstax.org/details/books/calculus-volume-1

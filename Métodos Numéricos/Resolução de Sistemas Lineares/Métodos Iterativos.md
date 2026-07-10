@@ -2,80 +2,106 @@
 dg-publish: true
 ---
 
-## Formato Geral: $x^{(k+1)} = Cx^{(k)} + g$
+# Iterative Methods for Linear Systems
 
-Neste formato, $x^{(k)}$ representa a solução aproximada no $k$-ésimo passo da iteração. A matriz $C$ e o vetor $g$ são parâmetros do método iterativo que podem variar dependendo do problema específico.
+## Summary
 
-### Relação com Os Métodos Iterativos Discutidos
+Stationary iterative methods rewrite $Ax=b$ as $x=Tx+c$ and generate $x^{(k+1)}=Tx^{(k)}+c$. Convergence hinges on the iteration matrix $T$.
 
-1. **Método de Gauss-Seidel**:
-   O Método de Gauss-Seidel pode ser expresso no formato $x^{(k+1)} = Cx^{(k)} + g$. Aqui, a matriz $C$ é formada pelos elementos da matriz original $A$, mas com as entradas abaixo da diagonal nulas. O vetor $g$ contém os termos independentes do sistema.
+## Prerequisites
 
-2. **Método de Jacobi**:
-   Similar ao Método de Gauss-Seidel, o Método de Jacobi também pode ser expresso no formato $x^{(k+1)} = Cx^{(k)} + g$. A principal diferença é que na Jacobi, a matriz $C$ contém apenas os elementos da diagonal principal e acima dela (ou abaixo, dependendo do sistema), enquanto o vetor $g$ contém os termos independentes.
+- Matrix norms and spectral radius
+- [[Resolução de Sistemas Lineares]]
+- Splitting intuition from [[Método de Gauss-Jacobi]] and [[Método de Gauss-Seidel]]
 
-3. **Método de Conjugados Gradientes (CG)**:
-   Embora o CG seja mais complexo e não se encaixe diretamente no formato $x^{(k+1)} = Cx^{(k)} + g$, ele pode ser visto como um método iterativo que minimiza a função quadrática associada ao sistema linear. No entanto, para simplificar, podemos considerar o CG como uma forma de resolver sistemas lineares iterativamente.
+## Problem Type
 
-4. **Método da Relaxação Sazonal (SOR)**:
-   O SOR é uma extensão do Método de Gauss-Seidel e pode ser expresso no formato $x^{(k+1)} = Cx^{(k)} + g$. Aqui, a matriz $C$ inclui um fator de relaxação $\omega$, que acelera a convergência. O vetor $g$ contém os termos independentes do sistema.
+Approximate $x$ in $Ax=b$ by a convergent sequence, especially for large sparse $A$.
 
-5. **Método de Precondicionamento**:
-   O precondicionamento envolve a introdução de uma matriz $M$ para acelerar a convergência. No formato $x^{(k+1)} = Cx^{(k)} + g$, a matriz $C$ é formada pela inversa da matriz de pré-condicionamento $M^{-1}$.
+## Method Definition
 
-## Convergência e Estabilidade
-
-A convergência dos métodos iterativos depende das seguintes condições:
-
-- **Diagonal Dominância**: Se a matriz $A$ for diagonal dominante, os métodos iterativos geralmente convergem.
-- **Matriz Simétrica Definida Positiva (SPD)**: Para sistemas SPD, o Método de Conjugados Gradientes é particularmente eficaz.
-- **Fator de Relaxação**: No caso do SOR, o fator $\omega$ deve ser escolhido adequadamente para garantir a convergência.
-
-## Exemplo
-
-Considere um sistema linear simples:
+Split $A=M-N$ with $M$ easy to invert. Then
 
 $$
- A = \begin{pmatrix} 4 & -1 \\ -1 & 3 \end{pmatrix}, \quad b = \begin{pmatrix} 2 \\ 5 \end{pmatrix} 
+Mx^{(k+1)}=Nx^{(k)}+b
+\quad\Leftrightarrow\quad
+x^{(k+1)}=T x^{(k)}+c,
 $$
 
-O Método de Gauss-Seidel pode ser expresso como:
+where $T=M^{-1}N$ and $c=M^{-1}b$.[^saad]
+
+Common choices:
+
+| Method | $M$ | Notes |
+| --- | --- | --- |
+| Jacobi | $D=\operatorname{diag}(A)$ | Uses only $x^{(k)}$ |
+| Gauss–Seidel | $D+L$ (lower incl. diagonal) | Uses newest components |
+| SOR | extrapolated Gauss–Seidel | Successive over-relaxation with parameter $\omega$ |
+
+**Successive over-relaxation (SOR)** (not “seasonal relaxation”):
 
 $$
- x^{(k+1)}_1 = \frac{1}{4}(2 + x^{(k)}_2) 
+x_i^{(k+1)}=(1-\omega)x_i^{(k)}+\frac{\omega}{a_{ii}}\left(b_i-\sum_{j<i}a_{ij}x_j^{(k+1)}-\sum_{j>i}a_{ij}x_j^{(k)}\right).
 $$
 
+For $\omega=1$ this is Gauss–Seidel; typically $0<\omega<2$.
+
+## Assumptions / Requirements
+
+- $a_{ii}\neq 0$ for Jacobi/GS/SOR component updates
+- Convergence requires $\rho(T)<1$ (necessary and sufficient for stationary iterations)
+- $\|T\|<1$ for some matrix norm is a convenient **sufficient** condition
+
+## Convergence
+
+- $\rho(T)<1$ $\Leftrightarrow$ $x^{(k)}\to x^*$ for every start
+- Strict diagonal dominance of $A$ is a sufficient condition for Jacobi and Gauss–Seidel
+- SPD structure helps conjugate-gradient type methods (nonstationary; mentioned only for orientation)
+
+## Error / Accuracy
+
+Stop when $\|x^{(k+1)}-x^{(k)}\|<\varepsilon$ and/or residual $\|b-Ax^{(k)}\|<\varepsilon$.
+
+## Worked Example (fixed-point form)
+
 $$
-x^{(k+1)}_2 = \frac{1}{3}(5 + x^{(k)}_1)
+A=\begin{pmatrix}4&-1\\-1&3\end{pmatrix},\quad b=\begin{pmatrix}2\\5\end{pmatrix}
 $$
 
-Em forma matricial, isso pode ser escrito como:
+Jacobi updates:
 
 $$
-x^{(k+1)} = Cx^{(k)} + g
+x_1^{(k+1)}=\frac{1}{4}\big(2+x_2^{(k)}\big),\qquad
+x_2^{(k+1)}=\frac{1}{3}\big(5+x_1^{(k)}\big)
 $$
 
-onde
+so
 
 $$
-C = \begin{pmatrix} 0 & \frac{1}{4} \\ \frac{1}{3} & 0 \end{pmatrix}, \quad g = \begin{pmatrix} \frac{1}{2} \\ \frac{5}{3} \end{pmatrix}
+T_J=\begin{pmatrix}0&1/4\\1/3&0\end{pmatrix},\quad
+c=\begin{pmatrix}1/2\\5/3\end{pmatrix}.
 $$
 
-### Exemplos de Métodos Iterativos
+Gauss–Seidel uses the new $x_1^{(k+1)}$ immediately in the second equation:
 
-1. **Método da Relaxação Sazonal (SOR - Successive Over-Relaxation)**:
-   O SOR é uma extensão do método de Gauss-Seidel, onde um fator de relaxação $\omega$ é introduzido para acelerar a convergência. A fórmula geral é dada por:
 $$
-x^{(k+1)}_i = (1 - \omega) x^{(k)}_i + \frac{\omega}{a_{ii}} \left(b_i - \sum_{j=1}^{i-1} a_{ij}x^{(k+1)}_j - \sum_{j=i+1}^n a_{ij}x^{(k)}_j\right)
+x_2^{(k+1)}=\frac{1}{3}\big(5+x_1^{(k+1)}\big).
 $$
 
-   onde $x^{(k)}$ é o vetor solução na iteração $k$, e $\omega$ é um parâmetro de relaxação.
+Its iteration matrix is **not** $T_J$; do not reuse the Jacobi matrix when claiming Seidel convergence rates.
 
-2. **Método de Conjugados Gradientes (CG - Conjugate Gradient)**:
-   O CG é particularmente eficaz para sistemas simétricos definidos positivos. A ideia central é gerar uma sequência de direções conjugadas que minimizam a função quadrática associada ao sistema linear.
+## Common Failure Modes
 
-3. **Método de Precondicionamento**:
-   O precondicionamento envolve a introdução de um operador $M$ para acelerar a convergência do método iterativo. A solução é obtida resolvendo o sistema modificado:
-$$
-M^{-1}Ax = M^{-1}b
-$$
+- Using Jacobi’s $T$ to conclude Gauss–Seidel convergence without recomputing $T_{GS}$
+- $\omega\notin(0,2)$ for SOR
+- Ignoring that $\rho(T)<1$ is the sharp criterion, while diagonal dominance is only sufficient
+
+## Connections
+
+- [[Método de Gauss-Jacobi]], [[Método de Gauss-Seidel]]
+- [[Teorema Condição Suficiente de Converência do Método de Gauss-Jacobi]]
+- [[Resolução de Sistemas Lineares]]
+
+## References
+
+[^saad]: Y. Saad, *Iterative Methods for Sparse Linear Systems*; also Burden & Faires; NIST DLMF Ch. 3, https://dlmf.nist.gov/3

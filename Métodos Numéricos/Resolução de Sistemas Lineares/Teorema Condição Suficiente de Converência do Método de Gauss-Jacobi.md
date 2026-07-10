@@ -2,178 +2,82 @@
 dg-publish: true
 ---
 
-O método de Gauss-Jacobi é uma técnica iterativa utilizada para resolver sistemas lineares da forma:
+# Sufficient Convergence Condition for Gauss–Jacobi
+
+## Summary
+
+Strict diagonal dominance of $A$ is a practical sufficient condition for Jacobi (and often Gauss–Seidel) convergence. The sharp criterion for any stationary iteration $x^{(k+1)}=Tx^{(k)}+c$ is $\rho(T)<1$.
+
+## Prerequisites
+
+- [[Método de Gauss-Jacobi]]
+- Matrix norms and eigenvalues (spectral radius)
+
+## Problem Type
+
+Decide whether Jacobi iteration for $Ax=b$ is guaranteed to converge.
+
+## Method Definition
+
+Jacobi matrix: with $A=D+L+U$,
 
 $$
-A\mathbf{x} = \mathbf{b}
+T_J=-D^{-1}(L+U)=I-D^{-1}A.
 $$
 
-onde $A$ é uma matriz quadrada de ordem $n$, $\mathbf{b}$ é o vetor dos termos independentes, e $\mathbf{x}$ é o vetor incógnita que queremos determinar.
-
-## Ideia Do Método
-
-A partir da decomposição da matriz $A$ em três componentes:
-
-- $D$: matriz diagonal de $A$
-- $L$: parte inferior (triangular) de $A$ com sinal negativo
-- $U$: parte superior (triangular) de $A$ com sinal negativo
-
-Podemos reescrever:
+**Spectral radius criterion (necessary and sufficient).** The iteration converges for every $x^{(0)}$ if and only if
 
 $$
-A = D + L + U
+\rho(T_J)=\max_i|\lambda_i(T_J)|<1.
 $$
 
-A fórmula iterativa do método de Gauss-Jacobi é:
+**Norm criterion (sufficient).** If $\|T_J\|<1$ for some subordinate matrix norm, then $\rho(T_J)<1$, so the method converges.[^burden]
+
+**Strict diagonal dominance (sufficient).** If
 
 $$
-\mathbf{x}^{(k+1)} = D^{-1}(-L - U)\mathbf{x}^{(k)} + D^{-1}\mathbf{b}
+|a_{ii}|>\sum_{j\neq i}|a_{ij}|\quad\text{for all }i,
 $$
 
-## Condição Suficiente de Convergência
+then $\|T_J\|_\infty<1$, hence Jacobi converges.
 
-Uma condição suficiente para garantir a convergência do método é que a matriz $A$ seja **diagonal dominante**, ou seja:
+## Assumptions / Requirements
 
-$$
-|a_{ii}| > \sum_{j \neq i} |a_{ij}|
-$$
+- $a_{ii}\neq 0$ so $D^{-1}$ exists
+- Dominance is strict for the simple $\infty$-norm argument above
 
-para todo $i = 1, 2, \dots, n$.
-
-Se essa condição for satisfeita, o método de Gauss-Jacobi converge para a solução do sistema, independentemente da escolha do vetor inicial $\mathbf{x}^{(0)}$.
-
-## Norma Matricial e Condição Necessária
-
-Outra forma de analisar a convergência do método é usando a norma matricial. Seja:
+## Worked Example 1 (borderline dominance)
 
 $$
-T = D^{-1}(L + U)
+A=\begin{pmatrix}2&1&-1\\-1&4&1\\1&-1&6\end{pmatrix}
 $$
 
-O método converge se a **norma** de $T$ for estritamente menor que 1:
+Row 1: $|2|=|1|+|-1|$ (not strict). Rows 2–3 are strictly dominant. Dominance test is inconclusive; one must inspect $\rho(T_J)$ (or run the iteration carefully).
+
+## Worked Example 2 (strict dominance)
 
 $$
-|T| < 1
+A=\begin{pmatrix}10&-1&2&0\\-1&11&-1&3\\2&-1&10&-1\\0&3&-1&8\end{pmatrix}
 $$
 
-Uma norma comum utilizada é a norma infinita (ou norma do máximo):
+Each row satisfies $|a_{ii}|>\sum_{j\neq i}|a_{ij}|$, so Jacobi converges for every start.
 
-$$
-|T|_\infty = \max_{1 \leq i \leq n} \sum_{j=1}^n |t_{ij}|
-$$
+## Error / Accuracy
 
-Se $|T|_\infty < 1$, o método converge. Isso é uma **condição suficiente**, mas não necessária. De forma mais geral, a **condição necessária e suficiente** é que o **raio espectral** da matriz $T$ seja menor que 1:
+Even when convergence is guaranteed, monitor $\|x^{(k+1)}-x^{(k)}\|$ and $\|b-Ax^{(k)}\|$.
 
-$$
-\rho(T) = \max_i |\lambda_i(T)| < 1
-$$
+## Common Failure Modes
 
-onde $\lambda_i(T)$ são os autovalores da matriz $T$.
+- Treating weak dominance ($|a_{ii}|\ge\sum_{j\neq i}|a_{ij}|$) as an automatic guarantee
+- Confusing sufficient conditions with necessary ones
+- Applying a Jacobi bound unchanged to Gauss–Seidel without using $T_{GS}$
 
-## Exemplo 1
+## Connections
 
-Considere o sistema linear:
+- [[Método de Gauss-Jacobi]], [[Método de Gauss-Seidel]]
+- [[Métodos Iterativos]]
+- [[Resolução de Sistemas Lineares]]
 
-$$
-\begin{cases}
-2x_1 + x_2 - x_3 = 5 \\
--x_1 + 4x_2 + x_3 = 7 \\
-x_1 - x_2 + 6x_3 = 8
-\end{cases}
-$$
+## References
 
-A matriz $A$ e o vetor $\mathbf{b}$ são:
-
-$$
-A = \begin{pmatrix}
-2 & 1 & -1 \\
--1 & 4 & 1 \\
-1 & -1 & 6
-\end{pmatrix}, \quad
-
-\mathbf{b} = \begin{pmatrix}
-5 \\
-7 \\
-8
-\end{pmatrix}
-$$
-
-Verificando a diagonal dominância:
-
-- $|2| > |1| + |-1| \Rightarrow 2 > 2$ (falso)
-- $|4| > |-1| + |1| \Rightarrow 4 > 2$ (verdadeiro)
-- $|6| > |1| + |-1| \Rightarrow 6 > 2$ (verdadeiro)
-
-A matriz não é estritamente diagonal dominante na primeira linha, mas o método pode ainda assim convergir dependendo do raio espectral de $T$.
-
-## Exemplo 2
-
-Considere o sistema:
-
-$$
-\begin{cases}
-
-2x_1 - x_2 = 1 \\
-
--x_1 + 3x_2 - x_3 = 2 \\
-
--2x_2 + 4x_3 = 3
-
-\end{cases}
-$$
-
-Neste caso:
-
-$$
-A = \begin{pmatrix}
-2 & -1 & 0 \\
--1 & 3 & -1 \\
-0 & -2 & 4
-\end{pmatrix}, \quad
-
-\mathbf{b} = \begin{pmatrix}
-1 \\
-2 \\
-3
-\end{pmatrix}
-$$
-
-As matrizes $D$, $L$ e $U$ são:
-
-$$
-D = \begin{pmatrix}
-2 & 0 & 0 \\
-0 & 3 & 0 \\
-0 & 0 & 4
-\end{pmatrix}
-$$
-
-$$
-L = \begin{pmatrix}
-0 & 0 & 0 \\
--1 & 0 & 0 \\
-0 & -2 & 0 \\
-\end{pmatrix}, \quad
-U = \begin{pmatrix}
-0 & -1 & 0 \\
-0 & 0 & -1 \\
-0 & 0 & 0
-\end{pmatrix}
-$$
-
-Calculando $T = D^{-1}(L + U)$, é possível verificar se a norma é menor que 1 e garantir a convergência.
-
-## Critérios Práticos de Parada
-
-Na prática, a convergência do método é controlada por um critério de parada, como:
-
-1. Erro absoluto entre iterações:
-$$
-|\mathbf{x}^{(k+1)} - \mathbf{x}^{(k)}| < \varepsilon
-$$
-2. Erro residual:
-$$
-|\mathbf{b} - A\mathbf{x}^{(k)}| < \varepsilon
-$$
-
-onde $\varepsilon$ é uma tolerância previamente estabelecida.
+[^burden]: Burden & Faires, *Numerical Analysis*, iterative methods; Saad, *Iterative Methods for Sparse Linear Systems*; NIST DLMF Ch. 3, https://dlmf.nist.gov/3

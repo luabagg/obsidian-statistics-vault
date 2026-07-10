@@ -1,42 +1,61 @@
 ---
 dg-publish: true
+tags:
+  - calculus
+  - multivariable
+  - coordinates
 ---
 
-## 1. Conversão de Coordenadas Polares para Cartesianas
+# Polar Coordinates
 
-Se você tem um ponto $P$ em coordenadas polares representado por $(r, \theta)$, onde:
+## Summary
 
-- $r$ é a **distância do ponto à origem**.
-- $\theta$ é o **ângulo entre o eixo x e a reta que liga a origem ao ponto**, medido em radianos ou graus.
+Polar coordinates $(r,\theta)$ describe a plane point by distance from the origin and angle from the positive $x$-axis. They simplify circles, spirals, and many double integrals.
 
-Então, para converter essas coordenadas polares em coordenadas cartesianas $(x, y)$, você pode usar as seguintes fórmulas:
+## Prerequisites
 
-$$
-x = r \cos(\theta) 
-$$
+Prerequisites: trigonometry and the Cartesian plane.
 
-$$
-y = r \sin(\theta)
-$$
+## Formula
 
-## 2. Conversão de Coordenadas Cartesianas para Polares
-
-Se você tem um ponto $(x, y)$ em coordenadas cartesianas, as coordenadas polares $(r, \theta)$ podem ser encontradas usando:
+### Polar to Cartesian
 
 $$
-r = \sqrt{x^2 + y^2}
+x=r\cos\theta,\qquad y=r\sin\theta.
 $$
 
+### Cartesian to polar
+
 $$
-\theta = \tan^{-1}\left(\frac{y}{x}\right) \quad \text{(atenção ao quadrante!)}
+r=\sqrt{x^2+y^2},\qquad
+\theta=\operatorname{atan2}(y,x).
 $$
-- O valor de $\theta$ precisa ser ajustado dependendo do quadrante onde o ponto está.
-- Em Python, por exemplo, você pode usar a função `atan2(y, x)` para já considerar corretamente o quadrante.
 
-## 3. Observação Importante
+The two-argument arctangent fixes the quadrant; $\arctan(y/x)$ alone is insufficient when $x\le 0$.
 
-Em coordenadas polares, um mesmo ponto pode ser representado de várias formas. Por exemplo:
+## Conditions / Assumptions
 
-- $(r, \theta)$ e $(-r, \theta + \pi)$ representam o mesmo ponto.
+- Common ranges: $r\ge 0$ and $\theta\in[0,2\pi)$ or $(-\pi,\pi]$.
+- Non-uniqueness: $(r,\theta)$ and $(r,\theta+2\pi k)$ represent the same ray; with signed radius, $(-r,\theta+\pi)$ is the same point as $(r,\theta)$.
 
-Essa flexibilidade é uma característica importante das coordenadas polares, permitindo múltiplas representações para um único ponto no plano.
+## Worked Example
+
+$(r,\theta)=(2,\pi/3)$ gives $x=2\cos(\pi/3)=1$, $y=2\sin(\pi/3)=\sqrt{3}$.
+
+For area integrals, $dA=r\,dr\,d\theta$ (see [[Integrais Duplas em Coordenadas Polares]]).
+
+## Common Mistakes
+
+- Forgetting quadrant adjustments for $\theta$.
+- Using $dA=dr\,d\theta$ without the Jacobian factor $r$.
+
+## Connections
+
+- Double integrals: [[Integrais Duplas em Coordenadas Polares]]
+- 3D extensions: [[Coordenadas Cilíndricas]], [[Coordenadas Esféricas]]
+
+## References
+
+Polar coordinates are reviewed in OpenStax Calculus Volume 2/3 as needed for integration.[^openstax-polar]
+
+[^openstax-polar]: OpenStax, *Calculus Volume 3*, Section 5.3, https://openstax.org/details/books/calculus-volume-3

@@ -2,124 +2,90 @@
 dg-publish: true
 ---
 
-O método das secantes é uma técnica iterativa utilizada para encontrar as raízes de uma função não-linear $f(x)$. É semelhante ao método da secante geométrica, onde se traça uma reta que passa por dois pontos consecutivos na curva da função e usa essa reta para aproximar a solução.
+# Secant Method
 
-## Formulação Do Método
+## Summary
 
-A fórmula iterativa do método das secantes é dada por:
+The secant method approximates Newton’s step by replacing $f'(x_n)$ with a finite difference built from the last two iterates. It needs two starts and no derivative evaluations.
 
-$$
-x_{n+1} = x_n - \frac{f(x_n)(x_n - x_{n-1})}{f(x_n) - f(x_{n-1})}
-$$
+## Prerequisites
 
-onde:
+- Continuous $f$ (smoothness helps local analysis)
+- Optional background: [[Método de Newton-Raphson]]
 
-- $x_n$ e $x_{n-1}$ são os valores de $x$ na iteração atual e anterior, respectivamente.
-- $f(x)$ é a função cuja raiz estamos buscando.
+## Problem Type
 
-## Passos Do Método
+Solve $f(x)=0$ when $f'$ is unavailable or expensive.
 
-1. **Escolha Inicial dos Pontos:**
-   - Selecione dois pontos iniciais próximos à raiz, geralmente denotados por $x_0$ e $x_1$.
+## Method Definition
 
-2. **Iteração:**
-   - Para cada iteração $n$, calcule o próximo valor de $x_{n+1}$ usando a fórmula acima.
-
-3. **Convergência:**
-   - A iteração continua até que a diferença entre os valores consecutivos seja menor do que um critério de parada $\epsilon$:
-$$
- |x_{n+1} - x_n| < \epsilon
-$$
-4. **Exemplo:**
-   Considere a função $f(x) = x^3 - 2x - 5$. Sejam os pontos iniciais $x_0 = 2$ e $x_1 = 2.5$.
-
-   - Iteração 1:
-$$
-f(2) = 2^3 - 2\cdot2 - 5 = -1
-$$
+Given $x_{n-1}$ and $x_n$ with $f(x_n)\neq f(x_{n-1})$,
 
 $$
-f(2.5) = (2.5)^3 - 2\cdot2.5 - 5 = 4.875 
+x_{n+1} = x_n - f(x_n)\frac{x_n-x_{n-1}}{f(x_n)-f(x_{n-1})}.
+$$
+
+This is the root of the secant line through $(x_{n-1},f(x_{n-1}))$ and $(x_n,f(x_n))$.[^burden]
+
+## Assumptions / Requirements
+
+- Two distinct initial guesses near a simple root
+- $f(x_n)\neq f(x_{n-1})$ at each step
+- Local theory typically assumes $f\in C^2$ near the root with $f'(r)\neq 0$
+
+## Algorithm
+
+1. Choose $x_0,x_1$ and tolerance $\varepsilon$.
+2. While not stopped:
+   - If $|f(x_n)-f(x_{n-1})|$ is extremely small relative to the step scale, abort (ill-conditioned update). A tiny denominator is **not** the same as having found a root.
+   - Compute $x_{n+1}$ from the formula.
+   - Stop if $|x_{n+1}-x_n|<\varepsilon$ or $|f(x_{n+1})|<\varepsilon$.
+
+## Convergence
+
+Local order is the golden ratio $\varphi\approx 1.618$ (superlinear) for simple roots under standard conditions. Global convergence is not guaranteed.
+
+## Error / Accuracy
+
+Monitor both the step $|x_{n+1}-x_n|$ and residual $|f(x_{n+1})|$.
+
+## Worked Example
+
+$f(x)=x^3-2x-5$, starts $x_0=2$, $x_1=2.5$.
+
+$$
+f(2)=-1,\qquad f(2.5)=15.625-5-5=5.625
 $$
 
 $$
-x_2 = 2.5 - \frac{4.875(2.5 - 2)}{4.875 + 1} \approx 2.094
-$$
-   - Iteração 2:
-$$
-f(2.094) \approx (2.094)^3 - 2\cdot2.094 - 5 \approx -0.678
+x_2 = 2.5 - \frac{5.625\cdot(2.5-2)}{5.625-(-1)} = 2.5 - \frac{2.8125}{6.625} \approx 2.075472
 $$
 
-$$
-x_3 = 2.094 - \frac{-0.678(2.094 - 2.5)}{-0.678 + 4.875} \approx 2.094551
-$$
+Continuing:
 
-   Aproximadamente, a raiz é $x \approx 2.094551$.
+| $n$ | $x_n$ (approx.) | $f(x_n)$ (approx.) |
+| --- | --- | --- |
+| 0 | 2.000000 | −1.000 |
+| 1 | 2.500000 | 5.625 |
+| 2 | 2.075472 | −0.211 |
+| 3 | 2.090798 | −0.042 |
+| 4 | 2.094592 | $4.5\cdot 10^{-4}$ |
+| 5 | 2.094551 | $\approx 0$ |
 
-## Exemplo em Python
+The root is $r\approx 2.094551$.
 
-```python
-import math
-import numpy
+## Common Failure Modes
 
+- Bad starts far from any root
+- Division by nearly zero when $f(x_n)\approx f(x_{n-1})$
+- Cycling or divergence without a bracket safeguard
 
-def secant_method(f, x0, x1, tol=1e-6, max_iter=100):
-    """
-    Find a root of the function f(x) = 0 using the Secant method.
+## Connections
 
-    Parameters:
-    f        -- Function for which the root is sought (callable)
-    x0, x1   -- Initial approximations (floats)
-    tol      -- Tolerance for stopping criterion (float, default 1e-6)
-    max_iter -- Maximum number of iterations (int, default 100)
+- [[Método de Newton-Raphson]]
+- [[Método da Falsa Posição]]
+- [[Zeros de Funções]]
 
-    Returns:
-    result -- Dictionary with keys:
-        'root'           : Approximated root (float)
-        'function_value' : Value of f at the root (float)
-        'iterations'     : Number of iterations performed (int)
-        'converged'      : Boolean indicating if the method converged (bool)
-    """
-    fx0 = f(x0)
-    fx1 = f(x1)
-    iteration = 0
-    while iteration < max_iter:
-	# Check If The Denominator Is Too Close To Zero
-        if abs(fx1 - fx0) < tol:
-            return {
-                'root': x1,
-                'iterations': iteration,
-                'function_value': fx1,
-                'converged': abs(fx1) < tol
-            }
-		# Secant Method Formula
-        x_new = x1 - fx1 * (x1 - x0) / (fx1 - fx0)
-		# Update Values For Next Iteration
-        x0, x1 = x1, x_new
-        fx0, fx1 = fx1, f(x_new)
-        iteration += 1
-		# Check For Convergence
-        if abs(fx1) < tol or (iteration > 0 and abs(x1 - x0) < tol):
-            break
-    return {
-        'root': x1,
-        'iterations': iteration,
-        'function_value': fx1,
-        'converged': iteration < max_iter
-    }
+## References
 
-
-if __name__ == "__main__":
-    def example_function(x):
-        return numpy.cos(x) - x
-
-    result = secant_method(example_function, 0.5, 1, tol=1e-4)
-    print(f"Approximate root: {result['root']}")
-    print(f"Function value at the root: {result['function_value']}")
-    print(f"Number of iterations: {result['iterations']}")
-    print(f"Converged: {result['converged']}")
-```
-
-## Arquivo Adicional
-
-![[Método Secantes.pdf]]
+[^burden]: Burden & Faires, *Numerical Analysis*, secant method; NIST DLMF Ch. 3, https://dlmf.nist.gov/3

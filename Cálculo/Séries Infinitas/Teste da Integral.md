@@ -1,40 +1,51 @@
 ---
 dg-publish: true
+tags:
+  - calculus
+  - series
 ---
 
-Para entender o critério da integral para a convergência de séries, é importante primeiro definir as condições e aplicar o método corretamente.
+# Integral Test
 
-## Definição Do Critério da Integral
+## Summary
 
-Considere uma função $f(x)$ contínua, não-negativa e decrescente para $x \geq 1$. A série $\sum_{n=1}^{\infty} f(n)$ converge se e somente se a integral $\int_{1}^{\infty} f(x) \, dx$ convergir.
+For a positive, continuous, eventually decreasing function $f$, the series $\sum f(n)$ and the improper integral $\int_1^\infty f(x)\,dx$ either both converge or both diverge.
 
-## Exemplos
+## Prerequisites
 
-### Exemplo 1: Série de Potência
+[[Integrais]], improper integrals, [[Sequências]]
 
-Considere a série geométrica generalizada $\sum_{n=1}^{\infty} \frac{1}{n^p}$, onde $p > 0$. Aqui, $f(x) = \frac{1}{x^p}$.
+## Theorem
 
-- **Integral**:
+Let $f$ be positive, continuous, and decreasing on $[N,\infty)$ for some integer $N\ge 1$. Then
+
 $$
-  \int_{1}^{\infty} \frac{1}{x^p} \, dx
+\sum_{n=N}^\infty f(n)\quad\text{converges}\iff\int_N^\infty f(x)\,dx\text{ converges}.
 $$
-- Para $p > 1$, a integral converge:
+
+## Worked Example
+
+For $f(x)=x^{-p}$ ($p>0$):
+
 $$
-  \int_{1}^{\infty} x^{-p} \, dx = \left[ -\frac{1}{(p-1)x^{p-1}} \right]_1^\infty = \frac{1}{p-1}
+\int_1^\infty x^{-p}\,dx
 $$
-- Para $p \leq 1$, a integral diverge.
 
-### Exemplo 2: Série de Termos Positivos
+converges if and only if $p>1$. Thus $\sum 1/n^p$ converges iff $p>1$ (see [[Série P]]).
 
-Considere a série $\sum_{n=1}^{\infty} \frac{1}{\sqrt{n}}$.
+For $\sum 1/\sqrt{n}$, $\int_1^\infty x^{-1/2}\,dx=\infty$, so the series diverges.
 
-- **Integral**:
-$$
-  \int_{1}^{\infty} \frac{1}{\sqrt{x}} \, dx = \left[ 2\sqrt{x} \right]_1^\infty
-$$
-- Esta integral diverge porque $\lim_{x \to \infty} 2\sqrt{x} = \infty$.
+## Common Mistakes
 
-### Aplicações e Considerações
+- Using the integral’s value as the sum of the series (they are not equal; the integral only decides convergence and bounds remainders).
+- Applying the test when $f$ is not eventually decreasing.
 
-- **Limitação**: O critério da integral é mais útil para séries com termos que podem ser expressos como funções contínuas, não-negativas e decrescentes.
-- **Comparação**: Pode ser usado em combinação com outros testes de convergência, como o teste comparativo ou o teste do limite.
+## Connections
+
+- [[Série P]], [[Série Harmônica]], remainder bounds in [[Estimativa Para a Soma de uma Série]]
+
+## References
+
+The integral test is in OpenStax Calculus Volume 2.[^openstax-inttest]
+
+[^openstax-inttest]: OpenStax, *Calculus Volume 2*, Section 5.3, https://openstax.org/details/books/calculus-volume-2

@@ -1,47 +1,69 @@
 ---
 dg-publish: true
+tags:
+  - calculus
+  - integrals
 ---
-A integral por partes é uma técnica utilizada para resolver integrais difíceis de calcular diretamente. Ela se baseia na regra do produto da derivada e é fundamental em muitas áreas da matemática.
 
-## Regra Do Produto da Derivada
+# Integration by Parts
 
-A regra do produto da derivada estabelece que, se $f(x)$ e $g(x)$ são funções contínuas no intervalo $[a,b]$, então:
+## Summary
 
-$$
-\frac{d}{dx} (f(x) \cdot g(x)) = f'(x) \cdot g(x) + f(x) \cdot g'(x)
-$$
+Integration by parts is the integral form of the product rule. Choose factors $u$ and $dv$ so that $\int v\,du$ is easier than $\int u\,dv$.
 
-## Aplicação da Integral por Partes
+## Prerequisites
 
-A integral por partes é uma generalização da regra do produto da derivada para integrais. Ela estabelece que, se $f(x)$ e $g(x)$ são funções contínuas no intervalo $[a,b]$, então:
+[[Integrais]], [[Derivadas]], product rule
 
-$$
-\int f(x) \cdot g'(x) dx = F(x) \cdot G(x) - \int F'(x) \cdot G(x) dx
-$$
-
-onde $F(x)$ é a integral de $f(x)$ e $G(x)$ é a integral de $g(x)$.
-
-## Exemplo
-
-Considere o seguinte exemplo:
+## Formula
 
 $$
-\int x^2 \cdot e^{x^3} dx
+\int u\,dv=uv-\int v\,du.
 $$
 
-Aqui, podemos escolher $f(x) = x^2$ e $g(x) = e^{x^3}$. A integral de $f(x)$ é $F(x) = \frac{x^3}{3}$ e a integral de $g(x)$ é $G(x) = \frac{1}{3}e^{x^3}$.
-
-Aplicando a fórmula da integral por partes, obtemos:
+For definite integrals,
 
 $$
-\int x^2 \cdot e^{x^3} dx = \frac{x^3}{3} \cdot \frac{1}{3}e^{x^3} - \int \frac{3x^2}{3} \cdot \frac{1}{3}e^{x^3} dx
+\int_a^b u\,dv=\bigl[uv\bigr]_a^b-\int_a^b v\,du.
 $$
 
-Simplificando, obtemos:
+## Conditions / Assumptions
+
+- $u$ and $v$ should be continuously differentiable on the interval of integration (sufficient for elementary use).
+- Strategy (LIATE/ILATE heuristics): prefer $u$ to be a log, inverse trig, algebraic, trig, or exponential factor in that rough order—but check that $dv$ is easy to integrate.
+
+## Worked Example
+
+### Classic parts: $\int x e^x\,dx$
+
+Let $u=x$, $dv=e^x\,dx$, so $du=dx$, $v=e^x$. Then
 
 $$
-\int x^2 \cdot e^{x^3} dx = \frac{x^6}{27}e^{x^3} - \int xe^{x^3} dx
+\int x e^x\,dx=x e^x-\int e^x\,dx=x e^x-e^x+C=e^x(x-1)+C.
 $$
 
-Agora, podemos aplicar a fórmula da integral por partes novamente para resolver a integral restante.
+### Substitution, not parts: $\int x^2 e^{x^3}\,dx$
 
+Here the derivative of the exponent is proportional to $x^2$. Set $w=x^3$, $dw=3x^2\,dx$:
+
+$$
+\int x^2 e^{x^3}\,dx=\frac{1}{3}\int e^w\,dw=\frac{1}{3}e^{x^3}+C.
+$$
+
+Parts is the wrong primary tool for this integral.
+
+## Common Mistakes
+
+- Writing a broken formula that confuses antiderivatives of $u$ and $v$ with $u$ and $dv$.
+- Using parts on a pure substitution problem such as $\int x^2 e^{x^3}\,dx$ and producing algebraically incorrect reductions.
+
+## Connections
+
+- Related techniques: substitution, tabular parts for $\int x^n e^{ax}$, reduction formulas
+- Series: integration of power series term by term
+
+## References
+
+Integration by parts is in OpenStax Calculus Volume 2.[^openstax-parts]
+
+[^openstax-parts]: OpenStax, *Calculus Volume 2*, Section 3.1, https://openstax.org/details/books/calculus-volume-2

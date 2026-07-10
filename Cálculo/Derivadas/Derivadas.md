@@ -1,6 +1,9 @@
 ---
 dg-publish: true
 dg-show-local-graph: true
+tags:
+  - calculus
+  - derivatives
 ---
 
 %% Begin Waypoint %%
@@ -17,53 +20,52 @@ dg-show-local-graph: true
 
 %% End Waypoint %%
 
-Derivadas são um conceito fundamental do cálculo que permite analisar a taxa de mudança instantânea de uma função em qualquer ponto. Elas são essenciais para entender comportamentos dinâmicos e variáveis em diversas áreas, como física, economia, engenharia, e biologia.
+# Derivatives
 
-A derivada de uma função $f(x)$ em um ponto $x = a$ é definida como:
+## Summary
 
-$$
-f'(a) = \lim_{h \to 0} \frac{f(a + h) - f(a)}{h}
-$$
+The derivative measures the instantaneous rate of change of a function and the slope of its tangent line. It is defined by a limit of difference quotients and extends to partial and directional derivatives in several variables.
 
-Se essa limit existir, a função $f(x)$ é diferenciável no ponto $a$. Esta definição pode ser interpretada intuitivamente como a inclinação da reta tangente à curva de $f$ no ponto $(a, f(a))$.
+## Prerequisites
 
-## Exemplos de Derivadas
+[[Limites]], [[Limites Fundamentais do Cálculo]]
 
-1. **Derivada de uma função polinomial:**
-   Considere a função $f(x) = x^2$. A derivada desta função é:
-$$
-   f'(x) = \lim_{h \to 0} \frac{(x + h)^2 - x^2}{h}
-$$
-
-   Simplificando, obtemos:
+## Definition
 
 $$
-   f'(x) = \lim_{h \to 0} \frac{x^2 + 2xh + h^2 - x^2}{h} = \lim_{h \to 0} (2x + h) = 2x
-$$
-2. **Derivada de uma função exponencial:**
-   Para a função $f(x) = e^x$, a derivada é:
-$$
-   f'(x) = \lim_{h \to 0} \frac{e^{x + h} - e^x}{h}
+f'(a)=\lim_{h\to 0}\frac{f(a+h)-f(a)}{h},
 $$
 
-   Usando as propriedades das exponenciais, temos:
+when the limit exists. Then $f$ is differentiable at $a$, and $f'(a)$ is the slope of the tangent line to $y=f(x)$ at $x=a$.
+
+## Conditions / Assumptions
+
+- Differentiability at $a$ implies continuity at $a$; the converse is false (e.g. $|x|$ at $0$).
+- Standard differentiation rules require the component functions to be differentiable on the relevant domain.
+
+## Worked Example
+
+For $f(x)=x^2$,
 
 $$
-   f'(x) = \lim_{h \to 0} \frac{e^x(e^h - 1)}{h} = e^x
-$$
-3. **Derivada de uma função logarítmica:**
-   Para a função $f(x) = \ln(x)$, a derivada é:
-$$
-   f'(x) = \lim_{h \to 0} \frac{\ln(x + h) - \ln(x)}{h}
+f'(x)=\lim_{h\to 0}\frac{(x+h)^2-x^2}{h}=\lim_{h\to 0}(2x+h)=2x.
 $$
 
-   Usando as propriedades dos logaritmos e limites, obtemos:
+Standard results: $(e^x)'=e^x$ and $(\ln x)'=1/x$ for $x>0$.
 
-$$
-   f'(x) = \frac{1}{x}
-$$
+## Common Mistakes
 
-## Aplicações Práticas
+- Treating the derivative as average rate of change over a large interval.
+- Differentiating without checking domain issues (absolute value corners, vertical tangents).
 
-- **Física:** A derivada de uma função que descreve a posição de um objeto com o tempo pode ser usada para encontrar a velocidade do objeto.
-- **Economia:** Derivadas podem ser utilizadas para analisar a elasticidade de demanda ou a margem de lucro em funções de custo e receita.
+## Connections
+
+- Next: [[Regras da Cadeia]], [[Derivada Implícita]], [[Derivadas de Ordem Superior]]
+- Multivariable: [[Derivadas Parciais]], [[Derivada Direcional]]
+- Inverse operation: [[Integrais]], [[Teorema Fundamental do Cálculo]]
+
+## References
+
+The difference-quotient definition and basic rules are in OpenStax Calculus Volume 1.[^openstax-deriv]
+
+[^openstax-deriv]: OpenStax, *Calculus Volume 1*, Chapter 3, https://openstax.org/details/books/calculus-volume-1

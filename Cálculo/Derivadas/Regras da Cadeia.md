@@ -1,43 +1,75 @@
 ---
 dg-publish: true
+tags:
+  - calculus
+  - derivatives
+aliases:
+  - Chain Rule
 ---
 
-Imagine que você tem uma função $z$, e ela depende de uma variável $x$. Só que, por sua vez, $x$ também depende de outra variável, que é $y$. Ou seja, $z$ é afetado por $x$, e $x$ é afetado por $y$ — logo, **$z$ também depende de $y$, mesmo que de forma indireta**.
+# Chain Rule
 
-É aí que entra a **regra da cadeia**: ela nos ajuda a entender **como** uma mudança em $y$ influencia $z$, passando por $x$ no caminho. Esse tipo de raciocínio é comum quando lidamos com **funções compostas**, ou seja, funções dentro de funções.
+## Summary
 
-## Um Exemplo Prático
+The chain rule differentiates compositions. In several variables it multiplies Jacobian factors along each path of dependence.
 
-Suponha que você tenha:
+## Prerequisites
 
-- $z = f(x, y)$ (uma função que depende de $x$ e $y$)
-- $x = g(y)$ (ou seja, $x$ depende de $y$)
+[[Derivadas]], [[Derivadas Parciais]]
 
-Você quer saber: **“Se eu mudar um pouquinho o valor de $y$, o que acontece com $z$?”**
+## Main Result / Formula
 
-A resposta é dada pela regra da cadeia:
+### One variable
 
-$$
-\frac{\partial z}{\partial y} = \frac{\partial z}{\partial x} \cdot \frac{\partial x}{\partial y}
-$$
+If \(y=f(u)\) and \(u=g(x)\), then
 
-Esse cálculo diz que você precisa ver:
+\[
+\frac{dy}{dx}=f'(u)\,g'(x).
+\]
 
-1. **Quanto $z$ muda em relação a $x$** ($\frac{\partial z}{\partial x}$), e
-2. **Quanto $x$ muda em relação a $y$** ($\frac{\partial x}{\partial y}$)
+### Two variables, one independent
 
-Multiplicando essas duas coisas, você obtém **quanto $z$ muda em relação a $y$**.
+If \(z=f(x,y)\) and \(x=x(t)\), \(y=y(t)\), then
 
----
+\[
+\frac{dz}{dt}=f_x\frac{dx}{dt}+f_y\frac{dy}{dt}.
+\]
 
-## Fórmula Específica
+Special case \(z=f(x,y)\) with \(x=g(y)\):
 
-A fórmula:
+\[
+\frac{dz}{dy}=f_x(g(y),y)\,g'(y)+f_y(g(y),y).
+\]
 
-$$
-\frac{\partial z}{\partial y} = -\frac{f_x}{f_y}
-$$
+### Implicit differentiation form
 
-parece diferente, mas ela aparece em **casos bem específicos**. Ela sugere que a relação entre $x$ e $y$ é tal que a mudança em um “anula” a do outro, mantendo $z$ constante — por isso o sinal de menos.
+If \(F(x,y)=c\) defines \(y=y(x)\) with \(F_y\neq 0\), then
 
-Isso acontece, por exemplo, em situações onde você tem uma **equação implícita** (tipo $f(x, y) = c$, com $c$ constante). Nesses casos, $z$ não está explicitamente definido como função de $x$ e $y$, mas mesmo assim é possível deduzir como uma variável afeta a outra.
+\[
+\frac{dy}{dx}=-\frac{F_x}{F_y}.
+\]
+
+This is **not** a formula for \(\partial z/\partial y\) of an unconstrained \(z=f(x,y)\).
+
+## Worked Example
+
+Let \(z=x^2+y^2\) and \(x=t\), \(y=t^2\). Then
+
+\[
+\frac{dz}{dt}=2x\cdot 1+2y\cdot 2t=2t+4t^3.
+\]
+
+## Common Mistakes
+
+- Writing \(\partial z/\partial y=(\partial z/\partial x)(\partial x/\partial y)\) and dropping the direct \(f_y\) term.
+- Mixing the implicit formula \(-F_x/F_y\) into unconstrained partial derivatives.
+
+## Connections
+
+- Related: [[Derivada Implícita]], [[Derivada Direcional]], [[Regras da Cadeia]]
+
+## References
+
+The multivariable chain rule is standard calculus.[^ost3]
+
+[^ost3]: OpenStax, *Calculus Volume 3*, https://openstax.org/details/books/calculus-volume-3

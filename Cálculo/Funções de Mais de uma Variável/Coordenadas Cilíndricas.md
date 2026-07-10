@@ -1,77 +1,86 @@
 ---
 dg-publish: true
+tags:
+  - calculus
+  - multivariable
+  - coordinates
 ---
 
-As coordenadas cilíndricas são um sistema de coordenadas ortogonais que estendem a ideia das coordenadas polares para três dimensões. Elas são úteis em situações onde a simetria do problema é melhor descrita em termos cíclicos, como em problemas de física e engenharia.
+# Cylindrical Coordinates
 
-## Definição
+## Summary
 
-Em um sistema de coordenadas cilíndricas $(r, \theta, z)$, cada ponto no espaço é especificado por três valores:
+Cylindrical coordinates $(r,\theta,z)$ extend polar coordinates by a vertical $z$. They suit problems with axial symmetry about the $z$-axis. The volume element is $r\,dr\,d\theta\,dz$.
 
-- **$r$**: A distância do ponto ao eixo $z$. É semelhante à coordenada radial em coordenadas polares.
-- **$\theta$**: O ângulo entre o eixo $x$ positivo e a projeção do ponto no plano $xy$, medido em radianos. Geralmente, $\theta \in [0, 2\pi)$.
-- **$z$**: A coordenada vertical, que é a mesma que na coordenada cartesiana.
+## Prerequisites
 
-## Relação com as Coordenadas Cartesianas
+[[Coordenadas Polares]]
 
-As coordenadas cilíndricas estão relacionadas às coordenadas cartesianas $(x, y, z)$ pelas seguintes equações:
+## Definition
 
-$$
-\begin{align*}
-x &= r \cos(\theta) \\
-y &= r \sin(\theta) \\
-z &= z
-\end{align*}
-$$
+- $r=\sqrt{x^2+y^2}\ge 0$: distance from the $z$-axis.
+- $\theta$: angle in the $xy$-plane from the positive $x$-axis, typically $[0,2\pi)$ or $(-\pi,\pi]$.
+- $z$: same as Cartesian $z$.
 
-Conversamente, as coordenadas cilíndricas podem ser expressas em termos de coordenadas cartesianas como:
+Cartesian relations:
 
 $$
-\begin{align*}
-r &= \sqrt{x^2 + y^2} \\
-\theta &= \arctan\left(\frac{y}{x}\right) \\
-z &= z
-\end{align*}
+x=r\cos\theta,\qquad y=r\sin\theta,\qquad z=z.
 $$
 
-## Aplicações Práticas
-
-1. **Física**: Em problemas de física, as coordenadas cilíndricas são úteis para descrever sistemas com simetria axial, como em rotação ou fluxo de fluidos ao redor de um eixo.
-2. **Engenharia**: Na engenharia mecânica, elas podem ser usadas para analisar estruturas cilíndricas, como tubos ou cilindros.
-3. **Matemática Aplicada**: Em cálculos envolvendo integrais múltiplas em geometrias cilíndricas.
-
-## Exemplo
-
-Considere um ponto no espaço com coordenadas cartesianas $(x, y, z) = (2\sqrt{3}, 6, 4)$. Convertendo para coordenadas cilíndricas:
-
-1. **$r$**:
-   $$
-   r = \sqrt{x^2 + y^2} = \sqrt{(2\sqrt{3})^2 + 6^2} = \sqrt{12 + 36} = \sqrt{48} = 4\sqrt{3}
-   
-$$
-2. **$\theta$**:
-   
-$$
-
-   \theta = \arctan\left(\frac{y}{x}\right) = \arctan\left(\frac{6}{2\sqrt{3}}\right) = \arctan(\sqrt{3}) = \frac{\pi}{3}
+## Inverse Formulas
 
 $$
-3. **$z$**:
-   
+r=\sqrt{x^2+y^2},\qquad
+\theta=\operatorname{atan2}(y,x),\qquad
+z=z.
 $$
 
-   z = 4
+Use $\operatorname{atan2}(y,x)$ (two-argument arctangent), not $\arctan(y/x)$ alone, so the quadrant is correct when $x\le 0$.
+
+## Formula
+
+Volume element:
 
 $$
-Portanto, as coordenadas cilíndricas do ponto são $(r, \theta, z) = (4\sqrt{3}, \frac{\pi}{3}, 4)$.
-
-#### Derivadas Parciais e Gradiente
-
-Em coordenadas cilíndricas, a forma das derivadas parciais é diferente daquela em coordenadas cartesianas. Por exemplo, o gradiente de uma função $f(r, \theta, z)$ é dado por:
+dV=r\,dr\,d\theta\,dz.
 $$
 
-\nabla f = \frac{\partial f}{\partial r} \mathbf{e}_r + \frac{1}{r} \frac{\partial f}{\partial \theta} \mathbf{e}_{\theta} + \frac{\partial f}{\partial z} \mathbf{e}_z
+Gradient in orthonormal cylindrical basis (for reference):
 
 $$
+\nabla f=\frac{\partial f}{\partial r}\mathbf{e}_r+\frac{1}{r}\frac{\partial f}{\partial\theta}\mathbf{e}_\theta+\frac{\partial f}{\partial z}\mathbf{e}_z\quad(r>0).
+$$
 
-Onde $\mathbf{e}_r$, $\mathbf{e}_{\theta}$, e $\mathbf{e}_z$ são os vetores unitários na direção das coordenadas cilíndricas.
+## Conditions / Assumptions
+
+- $r=0$ is the entire $z$-axis; $\theta$ is undefined there.
+- Jacobian factor $r$ is required for integrals.
+
+## Worked Example
+
+Cartesian point $(2\sqrt{3},\,6,\,4)$:
+
+$$
+r=\sqrt{12+36}=\sqrt{48}=4\sqrt{3},\qquad
+\theta=\operatorname{atan2}(6,2\sqrt{3})=\pi/3,\qquad
+z=4.
+$$
+
+So $(r,\theta,z)=(4\sqrt{3},\pi/3,4)$.
+
+## Common Mistakes
+
+- Using $\theta=\arctan(y/x)$ without quadrant correction.
+- Omitting the factor $r$ in triple integrals.
+- Allowing negative $r$ without adjusting $\theta$ by $\pi$.
+
+## Connections
+
+- [[Coordenadas Polares]], [[Coordenadas Esféricas]], [[Integrais Triplas]]
+
+## References
+
+Cylindrical coordinates appear in OpenStax Calculus Volume 3.[^openstax-cyl]
+
+[^openstax-cyl]: OpenStax, *Calculus Volume 3*, Section 5.5, https://openstax.org/details/books/calculus-volume-3

@@ -1,101 +1,72 @@
 ---
 dg-publish: true
+tags:
+  - calculus
+  - limits
+  - multivariable
 ---
 
-## Definição de Limite
+# Limits and Continuity of Functions of Two Variables
 
-O limite de uma função $f(x, y)$ em um ponto $(a, b)$ é o valor que a função se aproxima quando as variáveis $x$ e $y$ se aproximam do ponto $(a, b)$. Matematicamente, dizemos que:
+## Summary
 
-$$
-\lim_{(x,y) \to (a,b)} f(x, y) = L
-$$
+For $f(x,y)$, the limit as $(x,y)\to(a,b)$ must approach the same value along **every** path in the plane. Different path limits prove nonexistence; matching on several paths never proves existence by itself. Continuity requires the limit to exist and equal the function value.
 
-se para todo $\epsilon > 0$, existe um $\delta > 0$ tal que:
+## Prerequisites
 
-$$
-0 < \sqrt{(x-a)^2 + (y-b)^2} < \delta \implies |f(x, y) - L| < \epsilon
-$$
+[[Limites]], [[Funções de Mais de uma Variável]]
 
-## Cálculo de Limites
-
-Para calcular limites de funções bidimensionais, é comum usar a substituição direta ou métodos como o uso de caminhos. Por exemplo:
-
-- **Substituição Direta**: Se $f(a, b)$ está definida e finita, então $\lim_{(x,y) \to (a,b)} f(x, y) = f(a, b)$.
-- **Caminhos Diferentes**: Verificar se o limite é o mesmo ao seguir diferentes caminhos pode indicar a existência do limite. Por exemplo:
-  - Ao considerar $y = mx$, temos $\lim_{(x,y) \to (a,b)} f(x, mx)$.
-  - Ao considerar $y = x^2$, temos $\lim_{(x,y) \to (a,b)} f(x, x^2)$.
-
-## Exemplo
-
-Considere a função:
+## Definition
 
 $$
-f(x, y) = \frac{x^2 - y^2}{x^2 + y^2}
+\lim_{(x,y)\to(a,b)}f(x,y)=L
 $$
 
-Para calcular $\lim_{(x,y) \to (0,0)} f(x, y)$, podemos usar diferentes caminhos:
-
-- **Caminho $y = 0$**:
-$$
-\lim_{x \to 0} f(x, 0) = \lim_{x \to 0} \frac{x^2}{x^2} = 1
-$$
-- **Caminho $y = x$**:
-$$
-\lim_{x \to 0} f(x, x) = \lim_{x \to 0} \frac{0}{2x^2} = 0
-$$
-
-Como os limites são diferentes para caminhos distintos, concluímos que o limite não existe.
-
-## Continuidade de Funções de Duas Variáveis
-
-### Definição de Continuidade
-
-ma função $f(x, y)$ é contínua em um ponto $(a, b)$ se:
+means: for every $\varepsilon>0$ there exists $\delta>0$ such that
 
 $$
-\lim_{(x,y) \to (a,b)} f(x, y) = f(a, b)
+0<\sqrt{(x-a)^2+(y-b)^2}<\delta \implies |f(x,y)-L|<\varepsilon.
 $$
 
-Isso significa que a função tem um valor definido no ponto e que esse valor é igual ao limite da função quando as variáveis $x$ e $y$ se aproximam do ponto $(a, b)$.
+The function $f$ is continuous at $(a,b)$ if $f(a,b)$ is defined and
 
-### Exemplos de Funções Contínuas e Não-contínuas
-
-1. **Função Contínua**:
-   - Considere a função $f(x, y) = x^2 + y^2$.
-     - Esta função é polinomial em duas variáveis.
-     - Polinômios são contínuos em todo ponto do plano cartesiano.
-     - Portanto, $f(x, y) = x^2 + y^2$ é contínua em todo ponto $(x, y)$.
-
-2. **Função Não-Contínua**:
-   - Considere a função:
 $$
-     f(x, y) = \begin{cases} 
-
-     \frac{x^2 - y^2}{x^2 + y^2} & \text{se } (x, y) \neq (0, 0) \\
-
-     1 & \text{se } (x, y) = (0, 0)
-
-     \end{cases}
+\lim_{(x,y)\to(a,b)}f(x,y)=f(a,b).
 $$
-  - **Análise do Limite em $(0, 0)$**:
-     - Para verificar a continuidade em $(0, 0)$, precisamos calcular o limite da função quando $(x, y) \to (0, 0)$.
-     - Usando diferentes caminhos, encontramos resultados diferentes:
-       - **Caminho $y = 0$**:
-$$
-         \lim_{(x,y) \to (0,0)} f(x, 0) = \lim_{x \to 0} \frac{x^2}{x^2} = 1
-$$
-       - **Caminho $y = x$**:
-$$
-         \lim_{(x,y) \to (0,0)} f(x, x) = \lim_{x \to 0} \frac{x^2 - x^2}{x^2 + x^2} = \lim_{x \to 0} \frac{0}{2x^2} = 0
-$$
-     - Como os limites são diferentes para caminhos distintos, concluímos que o limite não existe em $(0, 0)$.
-     - Portanto, a função $f(x, y)$ é **não-continua** no ponto $(0, 0)$.
 
-### Continuidade de Funções Racionais em Duas Variáveis
+## Conditions / Assumptions
 
-Funções racionais bidimensionais são formadas pela divisão de polinômios em duas variáveis. Elas são contínuas em todo ponto do plano cartesiano onde o denominador não é zero.
+- **Direct substitution** is valid when $f$ is known continuous at $(a,b)$ (polynomials, rational functions off their zero-denominator sets, compositions of continuous functions).
+- Path tests: if two paths give different limits, the two-variable limit **does not exist**. Agreement on many paths is inconclusive for existence.
 
-- **Exemplo**:
-  - Considere a função $f(x, y) = \frac{x^2 + y^2}{x^2 + y^2 + 1}$.
-    - O denominador $x^2 + y^2 + 1$ nunca é zero para qualquer ponto $(x, y)$ no plano cartesiano.
-    - Portanto, a função é contínua em todo ponto do plano.
+## Worked Example
+
+Consider
+
+$$
+f(x,y)=\frac{x^2-y^2}{x^2+y^2},\qquad (x,y)\neq(0,0).
+$$
+
+- Along $y=0$: $\lim_{x\to 0}f(x,0)=1$.
+- Along $y=x$: $\lim_{x\to 0}f(x,x)=0$.
+
+The path limits disagree, so $\lim_{(x,y)\to(0,0)}f(x,y)$ does not exist. Defining $f(0,0)=1$ (or any value) cannot make $f$ continuous at the origin.
+
+By contrast, $g(x,y)=x^2+y^2$ is continuous everywhere by the polynomial continuity theorem, so $\lim_{(x,y)\to(a,b)}g(x,y)=a^2+b^2$ by substitution.
+
+## Common Mistakes
+
+- Using direct substitution when the expression is undefined or the candidate is not continuous.
+- Concluding that a limit exists because it is the same along lines $y=mx$ only.
+- Typo-level confusion between continuity ($L=f(a,b)$) and mere existence of $L$.
+
+## Connections
+
+- Next: [[Derivadas Parciais]], [[Diferenciabilidade de uma  Função]]
+- Path issues reappear for directional derivatives vs total differentiability
+
+## References
+
+Multivariable limits and continuity are treated in OpenStax Calculus Volume 3.[^openstax-mv-limits]
+
+[^openstax-mv-limits]: OpenStax, *Calculus Volume 3*, Section 4.2, https://openstax.org/details/books/calculus-volume-3

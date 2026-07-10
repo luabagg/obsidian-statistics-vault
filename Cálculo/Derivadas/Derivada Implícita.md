@@ -1,195 +1,93 @@
 ---
 dg-publish: true
+tags:
+  - calculus
+  - derivatives
 ---
 
-Derivada implícita é um conceito fundamental em cálculo que permite encontrar a derivada de uma função definida implicitamente, ou seja, quando a relação entre as variáveis não pode ser expressa explicitamente. Este método é particularmente útil em situações onde a função $y$ depende de $x$ de maneira não-linear e complexa.
+# Implicit Differentiation
 
-Consideremos um exemplo simples: a equação do círculo
+## Summary
 
-$$
- x^2 + y^2 = 100. 
-$$
+When a relation $F(x,y)=C$ defines $y$ as a function of $x$ only implicitly, differentiate both sides with respect to $x$ and solve for $y'$. Use the chain rule on every term involving $y$.
 
-Neste caso, $y$ não pode ser expresso diretamente em termos de $x$. No entanto, podemos encontrar $\frac{dy}{dx}$ usando derivadas implícitas.
+## Prerequisites
 
-Para aplicar o método das derivadas implícitas, devemos diferenciar ambos os lados da equação com relação a $x$, lembrando que $y$ é uma função de $x$. Portanto, quando derivamos termos envolvendo $y$, devemos usar a regra da cadeia:
+[[Derivadas]], [[Regras da Cadeia]]
 
-$$
- \frac{d}{dx}(x^2) + \frac{d}{dx}(y^2) = \frac{d}{dx}(100). 
-$$
+## Procedure
 
-A derivada de $x^2$ com relação a $x$ é simplesmente $2x$. Para o termo $y^2$, aplicamos a regra da cadeia:
+1. Differentiate each term of $F(x,y)=C$ with respect to $x$, treating $y=y(x)$.
+2. Collect all terms that contain $y'$.
+3. Solve linearly for $y'$.
 
-$$
- 2x + 2y\frac{dy}{dx} = 0. 
-$$
-
-Isolando $\frac{dy}{dx}$, obtemos
+For a level set $F(x,y)=C$ with $F_y\neq 0$,
 
 $$
- \frac{dy}{dx} = -\frac{x}{y}. 
+\frac{dy}{dx}=-\frac{F_x}{F_y}.
 $$
 
-Este resultado nos dá a derivada implícita da função definida implicitamente pelo círculo.
+## Conditions / Assumptions
 
-Outro exemplo interessante é a equação exponencial $e^{xy} + x^2 - y^2 = 5$. Aqui, também aplicamos as regras de derivação:
+- Local solvability for $y$ as a $C^1$ function of $x$ requires $F_y\neq 0$ at the point (implicit function theorem).
+- At points where $F_y=0$ and $F_x\neq 0$, the tangent may be vertical.
 
-$$
- \frac{d}{dx}(e^{xy}) + \frac{d}{dx}(x^2) - \frac{d}{dx}(y^2) = \frac{d}{dx}(5). 
-$$
+## Worked Example
 
-Usando a regra da cadeia para $e^{xy}$ e a regra do produto, temos:
+### Circle
 
-$$
- e^{xy} (y + x\frac{dy}{dx}) + 2x - 2y\frac{dy}{dx} = 0. 
-$$
-
-Isolando $\frac{dy}{dx}$, obtemos
+From $x^2+y^2=100$,
 
 $$
- \frac{dy}{dx} = \frac{-e^{xy}(y + x) - 2x}{-2y}. 
+2x+2y\,y'=0\implies y'=-\frac{x}{y}\quad(y\neq 0).
 $$
 
-## Exemplo
+### Exponential relation (correct isolation)
 
-Determinaremos as derivadas parciais $\frac{\partial z}{\partial x}$ e $\frac{\partial z}{\partial y}$ para a função implícita:
-
-$$
-x^3 + y^3 + z^3 + 6xyz = 1
-$$
-
-### **Derivada Parcial $\frac{\partial z}{\partial x}$**
-
-Aplicando a diferenciação implícita em relação a $x$:
-
-- Derivada de $x^3$ em relação a $x$:
-$$
-    \frac{d}{dx}(x^3) = 3x^2
-$$
-- Derivada de $y^3$ em relação a $x$ (com $y$ constante):
-$$
-    \frac{d}{dx}(y^3) = 0
-$$
-- Derivada de $z^3$ usando a regra da cadeia:
-$$
-    \frac{d}{dx}(z^3) = 3z^2 \frac{\partial z}{\partial x}
-$$
-- Derivada de $6xyz$ (produto de funções, considerando $y$ constante e $z$ função de $x$):
-$$
-    \frac{d}{dx}(6xyz) = 6\left( yz + xy\frac{\partial z}{\partial x} \right)
-$$
-
-Somando as derivadas:
+From $e^{xy}+x^2-y^2=5$,
 
 $$
-3x^2 + 0 + 3z^2\frac{\partial z}{\partial x} + 6\left( yz + xy\frac{\partial z}{\partial x} \right) = 0
+e^{xy}\bigl(y+x y'\bigr)+2x-2y y'=0.
 $$
 
-Expandindo:
+Collect $y'$ terms:
 
 $$
-3x^2 + 3z^2\frac{\partial z}{\partial x} + 6yz + 6xy\frac{\partial z}{\partial x} = 0
+e^{xy}y + 2x + y'\bigl(x e^{xy}-2y\bigr)=0,
 $$
 
-Agrupando os termos que contêm $\frac{\partial z}{\partial x}$:
+so
 
 $$
-(3z^2 + 6xy)\frac{\partial z}{\partial x} = -3x^2 - 6yz
+y'=\frac{-e^{xy}y-2x}{x e^{xy}-2y},
 $$
 
-Isolando $\frac{\partial z}{\partial x}$:
+provided the denominator is nonzero. Equivalently, $y'=-F_x/F_y$ with $F=e^{xy}+x^2-y^2$.
+
+### Implicit partial derivatives
+
+For $x^3+y^3+z^3+6xyz=1$ with $z=z(x,y)$,
 
 $$
-\frac{\partial z}{\partial x} = \frac{-3x^2 - 6yz}{3z^2 + 6xy}
+\frac{\partial z}{\partial x}=\frac{-(x^2+2yz)}{z^2+2xy},\qquad
+\frac{\partial z}{\partial y}=\frac{-(y^2+2xz)}{z^2+2xy},
 $$
 
-Agora, colocando o fator $3$ em evidência no numerador e no denominador:
+when $z^2+2xy\neq 0$.
 
-- Numerador:
-$$
-    -3x^2 - 6yz = -3(x^2 + 2yz)
-$$
-- Denominador:
-$$
-    3z^2 + 6xy = 3(z^2 + 2xy)
-$$
+## Common Mistakes
 
-Simplificando:
+- Forgetting the chain-rule factor $y'$ when differentiating $y^2$, $e^{xy}$, etc.
+- Incorrect algebra when isolating $y'$ (must move all $y'$ terms to one side before dividing).
+- Using $-F_x/F_y$ without checking $F_y\neq 0$.
 
-$$
-\frac{\partial z}{\partial x} = \frac{-3(x^2 + 2yz)}{3(z^2 + 2xy)} = \frac{-(x^2 + 2yz)}{z^2 + 2xy}
-$$
+## Connections
 
-### **Derivada Parcial $\frac{\partial z}{\partial y}$**
+- Related formula for level curves: [[Regras da Cadeia]]
+- Surfaces: [[Plano Tangente]]
 
-Aplicando a diferenciação implícita em relação a $y$:
+## References
 
-- Derivada de $x^3$ em relação a $y$:
-$$
-    \frac{d}{dy}(x^3) = 0
-$$
-- Derivada de $y^3$:
-$$
-    \frac{d}{dy}(y^3) = 3y^2
-$$
-- Derivada de $z^3$ usando a regra da cadeia:
-$$
-    \frac{d}{dy}(z^3) = 3z^2 \frac{\partial z}{\partial y}
-$$
-- Derivada de $6xyz$:
-$$
-    \frac{d}{dy}(6xyz) = 6\left( xz + xy\frac{\partial z}{\partial y} \right)
-$$
+Implicit differentiation is developed in OpenStax Calculus Volume 1; the multivariable form uses the implicit function theorem setup in Volume 3.[^openstax-implicit]
 
-Somando as derivadas:
-
-$$
-0 + 3y^2 + 3z^2\frac{\partial z}{\partial y} + 6\left( xz + xy\frac{\partial z}{\partial y} \right) = 0
-$$
-
-Expandindo:
-
-$$
-3y^2 + 3z^2\frac{\partial z}{\partial y} + 6xz + 6xy\frac{\partial z}{\partial y} = 0
-$$
-
-Agrupando os termos com $\frac{\partial z}{\partial y}$:
-
-$$
-(3z^2 + 6xy)\frac{\partial z}{\partial y} = -3y^2 - 6xz
-$$
-
-Isolando $\frac{\partial z}{\partial y}$:
-
-$$
-\frac{\partial z}{\partial y} = \frac{-3y^2 - 6xz}{3z^2 + 6xy}
-$$
-
-Colocando o fator $3$ em evidência:
-
-- Numerador:
-$$
-    -3y^2 - 6xz = -3(y^2 + 2xz)
-$$
-- Denominador:
-$$
-    3z^2 + 6xy = 3(z^2 + 2xy)
-$$
-
-Simplificando:
-
-$$
-\frac{\partial z}{\partial y} = \frac{-3(y^2 + 2xz)}{3(z^2 + 2xy)} = \frac{-(y^2 + 2xz)}{z^2 + 2xy}
-$$
-
-### **Resultado final**
-
-As derivadas parciais são:
-
-$$
-\boxed{ \frac{\partial z}{\partial x} = \frac{-(x^2 + 2yz)}{z^2 + 2xy} }
-
-\quad \text{e} \quad
-
-\boxed{ \frac{\partial z}{\partial y} = \frac{-(y^2 + 2xz)}{z^2 + 2xy} }
-$$
+[^openstax-implicit]: OpenStax, *Calculus Volume 1*, Section 3.8; *Calculus Volume 3*, Section 4.8, https://openstax.org/details/books/calculus-volume-1

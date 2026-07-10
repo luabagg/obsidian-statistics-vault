@@ -2,123 +2,99 @@
 dg-publish: true
 ---
 
-O método da falsa posição, também conhecido como método dos segmentos ou método das retas secantes, é um algoritmo numérico utilizado para encontrar raízes aproximadas de uma função contínua. Este método combina a simplicidade do método das retas secantes com a eficiência do método da bisseção.
+# False Position Method (Regula Falsi)
 
-## Aplicação e Contexto
+## Summary
 
-Este método é especialmente útil quando se tem duas aproximações iniciais $a$ e $b$ tais que $f(a)$ e $f(b)$ têm sinais opostos, garantindo assim a existência de pelo menos uma raiz no intervalo $[a, b]$. A função $f(x)$ deve ser contínua em todo o intervalo considerado.
+False position keeps a sign-changing bracket like bisection, but places the next sample at the intercept of the secant through $(a,f(a))$ and $(b,f(b))$. It often reduces the residual faster than pure bisection while preserving a bracket.
 
-## Formulação Do Método
+## Prerequisites
 
-O método da falsa posição envolve iterativamente reduzir o tamanho do intervalo onde a raiz está localizada. Na cada iteração, uma nova aproximação para a raiz é calculada usando a fórmula:
+- [[Teorema De Bolzano]]
+- [[Método da Bisseção]] (bracketing idea)
 
-$$
-x_n = \frac{a_{n-1}f(b_{n-1}) - b_{n-1}f(a_{n-1})}{f(b_{n-1}) - f(a_{n-1})}
-$$
+## Problem Type
 
-onde $a_{n-1}$ e $b_{n-1}$ são os valores dos extremos do intervalo atual, e $x_n$ é a nova aproximação.
+Solve $f(x)=0$ on a continuous bracket with opposite signs.
 
-### Exemplo de Aplicação
+## Method Definition
 
-Considere a função $f(x) = x^3 - 2x - 5$. Sejam as aproximações iniciais $a_0 = 1$ e $b_0 = 2$, pois $f(1) < 0$ e $f(2) > 0$.
-
-- **Iteração 1:**
-$$
-x_1 = \frac{1 \cdot f(2) - 2 \cdot f(1)}{f(2) - f(1)} = \frac{1 \cdot (8 - 3) - 2 \cdot (-2 - 5)}{(8 - 3) - (-2 - 5)} = \frac{5 + 14}{11 + 7} = \frac{19}{18} \approx 1.056
-$$
-- **Iteração 2:**
-$$
-x_2 = \frac{1 \cdot f(1.056) - 1.056 \cdot f(1)}{f(1.056) - f(1)}
-$$
-
-  Calculando $f(1.056)$:
+Given continuous $f$ on $[a,b]$ with $f(a)f(b)<0$, set
 
 $$
-f(1.056) = (1.056)^3 - 2(1.056) - 5 \approx -4.87
+c = \frac{a\,f(b)-b\,f(a)}{f(b)-f(a)}
 $$
 
-  Então:
+and replace the endpoint whose function value has the same sign as $f(c)$.[^burden]
+
+## Assumptions / Requirements
+
+- Continuity on $[a,b]$
+- $f(a)f(b)<0$
+- $f(b)\neq f(a)$ (secant is defined)
+
+## Algorithm
+
+1. Evaluate $f(a),f(b)$ with opposite signs.
+2. Compute $c$ from the formula above.
+3. If $|f(c)|$ or $|b-a|$ is small enough, stop.
+4. If $f(a)f(c)<0$ then $b\leftarrow c$, else $a\leftarrow c$.
+5. Repeat.
+
+## Formula / Iteration Rule
 
 $$
-x_2 = \frac{1 \cdot (-4.87) - 1.056 \cdot (-2)}{-4.87 - (-2)} = \frac{-4.87 + 2.112}{-4.87 + 2} = \frac{-2.758}{-2.87} \approx 0.963
+c_k = \frac{a_k f(b_k)-b_k f(a_k)}{f(b_k)-f(a_k)}
 $$
 
-### Exemplo em Python
+Equivalent form:
 
-```python
-import math
+$$
+c_k = a_k - f(a_k)\frac{b_k-a_k}{f(b_k)-f(a_k)}
+$$
 
-def false_position(f, a, b, tol=1e-6, max_iter=100):
-    """
-    Find a root of the function f(x) = 0 in the interval [a, b] using the Regula Falsi (False Position) method.
+## Convergence
 
-    Parameters:
-    f        -- Function for which the root is sought (callable)
-    a, b     -- Interval endpoints (floats), must satisfy f(a)*f(b) < 0
-    tol      -- Tolerance for stopping criterion (float, default 1e-6)
-    max_iter -- Maximum number of iterations (int, default 100)
+Typically faster residual reduction than bisection when $f$ is roughly linear near the root. Convergence is still linear in general. One endpoint can stagnate for convex/concave $f$; modified regula falsi variants fix this.
 
-    Returns:
-    result -- Dictionary with keys:
-        'root'           : Approximated root (float)
-        'function_value' : Value of f at the root (float)
-        'iterations'     : Number of iterations performed (int)
-        'converged'      : Boolean indicating if the method converged (bool)
-    """
-    if f(a) * f(b) >= 0:
-        raise ValueError("The function must change sign in the interval [a, b].")
-    
-    iter_count = 0
-    fa = f(a)
-    fb = f(b)
-    error = tol + 1
-    c_previous = None
-    c = a  # Initialize c in case the loop does not run
-    fc = f(c)
-    
-    while error > tol and iter_count < max_iter:
-        c = (a * fb - b * fa) / (fb - fa)
-        fc = f(c)
-        
-        if c_previous is not None:
-            error = abs(c - c_previous)
-        else:
-            error = abs(fc)
+## Error / Accuracy
 
-        if abs(fc) < tol:
-            break
-        
-        if fa * fc < 0:
-            b = c
-            fb = fc
-        else:
-            a = c
-            fa = fc
-        
-        c_previous = c
-        iter_count += 1
-    
-    return {
-        "root": c,
-        "function_value": fc,
-        "iterations": iter_count,
-        "converged": abs(fc) < tol or error < tol,
-    }
+Common stops: $|f(c)|<\varepsilon$ or $|c_{\text{new}}-c_{\text{old}}|<\varepsilon$. The interval length need not shrink as aggressively as in bisection.
 
-def example1(x):
-    """
-    Example function: f(x) = x + 3*cos(x) - exp(x)
-    """
-    return x + 3*math.cos(x) - math.exp(x)
+## Worked Example
 
-if __name__ == "__main__":
-    result = false_position(example1, 0, 1, tol=0.001)
-    print(f"Approximate root: {result['root']}")
-    print(f"Function value at the root: {result['function_value']}")
-    print(f"Number of iterations: {result['iterations']}")
-    print(f"Converged: {result['converged']}")
-```
+Again use $f(x)=x^3-2x-5$. Valid bracket: $[2,3]$ because $f(2)=-1$ and $f(3)=16$.
 
-## Arquivo Adicional
+Iteration 1:
 
-![[Método Falsa Posição.pdf]]
+$$
+c_1 = \frac{2\cdot 16 - 3\cdot(-1)}{16-(-1)} = \frac{32+3}{17}=\frac{35}{17}\approx 2.05882
+$$
+
+$$
+f(c_1)\approx -0.3908 < 0 \Rightarrow \text{new bracket }[c_1,3]
+$$
+
+Iteration 2:
+
+$$
+c_2 = \frac{2.05882\cdot 16 - 3\cdot f(c_1)}{16-f(c_1)}\approx 2.08126,\quad f(c_2)\approx -0.1472
+$$
+
+Subsequent iterates approach $\approx 2.09455$ from below while the right endpoint stays at $3$ for several steps (classic regula falsi stagnation pattern).
+
+## Common Failure Modes
+
+- Invalid initial bracket
+- One endpoint stuck for many iterations
+- Near-zero denominator if $f(a)\approx f(b)$ (should not happen under opposite signs unless values are tiny)
+
+## Connections
+
+- [[Método das Secantes]] drops the bracketing constraint
+- [[Método da Bisseção]] for guaranteed interval halving
+- [[Zeros de Funções]]
+
+## References
+
+[^burden]: Burden & Faires, *Numerical Analysis*, regula falsi; NIST DLMF Ch. 3, https://dlmf.nist.gov/3

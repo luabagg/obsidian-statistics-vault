@@ -1,115 +1,63 @@
 ---
 dg-publish: true
+tags:
+  - calculus
+  - derivatives
+  - multivariable
 ---
 
-Derivadas parciais permitem a análise de funções com múltiplas variáveis, permitindo estudar como uma função muda quando apenas uma das suas variáveis é alterada, mantendo as outras constantes.
+# Partial Derivatives
 
-Consideremos uma função $f(x, y)$ que depende de duas variáveis, $x$ e $y$. A derivada parcial de $f$ com respeito a $x$, denotada por $\frac{\partial f}{\partial x}$, representa o ritmo de mudança da função em relação à variável $x$, considerando que $y$ é mantido constante. Analogamente, a derivada parcial com respeito a $y$, denotada por $\frac{\partial f}{\partial y}$, mede como a função muda quando $y$ varia e $x$ permanece inalterado.
+## Summary
 
-Por exemplo, considere a função $f(x, y) = x^2 + 3xy - 4y^2$. A derivada parcial de $f$ com respeito a $x$ é:
+A partial derivative measures how a multivariable function changes when one variable varies and the others are held fixed. Geometrically, it is the slope of the curve obtained by slicing the graph with a plane of constant remaining variables.
 
-$$
-\frac{\partial f}{\partial x} = 2x + 3y.
-$$
+## Prerequisites
 
-Aqui, observamos que a variável $y$ é tratada como uma constante durante o cálculo da derivada parcial.
+[[Derivadas]], [[Funções de Mais de uma Variável]]
 
-Analogamente, a derivada parcial de $f$ com respeito a $y$ é:
+## Definition
 
-$$
-\frac{\partial f}{\partial y} = 3x - 8y.
-$$
-
-Neste caso, $x$ é considerado constante durante o cálculo da derivada parcial.
-
-## Regra Geral
-
-Quando você deriva uma função $f(x, y, z, \ldots)$ em relação a uma variável (por exemplo, $x$), **as outras são tratadas como constantes**.
-
-### Derivada Parcial com Respeito a $x$
-
-A derivada parcial de $f$ com respeito a $x$, denotada por $\frac{\partial f}{\partial x}$, representa o ritmo de mudança da função no sentido do eixo $x$. Geometricamente, ela pode ser interpretada como a inclinação da reta tangente ao gráfico de $f$ na direção paralela ao plano $y = c$, onde $c$ é uma constante. Em outras palavras, se você fixar um valor para $y$, a derivada parcial $\frac{\partial f}{\partial x}$ mede como a função varia quando $x$ muda.
-
-**Exemplo:**
-Considere a função $f(x, y) = x^2 + y^2$. A derivada parcial com respeito a $x$ é:
-$$
-\frac{\partial f}{\partial x} = 2x.
-$$
-
-Se fixarmos $y = 1$, a função reduz-se a uma curva no plano $y = 1$:
+For $f(x,y)$,
 
 $$
-f(x, 1) = x^2 + 1,
+f_x(x,y)=\frac{\partial f}{\partial x}=\lim_{h\to 0}\frac{f(x+h,y)-f(x,y)}{h},
 $$
 
-e a derivada parcial $\frac{\partial f}{\partial x}\bigg|_{y=1} = 2x$ descreve a inclinação dessa curva no ponto de abscissa $x$.
+when the limit exists, and similarly for $f_y$.
 
-### Derivada Parcial com Respeito a $y$
+## Conditions / Assumptions
 
-Analogamente, a derivada parcial de $f$ com respeito a $y$, denotada por $\frac{\partial f}{\partial y}$, representa o ritmo de mudança da função no sentido do eixo $y$. Geometricamente, ela é a inclinação da reta tangente ao gráfico de $f$ na direção paralela ao plano $x = c$.
+- When computing $\partial f/\partial x$, treat every other independent variable as constant.
+- Existence of partials at a point does not imply continuity or differentiability of $f$ there.
 
-**Exemplo:**
-Continuando com a função $f(x, y) = x^2 + y^2$, a derivada parcial com respeito a $y$ é:
-$$
-\frac{\partial f}{\partial y} = 2y.
-$$
+## Worked Example
 
-Se fixarmos $x = 1$, a função reduz-se a uma curva no plano $x = 1$:
+If $f(x,y)=x^2+3xy-4y^2$, then
 
 $$
-f(1, y) = 1 + y^2,
+\frac{\partial f}{\partial x}=2x+3y,\qquad\frac{\partial f}{\partial y}=3x-8y.
 $$
 
-e a derivada parcial $\frac{\partial f}{\partial y}\bigg|_{x=1} = 2y$ descreve a inclinação dessa curva no ponto de ordenada $y$.
+If $f(x,y)=x^2 y+4y^3$, then $f_x=2xy$ and $f_y=x^2+12y^2$.
 
-### Derivadas Parciais e Superfícies
-
-A combinação das derivadas parciais pode fornecer informações sobre o comportamento geral da superfície. Por exemplo, o gradiente de uma função multivariável é um vetor que contém as derivadas parciais em cada direção.
-
-**Exemplo:**
-Para a função $f(x, y) = x^2 + y^2$, o gradiente é:
-$$
-\nabla f = \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y} \right) = (2x, 2y).
-$$
-
-### Aplicações Práticas
-
-Derivadas parciais são fundamentais em diversas áreas da ciência e engenharia. Por exemplo, na física, elas podem ser usadas para modelar a velocidade de um objeto em movimento no espaço multidimensional; na economia, para analisar como mudanças nas variáveis econômicas afetam o custo ou a receita.
-
-Essa interpretação geométrica ajuda a visualizar e compreender melhor as funções multivariáveis e suas propriedades.
-
----
-
-## Exemplo 1: Função Simples com Duas Variáveis
-
-Seja:
-
-	$f(x, y) = x^2 y + 4y^3$
-
-### Derivada Parcial em Relação a $x$
+The gradient packages the first partials:
 
 $$
-\frac{\partial f}{\partial x} = \frac{\partial}{\partial x} (x^2 y + 4y^3)
-$$
-- y é constante, então:
-- $x^2 y \rightarrow \text{deriva como } 2xy$
-- $4y^3 \rightarrow \text{deriva como } 0$ (constante em x)
-
-**Resultado:**
-$$
-\frac{\partial f}{\partial x} = 2xy
+\nabla f=(f_x,f_y).
 $$
 
-### Derivada Parcial em Relação a $y$
+## Common Mistakes
 
-$$
-\frac{\partial f}{\partial y} = \frac{\partial}{\partial y} (x^2 y + 4y^3)
-$$
-- $x^2$ é constante agora
-- $x^2 y \rightarrow x^2$
-- $4y^3 \rightarrow 12y^2$
+- Differentiating with respect to $x$ while still treating $y$ as a function of $x$ unless the context is a total derivative (chain rule).
+- Confusing $\partial f/\partial x$ with the directional derivative in a non-axis direction.
 
-**Resultado:**
-$$
-\frac{\partial f}{\partial y} = x^2 + 12y^2
-$$
+## Connections
+
+- [[Regras da Cadeia]], [[Derivada Direcional]], [[Diferenciabilidade de uma  Função]], [[Teorema de Clairaut]]
+
+## References
+
+Partial derivatives are introduced in OpenStax Calculus Volume 3.[^openstax-partial]
+
+[^openstax-partial]: OpenStax, *Calculus Volume 3*, Section 4.3, https://openstax.org/details/books/calculus-volume-3

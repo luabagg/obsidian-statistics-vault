@@ -1,86 +1,57 @@
 ---
 dg-publish: true
+tags:
+  - calculus
+  - derivatives
 ---
 
-Derivadas de ordem superior são conceitos fundamentais na teoria dos cálculos diferenciais, representando a generalização das derivadas primárias. A derivada primeira de uma função $f(x)$ é denotada por $f'(x)$ ou $\frac{df}{dx}$ e representa o ritmo de mudança da função em relação à variável independente.
+# Higher-Order Derivatives
 
-A derivada segunda, que é a derivada de ordem superior mais comumente utilizada, é obtida pela diferenciação da primeira derivada. Matematicamente, pode ser expressa como:
+## Summary
 
-$$
-f''(x) = \frac{d^2f}{dx^2} = \frac{d}{dx}\left(\frac{df}{dx}\right)
-$$
+Higher-order derivatives are derivatives of derivatives. The second derivative $f''$ measures how the first derivative changes (concavity in one variable). Mixed partials of several variables are related by Clairaut’s theorem under continuity hypotheses.
 
-Exemplo: Considere a função $f(x) = x^3$. A derivada primeira é:
+## Prerequisites
 
-$$
-f'(x) = 3x^2
-$$
+[[Derivadas]], [[Derivadas Parciais]]
 
-A derivada segunda, então, é:
+## Definition
+
+For a single-variable function,
 
 $$
-f''(x) = \frac{d}{dx}(3x^2) = 6x
+f''(x)=\frac{d}{dx}f'(x)=\frac{d^2f}{dx^2},
 $$
 
-Derivadas de ordem superior podem ser generalizadas para qualquer número inteiro $n > 1$. A derivada de ordem $n$ de uma função $f(x)$ é denotada por:
+and inductively $f^{(n)}=\frac{d}{dx}f^{(n-1)}$.
 
-- $f^{(n)}(x)$, ou
-- $\frac{d^n f}{dx^n}$
+For $f(x,y)$, second partials include $f_{xx}$, $f_{yy}$, and mixed partials $f_{xy}$, $f_{yx}$.
 
-Exemplo: Para a função $g(x) = e^x$, todas as suas derivadas são iguais à própria função. Portanto, para qualquer $n$:
+## Conditions / Assumptions
 
-$$
-g^{(n)}(x) = \frac{d^n}{dx^n}e^x = e^x
-$$
+- Each differentiation step requires differentiability of the previous derivative on the region of interest.
+- Equality of mixed partials $f_{xy}=f_{yx}$ holds when those partials are continuous (Clairaut); see [[Teorema de Clairaut]].
 
-Notação de Leibniz é particularmente útil para derivadas de ordem superior, pois permite uma visualização clara do processo de diferenciação repetida. A notação de Leibniz para a derivada segunda de $f(x)$ seria:
+## Worked Example
 
-$$
-\frac{d^2 f}{dx^2}
-$$
+If $f(x)=x^3$, then $f'(x)=3x^2$, $f''(x)=6x$, $f'''(x)=6$, and $f^{(n)}(x)=0$ for $n\ge 4$.
 
-Em resumo, as derivadas de ordem superior são essenciais na análise de comportamentos complexos das funções, permitindo uma compreensão mais profunda do seu comportamento local.
+If $g(x)=e^x$, then $g^{(n)}(x)=e^x$ for every $n\ge 0$.
 
-## Exemplo
+For $f(x,y)=x^2 y$, $f_x=2xy$, $f_{xy}=2x$, $f_{yx}=2x$.
 
-Vamos considerar uma situação onde a Equação de Laplace é aplicada para resolver um problema em duas dimensões, como o potencial elétrico em um plano.
+## Common Mistakes
 
-Suponha que temos um plano bidimensional com duas cargas point-like $q_1$ e $q_2$, localizadas nos pontos $(0, 0)$ e $(d, 0)$ respectivamente. A Equação de Laplace para o potencial elétrico $\phi(x, y)$ neste caso é dada por:
+- Claiming that the Newtonian potential $1/r$ is harmonic in **two** dimensions. In $\mathbb{R}^2\setminus\{0\}$, $\ln r$ is harmonic (away from the origin), while $1/r$ is harmonic in three dimensions (Coulomb potential), not in 2D.
+- Omitting mixed-partial continuity hypotheses when swapping differentiation order.
 
-$$
-\nabla^2 \phi = \frac{\partial^2 \phi}{\partial x^2} + \frac{\partial^2 \phi}{\partial y^2} = 0.
-$$
+## Connections
 
-Para resolver esta equação, consideramos a contribuição do potencial elétrico de cada carga individualmente. O potencial elétrico causado por uma carga point-like $q$ em um ponto $(x, y)$ é dado pela expressão:
+- [[Teorema de Clairaut]], [[Valores de Máximo e Mínimo]] (Hessian uses second partials)
+- Series: Taylor polynomials use $f^{(n)}$
 
-$$
-\phi_q(x, y) = \frac{1}{4\pi\epsilon_0} \cdot \frac{q}{r},
-$$
+## References
 
-onde $\epsilon_0$ é a constante de permissividade do vácuo e $r$ é a distância entre o ponto $(x, y)$ e a carga.
+Higher derivatives and notation appear in OpenStax Calculus Volume 1; mixed partials in Volume 3.[^openstax-higher]
 
-Portanto, o potencial elétrico total $\phi(x, y)$ no plano bidimensional é a soma dos potenciais individuais:
-
-$$
-\phi(x, y) = \frac{1}{4\pi\epsilon_0} \left( \frac{q_1}{r_1} + \frac{q_2}{r_2} \right),
-$$
-
-onde $r_1$ é a distância entre $(x, y)$ e $(0, 0)$, e $r_2$ é a distância entre $(x, y)$ e $(d, 0)$. Em notação matemática:
-
-$$
-r_1 = \sqrt{x^2 + y^2}, \quad r_2 = \sqrt{(x - d)^2 + y^2}.
-$$
-
-Substituindo $r_1$ e $r_2$ na expressão para $\phi(x, y)$, obtemos:
-
-$$
-\phi(x, y) = \frac{1}{4\pi\epsilon_0} \left( \frac{q_1}{\sqrt{x^2 + y^2}} + \frac{q_2}{\sqrt{(x - d)^2 + y^2}} \right).
-$$
-
-Para verificar se esta função satisfaz a Equação de Laplace, podemos calcular as derivadas parciais e verificar que:
-
-$$
-\nabla^2 \phi = 0.
-$$
-
-Este exemplo ilustra como a Equação de Laplace pode ser aplicada para resolver problemas em física, particularmente no cálculo do potencial elétrico em configurações bidimensionais.
+[^openstax-higher]: OpenStax, *Calculus Volume 1*, Section 3.7; *Calculus Volume 3*, Section 4.3, https://openstax.org/details/books/calculus-volume-1

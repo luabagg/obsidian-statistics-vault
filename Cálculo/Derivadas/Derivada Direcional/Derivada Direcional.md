@@ -1,6 +1,10 @@
 ---
 dg-publish: true
 dg-show-local-graph: true
+tags:
+  - calculus
+  - derivatives
+  - multivariable
 ---
 
 %% Begin Waypoint %%
@@ -10,59 +14,69 @@ dg-show-local-graph: true
 
 %% End Waypoint %%
 
-A derivada direcional é uma generalização da noção de derivada unidimensional para funções multivariáveis. Ela permite calcular a taxa de mudança de uma função em uma direção específica no espaço, fornecendo uma medida mais precisa do comportamento local da função.
+# Directional Derivative
 
-## Definição Formal
+## Summary
 
-Considere uma função escalar $f: \mathbb{R}^n \to \mathbb{R}$ e um ponto $\mathbf{a} = (a_1, a_2, \ldots, a_n) \in \mathbb{R}^n$. A derivada direcional de $f$ em $\mathbf{a}$ na direção do vetor unitário $\mathbf{u} = (u_1, u_2, \ldots, u_n)$ é definida como:
+The directional derivative measures the rate of change of a scalar function in a specified direction. When the function is differentiable, it equals the **dot product** of the gradient with a unit direction vector.
 
-$$
-D_{\mathbf{u}} f(\mathbf{a}) = \lim_{h \to 0} \frac{f(\mathbf{a} + h\mathbf{u}) - f(\mathbf{a})}{h}
-$$
+## Prerequisites
 
-Esta definição representa a taxa de mudança média da função $f$ ao se mover em direção $\mathbf{u}$, a partir do ponto $\mathbf{a}$, quando o deslocamento é pequeno ($h \to 0$).
+[[Derivadas Parciais]], [[Diferenciabilidade de uma  Função]]
 
-## Intuição Geométrica
+## Definition
 
-Geometricamente, a derivada direcional representa o declive da reta tangente à superfície definida por $f$ no ponto $\mathbf{a}$ na direção do vetor unitário $\mathbf{u}$. Se $\mathbf{u}$ for um dos vetores canônicos (por exemplo, $(1, 0, \ldots, 0)$), a derivada direcional reduz à derivada parcial correspondente. Por exemplo, para $f(x, y) = x^2 + y^2$, a derivada parcial em relação a $x$ no ponto $\mathbf{a} = (1, 1)$ é:
+For $f:\mathbb{R}^n\to\mathbb{R}$, a point $\mathbf{a}$, and a unit vector $\mathbf{u}$,
 
 $$
-\frac{\partial f}{\partial x}(1, 1) = 2 \cdot 1 = 2
+D_{\mathbf{u}}f(\mathbf{a})=\lim_{h\to 0}\frac{f(\mathbf{a}+h\mathbf{u})-f(\mathbf{a})}{h},
 $$
 
-## Cálculo da Derivada Direcional
+when the limit exists.
 
-Para calcular $D_{\mathbf{u}} f(\mathbf{a})$, pode-se usar a regra do produto vetorial:
+## Formula
 
-$$
-D_{\mathbf{u}} f(\mathbf{a}) = \nabla f(\mathbf{a}) \cdot \mathbf{u}
-$$
-
-onde $\nabla f(\mathbf{a})$ é o gradiente de $f$ em $\mathbf{a}$, definido como:
+If $f$ is differentiable at $\mathbf{a}$, then
 
 $$
-\nabla f(\mathbf{a}) = \left( \frac{\partial f}{\partial x_1}(\mathbf{a}), \frac{\partial f}{\partial x_2}(\mathbf{a}), \ldots, \frac{\partial f}{\partial x_n}(\mathbf{a}) \right)
+D_{\mathbf{u}}f(\mathbf{a})=\nabla f(\mathbf{a})\cdot\mathbf{u},
 $$
 
-O gradiente é um vetor que aponta na direção do maior aumento da função $f$ no ponto $\mathbf{a}$ e seu módulo representa a taxa de mudança máxima nessa direção.
-
-## Exemplo
-
-Considere a função $f(x, y) = x^2 + y^2$ e o ponto $\mathbf{a} = (1, 1)$.
-
-1. **Gradiente de $f$:**
-$$
-   \nabla f(x, y) = \left( \frac{\partial}{\partial x}(x^2 + y^2), \frac{\partial}{\partial y}(x^2 + y^2) \right) = (2x, 2y)
-$$
-
-   Em $\mathbf{a} = (1, 1)$:
+where
 
 $$
-   \nabla f(1, 1) = (2, 2)
-$$
-2. **Derivada direcional na direção do vetor unitário $\mathbf{u} = \left(\frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}}\right)$:**
-$$
-   D_{\mathbf{u}} f(1, 1) = (2, 2) \cdot \left(\frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}}\right) = 2 \cdot \frac{1}{\sqrt{2}} + 2 \cdot \frac{1}{\sqrt{2}} = 2\sqrt{2}
+\nabla f(\mathbf{a})=\Bigl(\frac{\partial f}{\partial x_1}(\mathbf{a}),\ldots,\frac{\partial f}{\partial x_n}(\mathbf{a})\Bigr).
 $$
 
-Este exemplo ilustra como a derivada direcional pode ser calculada usando o gradiente e um vetor unitário, fornecendo uma medida da taxa de mudança da função em qualquer direção no espaço.
+This is a scalar (dot product), not a cross product or a separate “vector product rule.”
+
+## Conditions / Assumptions
+
+- $\mathbf{u}$ should be a unit vector for the geometric rate-of-change interpretation per unit length.
+- Existence of all partials does not guarantee directional derivatives in every direction; differentiability does guarantee the gradient formula above.
+
+## Worked Example
+
+Let $f(x,y)=x^2+y^2$ and $\mathbf{a}=(1,1)$. Then $\nabla f(1,1)=(2,2)$. For $\mathbf{u}=(1/\sqrt{2},1/\sqrt{2})$,
+
+$$
+D_{\mathbf{u}}f(1,1)=(2,2)\cdot\Bigl(\frac{1}{\sqrt{2}},\frac{1}{\sqrt{2}}\Bigr)=2\sqrt{2}.
+$$
+
+Along the coordinate unit vector $\mathbf{i}=(1,0)$, $D_{\mathbf{i}}f=f_x$, recovering the partial derivative.
+
+## Common Mistakes
+
+- Calling $\nabla f\cdot\mathbf{u}$ a “vector product.”
+- Using a non-unit direction without scaling: for a general nonzero $\mathbf{v}$, the rate in direction $\mathbf{v}$ per unit length is $\nabla f\cdot(\mathbf{v}/\|\mathbf{v}\|)$.
+
+## Connections
+
+- Maximum rate: [[Taxa Máxima da Derivada Direcional]]
+- Related: [[Plano Tangente]], [[Diferencial de Uma Função]]
+
+## References
+
+Directional derivatives and the gradient formula appear in OpenStax Calculus Volume 3.[^openstax-dir]
+
+[^openstax-dir]: OpenStax, *Calculus Volume 3*, Section 4.6, https://openstax.org/details/books/calculus-volume-3

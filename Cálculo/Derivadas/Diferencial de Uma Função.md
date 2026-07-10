@@ -1,75 +1,70 @@
 ---
 dg-publish: true
+tags:
+  - calculus
+  - derivatives
 ---
 
-## Diferencial de Uma Função para Uma Variável
+# Differential of a Function
 
-O diferencial de uma função $f(x)$ de uma variável é uma medida aproximada da mudança na função quando a variável independente sofre uma pequena variação. Matematicamente, o diferencial de $f$ em relação a $x$ é denotado por $df$ e está dado por:
+## Summary
 
-$$
-df = f'(x) \, dx
-$$
+The differential is the linear approximation to the change in a function. In one variable, $df=f'(x)\,dx$. In two variables, $df=f_x\,dx+f_y\,dy$.
 
-Aqui, $f'(x)$ representa a derivada da função $f(x)$ com respeito à variável $x$, e $dx$ é uma pequena variação na variável $x$. O diferencial $df$ fornece uma aproximação linear do incremento da função $f$ quando $x$ sofre uma pequena mudança.
+## Prerequisites
 
-**Exemplo:**
+[[Derivadas]], [[Derivadas Parciais]], [[Diferenciabilidade de uma  Função]]
 
-Considere a função $f(x) = x^2 + 3x - 5$. A derivada desta função é:
+## Formula
 
-$$
-f'(x) = 2x + 3
-$$
+### One variable
 
-Portanto, o diferencial de $f$ em relação a $x$ é:
+If $f$ is differentiable,
 
 $$
-df = (2x + 3) \, dx
+df=f'(x)\,dx.
 $$
 
-Se $x = 1$ e $dx = 0.1$, então:
+The actual increment is $\Delta f=f(x+\Delta x)-f(x)=df+\varepsilon$ with $\varepsilon/\Delta x\to 0$ as $\Delta x\to 0$.
+
+### Two variables
 
 $$
-df = (2(1) + 3)(0.1) = 5(0.1) = 0.5
+df=\frac{\partial f}{\partial x}\,dx+\frac{\partial f}{\partial y}\,dy.
 $$
 
-## Diferencial de Uma Função para Duas Variáveis
+## Conditions / Assumptions
 
-Para funções com duas variáveis, o diferencial é uma generalização do conceito anterior. Considere a função $f(x, y)$ de duas variáveis. O diferencial de $f$ em relação às variáveis $x$ e $y$ é dado por:
+- Differentiability at the expansion point.
+- The increments $dx,dy$ are independent variables in the linear map; in applications they are small changes.
 
-$$
-df = \frac{\partial f}{\partial x} \, dx + \frac{\partial f}{\partial y} \, dy
-$$
+## Worked Example
 
-Aqui, $\frac{\partial f}{\partial x}$ e $\frac{\partial f}{\partial y}$ são as derivadas parciais de $f$ com respeito a $x$ e $y$, respectivamente. $dx$ e $dy$ representam pequenas variações nas variáveis $x$ e $y$, respectivamente.
+For $f(x)=x^2+3x-5$, $df=(2x+3)\,dx$. At $x=1$, $dx=0.1$, $df=0.5$.
 
-**Exemplo:**
-
-Considere a função $f(x, y) = x^2 + 3xy - 4y^2$. As derivadas parciais são:
+For $f(x,y)=x^2+3xy-4y^2$,
 
 $$
-\frac{\partial f}{\partial x} = 2x + 3y \quad \text{e} \quad \frac{\partial f}{\partial y} = 3x - 8y
+df=(2x+3y)\,dx+(3x-8y)\,dy.
 $$
 
-Portanto, o diferencial de $f$ é:
+At $(1,2)$ with $dx=0.1$, $dy=0.2$:
 
 $$
-df = (2x + 3y) \, dx + (3x - 8y) \, dy
+df=8(0.1)+(-13)(0.2)=0.8-2.6=-1.8.
 $$
 
-Se $x = 1$, $y = 2$, $dx = 0.1$, e $dy = 0.2$, então:
+## Common Mistakes
 
-$$
-\begin{align*}
+- Treating $df$ as exact $\Delta f$ for large increments.
+- Omitting one of the partial terms in several variables.
 
-df &= (2(1) + 3(2))(0.1) + (3(1) - 8(2))(0.2) \\
+## Connections
 
-   &= (2 + 6)(0.1) + (3 - 16)(0.2) \\
+- [[Plano Tangente]], [[Regras da Cadeia]], error estimation in measurements
 
-   &= 8(0.1) + (-13)(0.2) \\
+## References
 
-   &= 0.8 - 2.6 \\
+Differentials and linear approximation are covered in OpenStax Calculus.[^openstax-diffntl]
 
-   &= -1.8
-
-\end{align*}
-$$
+[^openstax-diffntl]: OpenStax, *Calculus Volume 1*, Section 4.2; *Calculus Volume 3*, Section 4.4, https://openstax.org/details/books/calculus-volume-1

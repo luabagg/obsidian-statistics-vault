@@ -1,59 +1,56 @@
 ---
 dg-publish: true
+tags:
+  - calculus
+  - series
 ---
 
-O **Teste da Raiz** é um método utilizado para determinar a convergência de séries infinitas, especialmente aquelas com termos do tipo $a_n = n^k$ ou $a_n = \frac{1}{n^k}$, onde $k$ é uma constante. Este teste é particularmente útil quando os termos da série envolvem potências de $n$.
+# Root Test
 
-## Formulando o Teste
+## Summary
 
-O **Teste da Raiz** é aplicado à série $\sum_{n=1}^\infty a_n$, onde cada termo $a_n$ pode ser expresso como uma função de $n$. A ideia principal é calcular o limite superior do enésimo raiz dos termos da série:
+The root test uses $L=\limsup_{n\to\infty}|a_n|^{1/n}$ (or the ordinary limit when it exists). Absolute convergence holds if $L<1$; divergence if $L>1$; the test is inconclusive if $L=1$.
 
-$$
-L = \limsup_{n\to\infty} \sqrt[n]{|a_n|}
-$$
+## Prerequisites
 
-Se $L < 1$, a série converge absolutamente. Se $L > 1$, a série diverge. Se $L = 1$, o teste é inconclusivo.
+[[Convergência Absoluta]], sequences and limits
 
-## Exemplos de Aplicação
+## Theorem
 
-**Exemplo 1: Série Geométrica**
-
-Considere a série geométrica $\sum_{n=0}^\infty \left(\frac{1}{2}\right)^n$. Aqui, $a_n = \left(\frac{1}{2}\right)^n$.
-
-Applicando o Teste da Raiz:
+For a series $\sum a_n$, set
 
 $$
-L = \limsup_{n\to\infty} \sqrt[n]{\left|\left(\frac{1}{2}\right)^n\right|} = \limsup_{n\to\infty} \left(\frac{1}{2}\right) = \frac{1}{2}
+L=\limsup_{n\to\infty}\sqrt[n]{|a_n|}.
 $$
 
-Como $L < 1$, a série converge absolutamente.
+- If $L<1$, then $\sum a_n$ converges absolutely.
+- If $L>1$ (including $L=\infty$), then $a_n\not\to 0$, so the series diverges.
+- If $L=1$, the test gives no information.
 
-**Exemplo 2: Série de Potências**
+When $\lim |a_n|^{1/n}$ exists, it equals this limsup.
 
-Considere a série $\sum_{n=0}^\infty \frac{n!}{(3n)!}$. Aqui, $a_n = \frac{n!}{(3n)!}$.
+## Conditions / Assumptions
 
-Applicando o Teste da Raiz:
+- No sign restriction for the absolute-convergence conclusion.
+- Prefer the ratio test when factorials appear; the root test is natural for $n$th powers.
 
-$$
-L = \limsup_{n\to\infty} \sqrt[n]{\left|\frac{n!}{(3n)!}\right|}
-$$
+## Worked Example
 
-Usando a aproximação factorial $n! \approx \sqrt{2\pi n} \left(\frac{n}{e}\right)^n$, temos:
+For $\sum (1/2)^n$, $|a_n|^{1/n}=1/2$, so $L=1/2<1$: absolute convergence.
 
-$$
-L = \limsup_{n\to\infty} \sqrt[n]{\frac{\sqrt{2\pi n} \left(\frac{n}{e}\right)^n}{\sqrt{6\pi n} \left(\frac{3n}{e}\right)^{3n}}} = \limsup_{n\to\infty} \frac{1}{3^n} = 0
-$$
+For $\sum n^2/e^n$, $|a_n|^{1/n}=n^{2/n}/e\to 1/e<1$ (since $n^{1/n}\to 1$), so absolute convergence.
 
-Como $L < 1$, a série converge absolutamente.
+## Common Mistakes
 
-**Exemplo 3: Série de Termos Alternados**
+- Treating $L=1$ as convergence (harmonic series and $p$-series both give $L=1$).
+- Computing $\sqrt[n]{a_n}$ without absolute values when terms change sign.
 
-Considere a série $\sum_{n=1}^\infty (-1)^n \frac{n^2}{e^n}$. Aqui, $a_n = (-1)^n \frac{n^2}{e^n}$.
+## Connections
 
-Applicando o Teste da Raiz:
+- [[Teste da Razão]], [[Séries de Potências]] (root form of the radius formula)
 
-$$
-L = \limsup_{n\to\infty} \sqrt[n]{\left|(-1)^n \frac{n^2}{e^n}\right|} = \limsup_{n\to\infty} \frac{\sqrt[n]{n^2}}{e} = \frac{1}{e}
-$$
+## References
 
-Como $L < 1$, a série converge absolutamente.
+The root test appears in OpenStax Calculus Volume 2.[^openstax-root]
+
+[^openstax-root]: OpenStax, *Calculus Volume 2*, Section 5.6, https://openstax.org/details/books/calculus-volume-2

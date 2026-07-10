@@ -1,45 +1,83 @@
 ---
 dg-publish: true
 ---
-A regra de Simpson de um terço é uma técnica numérica utilizada para aproximar integrais. Ela é baseada na ideia de dividir o intervalo de integração em três partes iguais e usar uma combinação de pontos finais e médios para calcular a integral.
 
-## Formula
+# Simpson’s Rule (1/3)
 
-A fórmula da regra de Simpson de um terço é dada por:
+## Summary
 
-$$
-\int_{a}^{b} f(x) dx \approx \frac{h}{3} \left[ f(a) + 4f\left(\frac{a+b}{2}\right) + f(b) \right]
-$$
+Simpson’s 1/3 rule integrates a quadratic interpolant on two equal subintervals (three nodes). Composite Simpson is fourth-order accurate for smooth $f$ and exact for cubics.
 
-onde $h = \frac{b-a}{3}$ é a largura da subintervala.
+## Prerequisites
 
-## Exemplo
+- [[Regra dos Trapézios]]
+- Even number of subintervals for the composite rule
 
-Suponha que desejamos calcular a integral de $f(x) = x^2$ entre os limites $a=0$ e $b=1$. Usando a regra de Simpson de um terço, temos:
+## Problem Type
 
-$$
-\int_{0}^{1} x^2 dx \approx \frac{h}{3} \left[ f(0) + 4f\left(\frac{0+1}{2}\right) + f(1) \right]
-$$
+Approximate $\int_a^b f(x)\,dx$ with higher accuracy than the trapezoidal rule.
 
-$$
-= \frac{\frac{1-0}{3}}{3} \left[ 0^2 + 4\left(\frac{1}{2}\right)^2 + 1^2 \right]
-$$
+## Method Definition
+
+**One panel (two subintervals):** set $h=(b-a)/2$ and nodes $a$, $a+h$, $b$.
 
 $$
-= \frac{1}{9} \left[ 0 + 4\left(\frac{1}{4}\right) + 1 \right]
+\int_a^b f(x)\,dx \approx \frac{h}{3}\Big(f(a)+4f(a+h)+f(b)\Big).
 $$
 
-$$
-= \frac{1}{9} \left[ \frac{1}{1} + 1 \right]
-$$
+**Composite rule:** $n$ even, $h=(b-a)/n$, $x_i=a+ih$:
 
 $$
-= \frac{2}{9}
+\int_a^b f \approx \frac{h}{3}\left(
+f(x_0)+f(x_n)
++4\sum_{i\text{ odd}}f(x_i)
++2\sum_{i\text{ even},\,0<i<n}f(x_i)
+\right).
 $$
 
-## Observações
+Weights pattern: $1,4,2,4,2,\ldots,4,1$.[^burden]
 
-* A regra de Simpson de um terço é uma técnica numérica que pode ser usada para aproximar integrais.
-* Ela é baseada na ideia de dividir o intervalo de integração em três partes iguais e usar uma combinação de pontos finais e médios para calcular a integral.
-* A fórmula da regra de Simpson de um terço é dada por $\frac{h}{3} \left[ f(a) + 4f\left(\frac{a+b}{2}\right) + f(b) \right]$.
-* A regra de Simpson de um terço pode ser usada para calcular integrais de funções polinomiais.
+## Assumptions / Requirements
+
+- $f$ continuous; for the classical error, $f\in C^4[a,b]$
+- Composite: $n$ even
+
+## Error / Accuracy
+
+Single panel error involves $f^{(4)}(\xi)$ and is $O(h^5)$ locally; composite error is $O(h^4)$:
+
+$$
+E=-\frac{(b-a)}{180} h^4 f^{(4)}(\xi)
+$$
+
+for some $\xi\in(a,b)$.
+
+## Worked Example
+
+Compute $\int_0^1 x^2\,dx$ with one Simpson panel.
+
+Here $h=(1-0)/2=1/2$, nodes $0$, $1/2$, $1$:
+
+$$
+\int_0^1 x^2\,dx \approx \frac{1/2}{3}\Big(0+4\cdot\bigl(\tfrac12\bigr)^2+1\Big)
+=\frac{1}{6}\Big(0+4\cdot\frac14+1\Big)
+=\frac{1}{6}\cdot 2=\frac13.
+$$
+
+Exact value is $1/3$ (Simpson is exact for quadratics). Using the wrong step $h=(b-a)/3$ would incorrectly produce $2/9$.
+
+## Common Failure Modes
+
+- Setting $h=(b-a)/3$ for the three-point formula (incorrect)
+- Composite rule with odd $n$
+- Mixing 1/3 and 3/8 weight patterns
+
+## Connections
+
+- [[Regra de Simpson (três oitavos)]]
+- [[Regra dos Trapézios]]
+- [[Métodos Numéricos]]
+
+## References
+
+[^burden]: Burden & Faires, *Numerical Analysis*, Simpson’s rules; NIST DLMF Ch. 3, https://dlmf.nist.gov/3

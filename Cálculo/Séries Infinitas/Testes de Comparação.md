@@ -1,46 +1,67 @@
 ---
 dg-publish: true
+tags:
+  - calculus
+  - series
 ---
 
-Testes de comparação são ferramentas úteis na análise da convergência de séries infinitas. Esses testes permitem comparar a série em questão com uma série conhecida, cuja convergência ou divergência já seja estabelecida.
+# Comparison Tests
 
-## Teste Direto de Comparação
+## Summary
 
-O **Teste Direto de Comparação** é aplicado quando se pode comparar diretamente as termos da série com os termos de outra série cuja convergência é conhecida.
+Comparison tests decide convergence of series with nonnegative terms by relating them to a known series. The direct comparison test uses inequalities; the limit comparison test uses asymptotic ratios.
 
-- **Formulação**: Sejam $\sum a_n$ e $\sum b_n$ duas séries infinitas tais que $0 \leq a_n \leq b_n$ para todo $n$. Então:
-  - Se $\sum b_n$ converge, então $\sum a_n$ também converge.
-  - Se $\sum a_n$ diverge, então $\sum b_n$ também diverge.
+## Prerequisites
 
-**Exemplo**: Considere a série $\sum_{n=1}^{\infty} \frac{1}{n(n+1)}$. Podemos comparar com a série geométrica $\sum_{n=1}^{\infty} \frac{1}{2^n}$, que converge. Note que:
+[[Série P]], [[Série Geométrica]], [[Série Harmônica]]
+
+## Theorems
+
+### Direct comparison
+
+Assume $0\le a_n\le b_n$ for all $n$ large.
+
+- If $\sum b_n$ converges, then $\sum a_n$ converges.
+- If $\sum a_n$ diverges, then $\sum b_n$ diverges.
+
+### Limit comparison
+
+If $a_n>0$, $b_n>0$, and
+
 $$
-\frac{1}{n(n+1)} < \frac{1}{2^n}
-$$
-
-  para $n$ suficientemente grande. Como a série geométrica converge e os termos da série original são menores ou iguais aos termos da série geométrica, podemos concluir que $\sum_{n=1}^{\infty} \frac{1}{n(n+1)}$ também converge.
-
-## Teste de Comparação Assintótico
-
-O **Teste de Comparação Assintótico** é útil quando a série em questão tem termos que se comportam como uma função conhecida para grandes valores de $n$. Se $a_n \sim b_n$ (ou seja, $\lim_{n\to\infty} \frac{a_n}{b_n} = 1$), então as séries $\sum a_n$ e $\sum b_n$ convergem ou divergem juntas.
-
-**Exemplo**: Considere a série $\sum_{n=2}^{\infty} \frac{1}{\ln(n)}$. Podemos comparar com a série harmônica $\sum_{n=2}^{\infty} \frac{1}{n}$, que diverge. Note que:
-$$
-\lim_{n\to\infty} \frac{\frac{1}{\ln(n)}}{\frac{1}{n}} = \lim_{n\to\infty} \frac{n}{\ln(n)} = +\infty
-$$
-
-  o que indica que $\frac{1}{\ln(n)}$ cresce mais rápido do que $\frac{1}{n}$, mas a divergência da série harmônica implica na divergência de nossa série original.
-
-## Teste de Comparação pelo Mínimo
-
-O **Teste de Comparação pelo Mínimo** é útil quando se pode encontrar um termo mínimo $m_n$ que seja maior ou igual a todos os termos subsequentes e cuja convergência possa ser estabelecida.
-
-- **Formulação**: Sejam $\sum a_n$ e $\sum b_n$ duas séries infinitas tais que $0 \leq a_n \leq m_n$ para todo $n$, onde $\{m_n\}$ é uma sequência decrescente que converge para zero. Então:
-  - Se $\sum m_n$ converge, então $\sum a_n$ também converge.
-  - Se $\sum a_n$ diverge, então $\sum m_n$ também diverge.
-
-**Exemplo**: Considere a série $\sum_{n=1}^{\infty} \frac{1}{n^2 + n}$. Podemos comparar com a série $\sum_{n=1}^{\infty} \frac{1}{n^2}$, que converge. Note que:
-$$
-\frac{1}{n^2 + n} < \frac{1}{n^2}
+\lim_{n\to\infty}\frac{a_n}{b_n}=L\in(0,\infty),
 $$
 
- para todo $n$. Como a série $\sum_{n=1}^{\infty} \frac{1}{n^2}$ converge e os termos da série original são menores ou iguais aos termos dessa série, podemos concluir que $\sum_{n=1}^{\infty} \frac{1}{n^2 + n}$ também converge.
+then $\sum a_n$ and $\sum b_n$ both converge or both diverge.
+
+## Worked Example
+
+### Correct comparison for $1/(n(n+1))$
+
+For $n\ge 1$, $0<\dfrac{1}{n(n+1)}<\dfrac{1}{n^2}$. Since $\sum 1/n^2$ converges ($p=2$), so does $\sum 1/(n(n+1))$.
+
+Alternatively, partial fractions show the series telescopes to $1$.
+
+### False claim to avoid
+
+The inequality $\dfrac{1}{n(n+1)}<\dfrac{1}{2^n}$ is **not** true for all large $n$. Polynomial decay is slower than exponential decay, so $1/(n(n+1))\gg 1/2^n$ as $n\to\infty$. Do not compare this series to a geometric series via a false bound.
+
+### Limit comparison
+
+For $a_n=1/(n^2+n)$ and $b_n=1/n^2$, $a_n/b_n\to 1$, so $\sum a_n$ converges.
+
+## Common Mistakes
+
+- Comparing with the wrong direction of the inequality.
+- Using a false geometric bound for rational terms.
+- Applying comparison tests to series with negative terms without absolute values.
+
+## Connections
+
+- [[Série P]], [[Teste da Integral]], [[Convergência Absoluta]]
+
+## References
+
+Comparison tests are in OpenStax Calculus Volume 2.[^openstax-comp]
+
+[^openstax-comp]: OpenStax, *Calculus Volume 2*, Section 5.4, https://openstax.org/details/books/calculus-volume-2

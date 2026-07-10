@@ -1,92 +1,73 @@
 ---
 dg-publish: true
+tags:
+  - calculus
+  - series
 ---
 
-A estimativa da soma de uma série é um método usado em matemática para aproximar a soma total de termos infinitos ou finitos. Este processo é especialmente útil quando a soma exata é difícil de calcular.
+# Estimating the Sum of a Series
 
-## Exemplo 1: Série Geométrica
+## Summary
 
-Considere a série geométrica:
+When a series converges, partial sums $S_N$ approximate the total sum $S$. Remainder bounds quantify the error $|S-S_N|$ using integral tails, alternating-series estimates, or exact remainders for geometric series.
 
-$$
-S = \sum_{n=0}^{\infty} ar^n
-$$
+## Prerequisites
 
-onde $a$ é o primeiro termo e $r$ é a razão comum. Se $|r| < 1$, a soma converge para:
+[[Soma de Séries por Somas Parciais]], [[Série Geométrica]], [[Séries Alternadas]], [[Teste da Integral]]
 
-$$
-S = \frac{a}{1 - r}
-$$
+## Formulas
 
-Para estimar a soma, podemos calcular os primeiros termos até que a contribuição adicional seja insignificante. Por exemplo, se $a = 1$ e $r = 0.5$:
+### Geometric series (exact)
+
+For $|r|<1$,
 
 $$
-S \approx 1 + 0.5 + 0.25 + 0.125 + \cdots
+\sum_{n=0}^\infty ar^n=\frac{a}{1-r},\qquad
+R_N=\sum_{n=N+1}^\infty ar^n=\frac{ar^{N+1}}{1-r}.
 $$
 
-Calculando os primeiros termos:
+### Alternating series remainder
 
-- Primeiro termo: $1$
-- Segundo termo: $0.5$
-- Terceiro termo: $0.25$
-
-A soma dos três primeiros termos é:
+If $\sum(-1)^{n+1}b_n$ satisfies the alternating series test with $b_n\downarrow 0$, then
 
 $$
-S_3 = 1 + 0.5 + 0.25 = 1.75
+|S-S_N|\le b_{N+1}.
 $$
 
-Como $r^4 = 0.0625$ e os termos subsequentes são muito pequenos, podemos estimar que a soma total seja aproximadamente $1.8$.
+### Integral remainder (decreasing positive $f$)
 
-## Exemplo 2: Série Harmônica
-
-A série harmônica é dada por:
+If $a_n=f(n)$ with $f$ positive, continuous, and eventually decreasing,
 
 $$
-H_n = \sum_{k=1}^{n} \frac{1}{k}
+\int_{N+1}^\infty f(x)\,dx\le R_N\le\int_N^\infty f(x)\,dx
 $$
 
-Para grandes valores de $n$, a série harmônica pode ser aproximada usando o logaritmo natural. A fórmula de Euler-Mascheroni fornece uma boa aproximação:
+(under standard integral-test hypotheses).
+
+## Worked Example
+
+For $\sum_{n=0}^\infty (1/2)^n$, the exact sum is $2$. After three terms $S_2=1+1/2+1/4=1.75$, the remainder is
 
 $$
-H_n \approx \ln$n$ + \gamma
+R_2=\frac{(1/2)^3}{1-1/2}=\frac{1}{4}=0.25,
 $$
 
-onde $\gamma$ é a constante de Euler-Mascheroni, aproximadamente igual a $0.57721$.
+so $S=1.75+0.25=2$ exactly—not a hand-wavy “about $1.8$.”
 
-Por exemplo, para $n = 100$:
+For the alternating harmonic series, $|S-S_5|\le 1/6$.
 
-$$
-H_{100} \approx \ln$100$ + 0.57721 \approx 4.60517 + 0.57721 \approx 5.18238
-$$
+## Common Mistakes
 
-## Exemplo 3: Série de Potências
+- Guessing remainders without a theorem (“looks like $1.8$”).
+- Broken MathJax such as $\ln$n$ instead of $\ln n$.
+- Using alternating bounds on non-alternating series.
 
-Considere a série:
+## Connections
 
-$$
-S = \sum_{n=0}^{\infty} \frac{x^n}{n!}
-$$
+- [[Séries Alternadas]], [[Teste da Integral]], [[Série de Taylor]] (Lagrange remainder)
 
-Esta é a série exponencial $e^x$. Para estimar a soma, podemos calcular os primeiros termos até que a contribuição adicional seja insignificante. Por exemplo, para $x = 1$:
+## References
 
-$$
-S \approx 1 + 1 + \frac{1}{2} + \frac{1}{6} + \frac{1}{24} + \cdots
-$$
+Remainder estimates appear with the integral and alternating tests in OpenStax Calculus Volume 2.[^openstax-est]
 
-Calculando os primeiros termos:
-
-- Primeiro termo: $1$
-- Segundo termo: $1$
-- Terceiro termo: $\frac{1}{2} = 0.5$
-- Quarto termo: $\frac{1}{6} \approx 0.167$
-
-A soma dos quatro primeiros termos é:
-
-$$
-S_4 = 1 + 1 + 0.5 + 0.167 = 2.667
-$$
-
-Como os termos subsequentes são muito pequenos, podemos estimar que a soma total seja aproximadamente $2.7$.
-
-Esses exemplos ilustram como a estimativa da soma de uma série pode ser realizada através do cálculo dos primeiros termos ou usando fórmulas conhecidas para séries específicas.
+[^openstax-est]: OpenStax, *Calculus Volume 2*, Sections 5.3–5.5, https://openstax.org/details/books/calculus-volume-2

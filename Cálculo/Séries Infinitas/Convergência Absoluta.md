@@ -1,36 +1,51 @@
 ---
 dg-publish: true
+tags:
+  - calculus
+  - series
 ---
 
-Convergência absoluta é um conceito fundamental na teoria das séries numéricas, especialmente em análise matemática e cálculo avançado. Uma série numérica $\sum_{n=1}^{\infty} a_n$ converge absolutamente se a série formada pelos valores absolutos dos termos da série original, $\sum_{n=1}^{\infty} |a_n|$, convergir.
+# Absolute Convergence
 
-## Exemplos de Convergência Absoluta
+## Summary
 
-1. **Série Geométrica:**
-   A série geométrica $\sum_{n=0}^{\infty} \left(\frac{1}{2}\right)^n$ converge absolutamente, pois a série dos valores absolutos é $\sum_{n=0}^{\infty} \left|\left(\frac{1}{2}\right)^n\right| = \sum_{n=0}^{\infty} \left(\frac{1}{2}\right)^n$, que converge para 2.
+A series $\sum a_n$ converges absolutely if $\sum |a_n|$ converges. Absolute convergence implies ordinary convergence. Series that converge but not absolutely are called conditionally convergent.
 
-2. **Série de Potências:**
-   A série de potências $\sum_{n=0}^{\infty} \frac{x^n}{n!}$ converge absolutamente para todo $x \in \mathbb{R}$. Isso ocorre porque a série dos valores absolutos, $\sum_{n=0}^{\infty} \left|\frac{x^n}{n!}\right| = \sum_{n=0}^{\infty} \frac{|x|^n}{n!}$, converge para $e^{|x|}$.
+## Prerequisites
 
-## Características Importantes
+[[Séries Infinitas]], [[Séries Alternadas]], [[Teste da Razão]]
 
-1. **Convergência Absoluta Implica Convergência:**
-   Se uma série $\sum_{n=1}^{\infty} a_n$ convergir absolutamente, então ela também converge (mas não vice-versa). Isso significa que se $\sum_{n=1}^{\infty} |a_n|$ converge, então $\sum_{n=1}^{\infty} a_n$ também converge.
+## Definition
 
-2. **Testes de Convergência Absoluta:**
-   Existem vários testes para determinar a convergência absoluta:
-   - **Teste da Razão:** Se $\lim_{n \to \infty} \left|\frac{a_{n+1}}{a_n}\right| = L < 1$, então $\sum_{n=1}^{\infty} |a_n|$ converge.
-   - **Teste do Raio de Convergência:** Para séries de potências, o raio de convergência $R$ pode ser usado para determinar a convergência absoluta no intervalo $(-R, R)$.
+- **Absolute convergence:** $\sum |a_n|$ converges.
+- **Conditional convergence:** $\sum a_n$ converges but $\sum |a_n|$ diverges.
 
-3. **Consequências da Convergência Absoluta:**
-   A convergência absoluta tem implicações importantes em cálculos e aplicações matemáticas:
-   - Permite a troca de ordem de somatórios sem alterar o resultado.
-   - Facilita a manipulação algébrica das séries, como adição, subtração e multiplicação.
+## Theorem
 
-## Exemplos de Série que Não Convergem Absolutamente
+If $\sum |a_n|$ converges, then $\sum a_n$ converges. The converse is false: the alternating harmonic series converges, but $\sum 1/n$ diverges.
 
-1. **Série Alternada:**
-   A série $\sum_{n=1}^{\infty} (-1)^{n+1} \frac{1}{n}$ converge condicionalmente, mas não converge absolutamente, pois a série dos valores absolutos $\sum_{n=1}^{\infty} \left|\frac{(-1)^{n+1}}{n}\right| = \sum_{n=1}^{\infty} \frac{1}{n}$ (série harmônica) diverge.
+Absolutely convergent series may be rearranged freely without changing the sum; conditionally convergent series may not (Riemann rearrangement theorem).
 
-2. **Série de Dirichlet:**
-   A série $\sum_{n=1}^{\infty} (-1)^{n+1} \frac{\sin(n)}{n}$ converge condicionalmente, mas não converge absolutamente, pois a série dos valores absolutos $\sum_{n=1}^{\infty} \left|\frac{\sin(n)}{n}\right|$ diverge.
+## Worked Example
+
+$\sum (1/2)^n$ converges absolutely.
+
+$\sum (-1)^{n+1}/n$ converges conditionally.
+
+$\sum x^n/n!$ converges absolutely for every real $x$ (ratio test / exponential series).
+
+## Common Mistakes
+
+- Equating “converges” with “converges absolutely.”
+- Rearranging conditionally convergent series and expecting the same sum.
+
+## Connections
+
+- Tests that imply absolute convergence: [[Teste da Razão]], [[Teste da Raíz]], comparison on $|a_n|$
+- [[Séries Alternadas]] for conditional examples
+
+## References
+
+Absolute vs conditional convergence is in OpenStax Calculus Volume 2.[^openstax-abs]
+
+[^openstax-abs]: OpenStax, *Calculus Volume 2*, Section 5.5, https://openstax.org/details/books/calculus-volume-2

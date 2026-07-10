@@ -2,139 +2,80 @@
 dg-publish: true
 ---
 
-O método gráfico é uma técnica fundamental no cálculo numérico utilizado para localizar os zeros de uma função. Este método envolve a representação visual da função através do desenho de seu gráfico, permitindo identificar pontos onde a função corta o eixo das abscissas (eixo x).
+# Graphical Method for Locating Roots
 
-## Passos para Aplicar o Método Gráfico
+## Summary
 
-1. **Definição da Função:**
-   Considere uma função $f(x)$ que deseja encontrar os zeros.
+The graphical method plots $y=f(x)$ (or $y=g(x)$ and $y=h(x)$ when solving $g(x)=h(x)$) to find approximate intervals where roots occur. It is a scouting tool, not a high-precision solver.
 
-2. **Escolha do Intervalo:**
-   Escolha um intervalo de valores para $x$ onde a função pode ter zeros. Por exemplo, se estiver trabalhando com a função $f(x) = x^3 - 2x + 1$, pode escolher o intervalo $[-2, 2]$.
+## Prerequisites
 
-3. **Criação do Gráfico:**
-   Use um software de gráficos ou papel e lápis para desenhar o gráfico da função no intervalo escolhido. Por exemplo:
-   - Para a função $f(x) = x^3 - 2x + 1$, você pode calcular alguns pontos para traçar o gráfico, como $f(-2) = -5$, $f(-1) = 2$, $f(0) = 1$, $f(1) = 0$, e $f(2) = 7$.
+- Plotting functions / evaluating sample points
+- [[Teorema De Bolzano]] to certify brackets after visual inspection
 
-4. **Identificação dos Zeros:**
-   Os zeros da função são os valores de $x$ onde o gráfico corta o eixo x, ou seja, onde $f(x) = 0$. No exemplo acima, você pode observar que a função corta o eixo x em $x = 1$, indicando que um zero é $x = 1$.
+## Problem Type
 
-5. **Refinamento:**
-   Para encontrar zeros com maior precisão, você pode refinar o intervalo onde os zeros são localizados. Por exemplo, se você suspeita que há outro zero entre $0$ e $2$, você pode desenhar o gráfico nesse novo intervalo para identificar a posição exata.
+Estimate how many roots exist and where to start numerical methods.
 
-### Exemplo Prático
+## Method Definition
 
-Considere a função $f(x) = x^3 - 4x + 1$. Para aplicar o método gráfico:
+1. Sample $f$ on a search window.
+2. Mark sign changes or axis crossings.
+3. Optionally plot $g$ and $h$ when solving $g(x)=h(x)$ via $f=g-h$.
+4. Hand off each promising interval to bisection/Newton/secant.
 
-- **Passo 1:** Defina a função.
-- **Passo 2:** Escolha um intervalo, por exemplo, $[-2, 2]$.
-- **Passo 3:** Crie o gráfico. Calcule alguns pontos:
-  - $f(-2) = (-2)^3 - 4(-2) + 1 = -8 + 8 + 1 = 1$
-  - $f(-1) = (-1)^3 - 4(-1) + 1 = -1 + 4 + 1 = 4$
-  - $f(0) = 0^3 - 4(0) + 1 = 1$
-  - $f(1) = 1^3 - 4(1) + 1 = 1 - 4 + 1 = -2$
-  - $f(2) = 2^3 - 4(2) + 1 = 8 - 8 + 1 = 1$
-- **Passo 4:** Identifique os zeros. No intervalo escolhido, o gráfico corta o eixo x entre $x = 0$ e $x = 1$, indicando que há um zero nesse intervalo.
-- **Passo 5:** Refine o intervalo para encontrar a posição exata do zero.
+## Assumptions / Requirements
 
-## Método Gráfico Aplicado ao Formato $f(x) - g(x)$
+- $f$ can be evaluated on a dense enough grid
+- Visual resolution limits accuracy; graphics alone do not prove uniqueness
 
-O método gráfico pode ser aplicado para encontrar os zeros de uma função que é a diferença entre duas funções, $f(x) - g(x)$. Este método é particularmente útil quando as funções envolvidas são complexas ou não podem ser resolvidas analiticamente.
+## Algorithm
 
-### Passos para Aplicar o Método Gráfico
+1. Choose a window $[A,B]$ and sample points $x_i$.
+2. Compute $f(x_i)$ and look for sign changes or near-zeros.
+3. For each sign change on $[x_i,x_{i+1}]$, record a candidate bracket.
+4. Refine with a numerical method.
 
-1. **Definição das Funções:**
-   Considere duas funções $f(x)$ e $g(x)$. Os zeros da função $h(x) = f(x) - g(x)$ são os valores de $x$ onde o gráfico de $h(x)$ corta o eixo x, ou seja, onde $h(x) = 0$.
+## Convergence
 
-2. **Escolha do Intervalo:**
-   Escolha um intervalo de valores para $x$ onde a função $h(x) = f(x) - g(x)$ pode ter zeros. Por exemplo, se estiver trabalhando com as funções $f(x) = x^3 - 2x + 1$ e $g(x) = x^2 - 1$, pode escolher o intervalo $[-2, 2]$.
+Not iterative in the algorithmic sense. Finer sampling reduces the chance of missing roots but never replaces a rigorous method.
 
-3. **Criação do Gráfico:**
-   Use um software de gráficos ou papel e lápis para desenhar o gráfico da função $h(x) = f(x) - g(x)$ no intervalo escolhido.
+## Error / Accuracy
 
-4. **Identificação dos Zeros:**
-   Os zeros da função $h(x)$ são os valores de $x$ onde o gráfico corta o eixo x, ou seja, onde $h(x) = 0$. No exemplo acima, você pode observar que a função corta o eixo x em $x = 1$, indicando que um zero é $x = 1$.
+Graphical estimates are typically accurate only to a fraction of the sample spacing. Always refine numerically.
 
-5. **Refinamento:**
-   Para encontrar zeros com maior precisão, você pode refinar o intervalo onde os zeros são localizados. Por exemplo, se você suspeita que há outro zero entre $0$ e $2$, você pode desenhar o gráfico nesse novo intervalo para identificar a posição exata.
+## Worked Example
 
-### Exemplo Prático
+Let $f(x)=x^3-4x+1$ on $[-2,2]$.
 
-Considere as funções $f(x) = x^3 - 2x + 1$ e $g(x) = x^2 - 1$. Para aplicar o método gráfico:
+| $x$ | $f(x)$ |
+| --- | --- |
+| −2 | 1 |
+| −1 | 4 |
+| 0 | 1 |
+| 1 | −2 |
+| 2 | 1 |
 
-- **Passo 1:** Defina as funções.
-- **Passo 2:** Escolha um intervalo, por exemplo, $[-2, 2]$.
-- **Passo 3:** Crie o gráfico de $h(x) = f(x) - g(x)$:
-  - $h(-2) = -5$
-  - $h(-1) = 2$
-  - $h(0) = 2$
-  - $h(1) = 0$
-  - $h(2) = 2$
-- **Passo 4:** Identifique os zeros do gráfico de $h(x)$, que neste caso é $x = 1$.
+Sign changes on $[-2,-1]?$ No ($1$ and $4$). On $[0,1]$: $+$ to $-$. On $[1,2]$: $-$ to $+$. Also $f(-2)=1>0$ and $f\to-\infty$ as $x\to-\infty$, so another root lies left of $-2$ if the window is extended.
 
-### Código Python
+Thus there are **three real roots** (cubic), not a unique root on $[-2,2]$. The graph suggests brackets near $(-2.2,-2)$, $(0,1)$, and $(1,2)$. Do not claim uniqueness from a partial plot.
 
-Aqui está o código completo:
+Intersection form: solving $g(x)=h(x)$ is the same problem for $f=g-h$. Example $g(x)=x^3-2x+1$, $h(x)=x^2-1$ gives $f(x)=x^3-x^2-2x+2$ with a root at $x=1$ since $f(1)=0$.
 
-```python
-import numpy as np
-import matplotlib.pyplot as plt
+## Common Failure Modes
 
-def f(x):
-    """Function f(x) = x^3 - 2x + 1."""
-    return x**3 - 2*x + 1
+- Missing roots between coarse samples
+- Claiming uniqueness when multiple crossings exist
+- Treating a tangency ($f=f'=0$) as a simple crossing
+- Extrapolating far outside the plotted window
 
-def g(x):
-    """Function g(x) = x^2 - 1."""
-    return x**2 - 1
+## Connections
 
-def plot_graphical_method(f, g, x_range=(-2, 2), num_points=1000):
-    """
-    Plot f(x), g(x), and h(x) = f(x) - g(x) over a specified range and mark the zeros of h(x).
+- [[Teorema De Bolzano]], [[Método da Bisseção]]
+- [[Zeros de Funções]]
 
-    Parameters:
-    f, g      -- Functions to plot
-    x_range   -- Tuple (min, max) for x-axis
-    num_points-- Number of points in the plot
-    """
-    x = np.linspace(x_range[0], x_range[1], num_points)
-    h = f(x) - g(x)
+## References
 
-    plt.plot(x, f(x), label='f(x) = x^3 - 2x + 1')
-    plt.plot(x, g(x), label='g(x) = x^2 - 1')
-    plt.plot(x, h, label='h(x) = f(x) - g(x)')
-    plt.axhline(0, color='gray', linestyle='--')
+Graphical scouting is standard preparation for classical root algorithms.[^burden]
 
-    # Find approximate zeros of h(x) using sign changes
-    zero_indices = np.where(np.diff(np.sign(h)))[0]
-    zeros = []
-    for idx in zero_indices:
-        # Linear interpolation for a better zero estimate
-        x0, x1 = x[idx], x[idx+1]
-        y0, y1 = h[idx], h[idx+1]
-        zero = x0 - y0 * (x1 - x0) / (y1 - y0)
-        zeros.append(zero)
-        plt.plot([zero], [0], 'ro')  # Mark the zero
-
-    plt.legend()
-    plt.grid(True)
-    plt.title('Graphical Method: f(x), g(x), and h(x) = f(x) - g(x)')
-    plt.xlabel('x')
-    plt.ylabel('y')
-    plt.show()
-
-    print("The approximate zeros of h(x) are:", [round(z, 4) for z in zeros])
-
-if __name__ == "__main__":
-    plot_graphical_method(f, g)
-```
-
-**Saída**:
-[[Resultado método gráfico.webp]]
-![[Resultado método gráfico.webp]]
-
-### Limitações
-
-O método gráfico é útil para obter uma visão geral rápida dos zeros de uma função, mas pode ser impreciso. Para obtenção de zeros com maior precisão, métodos numéricos como o método da bisseção ou Newton-Raphson são frequentemente utilizados em conjunto.
-
-Este método gráfico fornece uma abordagem visual e intuitiva para entender a localização dos zeros de uma função, facilitando a compreensão do comportamento da função.
+[^burden]: Burden & Faires, *Numerical Analysis*; NIST DLMF Ch. 3, https://dlmf.nist.gov/3

@@ -1,43 +1,54 @@
 ---
 dg-publish: true
+tags:
+  - calculus
+  - series
 ---
 
-## Introdução às Sequências no Cálculo
+# Sequences
 
-As sequências são estruturas fundamentais na matemática e desempenham um papel crucial no campo do cálculo. Uma sequência é definida como uma lista ordenada de números, onde cada número é chamado de termo da sequência. Matematicamente, podemos representar uma sequência como $\{a_n\}_{n=1}^{\infty}$, onde $a_n$ denota o $n$-ésimo termo da sequência.
+## Summary
 
-### Tipos de Sequências
+A sequence $\{a_n\}$ is an ordered list of numbers indexed by integers $n$. It converges if $a_n$ approaches a finite limit as $n\to\infty$. Series are built by summing sequence terms.
 
-Existem vários tipos de sequências com propriedades e comportamentos distintos:
+## Prerequisites
 
-- **Sequências Aritméticas**: Essas sequências têm uma diferença constante entre seus termos consecutivos. Por exemplo, a sequência $1, 3, 5, 7, \ldots$ é aritmética, com uma razão de 2.
-- **Sequências Geométricas**: Aqui, cada termo é obtido multiplicando o termo anterior por um número constante chamado razão. Por exemplo, a sequência $2, 6, 18, 54, \ldots$ é geométrica, com uma razão de 3.
-- **Sequências Recursivas**: Essas sequências são definidas em termos dos próprios termos anteriores. Por exemplo, a sequência de Fibonacci $0, 1, 1, 2, 3, 5, \ldots$ é definida por $F_n = F_{n-1} + F_{n-2}$ para $n > 1$, com $F_0 = 0$ e $F_1 = 1$.
+[[Limites]]
 
-### Aplicações das Sequências
+## Definition
 
-Sequências têm inúmeras aplicações no cálculo e em outras áreas da matemática:
+A sequence is a function $n\mapsto a_n$ from $\mathbb{N}$ (or $\mathbb{N}\cup\{0\}$) to $\mathbb{R}$. We write $\{a_n\}_{n=1}^\infty$.
 
-- **Séries Infinitas**: As séries infinitas são somas de termos de uma sequência. Por exemplo, a série geométrica $\sum_{n=0}^{\infty} x^n$ converge para $\frac{1}{1-x}$ quando $|x| < 1$.
-- **Convergência e Divergência**: Determinar se uma sequência converge ou diverge é crucial. Uma sequência convergente tem um limite finito, enquanto uma divergente não tem esse limite.
+$$
+\lim_{n\to\infty}a_n=L
+$$
 
-### Exemplos de Sequências
+means: for every $\varepsilon>0$ there exists $N$ such that $n>N$ implies $|a_n-L|<\varepsilon$.
 
-- **Sequência Aritmética**: $a_n = 2n - 1$ (exemplo: 1, 3, 5, 7, …)
-- **Sequência Geométrica**: $b_n = 3^n$ (exemplo: 3, 9, 27, 81, …)
-- **Sequência Recursiva**: $c_n = c_{n-1} + n$, com $c_0 = 0$ (exemplo: 0, 1, 3, 6, 10, …)
+## Types (examples)
 
-Estas sequências ilustram a diversidade e importância das sequências no cálculo.
+- Arithmetic: $a_n=a+(n-1)d$ (e.g. $1,3,5,7,\ldots$).
+- Geometric: $a_n=ar^{n-1}$ (e.g. $2,6,18,54,\ldots$).
+- Recursive: Fibonacci $F_n=F_{n-1}+F_{n-2}$.
 
-## Convergência e Limites
+## Worked Example
 
-Um conceito fundamental no cálculo é o limite de uma sequência. Um limite de uma sequência $\{a_n\}_{n=1}^{\infty}$ é um número real $L$ tal que os termos da sequência se aproximam arbitrariamente próximo a $L$ à medida que $n$ aumenta indefinidamente.
+$a_n=1/n\to 0$ (convergent).
+$b_n=n\to\infty$ (diverges).
+$c_n=(-1)^n$ diverges by oscillation.
 
-- **Exemplo**: A sequência $a_n = \frac{1}{n}$ tem limite 0, pois $\lim_{n \to \infty} \frac{1}{n} = 0$.
+## Common Mistakes
 
-O estudo da convergência de sequências é fundamental no cálculo. Uma sequência converge quando seus termos se aproximam cada vez mais de um valor específico (limite).
+- Confusing the limit of a sequence $a_n$ with the sum of the series $\sum a_n$.
+- Claiming every bounded sequence converges (false in $\mathbb{R}$ without monotonicity; true for monotone bounded sequences).
 
-Uma sequência pode ser:
+## Connections
 
-- **Convergente:** Possui um limite finito
-- **Divergente:** Não possui limite ou tende ao infinito
+- Partial sums of series are sequences: [[Soma de Séries por Somas Parciais]]
+- Next: [[Séries Infinitas]]
+
+## References
+
+Sequences are introduced before series in OpenStax Calculus Volume 2.[^openstax-seq]
+
+[^openstax-seq]: OpenStax, *Calculus Volume 2*, Section 5.1, https://openstax.org/details/books/calculus-volume-2

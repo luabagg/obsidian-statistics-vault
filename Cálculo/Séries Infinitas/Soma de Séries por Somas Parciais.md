@@ -1,44 +1,55 @@
 ---
 dg-publish: true
+tags:
+  - calculus
+  - series
 ---
 
-Para entender melhor como uma série converge para sua soma, podemos analisar suas somas parciais. Uma soma parcial é a soma dos n primeiros termos de uma série.
+# Series Sums via Partial Sums
 
-## Definição de Soma Parcial
+## Summary
 
-Para uma série ∑aₖ, a n-ésima soma parcial Sₙ é definida como:
+The sum of an infinite series is defined as the limit of its partial sums. Closed forms for $S_n$ (geometric, telescoping) make convergence transparent.
 
-$$
- S_n = \sum_{k=1}^{n} a_k = a_1 + a_2 + … + a_n 
-$$
+## Prerequisites
 
-## Exemplo com Série Geométrica
+[[Sequências]]
 
-Considere a série geométrica com a = 1 e r = 1/2:
+## Definition
 
-$$
- 1 + \frac{1}{2} + \frac{1}{4} + \frac{1}{8} + … 
-$$
-
-As somas parciais seriam:
-
-- S₁ = 1
-- S₂ = 1 + 1/2 = 1.5
-- S₃ = 1 + 1/2 + 1/4 = 1.75
-- S₄ = 1 + 1/2 + 1/4 + 1/8 = 1.875
-
-Podemos observar que as somas parciais se aproximam cada vez mais de 2, que é o valor limite da série:
+For $\sum_{k=1}^\infty a_k$, the $n$th partial sum is
 
 $$
- \lim_{n \to \infty} S_n = \frac{1}{1-\frac{1}{2}} = 2 
+S_n=\sum_{k=1}^n a_k=a_1+\cdots+a_n.
 $$
 
-## Fórmula Geral para Soma Parcial de Série Geométrica
+The series converges to $S$ if and only if $\lim_{n\to\infty}S_n=S$.
 
-Para uma série geométrica com primeiro termo a e razão r, a n-ésima soma parcial é dada por:
+## Worked Example
+
+Geometric series with $a=1$, $r=1/2$:
 
 $$
- S_n = a\frac{1-r^n}{1-r}, \text{ para } r \neq 1 
+S_n=\sum_{k=0}^{n-1}\Bigl(\frac{1}{2}\Bigr)^k=\frac{1-(1/2)^n}{1-1/2}=2\bigl(1-2^{-n}\bigr)\to 2.
 $$
 
-Esta fórmula nos permite calcular exatamente a soma dos n primeiros termos e verificar o comportamento da série conforme n aumenta.
+General geometric partial sum ($r\neq 1$):
+
+$$
+S_n=a\frac{1-r^n}{1-r}.
+$$
+
+## Common Mistakes
+
+- Identifying the series sum with a single term $a_n$.
+- Using $S_n=a/(1-r)$ for finite $n$ without the $r^n$ correction.
+
+## Connections
+
+- [[Série Geométrica]], [[Série Telescópica]], [[Séries Infinitas]]
+
+## References
+
+Partial sums define series convergence in OpenStax Calculus Volume 2.[^openstax-partialsums]
+
+[^openstax-partialsums]: OpenStax, *Calculus Volume 2*, Section 5.2, https://openstax.org/details/books/calculus-volume-2

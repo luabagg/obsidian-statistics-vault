@@ -1,85 +1,64 @@
 ---
 dg-publish: true
+tags:
+  - calculus
+  - multivariable
+  - optimization
 ---
 
-## Introdução ao Método dos Multiplicadores de Lagrange
+# Method of Lagrange Multipliers
 
-O Método dos Multiplicadores de Lagrange é uma técnica utilizada em cálculo para encontrar extremos (máximos ou mínimos) de uma função sujeita a restrições. Este método é especialmente útil quando se deseja otimizar uma função multivariável com condições restritivas.
+## Summary
 
-### Formulando o Problema
+Lagrange multipliers locate constrained extrema of $f$ subject to $g=\text{constant}$ by solving $\nabla f=\lambda\nabla g$ together with the constraint. Critical points of the Lagrangian must still be classified (max, min, or saddle-type on the constraint).
 
-Considere uma função $f(x_1, x_2, \ldots, x_n)$ que queremos maximizar ou minimizar sujeita a uma restrição $g(x_1, x_2, \ldots, x_n) = c$. O problema pode ser formulado como:
+## Prerequisites
 
-$$
-\text{Maximizar/Minimizar } f(x_1, x_2, \ldots, x_n)
-$$
+[[Derivadas Parciais]], [[Valores de Máximo e Mínimo]], gradients
 
-sujeto a
+## Theorem / Procedure
 
-$$
-g(x_1, x_2, \ldots, x_n) = c.
-$$
-
-### Definição Do Método
-
-O método consiste em introduzir um novo parâmetro, chamado multiplicador de Lagrange ($\lambda$), e formar uma nova função, conhecida como função auxiliar:
+To extremize $f(\mathbf{x})$ subject to $g(\mathbf{x})=c$ (one constraint), introduce $\lambda$ and solve
 
 $$
-L(x_1, x_2, \ldots, x_n, \lambda) = f(x_1, x_2, \ldots, x_n) - \lambda (g(x_1, x_2, \ldots, x_n) - c).
+\nabla f(\mathbf{x})=\lambda\nabla g(\mathbf{x}),\qquad g(\mathbf{x})=c,
 $$
 
-### Encontrando Os Extremos
-
-Para encontrar os extremos da função $f$ sujeita à restrição $g$, devemos resolver o sistema de equações:
+equivalently $\nabla L=\mathbf{0}$ for
 
 $$
-\begin{align*}
-
-\frac{\partial L}{\partial x_i} &= 0, \quad i = 1, 2, \ldots, n \\
-
-\frac{\partial L}{\partial \lambda} &= 0.
-
-\end{align*}
+L(\mathbf{x},\lambda)=f(\mathbf{x})-\lambda\bigl(g(\mathbf{x})-c\bigr).
 $$
 
-Essas equações são conhecidas como as condições de Lagrange e fornecem os pontos críticos do problema.
+## Conditions / Assumptions
 
-### Exemplo
+- $f$ and $g$ are $C^1$ near the solution.
+- $\nabla g\neq\mathbf{0}$ at candidate points (constraint qualification).
+- On a **closed bounded** constraint set (compact), extrema exist; on unbounded constraints, there may be no maximum or no minimum.
 
-Considere o seguinte exemplo: maximizar a função $f(x, y) = x^2 + y^2$ sujeita à restrição $g(x, y) = x + y - 1 = 0$. A função auxiliar é:
+## Worked Example
 
-$$
-L(x, y, \lambda) = x^2 + y^2 - \lambda (x + y - 1).
-$$
+Optimize $f(x,y)=x^2+y^2$ subject to $x+y=1$.
 
-As condições de Lagrange são:
+Solve $2x=\lambda$, $2y=\lambda$, $x+y=1$. Then $x=y=1/2$, so the only critical point is $(1/2,1/2)$ with $f=1/2$.
 
-$$
-\begin{align*}
+On the line $x+y=1$, $f(x,1-x)=x^2+(1-x)^2=2x^2-2x+1$, whose graph is a parabola opening upward. Thus $(1/2,1/2)$ is a **minimum**, not a maximum. As $|x|\to\infty$ along the line, $f\to\infty$, so **no maximum exists**.
 
-\frac{\partial L}{\partial x} &= 2x - \lambda = 0 \\
+A corrected “maximize” example: maximize $f(x,y)=xy$ on $x+y=1$ with $x,y\ge 0$ (compact segment) yields maximum $1/4$ at $(1/2,1/2)$.
 
-\frac{\partial L}{\partial y} &= 2y - \lambda = 0 \\
+## Common Mistakes
 
-\frac{\partial L}{\partial \lambda} &= -(x + y - 1) = 0.
+- Reporting a Lagrange critical point as a maximum without checking the constraint geometry.
+- Ignoring points where $\nabla g=\mathbf{0}$.
+- Forgetting that unbounded constraints need behavior at infinity.
 
-\end{align*}
-$$
+## Connections
 
-Resolvendo esse sistema, obtemos:
+- Unconstrained test: [[Valores de Máximo e Mínimo]]
+- Geometry: $\nabla f$ parallel to $\nabla g$ means level curves of $f$ and $g$ share a tangent
 
-$$
-2x = \lambda, \quad 2y = \lambda, \quad x + y = 1.
-$$
+## References
 
-Substituindo $\lambda$ em $2x = \lambda$ e $2y = \lambda$, temos $2x = 2y$, ou seja, $x = y$. Substituindo em $x + y = 1$, obtemos:
+Lagrange multipliers are treated in OpenStax Calculus Volume 3.[^openstax-lagrange]
 
-$$
-2x = 1 \implies x = \frac{1}{2}, \quad y = \frac{1}{2}.
-$$
-
-Portanto, o ponto crítico é $(\frac{1}{2}, \frac{1}{2})$.
-
-### Aplicações
-
-O Método dos Multiplicadores de Lagrange tem diversas aplicações em áreas como economia, física e engenharia. Por exemplo, pode ser usado para determinar a configuração ótima de um sistema com restrições, como o dimensionamento de uma estrutura ou a alocação de recursos.
+[^openstax-lagrange]: OpenStax, *Calculus Volume 3*, Section 4.8, https://openstax.org/details/books/calculus-volume-3

@@ -1,65 +1,93 @@
 ---
 dg-publish: true
+tags:
+  - calculus
+  - multivariable
+  - coordinates
 ---
 
-As coordenadas esféricas são um sistema de coordenadas que permite descrever pontos em um espaço tridimensional. Elas são particularmente úteis em problemas que envolvem objetos com simetria esférica, como esferas, cilindros e cones.
+# Spherical Coordinates
 
-## Definição
+## Summary
 
-Dado um ponto P no espaço 3D, as coordenadas esféricas (ρ, θ, φ) são definidas da seguinte forma:
+Spherical coordinates $(\rho,\theta,\phi)$ locate a point by distance from the origin, azimuth angle in the $xy$-plane, and polar angle down from the positive $z$-axis. They are ideal for spheres and cones about the $z$-axis. The volume element is $\rho^2\sin\phi\,d\rho\,d\phi\,d\theta$.
 
-* ρ (rho): é a distância do ponto P ao origem O.
-* θ (theta): é o ângulo entre o raio OP e o eixo x positivo.
-* φ (phi): é o ângulo entre o raio OP e o plano xy.
+## Prerequisites
 
-**Relação com as coordenadas cartesianas**
+[[Coordenadas Polares]], [[Coordenadas Cilíndricas]], basic trigonometry
 
-As coordenadas esféricas podem ser relacionadas às coordenadas cartesianas (x, y, z) da seguinte forma:
+## Definition / Notation
 
-$$
-\begin{align}
-x &= \rho \sin \phi \cos \theta \\
-y &= \rho \sin \phi \sin \theta \\
-z &= \rho \cos \phi
-\end{align}
-$$
+Standard calculus convention (as in OpenStax):
 
-**Derivadas em coordenadas esféricas**
+| Symbol | Meaning | Range |
+|--------|---------|-------|
+| $\rho$ | distance from origin | $\rho\ge 0$ |
+| $\theta$ | azimuth angle from positive $x$-axis in the $xy$-plane | $[0,2\pi)$ (or $[-\pi,\pi)$) |
+| $\phi$ | polar angle from positive $z$-axis | $[0,\pi]$ |
 
-As derivadas em coordenadas esféricas são importantes para resolver problemas de cálculo. A seguir, estão as fórmulas para as derivadas parciais das funções em coordenadas esféricas:
-
-* $\frac{\partial}{\partial \rho}$
-* $\frac{\partial}{\partial \theta}$
-* $\frac{\partial}{\partial \phi}$
+Conversion to Cartesian:
 
 $$
-\begin{align}
-\frac{\partial}{\partial \rho} &= \sin \phi \cos \theta \frac{\partial}{\partial x} + \sin \phi \sin \theta \frac{\partial}{\partial y} + \cos \phi \frac{\partial}{\partial z} \\
-\frac{\partial}{\partial \theta} &= -\rho \sin \phi \sin \theta \frac{\partial}{\partial x} + \rho \sin \phi \cos \theta \frac{\partial}{\partial y} \\
-\frac{\partial}{\partial \phi} &= \rho \cos \phi \cos \theta \frac{\partial}{\partial x} + \rho \cos \phi \sin \theta \frac{\partial}{\partial y} - \rho \sin \phi \frac{\partial}{\partial z}
-\end{align}
+\begin{aligned}
+x&=\rho\sin\phi\cos\theta,\\
+y&=\rho\sin\phi\sin\theta,\\
+z&=\rho\cos\phi.
+\end{aligned}
 $$
 
-Essas fórmulas permitem calcular as derivadas parciais de funções em coordenadas esféricas, o que é útil para resolver problemas de cálculo em espaços tridimensionais.
+Inverse (principal values):
 
-## Variáveis
+$$
+\rho=\sqrt{x^2+y^2+z^2},\quad
+\phi=\arccos\Bigl(\frac{z}{\rho}\Bigr)\ (\rho>0),\quad
+\theta=\operatorname{atan2}(y,x).
+$$
 
-**Variável Reta ($\rho$)**
+## Formula
 
-A variável reta $\rho$ representa a distância do ponto ao origem. Ela pode variar entre $0$ e $\infty$. A variação máxima de $\rho$ é, portanto, $\boxed{\infty}$.
+Volume element:
 
-**Variável Circular ($\theta$)**
+$$
+dV=\rho^2\sin\phi\,d\rho\,d\phi\,d\theta.
+$$
 
-A variável circular $\theta$ representa o ângulo formado com o eixo x positivo. Ela pode variar entre $0$ e $2\pi$. A variação máxima de $\theta$ é, portanto, $\boxed{2\pi}$.
+## Geometric Sets
 
-**Variável Polar ($\phi$)**
+- $\rho=\text{const}$: sphere centered at the origin.
+- $\phi=\text{const}$ ($0<\phi<\pi/2$): cone opening from the positive $z$-axis with opening angle $\phi$ (not “angle with the $x$-axis”).
+- $\theta=\text{const}$: half-plane hinged on the $z$-axis.
 
-A variável polar $\phi$ representa o ângulo formado com o plano xy. Ela pode variar entre $0$ e $\pi$. A variação máxima de $\phi$ é, portanto, $\boxed{\pi}$.
+## Conditions / Assumptions
 
-### Relação do Phi Constante com um Cone
+- $\sin\phi\ge 0$ on $[0,\pi]$, so the Jacobian factor $\rho^2\sin\phi$ is nonnegative.
+- Physics texts sometimes swap the names of $\theta$ and $\phi$; keep the conversion formulas consistent with your convention.
 
-Quando $\phi$ é constante, isso significa que o ponto está localizado em uma superfície circular centrada no origem. Essa superfície é, na verdade, um cone com a direção de seu eixo sendo a direção do vetor $\rho$. O ângulo entre o eixo x positivo e o eixo do cone é exatamente $\phi$, que é constante.
+## Worked Example
 
-**Exemplo**
+Point $(\rho,\theta,\phi)=(3,\pi/4,\pi/3)$:
 
-Considere um ponto $(\rho, \theta, \phi) = (3, \frac{\pi}{4}, \frac{\pi}{3})$. Nesse caso, a variável reta $\rho$ tem valor $3$, a variável circular $\theta$ tem valor $\frac{\pi}{4}$ e a variável polar $\phi$ é constante com valor $\frac{\pi}{3}$. Isso significa que o ponto está localizado em um cone com direção do eixo $(\frac{1}{2}, \frac{1}{2}, \frac{\sqrt{3}}{2})$, que forma um ângulo de $\frac{\pi}{3}$ com o eixo x positivo.
+$$
+x=3\sin(\pi/3)\cos(\pi/4)=\frac{3\sqrt{6}}{4},\quad
+y=\frac{3\sqrt{6}}{4},\quad
+z=3\cos(\pi/3)=\frac{3}{2}.
+$$
+
+Constant $\phi=\pi/3$ is the cone making angle $\pi/3$ with the positive $z$-axis.
+
+## Common Mistakes
+
+- Defining $\phi$ as the angle with the $xy$-plane (that would be $\pi/2-\phi$ in this convention).
+- Forgetting $\sin\phi$ in $dV$.
+- Allowing $\phi>\pi$ or negative $\rho$ without a careful identification scheme.
+
+## Connections
+
+- Triple integrals: [[Integrais Triplas]]
+- Related systems: [[Coordenadas Cilíndricas]]
+
+## References
+
+Spherical coordinates and the Jacobian are standard in OpenStax Calculus Volume 3.[^openstax-sph]
+
+[^openstax-sph]: OpenStax, *Calculus Volume 3*, Section 5.5, https://openstax.org/details/books/calculus-volume-3

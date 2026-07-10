@@ -1,88 +1,62 @@
 ---
 dg-publish: true
+tags:
+  - numerical-methods
+  - quadrature
+aliases:
+  - Trapezoidal Rule
 ---
 
-A regra dos trapezios é uma técnica de integração numérica utilizada para aproximar a área sob uma curva. Ela consiste em dividir o intervalo de integração em subintervalos menores, chamados de trapézios, e calcular a área de cada um desses trapézios.
+# Trapezoidal Rule
 
-## Fórmula da Regra dos Trapezios
+## Summary
 
-A fórmula da regra dos trapezios é dada por:
+The trapezoidal rule approximates the area under \(y=f(x)\) by trapezoids. The composite rule is second-order accurate for smooth \(f\).
 
-$$
-\int_{a}^{b} f(x) dx \approx \frac{h}{2} \left[ f(a) + 2f(a+h) + 2f(a+2h) + ... + 2f(b-h) + f(b) \right]
-$$
+## Prerequisites
 
-onde $h$ é a largura do trapézio e $n$ é o número de subintervalos.
+[[Integrais]], [[Soma de Riemann]]
 
-## Exemplo
+## Formula / Iteration Rule
 
-Suponha que desejamos calcular a área sob a curva $y = x^2$ no intervalo $[0, 2]$ com uma precisão de $10^{-3}$.
+With \(h=(b-a)/n\), \(x_i=a+ih\), \(y_i=f(x_i)\),
 
-### Passo 1: Dividir o Intervalo em Subintervalos
+\[
+\int_a^b f(x)\,dx
+\approx \frac{h}{2}\big(y_0+2y_1+\cdots+2y_{n-1}+y_n\big).
+\]
 
-Dividimos o intervalo $[0, 2]$ em subintervalos de largura $h = \frac{2-0}{n} = \frac{2}{n}$.
+## Error / Accuracy
 
-### Passo 2: Calcular a Área de Cada Trapézio
+If \(f''\) is continuous,
 
-Calculamos a área de cada trapézio usando a fórmula:
+\[
+E=-\frac{(b-a)}{12}h^2 f''(\xi)
+\]
 
-$$
-\text{Área do trapézio } i = \frac{h}{2} \left[ f(a+(i-1)h) + f(a+ih) \right]
-$$
+for some \(\xi\in(a,b)\). Thus the error is \(O(h^2)\).
 
-### Passo 3: Somar as Áreas dos Trapézios
+## Worked Example
 
-Somamos as áreas dos trapézios para obter a área aproximada:
+\(\int_0^1 x^2\,dx\) with \(n=2\), \(h=1/2\):
 
-$$
-\text{Área aproximada} = \sum_{i=1}^{n} \text{Área do trapézio } i
-$$
+\[
+\frac{1/2}{2}\big(0+2\cdot(1/2)^2+1\big)=\frac14\cdot\frac{3}{2}=\frac38=0.375.
+\]
 
-## Precisão da Regra dos Trapezios
+Exact: \(1/3\approx 0.333\).
 
-A precisão da regra dos trapezios depende do número de subintervalos $n$. Quanto maior for $n$, mais precisa será a aproximação.
+## Common Failure Modes
 
-### Tabela de Erro
+- Claiming a specific absolute accuracy from a large \(n\) without using the error formula or a comparison integral.
+- Applying the smooth-error formula across singularities.
 
-A tabela de erro para a regra dos trapezios é dada por:
+## Connections
 
-$$
-E \leq \frac{b-a}{12} h^2 f''(\xi)
-$$
+- Related: [[Regra do Ponto Médio]], [[Regra de Simpson (um terço)]]
 
-onde $\xi$ está no intervalo $[a, b]$.
+## References
 
-## Exemplo Implementado em Python
+Composite trapezoidal quadrature is standard.[^dlmf-quad]
 
-```python
-import numpy as np
-
-def regra_dos_trapezios(f, a, b, n):
-    h = (b - a) / n
-    x = np.linspace(a, b, n+1)
-    y = f(x)
-
-    area = 0.5 * h * (y[0] + y[-1])
-    for i in range(1, n):
-        area += h * y[i]
-
-    return area
-
-# Defina a função f
-def f(x):
-    return x**2
-
-# Calcule a área aproximada
-a = 0
-b = 2
-n = 1000
-area_aproximada = regra_dos_trapezios(f, a, b, n)
-
-print("Área aproximada:", area_aproximada)
-```
-
-Essa implementação calcula a área aproximada sob a curva $y = x^2$ no intervalo $[0, 2]$ com uma precisão de $10^{-3}$ utilizando a regra dos trapezios.
-
-## Arquivo Adicional
-
-![[Regra dos Trapézios.pdf]]
+[^dlmf-quad]: NIST DLMF, *§3.5 Quadrature*, https://dlmf.nist.gov/3.5

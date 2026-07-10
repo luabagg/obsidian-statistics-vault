@@ -1,44 +1,51 @@
 ---
 dg-publish: true
+tags:
+  - calculus
+  - series
 ---
 
-A série harmônica geral, conhecida como **p-série**, é uma série infinita da forma:
+# $p$-Series
+
+## Summary
+
+The $p$-series $\sum_{n=1}^\infty 1/n^p$ converges if and only if $p>1$, and diverges if $p\le 1$. The case $p=1$ is the harmonic series. The term test alone cannot prove divergence when $1/n^p\to 0$ (which holds for all $p>0$).
+
+## Prerequisites
+
+[[Série Harmônica]], [[Teste da Integral]]
+
+## Theorem
+
+For real $p$,
 
 $$
-\sum_{n=1}^{\infty} \frac{1}{n^p}
+\sum_{n=1}^\infty\frac{1}{n^p}
+\begin{cases}
+\text{converges}, & p>1,\\
+\text{diverges}, & p\le 1.
+\end{cases}
 $$
 
-onde $p$ é um número real positivo. A convergência ou divergência dessa série depende do valor de $p$:
+Proof sketch: integral test with $f(x)=x^{-p}$ on $[1,\infty)$.
 
-- **Caso $p > 1$**: A série converge. Um exemplo é a série harmônica dupla com $p = 2$, que é:
-$$
-\sum_{n=1}^{\infty} \frac{1}{n^2}
-$$
+## Worked Example
 
-Esta série converge para um valor finito, conhecido como a constante zeta de Riemann para $s = 2$:
+- $\sum 1/n^2$ converges; in fact $\sum_{n=1}^\infty 1/n^2=\pi^2/6=\zeta(2)$.
+- $\sum 1/\sqrt{n}$ diverges ($p=1/2\le 1$), even though terms $\to 0$.
+- $\sum n=\sum n^{-(-1)}$ diverges ($p=-1\le 1$).
 
-$$
-\zeta(2) = \sum_{n=1}^{\infty} \frac{1}{n^2} = \frac{\pi^2}{6}
-$$
-- **Caso $p = 1$**: A série é a série harmônica simples:
-$$
-\sum_{n=1}^{\infty} \frac{1}{n}
-$$
+## Common Mistakes
 
-Esta série diverge, o que pode ser demonstrado usando o teste da comparação ou o teste do termo geral não-nulo.
+- Claiming divergence of $\sum 1/n^p$ for $p>0$ solely because “terms do not go to zero”—they do go to zero for $p>0$; divergence for $0<p\le 1$ needs integral/comparison tests.
+- Saying the series converges for $p\ge 1$ (false at $p=1$).
 
-- **Caso $0 < p < 1$**: A série diverge. Por exemplo, para $p = \frac{1}{2}$:
-$$
-\sum_{n=1}^{\infty} \frac{1}{\sqrt{n}}
-$$
+## Connections
 
-Esta série diverge mais rapidamente do que a série harmônica simples.
+- [[Teste da Integral]], [[Testes de Comparação]], [[Série Harmônica]]
 
-- **Caso $p \leq 0$**: A série diverge. Por exemplo, para $p = -1$:
-$$
-\sum_{n=1}^{\infty} n
-$$
+## References
 
-Esta é uma série aritmética crescente e claramente divergente.
+$p$-series are classified via the integral test in OpenStax Calculus Volume 2.[^openstax-pseries]
 
-A convergência da p-série pode ser demonstrada usando o teste do termo geral não-nulo ou o teste de comparação. Nota-se que a p-série desempenha um papel crucial na teoria dos números e em várias aplicações matemáticas, incluindo a análise de séries e integrais relacionados.
+[^openstax-pseries]: OpenStax, *Calculus Volume 2*, Section 5.3, https://openstax.org/details/books/calculus-volume-2

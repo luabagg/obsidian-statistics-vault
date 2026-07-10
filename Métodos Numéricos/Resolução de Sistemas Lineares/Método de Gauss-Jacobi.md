@@ -2,184 +2,95 @@
 dg-publish: true
 ---
 
-O Método de Gauss-Jacobi é um algoritmo iterativo utilizado para resolver sistemas lineares de equações do tipo $Ax = b$, onde $A$ é uma matriz quadrada, $x$ e $b$ são vetores. Este método é particularmente útil quando a matriz $A$ possui certas propriedades que facilitam sua aplicação.
+# Gauss–Jacobi Method
 
-## Formulando o Problema
+## Summary
 
-Considere um sistema linear de equações representado por:
+Jacobi iteration updates every unknown from the previous full vector. It is simple to parallelize and converges when the iteration matrix has spectral radius less than one (strict diagonal dominance is a common sufficient test).
 
-$$
-\begin{align*}
-a_{11}x_1 + a_{12}x_2 + \cdots + a_{1n}x_n &= b_1 \\
-a_{21}x_1 + a_{22}x_2 + \cdots + a_{2n}x_n &= b_2 \\
-&\vdots \\
-a_{n1}x_1 + a_{n2}x_2 + \cdots + a_{nn}x_n &= b_n
-\end{align*}
-$$
+## Prerequisites
 
-Podemos expressar este sistema em forma matricial como $Ax = b$, onde:
+- [[Métodos Iterativos]]
+- Component form of $Ax=b$
 
-- $A$ é uma matriz $n \times n$,
-- $x$ é um vetor coluna de incógnitas,
-- $b$ é um vetor coluna dos termos independentes.
+## Problem Type
 
-## Aplicação Do Método
+Iteratively solve $Ax=b$ with $a_{ii}\neq 0$.
 
-O método de Gauss-Jacobi consiste em decompor a matriz $A$ em suas partes diagonal, triangular inferior e triangular superior. Especificamente, podemos escrever:
+## Method Definition
+
+Write $A=D+L+U$ with $D$ diagonal and $L,U$ strict lower/upper parts. Jacobi uses
 
 $$
-A = D + L + U,
+x^{(k+1)}=D^{-1}\big(b-(L+U)x^{(k)}\big),
 $$
 
-onde $D$ é a matriz diagonal formada pelos elementos da diagonal principal de $A$, $L$ é a matriz triangular inferior (com zeros na diagonal) e $U$ é a matriz triangular superior (também com zeros na diagonal).
-
-Assim, o sistema original pode ser reescrito como:
+or componentwise
 
 $$
-Dx = -Lx - Ux + b.
+x_i^{(k+1)}=\frac{1}{a_{ii}}\left(b_i-\sum_{j\neq i}a_{ij}x_j^{(k)}\right).
 $$
 
-Isolando $x$, obtemos:
+Iteration matrix: $T_J=-D^{-1}(L+U)=I-D^{-1}A$.[^burden]
+
+## Assumptions / Requirements
+
+- Nonzero diagonals
+- Prefer a starting vector $x^{(0)}$ (often $0$)
+
+## Algorithm
+
+1. Choose $x^{(0)}$, tolerance $\varepsilon$, max iterations.
+2. For each $i$, compute $x_i^{\text{new}}$ from all $x_j^{\text{old}}$, $j\neq i$.
+3. Set $x^{\text{old}}\leftarrow x^{\text{new}}$ only after all $i$ are updated.
+4. Stop on $\|x^{\text{new}}-x^{\text{old}}\|_\infty<\varepsilon$ or residual test.
+
+## Convergence
+
+Converges for every start iff $\rho(T_J)<1$. Strict diagonal dominance of $A$ is sufficient. See [[Teorema Condição Suficiente de Converência do Método de Gauss-Jacobi]].
+
+## Error / Accuracy
+
+Use infinity-norm step and residual $\|b-Ax\|_\infty$.
+
+## Worked Example
 
 $$
-x^{(k+1)} = D^{-1}(-Lx^{(k)} - Ux^{(k)} + b),
+\begin{cases}
+2x_1+x_2=8\\
+x_1+3x_2=10
+\end{cases}
+\qquad\Rightarrow\qquad
+\begin{aligned}
+x_1^{(k+1)}&=\frac12(8-x_2^{(k)})\\
+x_2^{(k+1)}&=\frac13(10-x_1^{(k)})
+\end{aligned}
 $$
 
-onde $x^{(k)}$ representa a aproximação do vetor solução no $k$-ésimo passo.
+With $x^{(0)}=(0,0)$:
 
-## Exemplo
+| $k$ | $x_1$ | $x_2$ |
+| --- | --- | --- |
+| 0 | 0 | 0 |
+| 1 | 4 | $10/3\approx 3.333$ |
+| 2 | $2.333$ | $2$ |
+| 3 | $3$ | $2.556$ |
+| 4 | $2.722$ | $2.333$ |
 
-Considere o sistema linear:
+True solution: $(x_1,x_2)=(14/5,12/5)=(2.8,2.4)$. Residual of iterates shrinks toward zero.
 
-$$
-\begin{align*}
-2x_1 + x_2 &= 8 \\
-x_1 + 3x_2 &= 10
-\end{align*}
-$$
+## Common Failure Modes
 
-Em forma matricial, temos $A = \begin{pmatrix} 2 & 1 \\ 1 & 3 \end{pmatrix}$, $b = \begin{pmatrix} 8 \\ 10 \end{pmatrix}$.
+- Zero diagonal entry
+- Updating in place (that would be Gauss–Seidel)
+- Expecting convergence without $\rho(T_J)<1$
 
-Aplicando o método de Gauss-Jacobi:
+## Connections
 
-$$
-x_1^{(k+1)} = \frac{1}{2}(8 - x_2^{(k)}) \\
-x_2^{(k+1)} = \frac{1}{3}(10 - x_1^{(k)})
-$$
+- [[Método de Gauss-Seidel]]
+- [[Métodos Iterativos]]
+- [[Resolução de Sistemas Lineares]]
 
-### Criterio de Parada Do Método de Gauss-jacobi
+## References
 
-O método de Gauss-Jacobi é uma técnica iterativa utilizada para resolver sistemas lineares. O critério de parada desse método é fundamental para determinar quando a solução atinge um nível aceitável de precisão. Este critério pode ser estabelecido considerando as seguintes condições:
-
-1. **Erro Absoluto**:
-$$
-\epsilon = \max_{i} |x_i^{(k+1)} - x_i^{(k)}| < \varepsilon
-$$
-
-   Aqui, $x_i^{(k+1)}$ e $x_i^{(k)}$ representam os valores das variáveis no $(k+1)$-ésimo e $k$-ésimo iterações, respectivamente. $\varepsilon$ é um valor pequeno definido pelo usuário que serve como a tolerância de erro.
-
-2. **Erro Relativo**:
-$$
-\epsilon = \frac{\max_{i} |x_i^{(k+1)} - x_i^{(k)}|}{\max_{i} |x_i^{(k+1)}|} < \varepsilon
-$$
-
-   Este critério é útil quando as soluções são de ordens de grandeza diferentes.
-
-3. **Número Máximo de Iterações**:
-   O método pode ser interrompido após um número máximo de iterações, $K_{\text{max}}$, seja atingido.
-$$
-k \geq K_{\text{max}}
-$$
-4. **Convergência Garantida**:
-   Para garantir a convergência do método de Gauss-Jacobi, é necessário que o sistema linear seja diagonalmente dominante ou que as matrizes associadas sejam simétricas e definidas positivas, conforme o [[Teorema Condição Suficiente de Converência do Método de Gauss-Jacobi]]
-
-### Exemplos
-
-Considere um sistema linear $Ax = b$ com matriz $A$ diagonalmente dominante. Suponha que a tolerância de erro $\varepsilon = 10^{-6}$, o número máximo de iterações seja $K_{\text{max}} = 50$, e os valores iniciais sejam $x^{(0)} = [0, 0, \ldots, 0]^T$.
-
-- **Erro Absoluto**:
-$$
-|x_i^{(k+1)} - x_i^{(k)}| < 10^{-6}
-$$
-- **Erro Relativo**:
-$$
-\frac{|x_i^{(k+1)} - x_i^{(k)}|}{|x_i^{(k+1)}|} < 10^{-6}
-$$
-
-### Observações Importantes
-
-- O critério de parada baseado no erro relativo é mais robusto, pois considera a escala dos valores das variáveis.
-- A escolha do critério de parada deve levar em conta o problema específico e as características do sistema linear.
-
-## Código em Python
-
-```python
-import numpy as np
-
-def gauss_jacobi(A, b, x0=None, tol=1e-6, max_iter=100):
-    """
-    Solve the linear system Ax = b using the Gauss-Jacobi iterative method.
-
-    Parameters:
-    A : numpy.ndarray
-        Coefficient matrix (n x n)
-    b : numpy.ndarray
-        Right-hand side vector (n,)
-    x0 : numpy.ndarray, optional
-        Initial guess for the solution (n,). If None, uses zeros.
-    tol : float, optional
-        Tolerance for the stopping criterion (default: 1e-6)
-    max_iter : int, optional
-        Maximum number of iterations (default: 100)
-
-    Returns:
-    result : dict
-        Dictionary with keys:
-            'solution'   : Solution vector (numpy.ndarray)
-            'iterations' : Number of iterations performed (int)
-            'converged'  : Boolean indicating if the method converged (bool)
-            'residual'   : Final residual norm (float)
-    """
-    n = A.shape[0]
-    if x0 is None:
-        x0 = np.zeros(n)
-    x = x0.copy()
-    x_new = np.zeros_like(x)
-
-    for iteration in range(1, max_iter + 1):
-        for i in range(n):
-            s = sum(A[i, j] * x[j] for j in range(n) if j != i)
-            x_new[i] = (b[i] - s) / A[i, i]
-        if np.linalg.norm(x_new - x, ord=np.inf) < tol:
-            residual = np.linalg.norm(np.dot(A, x_new) - b, ord=np.inf)
-            return {
-                'solution': x_new,
-                'iterations': iteration,
-                'converged': True,
-                'residual': residual
-            }
-        x[:] = x_new
-    residual = np.linalg.norm(np.dot(A, x_new) - b, ord=np.inf)
-    return {
-        'solution': x_new,
-        'iterations': max_iter,
-        'converged': False,
-        'residual': residual
-    }
-
-# Example usage
-if __name__ == "__main__":
-    A = np.array([[10., -1., 2., 0.],
-                  [-1., 11., -1., 3.],
-                  [2., -1., 10., -1.],
-                  [0.0, 3., -1., 8.]])
-    b = np.array([6., 25., -11., 15.])
-    x0 = np.zeros(4)
-    result = gauss_jacobi(A, b, x0, tol=1e-8, max_iter=100)
-    print("Solution:", result['solution'])
-    print("Iterations:", result['iterations'])
-    print("Converged:", result['converged'])
-    print("Final residual norm:", result['residual'])
-    print("Verification: A·x =", np.dot(A, result['solution']))
-    print("b =", b)
-```
+[^burden]: Burden & Faires, *Numerical Analysis*, Jacobi iteration; NIST DLMF Ch. 3, https://dlmf.nist.gov/3

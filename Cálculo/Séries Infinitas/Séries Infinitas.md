@@ -1,6 +1,12 @@
 ---
 dg-publish: true
 dg-show-local-graph: true
+tags:
+  - calculus
+  - series
+  - hub
+aliases:
+  - Infinite Series
 ---
 
 %% Begin Waypoint %%
@@ -26,25 +32,44 @@ dg-show-local-graph: true
 
 %% End Waypoint %%
 
-As séries são uma parte fundamental do cálculo que nos permitem estudar somas infinitas de termos. Elas são ferramentas matemáticas poderosas que aparecem em diversos contextos, desde problemas práticos até aplicações teóricas avançadas.
+# Infinite Series
 
-## O que São Séries?
+## Summary
 
-Uma série é a soma de uma sequência infinita de números. Matematicamente, é representada como:
+An infinite series is the sum of the terms of a sequence. The series converges when its sequence of partial sums approaches a finite limit; otherwise it diverges. Tests decide convergence; power and Taylor series represent functions.
+
+## Prerequisites
+
+[[Sequências]], [[Limites]]
+
+## Learning Order
+
+1. [[Sequências]] and [[Soma de Séries por Somas Parciais]]
+2. Special series: [[Série Geométrica]], [[Série Telescópica]], [[Série Harmônica]], [[Série P]]
+3. Tests: [[Testes de Comparação]], [[Teste da Integral]], [[Teste da Razão]], [[Teste da Raíz]], [[Séries Alternadas]], [[Convergência Absoluta]]
+4. Remainders: [[Estimativa Para a Soma de uma Série]]
+5. Function series: [[Séries de Potências]], [[Série de Taylor]], [[Série de Maclaurin]], [[Série Binomial]]
+
+## Definition
 
 $$
- \sum_{n=1}^{\infty} a_n = a_1 + a_2 + a_3 + … 
+\sum_{n=1}^\infty a_n = a_1+a_2+a_3+\cdots
 $$
 
-## Tipos Principais de Séries
+converges to $S$ if $S_n=\sum_{k=1}^n a_k\to S$ as $n\to\infty$.
 
-- **Séries Geométricas:** São séries onde cada termo é multiplicado por uma razão constante
-- **Séries Aritméticas:** São séries onde a diferença entre termos consecutivos é constante
-- **Séries de Potência:** São séries que envolvem potências de uma variável
+## Common Mistakes
 
-## Conceitos Fundamentais
+- Confusing sequences with series.
+- Applying a test outside its hypotheses (e.g. alternating test without eventual monotonicity).
 
-- **Convergência:** Uma série converge quando a soma de seus termos se aproxima de um valor finito
-- **Divergência:** Uma série diverge quando a soma de seus termos não se aproxima de um valor finito
+## Connections
 
-O estudo das séries é essencial para compreender diversos fenômenos matemáticos e tem aplicações em física, engenharia e outras áreas das ciências.
+- Parent path: [[Cálculo]]
+- Approximations: Taylor polynomials feed numerical methods and special functions
+
+## References
+
+Infinite series form a major unit of OpenStax Calculus Volume 2.[^openstax-series-hub]
+
+[^openstax-series-hub]: OpenStax, *Calculus Volume 2*, Chapter 5, https://openstax.org/details/books/calculus-volume-2

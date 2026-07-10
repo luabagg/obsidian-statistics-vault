@@ -1,122 +1,54 @@
 ---
 dg-publish: true
+tags:
+  - calculus
+  - series
+aliases:
+  - Binomial Series
 ---
 
-A **série binomial** é um importante conceito na teoria dos números e em cálculo, que permite expandir expressões do tipo $(1 + x)^n$ para qualquer número real ou complexo $n$. Esta série é uma generalização da fórmula do binômio de Newton.
+# Binomial Series
 
-## Definição da Série Binomial
+## Summary
 
-A **série binomial** pode ser definida como:
+The binomial series expands \((1+x)^\alpha\) for real (or complex) \(\alpha\) as a power series valid for \(|x|<1\). Coefficients use falling products, not ordinary factorials, when \(\alpha\) is not a nonnegative integer.
 
-$$
-(1 + x)^n = \sum_{k=0}^{+\infty} \binom{n}{k} x^k,
-$$
+## Prerequisites
 
-onde $\binom{n}{k}$ é o coeficiente binomial, dado por:
+[[Série de Maclaurin]], [[Séries de Potências]]
 
-$$
-\binom{n}{k} = \frac{n!}{k!(n-k)!}.
-$$
+## Main Result / Formula
 
-## Exemplos de Série Binomial
+\[
+(1+x)^\alpha=\sum_{k=0}^\infty \binom{\alpha}{k} x^k,
+\qquad |x|<1,
+\]
 
-1. **Para $n=0$**:
-$$
-   (1 + x)^0 = 1.
-$$
-2. **Para $n=1$**:
-$$
-   (1 + x)^1 = 1 + x.
-$$
-3. **Para $n=2$**:
-$$
-   (1 + x)^2 = 1 + 2x + x^2.
-$$
-4. **Para $n=-\frac{1}{2}$**:
-$$
-   \left(1 + x\right)^{-\frac{1}{2}} = 1 - \frac{1}{2}x + \frac{\frac{1}{2}\cdot\frac{3}{2}}{2!}x^2 - \cdots.
-$$
+where
 
-## Relação com a [[Série de Maclaurin]]
+\[
+\binom{\alpha}{k}=\frac{\alpha(\alpha-1)\cdots(\alpha-k+1)}{k!}
+\quad(k\ge 1),\qquad \binom{\alpha}{0}=1.
+\]
 
-A **série de Maclaurin** é uma série infinita que representa uma função $f(x)$ em torno do ponto $x=0$. A forma geral da série de Maclaurin para uma função $f(x)$ é:
+If \(\alpha\) is a nonnegative integer, the series terminates and becomes the ordinary binomial theorem for all \(x\).
 
-$$
-f(x) = \sum_{k=0}^{+\infty} \frac{f^{(k)}(0)}{k!} x^k,
-$$
+## Worked Example
 
-onde $f^{(k)}(0)$ representa a $k$-ésima derivada de $f(x)$ avaliada em $x=0$.
+\[
+(1+x)^{-1/2}=1-\frac12 x+\frac{(-1/2)(-3/2)}{2!}x^2+\cdots,\qquad |x|<1.
+\]
 
-A **série binomial** pode ser vista como uma aplicação específica da série de Maclaurin. Por exemplo, para $(1 + x)^n$, podemos escrever:
+## Common Mistakes
 
-$$
-(1 + x)^n = \sum_{k=0}^{+\infty} \binom{n}{k} x^k,
-$$
+- Writing \(\binom{\alpha}{k}=\alpha!/(k!(\alpha-k)!)\) for non-integer \(\alpha\).
 
-onde $\binom{n}{k}$ é o coeficiente binomial e pode ser interpretado como a $k$-ésima derivada de $(1+x)^n$ avaliada em $x=0$, dividido por $k!$. Isso mostra claramente a relação entre a série binomial e a série de Maclaurin.
+## Connections
 
-## Intervalo de Convergência
+- Related: [[Série de Taylor]], [[Séries de Potências]]
 
-O **intervalo de convergência** da série binomial refere-se ao conjunto de valores de $x$ para os quais a série converge. Para a série binomial $(1 + x)^n$, o intervalo de convergência depende do valor de $n$. Em geral, a série converge se $|x| < 1$.
+## References
 
-### Exemplos de Intervalos de Convergência
+The generalized binomial series is standard advanced calculus material.[^ost2]
 
-1. **Para $n=0$**:
-
-   A série é:
-
-$$
-   (1 + x)^0 = \sum_{k=0}^{+\infty} \binom{0}{k} x^k = 1.
-$$
-
-   Esta série converge para todos os valores de $x$, pois não depende de $x$.
-
-1. **Para $n=1$**:
-
-   A série é:
-
-$$
-   (1 + x)^1 = \sum_{k=0}^{+\infty} \binom{1}{k} x^k = 1 + x.
-$$
-
-   Esta série converge para todos os valores de $x$, pois é uma série finita.
-
-1. **Para $n=2$**:
-
-   A série é:
-
-$$
-   (1 + x)^2 = \sum_{k=0}^{+\infty} \binom{2}{k} x^k = 1 + 2x + x^2.
-$$
-
-   Esta série converge para todos os valores de $x$, pois é uma série finita.
-
-1. **Para $n=-\frac{1}{2}$**:
-
-   A série é:
-
-$$
-   \left(1 + x\right)^{-\frac{1}{2}} = \sum_{k=0}^{+\infty} \binom{-\frac{1}{2}}{k} x^k.
-$$
-
-   O coeficiente binomial $\binom{-\frac{1}{2}}{k}$ é dado por:
-
-$$
-   \binom{-\frac{1}{2}}{k} = (-1)^k \frac{\left(\frac{1}{2}\right)\left(\frac{3}{2}\right) \cdots \left(\frac{1}{2} + k - 1\right)}{k!}.
-$$
-
-   A série converge para $|x| < 1$.
-
-### Exemplo de Aplicação
-
-Considere o caso onde $n = -\frac{1}{2}$:
-
-$$
-(1 + x)^{-\frac{1}{2}} = 1 - \frac{1}{2}x + \frac{\frac{1}{2}\cdot\frac{3}{2}}{2!}x^2 - \cdots.
-$$
-
-A série converge para $|x| < 1$. Por exemplo, se $x = \frac{1}{2}$:
-
-$$
-(1 + \frac{1}{2})^{-\frac{1}{2}} = \left(\frac{3}{2}\right)^{-\frac{1}{2}} = \sqrt{\frac{2}{3}}.
-$$
+[^ost2]: OpenStax, *Calculus Volume 2*, https://openstax.org/details/books/calculus-volume-2

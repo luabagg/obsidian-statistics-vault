@@ -1,50 +1,41 @@
 ---
 dg-publish: true
+tags:
+  - numerical-methods
+  - interpolation
+  - hub
+aliases:
+  - Polynomial Interpolation
 ---
 
-%% Begin Waypoint %%
-- **[[Interpolação Polinimial]]**
-	- [[Interpolação Polinimial pela Definição]]
-	- [[Polinômio de Lagrange]]
-	- [[Polinômio de Newton]]
-	- [[Teorema de Existência e Unicidade do Polinômio de Interpolação]]
+# Polynomial Interpolation
 
-%% End Waypoint %%
+## Summary
 
-A **interpolação polinomial** é um método numérico fundamental usado para estimar valores intermediários entre pontos conhecidos. Ela envolve o uso de um polinômio que passa exatamente pelos pontos dados, permitindo a previsão de valores dentro do intervalo desses pontos.
+Polynomial interpolation constructs a polynomial that passes through given data points. For distinct nodes, the polynomial of degree at most \(n\) through \(n+1\) points is unique.
 
-## Definição e Contexto
+## Prerequisites
 
-A interpolação polinomial é uma técnica matemática que consiste em encontrar um polinômio $P(x)$ de grau $n$ ou menor que passa por $n+1$ pontos $(x_0, y_0), (x_1, y_1), \ldots, (x_n, y_n)$. O objetivo é estimar o valor do polinômio em um ponto $x$ dentro do intervalo dos pontos conhecidos.
+[[Polynomials and Rational Functions]], [[Systems of Linear Equations]]
 
-## Formulando a Interpolação
+## Learning Order
 
-A interpolação polinomial pode ser formulada usando diferentes métodos, como o método de Lagrange e o método de Newton.
+1. [[Teorema de Existência e Unicidade do Polinômio de Interpolação]]
+2. [[Interpolação Polinimial pela Definição]] (Vandermonde)
+3. [[Polinômio de Lagrange]]
+4. [[Polinômio de Newton]]
 
-### Método de Lagrange
+## Limitations
 
-O polinômio de interpolação de Lagrange é dado por:
+High-degree equispaced interpolation can oscillate (Runge phenomenon). Piecewise polynomials/splines are often preferable for large data sets (not covered in this hub’s child notes yet).
 
-$$
-P(x) = \sum_{j=0}^{n} y_j L_j(x)
-$$
+## Connections
 
-onde $L_j(x)$ são os polinômios de Lagrange, definidos como:
+- Contrast with approximate fitting: [[Ajuste de Curvas]]
+- Hub: [[Métodos Numéricos]]
 
-$$
-L_j(x) = \prod_{\substack{0 \leq m \leq n \\ m \neq j}} \frac{x - x_m}{x_j - x_m}
-$$
+## References
 
-### Método de Newton
+Existence/uniqueness and classical forms are standard numerical analysis.[^dlmf-interp]
 
-O polinômio de interpolação de Newton é construído usando diferenças divididas. Ele pode ser escrito como:
-
-$$
-P(x) = a_0 + a_1 (x - x_0) + a_2 (x - x_0)(x - x_1) + \cdots + a_n (x - x_0)(x - x_1)\cdots(x - x_{n-1})
-$$
-
-onde os coeficientes $a_i$ são determinados a partir das diferenças divididas.
-
-## Considerações e Limitações
-
-Embora eficaz, a interpolação polinomial tem algumas limitações. Por exemplo, o uso de polinômios de alta ordem pode levar ao fenômeno conhecido como **oscilações de Runge**, onde o polinômio oscila muito entre os pontos de interpolação, especialmente em intervalos largos.
+[^dlmf-interp]: NIST DLMF, *§3.3 Interpolation*, https://dlmf.nist.gov/3.3

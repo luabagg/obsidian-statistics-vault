@@ -1,6 +1,11 @@
 ---
 dg-publish: true
 dg-show-local-graph: true
+tags:
+  - calculus
+  - hub
+aliases:
+  - Calculus
 ---
 
 %% Begin Waypoint %%
@@ -14,38 +19,46 @@ dg-show-local-graph: true
 
 %% End Waypoint %%
 
-## Introdução ao Cálculo
+# Calculus
 
-O cálculo é uma área fundamental da matemática que estuda as mudanças e a velocidade de mudança de quantidades. Ele consiste em duas partes principais: o cálculo diferencial e o cálculo integral.
+## Summary
 
-### Cálculo Diferencial
+Calculus studies instantaneous change (derivatives) and accumulation (integrals), and how they are related. Multivariable calculus and infinite series extend the same toolkit to higher dimensions and function representation.
 
-O cálculo diferencial se concentra na análise de funções para determinar suas taxas de mudança instantâneas, conhecidas como derivadas. Por exemplo, se uma função descreve a posição de um objeto em relação ao tempo, a derivada dessa função fornecerá a velocidade do objeto no instante considerado.
+## Prerequisites
 
-**Exemplo:**
-Considere a função $f(t) = t^2$, que representa o quadrado do tempo. A derivada desta função é dada por:
-$$
-f'(t) = \frac{d}{dt}(t^2) = 2t.
-$$
+Prerequisites: algebra, functions, trigonometry, and basic analytic geometry. Helpful vault links when present: [[Geometria Analítica]].
 
-Isso significa que a velocidade instantânea de um objeto cuja posição é dada por $f(t)$ no instante $t$ é igual a $2t$.
+## Learning Order
 
-### Cálculo Integral
+1. [[Limites]] — limits and continuity (including [[Limites Fundamentais do Cálculo]], [[Teorema do Confronto]])
+2. [[Derivadas]] — rates of change, chain rule, implicit differentiation
+3. [[Teorema Fundamental do Cálculo]] — link between derivatives and integrals
+4. [[Integrais]] — Riemann sums, techniques, multiple integrals
+5. [[Funções de Mais de uma Variável]] — partial derivatives, extrema, coordinates
+6. [[Séries Infinitas]] — sequences, tests, power series, Taylor expansions
 
-O cálculo integral, por outro lado, se concentra na acumulação de quantidades e na inversão do processo de diferenciação. Ele pode ser usado para calcular áreas sob curvas, volumes de sólidos de revolução, entre outros.
+## Core Ideas
 
-**Exemplo:**
-A área sob a curva $f(x) = x^2$ no intervalo $[0, 1]$ pode ser calculada usando o integral definido:
-$$
-\int_{0}^{1} x^2 \, dx.
-$$
+### Differential calculus
 
-Este integral pode ser resolvido como:
+The derivative measures instantaneous rate of change. If $f(t)=t^2$, then $f'(t)=2t$.
 
-$$
-\left. \frac{x^3}{3} \right|_0^1 = \frac{1^3}{3} - \frac{0^3}{3} = \frac{1}{3}.
-$$
+### Integral calculus
 
-### Teorema Fundamental Do Cálculo
+The definite integral measures net accumulation. For example, $\int_0^1 x^2\,dx=1/3$.
 
-- **Conecta a integral e a derivada**: O [[Teorema Fundamental do Cálculo]] é crucial porque conecta as duas operações fundamentais do cálculo: a derivada e o integral. Isso permite que possamos usar técnicas de integração para resolver problemas envolvendo derivadas, e vice-versa.
+### Fundamental theorem
+
+[[Teorema Fundamental do Cálculo]] connects differentiation and integration under standard continuity hypotheses.
+
+## Connections
+
+- Numerical approximations: [[Métodos Numéricos]]
+- Linear structure: [[Álgebra Linear]]
+
+## References
+
+OpenStax Calculus Volumes 1–3 are free full-course references.[^openstax-calc1]
+
+[^openstax-calc1]: OpenStax, *Calculus Volume 1*, https://openstax.org/details/books/calculus-volume-1

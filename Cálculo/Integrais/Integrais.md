@@ -1,6 +1,9 @@
 ---
 dg-publish: true
-dg-show-local-graph: null
+dg-show-local-graph: true
+tags:
+  - calculus
+  - integrals
 ---
 
 %% Begin Waypoint %%
@@ -13,75 +16,59 @@ dg-show-local-graph: null
 
 %% End Waypoint %%
 
-Integrais são um conceito fundamental na matemática e no cálculo, essencial para a modelagem de fenômenos físicos, econômicos e biológicos. Existem dois tipos principais de integrais: as integrais definidas e as indefinidas.
+# Integrals
 
-## Integrais Indefinidas
+## Summary
 
-As integrais indefinidas são expressões que representam uma família de funções. Elas são escritas na forma:
+Integrals measure accumulation: areas under curves, net change, and higher-dimensional mass/volume. Indefinite integrals denote families of antiderivatives; definite integrals are limits of Riemann sums and are evaluated with the Fundamental Theorem when an antiderivative is known.
 
-$$
- \int f(x) \, dx = F(x) + C 
-$$
+## Prerequisites
 
-onde $F(x)$ é a antiderivada de $f(x)$, e $C$ é a constante de integração.
+[[Limites]], [[Derivadas]], [[Teorema Fundamental do Cálculo]]
 
-**Exemplo:**
-Calcule a integral indefinida de $f(x) = 3x^2$.
-$$
- \int 3x^2 \, dx = x^3 + C 
-$$
+## Definition
 
-## Integrais Definidas
-
-As integrais definidas são usadas para calcular áreas sob curvas e volumes de revolução. Elas são representadas por:
+### Indefinite integral
 
 $$
- \int_{a}^{b} f(x) \, dx 
+\int f(x)\,dx=F(x)+C,\qquad F'=f.
 $$
 
-onde $a$ é o limite inferior e $b$ é o limite superior da integral.
-
-**Exemplo:**
-Calcule a área sob a curva $f(x) = x^2$ entre $x=0$ e $x=1$.
-$$
- \int_{0}^{1} x^2 \, dx = \left[ \frac{x^3}{3} \right]_0^1 = \frac{1}{3} - 0 = \frac{1}{3} 
-$$
-
-## Regras de Integração
-
-Existem várias regras e métodos para calcular integrais. Algumas delas incluem:
-
-- **Integração por Substituição:** Utilizada quando a função pode ser simplificada através de uma substituição.
-$$
- \int f(g(x))g'(x) \, dx = \int f(u) \, du
-$$
-- **Integração por Partes:** Útil para integrais do tipo $\int u \, dv$.
-$$
- \int u \, dv = uv - \int v \, du
-$$
-
-## Aplicações Práticas
-
-As integrais são amplamente utilizadas em diversas áreas:
-
-- **Física:** Para calcular trabalho, energia potencial e movimento.
-- **Economia:** Para determinar fluxo de caixa e valor presente.
-- **Biologia:** Para modelar crescimento populacional.
-
-## Exemplo Prático
-
-Considere a função $f(x) = 2x + 1$. Calcule o trabalho realizado ao mover uma carga em um campo elétrico descrito por essa função, entre os pontos $x=0$ e $x=3$.
-
-O trabalho é dado pela integral definida:
+### Definite integral
 
 $$
- W = \int_{0}^{3} (2x + 1) \, dx
+\int_a^b f(x)\,dx=\lim_{\|P\|\to 0}\sum f(x_i^*)\Delta x_i
 $$
 
-Calculando a integral:
+when the limit exists (e.g. $f$ continuous on $[a,b]$).
+
+## Conditions / Assumptions
+
+- Continuity on $[a,b]$ guarantees Riemann integrability.
+- Improper integrals need separate limit analysis at singularities or infinite bounds.
+
+## Worked Example
 
 $$
- W = \left[ x^2 + x \right]_0^3 = (9 + 3) - (0 + 0) = 12
+\int 3x^2\,dx=x^3+C,\qquad
+\int_0^1 x^2\,dx=\Bigl[\frac{x^3}{3}\Bigr]_0^1=\frac{1}{3}.
 $$
 
-Portanto, o trabalho realizado é $12$ unidades de energia.
+Integration by parts: $\int u\,dv=uv-\int v\,du$ (see [[Integral por Partes]]).
+
+## Common Mistakes
+
+- Dropping $+C$ for indefinite integrals.
+- Applying FTC without an antiderivative valid on the whole interval.
+
+## Connections
+
+- Building blocks: [[Soma de Riemann]], [[Teorema Fundamental do Cálculo]]
+- Techniques: [[Integral por Partes]]
+- Multivariable: [[Integrais Duplas]], [[Teorema de Fubini]], [[Integrais Triplas]]
+
+## References
+
+Integral calculus is developed in OpenStax Calculus Volumes 1–2.[^openstax-int]
+
+[^openstax-int]: OpenStax, *Calculus Volume 1*, Chapters 4–5; *Volume 2*, Chapter 1, https://openstax.org/details/books/calculus-volume-1

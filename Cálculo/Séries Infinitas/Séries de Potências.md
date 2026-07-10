@@ -1,68 +1,68 @@
 ---
 dg-publish: true
+tags:
+  - calculus
+  - series
 ---
 
-Uma série de potências é uma representação da forma:
+# Power Series
+
+## Summary
+
+A power series $\sum a_n(x-c)^n$ converges inside an open interval (or disk) centered at $c$ of radius $R$, and may or may not converge at the endpoints. The radius is often found with the ratio test.
+
+## Prerequisites
+
+[[Teste da Razão]], [[Série Geométrica]], [[Convergência Absoluta]]
+
+## Definition
 
 $$
-\sum_{n=0}^{\infty} a_n (x - c)^n,
+\sum_{n=0}^\infty a_n(x-c)^n.
 $$
 
-onde $a_n$ são os coeficientes, $c$ é o centro da série e $x$ é a variável.
+## Radius of Convergence
 
-## Raio de Convergência
-
-O raio de convergência, denotado por $R$, é um número não negativo que define o intervalo em torno do centro $c$ onde a série converge absolutamente. Para calcular $R$, usamos a fórmula:
+If the following limit exists,
 
 $$
-\frac{1}{R} = \lim_{n \to \infty} \left| \frac{a_n}{a_{n+1}} \right|.
+R=\lim_{n\to\infty}\Bigl|\frac{a_n}{a_{n+1}}\Bigr|,
 $$
 
-Se o limite não existe, podemos usar outros métodos como o teste da razão ou o teste do radicando.
+with the conventions $R=0$ or $R=\infty$ when the limit is $0$ or $\infty$. Equivalently, if $L=\lim|a_{n+1}/a_n|$, then $R=1/L$ when $L$ exists in $[0,\infty]$.
 
-## Intervalo de Convergência
+(Do not invert the ratio formula inconsistently: $R=\lim|a_n/a_{n+1}|$, not $1/R=\lim|a_n/a_{n+1}|$ unless you define the limit the other way.)
 
-O intervalo de convergência é a sequência de números $x$ para os quais a série converge. Ele é determinado pelo raio de convergência $R$ e pode ser expresso no formato:
+Inside $|x-c|<R$ the series converges absolutely; outside $|x-c|>R$ it diverges. Endpoints $x=c\pm R$ require separate tests.
 
-$$
-c - R < x < c + R.
-$$
+## Worked Example
 
-É importante verificar os extremos do intervalo, pois a série pode ou não convergir nessas posições.
+Consider $\sum_{n=0}^\infty\bigl((x-2)/3\bigr)^n=\sum (1/3^n)(x-2)^n$.
 
-## Exemplo
-
-Considere a série de potências:
+Here $a_n=3^{-n}$, so
 
 $$
-\sum_{n=0}^{\infty} \frac{(x-2)^n}{3^n}.
-$$
-1. **Raio de Convergência:**
-$$
-R = \lim_{n \to \infty} \left| \frac{a_n}{a_{n+1}} \right| = \lim_{n \to \infty} \left| \frac{\frac{1}{3^n}}{\frac{1}{3^{n+1}}} \right| = 3.
+R=\lim_{n\to\infty}\frac{3^{-n}}{3^{-(n+1)}}=3.
 $$
 
-   Portanto, $R = 3$.
+Absolute convergence for $|x-2|<3$, i.e. $-1<x<5$.
 
-2. **Intervalo de Convergência:**
-   O intervalo inicial é:
-$$
--3 < x - 2 < 3,
-$$
+- At $x=-1$: terms are $\bigl((-3)/3\bigr)^n=(-1)^n$, which do not tend to $0$ → **diverges**.
+- At $x=5$: terms are $1^n=1\not\to 0$ → **diverges**.
 
-   que simplifica para:
+Interval of convergence: $(-1,5)$.
 
-$$
--1 < x < 5.
-$$
-3. **Verificação dos Extremos:**
-   - Para $x = -1$, a série se torna $\sum_{n=0}^{\infty} \frac{(-3)^n}{3^n}$, que é uma série geométrica com razão $-1$. A série converge.
-   - Para $x = 5$, a série se torna $\sum_{n=0}^{\infty} \frac{(3)^n}{3^n}$, que também é uma série geométrica com razão $1$. A série diverge.
+## Common Mistakes
 
-Portanto, o intervalo de convergência final é:
+- Including an endpoint without checking the resulting numerical series.
+- Writing that $\sum(-1)^n$ converges (it does not).
 
-$$
--1 \leq x < 5.
-$$
+## Connections
 
-Essa análise mostra como calcular e interpretar o raio e o intervalo de convergência para uma série de potências.
+- [[Série de Taylor]], [[Série de Maclaurin]], [[Série Binomial]]
+
+## References
+
+Power series and radius of convergence are in OpenStax Calculus Volume 2.[^openstax-power]
+
+[^openstax-power]: OpenStax, *Calculus Volume 2*, Section 6.1, https://openstax.org/details/books/calculus-volume-2
