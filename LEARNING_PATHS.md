@@ -156,6 +156,17 @@ Use these paths as reading orders, not as rigid courses. Each finished note shou
 26. [[Ajuste de Curvas]]
 27. [[Mínimos Quadrados]]
 
+## Statistical Inference
+
+1. [[Inferência Estatística/Estimação Pontual|Estimação Pontual]]
+2. [[Inferência Estatística/Máxima Verossimilhança|Máxima Verossimilhança]]
+3. [[Inferência Estatística/Intervalos de Confiança|Intervalos de Confiança]]
+4. [[Inferência Estatística/Teste de Hipóteses|Teste de Hipóteses]]
+5. [[Inferência Estatística/p-valor|p-valor]]
+6. [[Inferência Estatística/Erros Tipo I e II|Erros Tipo I e II]]
+7. [[Inferência Estatística/Regressão Linear|Regressão Linear]]
+8. [[Inferência Estatística/ANOVA|ANOVA]]
+
 ## Statistical Process Control
 
 1. [[Controle Estatístico do Processo]]
@@ -174,5 +185,9 @@ Use these paths as reading orders, not as rigid courses. Each finished note shou
 14. [[Para Dados Autocorrelacionados]]
 15. [[Capacidade do Processo]]
 16. [[Função Perda Quadrática]]
+
+## DSA / Asymptotic Analysis
+
+1. [[DSA/Asymptotic Analysis|Asymptotic Analysis]]
 
 [^openstax-statistics]: OpenStax, *Introductory Statistics*, https://openstax.org/details/books/introductory-statistics
