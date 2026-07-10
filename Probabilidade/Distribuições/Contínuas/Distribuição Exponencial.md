@@ -1,39 +1,70 @@
 ---
 dg-publish: true
+aliases:
+  - Exponential Distribution
+  - Distribuição Exponencial
 ---
 
-A distribuição exponencial é uma distribuição de probabilidade contínua que descreve o tempo entre eventos independentes e idênticos que ocorrem em um intervalo de tempo fixo. Ela é amplamente utilizada em estatística e engenharia para modelar processos aleatórios.
+# Exponential Distribution
 
-## Definição
+Compact study note.
 
-A distribuição exponencial é definida pela função de densidade de probabilidade:
+## Summary
 
-$$
-f(x) = \lambda e^{-\lambda x} \quad \text{para } x \geq 0
-$$
+The exponential distribution models waiting time to the next event in one constant-rate Poisson process. It is right-skewed and memoryless, not symmetric.[^nist-gallery]
 
-onde $\lambda$ é o parâmetro da distribuição, que representa a taxa de eventos por unidade de tempo.
+## Prerequisites
 
-## Características
+- [[Distribuição Poisson|Poisson Distribution]]
+- [[Variável Aleatória Contínua|Continuous Random Variable]]
 
-* A distribuição exponencial é uma distribuição contínua e simétrica em relação ao eixo dos x.
-* Ela tem um único parâmetro, $\lambda$, que determina a forma da curva.
-* A função de densidade de probabilidade é sempre positiva e diminui à medida que $x$ aumenta.
+## Definition
 
-## Exemplo
+$X\sim\operatorname{Exponential}(\lambda)$ uses the rate parameterization.
 
-Suponha que você esteja interessado em modelar o tempo entre os cliques de um mouse. Se você supuser que esses eventos são independentes e idênticos, a distribuição exponencial pode ser usada para modelar esse processo.
+## Notation and Assumptions
 
-## Propriedades
+$\lambda>0$ is a rate per unit of time or space. Support is nonnegative.
 
-A distribuição exponencial tem várias propriedades importantes:
+## Parameters
 
-* **Média**: A média da distribuição é igual à recíproca do parâmetro $\lambda$, ou seja, $E(X) = \frac{1}{\lambda}$.
-* **Variância**: A variância da distribuição é igual ao quadrado da recíproca do parâmetro $\lambda$, ou seja, $Var(X) = \frac{1}{\lambda^2}$.
+$\lambda>0$.
 
-## Aplicações
+## Support
 
-A distribuição exponencial tem várias aplicações em estatística e engenharia, incluindo:
+$[0,\infty)$.
 
-* **Modelagem de processos aleatórios**: A distribuição exponencial pode ser usada para modelar processos aleatórios que ocorrem em um intervalo de tempo fixo.
-* **Análise de falhas**: A distribuição exponencial pode ser usada para modelar a taxa de falha de componentes ou sistemas.
+## PMF or PDF
+
+$f_X(x)=\lambda e^{-\lambda x}$ for $x\ge0$, and $0$ otherwise.
+
+## CDF
+
+$F_X(x)=1-e^{-\lambda x}$ for $x\ge0$.
+
+## Moments
+
+$E[X]=1/\lambda$, $\operatorname{Var}(X)=1/\lambda^2$, and $M_X(t)=\lambda/(\lambda-t)$ for $t<\lambda$.
+
+## Essential Result
+
+Memorylessness: $P(X>s+t\mid X>s)=P(X>t)$ for $s,t\ge0$.
+
+## Small Example
+
+If calls arrive at rate $2$ per minute, the chance of waiting more than one minute is $P(X>1)=e^{-2}$.
+
+## Common Mistakes
+
+- Mixing rate $\lambda$ with scale $\theta=1/\lambda$.
+- Calling the exponential distribution symmetric.
+
+## Connections
+
+- [[Distribuição Poisson|Poisson Distribution]]
+- [[Distribuição Gama|Gamma Distribution]]
+- [[Distribuição Weibull|Weibull Distribution]]
+
+## References
+
+[^nist-gallery]: NIST/SEMATECH, *e-Handbook of Statistical Methods*, "1.3.6.6 Gallery of Distributions", https://www.itl.nist.gov/div898/handbook/eda/section3/eda366.htm

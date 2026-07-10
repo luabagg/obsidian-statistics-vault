@@ -1,59 +1,48 @@
 ---
 dg-publish: true
+aliases:
+  - Discrete Random Variable
+  - Variavel Aleatoria Discreta
+  - Variável Aleatória Discreta
 ---
 
-Seja $X: \Omega \to \mathbb{R}$ uma variável aleatória definida em um espaço amostral $\Omega$ equipado com uma probabilidade $P$. A medida induzida por $X$ é denotada por $P_X$, e a função de distribuição acumulada (FDA) associada a $X$ é dada por $F_X(x)$.
+# Discrete Random Variable
 
-Dizemos que $X$ é uma variável aleatória discreta se sua função de distribuição acumulada $F_X(x)$ satisfaz as seguintes propriedades:
+Compact study note.
 
-## 1. Definição da Fda para Va Discreta
+## Summary
 
-$$
-F_X(x) = P(X \leq x)
-$$
+One discrete random variable has countable support and is described by a probability mass function. Its CDF is one step function with jumps at support points.[^openstax-discrete]
 
-Esta expressão representa a probabilidade de que o valor da variável aleatória $X$ seja menor ou igual a um determinado ponto $x$.
+## Prerequisites
 
-## 2. Característica Principal de Va Discretas
+- [[Variável Aleatória|Random Variable]]
 
-A FDA de uma variável aleatória discreta é uma função constante por partes, o que significa que ela salta em certos pontos específicos correspondentes aos valores possíveis da variável aleatória.
+## Notation and Assumptions
 
-## 3. Exemplo
+Use $p_X(x)=P(X=x)$ for the PMF. The support $S$ is finite or countably infinite, and $\sum_{x\in S}p_X(x)=1$.
 
-Considere $X$ como a variável aleatória que representa o número de caras ao lançar duas moedas justas. Os valores possíveis de $X$ são 0, 1 e 2.  
+## Essential Result
 
-- Para $x < 0$, $F_X(x) = 0$.  
-- Para $0 \leq x < 1$, $F_X(x) = P(X = 0) = \frac{1}{4}$.  
-- Para $1 \leq x < 2$, $F_X(x) = P(X = 0) + P(X = 1) = \frac{1}{4} + \frac{1}{2} = \frac{3}{4}$.  
-- Para $x \geq 2$, $F_X(x) = 1$.  
+For any Borel set $C\subseteq\mathbb{R}$,
 
-Portanto, a FDA de $X$ é:  
+$$P(X\in C)=\sum_{x\in C\cap S}p_X(x).$$
 
-$$
-F_X(x) =
+## Small Example
 
-\begin{cases}
+If $X$ counts heads in two fair flips, $p_X(0)=1/4$, $p_X(1)=1/2$, and $p_X(2)=1/4$.
 
-0 & \text{se } x < 0 \\
+## Common Mistakes
 
-\frac{1}{4} & \text{se } 0 \leq x < 1 \\
+- Calling a PMF one density.
+- Forgetting that probabilities over the support must sum to one.
 
-\frac{3}{4} & \text{se } 1 \leq x < 2 \\
+## Connections
 
-1 & \text{se } x \geq 2
+- [[Função de Distribuição Acumulada|Cumulative Distribution Function]]
+- [[Distribuição de Bernoulli|Bernoulli Distribution]]
+- [[Distribuição Binomial|Binomial Distribution]]
 
-\end{cases}
-$$
+## References
 
-## 4. Interpretação
-
-A função constante por partes da FDA reflete a natureza discreta dos valores que $X$ pode assumir, com saltos significativos em cada valor possível de $X$.
-
-## 5. Consequências Práticas
-
-- A probabilidade de $X$ assumir um valor específico é dada pelo salto na FDA.  
-- Por exemplo, a probabilidade de $X = 1$ é:  
-$$
-P(X = 1) = F_X(1^+) - F_X(1^-) = \frac{3}{4} - \frac{1}{4} = \frac{1}{2}
-$$
-- Onde $F_X(1^+)$ e $F_X(1^-)$ representam os valores da FDA à direita e à esquerda de 1, respectivamente.
+[^openstax-discrete]: OpenStax, *Introductory Statistics 2e*, "Chapter 4: Discrete Random Variables", https://openstax.org/books/introductory-statistics-2e/pages/4-introduction

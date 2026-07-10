@@ -1,77 +1,78 @@
 ---
 dg-publish: true
+aliases:
+  - Log-Normal Distribution
+  - Distribuição Log-Normal
 ---
-Seja $X \sim N(\mu, \sigma^2)$. Considere uma nova variável aleatória $Y = e^X$, dizemos que $Y$ tem distribuição log-normal com parâmetros $m$ (o valor médio do logaritmo de $Y$) e $r$ (a desvio padrão do logaritmo de $Y$), onde $\sigma > 0$. A notação para essa distribuição é $Y \sim \text{Log-Normal}(m, r^2)$.
 
-A função de densidade de probabilidade (f.d.p.) da variável aleatória $Y$ log-normal é dada por:
+# Log-Normal Distribution
 
-$$
-f_Y(y) = \frac{1}{y\sigma\sqrt{2\pi}} e^{-\frac{(\ln y - m)^2}{2r^2}}, \quad y > 0.
-$$
+Compact study note.
 
-## Propriedades da Distribuição Log-normal
+## Summary
 
-1. **Esperança**:
-   A esperança de $Y$ é dada por:
-   $$
-   E[Y] = e^{m + \frac{\sigma^2}{2}}.
-   
-$$
+One log-normal random variable is the exponential of a normal random variable. It is positive and right-skewed, with parameters inherited from the normal distribution on the log scale.[^nist-gallery]
 
-2. **Variância**:
-   A variância de $Y$ é dada por:
-   $$
+## Prerequisites
 
-   \text{Var}(Y) = (e^{\sigma^2} - 1)e^{2m + \sigma^2}.
+- [[Distribuição Normal|Normal Distribution]]
+- [[Funções de Variáveis Aleatórias|Functions of Random Variables]]
 
-$$
+## Definition
 
-3. **Mediana**:
-   A mediana da distribuição log-normal é igual ao parâmetro $m$:
-   $$
+If $Y\sim N(\mu,\sigma^2)$ and $X=e^Y$, then $X\sim\operatorname{LogNormal}(\mu,\sigma^2)$.
 
-   \text{Med}(Y) = e^m.
+## Notation and Assumptions
 
-$$
+$\mu$ is any real number and $\sigma>0$. These are not the mean and standard deviation of $X$.
 
-4. **Moda**:
-   A moda da distribuição log-normal ocorre no ponto:
-   $$
+## Parameters
 
-   y_{\text{mod}} = e^{m - \sigma^2}.
+$\mu\in\mathbb{R}$ and $\sigma>0$.
 
-$$
+## Support
 
-5. **Função de Distribuição Cumulativa (FDC)**:
-   A função de distribuição cumulativa $F_Y(y)$ é dada por:
-   $$
+$(0,\infty)$.
 
-   F_Y(y) = \Phi\left(\frac{\ln y - m}{r}\right),
+## PMF or PDF
 
-$$
-   onde $\Phi(z)$ é a função de distribuição acumulada da distribuição normal padrão.
+$f_X(x)=\frac{1}{x\sigma\sqrt{2\pi}}\exp[-(\ln x-\mu)^2/(2\sigma^2)]$ for $x>0$.
 
-### Exemplos
+## CDF
 
-1. **Aplicação em Finanças**:
-   A distribuição log-normal é frequentemente usada para modelar os retornos financeiros, pois esses retornos são positivos e tendem a seguir uma distribuição não simétrica.
+$F_X(x)=\Phi((\ln x-\mu)/\sigma)$ for $x>0$.
 
-2. **Exemplo de Cálculo**:
-   Se $X \sim N(0, 1)$, então $Y = e^X$ segue uma distribuição log-normal com parâmetros $m = 0$ e $r = 1$. A f.d.p. de $Y$ é:
-   $$
+## Moments
 
-   f_Y(y) = \frac{1}{y\sqrt{2\pi}} e^{-\frac{\ln^2 y}{2}}, \quad y > 0.
+Moments:
 
-$$
+$$E[X]=\exp(\mu+\sigma^2/2).$$
 
-3. **Cálculo da Esperança**:
-   Para o exemplo acima, a esperança de $Y$ é:
-   $$
+$$\operatorname{Var}(X)=(\exp(\sigma^2)-1)\exp(2\mu+\sigma^2).$$
 
-   E[Y] = e^{0 + \frac{1^2}{2}} = e^{0.5} \approx 1.6487.
+The MGF is not finite for any $t>0$.
 
-$$
+## Essential Result
 
-### Condições de Existência
+The distribution exists for every $\mu\in\mathbb{R}$ and $\sigma>0$; there is no extra condition including $m-r^2<0$.
 
-A distribuição log-normal existe se $m - r^2 < 0$, ou seja, se o parâmetro $m$ é menor que a variância $r^2$. Isso garante que a esperança e a variância existam.
+## Small Example
+
+If $Y\sim N(0,1)$ and $X=\exp(Y)$, then the median of $X$ is $1$ and
+
+$$E[X]=\exp(1/2).$$
+
+## Common Mistakes
+
+- Confusing log-scale parameters with the mean and variance of $X$.
+- Claiming an ordinary MGF exists near zero.
+
+## Connections
+
+- [[Distribuição Normal|Normal Distribution]]
+- [[Funções de Variáveis Aleatórias|Functions of Random Variables]]
+- [[Densidade de Probabilidade|Probability Density Function]]
+
+## References
+
+[^nist-gallery]: NIST/SEMATECH, *e-Handbook of Statistical Methods*, "1.3.6.6 Gallery of Distributions", https://www.itl.nist.gov/div898/handbook/eda/section3/eda366.htm

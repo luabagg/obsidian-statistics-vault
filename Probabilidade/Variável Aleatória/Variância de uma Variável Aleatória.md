@@ -1,61 +1,55 @@
 ---
 dg-publish: true
+aliases:
+  - Variance
+  - Variância de uma Variável Aleatória
 ---
 
-A variância é uma medida fundamental na teoria das probabilidades e estatística, usada para quantificar a dispersão ou variabilidade dos valores que uma variável aleatória pode assumir. Ela fornece informações sobre a "dispersão" dos dados em relação à média.
+# Variance
 
-## Definição
+Compact study note.
 
-A variância de uma variável aleatória $X$, denotada por $\text{Var}(X)$ ou $\sigma^2_X$, é definida como:
+## Summary
 
-$$
-\text{Var}(X) = E[(X - \mu)^2]
-$$
+Variance measures mean squared deviation from the expected value. It is nonnegative and has squared units.[^openstax-discrete]
 
-onde:
+## Prerequisites
 
-- $E[\cdot]$ representa a esperança matemática,
-- $\mu$ é a média (esperança matemática) da variável aleatória $X$.
+- [[Esperança de uma Variável Aleatória|Expected Value]]
 
-## Interpretando a Variância
+## Notation and Assumptions
 
-A variância é sempre não negativa, e seu valor zero indica que todos os valores da variável são iguais à sua média. A unidade de medida da variância é o quadrado da unidade de medida dos dados originais.
+Variance identity:
 
-### Exemplo 1: Variância de Uma Variável Discreta
+$$\operatorname{Var}(X)=E[(X-E[X])^2]=E[X^2]-(E[X])^2.$$
 
-Considere a variável aleatória discreta $X$ com valores possíveis $\{x_1, x_2, \ldots, x_n\}$ e probabilidades correspondentes $\{p_1, p_2, \ldots, p_n\}$. A variância de $X$ é:
+Use it when $E[X^2]$ is finite.
 
-$$
-\text{Var}(X) = \sum_{i=1}^{n} p_i (x_i - \mu)^2
-$$
+## Essential Result
 
-### Exemplo 2: Variância de Uma Variável Contínua
+For constants $c,d$,
 
-Para uma variável aleatória contínua $X$ com função densidade de probabilidade $f(x)$, a variância é:
+$$\operatorname{Var}(c+dX)=d^2\operatorname{Var}(X).$$
 
-$$
-\text{Var}(X) = \int_{-\infty}^{\infty} (x - \mu)^2 f(x) \, dx
-$$
+If $X$ and $Y$ are independent,
 
-## Relação com o Desvio Padrão
+$$\operatorname{Var}(X+Y)=\operatorname{Var}(X)+\operatorname{Var}(Y).$$
 
-O desvio padrão ($\sigma_X$) é a raiz quadrada da variância:
+## Small Example
 
-$$
-\sigma_X = \sqrt{\text{Var}(X)}
-$$
+If $X\sim\operatorname{Bernoulli}(p)$, then $E[X^2]=p$ and $\operatorname{Var}(X)=p-p^2=p(1-p)$.
 
-## Propriedades da Variância
+## Common Mistakes
 
-1. **Propriedade Linear**: Se $a$ e $b$ sã constantes, então:
-$$
-   \text{Var}(a + bX) = a^2 \cdot \text{Var}(X)
-$$
-2. **Propriedade de Soma**: Para duas variáveis aleatórias independentes $X$ e $Y$:
-$$
-   \text{Var}(X + Y) = \text{Var}(X) + \text{Var}(Y)
-$$
-3. **Propriedade de Produto (para variáveis independentes)**:
-$$
-   \text{Var}(XY) = E(X^2)E(Y^2) - [E(X)E(Y)]^2
-$$
+- Squaring the added constant instead of the coefficient multiplying $X$.
+- Adding variances without independence or zero covariance.
+
+## Connections
+
+- [[Covariância e Correlação|Covariance and Correlation]]
+- [[Distribuição de Bernoulli|Bernoulli Distribution]]
+- [[Distribuição Binomial|Binomial Distribution]]
+
+## References
+
+[^openstax-discrete]: OpenStax, *Introductory Statistics 2e*, "Chapter 4: Discrete Random Variables", https://openstax.org/books/introductory-statistics-2e/pages/4-introduction

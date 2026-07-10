@@ -1,75 +1,46 @@
 ---
 dg-publish: true
+aliases:
+  - Functions of Random Variables
+  - Funções de Variáveis Aleatórias
 ---
 
-Se $X$ é uma variável aleatória (va) definida em um espaço de probabilidade $\left(\Omega, \mathcal{F}, P\right)$, e $g: \mathbb{R} \rightarrow \mathbb{R}$ é uma função real, então a transformação $Y = g(X)$ também será uma variável aleatória.
+# Functions of Random Variables
 
-## Transformação de Variáveis Aleatórias
+Compact study note.
 
-A transformação $Y = g(X)$ é uma nova variável aleatória definida como:
+## Summary
 
-$$
- Y(\omega) = g(X(\omega)) 
-$$
+Applying one measurable function to a random variable creates another random variable. Its distribution is found by pushing probability through the transformation.[^mit-prob]
 
-para todo $\omega \in \Omega$. Isso significa que para cada evento $\omega$ no espaço amostral, a va $Y$ produz um valor real.
+## Prerequisites
 
-A transformação de uma variável aleatória (VA) pode ser analisada em dois contextos principais: quando a VA original é discreta e quando ela é contínua. Em ambos os casos, a transformação $Y = g(X)$ gera uma nova variável aleatória, mas a forma de determinar sua distribuição de probabilidade varia.
+- [[Variável Aleatória|Random Variable]]
+- [[Espaço de Probabilidade Produzido por Variável Aleatória|Distribution Induced by a Random Variable]]
 
-  Se $X$ é uma variável aleatória (va) definida em um espaço de probabilidade $(\Omega, \mathcal{F}, P)$, e $g: \mathbb{R} \rightarrow \mathbb{R}$ é uma função real, então a transformação $Y = g(X)$ também será uma variável aleatória.
+## Notation and Assumptions
 
-A transformação $Y = g(X)$ é uma nova variável aleatória definida como:
+If $Y=g(X)$ and $g$ is Borel-measurable, then $Y$ is a random variable and $P(Y\in B)=P(X\in g^{-1}(B))$.
 
-$$
-Y(\omega) = g(X(\omega))
-$$
+## Essential Result
 
-para todo $\omega \in \Omega$. Isso significa que para cada evento $\omega$ no espaço amostral, a va $Y$ produz um valor real.
+For an injective differentiable transform $Y=g(X)$ with inverse $x=g^{-1}(y)$, $f_Y(y)=f_X(x)|dx/dy|$ on the transformed support.
 
-### Caso Discreto
+## Small Example
 
-Se $X$ for uma variável aleatória discreta com valores possíveis $x_1, x_2, \dots$ e função de massa de probabilidade (pmf) $P(X = x_i) = p_i$, então a variável transformada $Y = g(X)$ terá uma distribuição discreta com valores possíveis $y_i = g(x_i)$ e probabilidades:
+If $X\sim\operatorname{Uniform}(0,1)$ and $Y=X^2$, then $F_Y(y)=P(X\le\sqrt{y})=\sqrt{y}$ for $0\le y\le1$.
 
-$$
-P(Y = y_i) = P(X = x_i) = p_i
-$$
+## Common Mistakes
 
-se $g$ for injetora. Caso contrário, se houver valores distintos de $X$ que resultem no mesmo $Y$, devemos somar as probabilidades correspondentes:
+- Forgetting to transform the support.
+- Applying the derivative formula to non-injective transformations without splitting branches.
 
-$$
-P(Y = y) = \sum_{x_i: g(x_i) = y} P(X = x_i)
-$$
+## Connections
 
-### Caso Contínuo
+- [[Função de Distribuição Acumulada|Cumulative Distribution Function]]
+- [[Densidade de Probabilidade|Probability Density Function]]
+- [[Distribuição Log-Normal|Log-Normal Distribution]]
 
-Se $X$ for uma variável aleatória contínua com função densidade de probabilidade (pdf) $f_X(x)$, então a densidade de $Y = g(X)$ pode ser obtida da seguinte forma:
+## References
 
-Se $g$ for uma função monotônica diferenciável, a função densidade de $Y$ é dada por:
-
-$$
-f_Y(y) = f_X(x) \left| \frac{dx}{dy} \right|
-$$
-
-onde $x = g^{-1}(y)$.
-
-Se $g$ não for monotônica, a densidade de $Y$ é obtida somando as contribuições de todas as raízes $x_i$ de $y = g(x)$:
-
-$$
-f_Y(y) = \sum_{x_i: g(x_i) = y} f_X(x_i) \left| \frac{dx}{dy} \right|_{x_i}
-$$
-
-#### Exemplo
-
-Seja $X \sim \mathcal{N}(0,1)$ uma variável aleatória normal padrão e consideremos $Y = X^2$. A densidade de $Y$ pode ser obtida considerando as raízes $x = \pm\sqrt{y}$:
-
-$$
-f_Y(y) = f_X(\sqrt{y}) \left| \frac{d}{dy} \sqrt{y} \right| + f_X(-\sqrt{y}) \left| \frac{d}{dy} (-\sqrt{y}) \right|
-$$
-
-Substituindo $f_X(x) = \frac{1}{\sqrt{2\pi}} e^{-x^2/2}$:
-
-$$
-f_Y(y) = \frac{1}{\sqrt{2\pi}} \left( e^{-y/2} + e^{-y/2} \right) \frac{1}{2\sqrt{y}}
-$$
-
-para $y > 0$.
+[^mit-prob]: MIT OpenCourseWare, "6.041SC Probabilistic Systems Analysis and Applied Probability", Fall 2013, https://ocw.mit.edu/courses/6-041sc-probabilistic-systems-analysis-and-applied-probability-fall-2013/

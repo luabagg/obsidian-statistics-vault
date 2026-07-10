@@ -1,93 +1,48 @@
 ---
 dg-publish: true
-dg-show-local-graph: true
+aliases:
+  - Random Variable
+  - Variavel Aleatoria
+  - Variável Aleatória
 ---
 
-%% Begin Waypoint %%
-- **[[Variável Aleatória]]**
-	- [[Espaço de Probabilidade Produzido por Variável Aleatória]]
-	- [[Esperança de uma Variável Aleatória]]
-	- [[Funções de Variáveis Aleatórias]]
-	- [[Funções Geradoras de Momento]]
-	- [[Variância de uma Variável Aleatória]]
-	- [[Variável Aleatória Contínua]]
-	- [[Variável Aleatória Discreta]]
-	- [[Variável Aleatória Mista]]
+# Random Variable
 
-%% End Waypoint %%
+Compact study note.
 
-## Introdução às Variáveis Aleatórias
+## Summary
 
-As variáveis aleatórias são fundamentais na teoria da probabilidade e estatística, servindo como a ponte entre o mundo dos números determinísticos e o dos eventos incertos. Elas permitem modelar situações onde os resultados não são conhecidos com certeza antes de ocorrerem.
+One random variable is a measurable function from outcomes to numerical values. Measurability is what makes events including $\{X\le x\}$ legitimate probability events.[^mit-prob]
 
-### Definição
+## Prerequisites
 
-Uma variável aleatória é uma função que associa um valor numérico a cada resultado possível em um espaço amostral $\Omega$. Em notação matemática, se $X$ for uma variável aleatória e $\omega \in \Omega$, então $X(\omega)$ representa o valor numérico associado ao resultado $\omega$.
+- [[Espaço de Probabilidade|Probability Space]]
+- [[Sigma-Álgebra De Borel|Borel Sigma-Algebra]]
 
-### Exemplos
+## Notation and Assumptions
 
-1. **Tirar um Dado**: Considere o espaço amostral $\Omega = \{1, 2, 3, 4, 5, 6\}$, onde cada número representa a face de um dado que pode aparecer ao lançá-lo. Se $X$ for a variável aleatória que representa o valor do resultado, então $X(\omega) = \omega$, para $\omega \in \Omega$. Por exemplo, se $\omega = 3$, então $X(3) = 3$.
-2. **Tempo de Chegada**: Considere um sistema onde os clientes chegam a uma loja com tempos variáveis. Se $T$ for a variável aleatória que representa o tempo de chegada do próximo cliente, então $T(\omega)$ pode assumir qualquer valor numérico positivo dependendo da situação.
-3. **Temperatura**: Suponha que estamos interessados na temperatura diária em um determinado local. Se $Y$ for a variável aleatória que representa a temperatura no dia $\omega$, então $Y(\omega)$ pode assumir qualquer valor numérico dentro de uma faixa específica, dependendo das condições climáticas.
+One real-valued random variable is a function $X:\Omega\to\mathbb{R}$ such that $X^{-1}(B)\in\mathcal{F}$ for every $B\in\mathcal{B}(\mathbb{R})$.
 
-### Tipos de Variáveis Aleatórias
+## Essential Result
 
-- **Discretas**: Têm um número contável de valores possíveis. Por exemplo, o número de carros vendidos em um dia.
-$$
-X(\omega) = \begin{cases}
+The CDF $F_X(x)=P(X\le x)$ determines the distribution of one real-valued random variable.
 
-  0 & \text{se não vendeu nenhum carro} \\
+## Small Example
 
-  1 & \text{se vendeu um carro} \\
+For two coin flips, $X=$ number of heads maps $HH\mapsto2$, $HT\mapsto1$, $TH\mapsto1$, $TT\mapsto0$.
 
-  2 & \text{se vendeu dois carros} \\
+## Common Mistakes
 
-  \vdots
+- Thinking a random variable is random in its formula; the input outcome is uncertain.
+- Ignoring measurability when moving beyond finite spaces.
 
-  \end{cases}
-$$
-- **Contínuas**: Podem assumir qualquer valor numérico dentro de um intervalo. Por exemplo, a altura de uma pessoa.
-$$
-Y(\omega) = \text{altura da pessoa em metros}
-$$
+## Connections
 
-### Função de Distribuição Acumulada (FDA)
+- [[Variável Aleatória Discreta|Discrete Random Variable]]
+- [[Variável Aleatória Contínua|Continuous Random Variable]]
+- [[Variável Aleatória Mista|Mixed Random Variable]]
+- [[Espaço de Probabilidade Produzido por Variável Aleatória|Distribution Induced by a Random Variable]]
 
-A função de distribuição acumulada $F_X(x)$ de uma variável aleatória discreta $X$ é definida como:
+## References
 
-$$
-F_X(x) = P(X \leq x)
-$$
-
-Para a variável aleatória contínua $Y$, a FDA é dada por:
-
-$$
-F_Y(y) = P(Y \leq y)
-$$
-
-Essa função descreve a probabilidade de que o valor da variável aleatória seja menor ou igual a um certo ponto.
-
-### Esperança e Variância
-
-- **Esperança**: É a média esperada dos valores que uma variável aleatória pode assumir. Para uma variável discreta $X$, é dada por:
-$$
-E[X] = \sum_{x} x \cdot P(X = x)
-$$
-
-  Para uma variável contínua $Y$, é dada por:
-
-$$
-E[Y] = \int_{-\infty}^{\infty} y \cdot f_Y(y) \, dy
-$$
-- **Variância**: Mede a dispersão dos valores em torno da média. É definida como o quadrado da desvio padrão e para uma variável discreta $X$ é:
-$$
-\text{Var}(X) = E[(X - E[X])^2] = \sum_{x} (x - E[X])^2 \cdot P(X = x)
-$$
-
-  Para uma variável contínua $Y$, a variância é:
-
-$$
-\text{Var}(Y) = E[(Y - E[Y])^2] = \int_{-\infty}^{\infty} (y - E[Y])^2 \cdot f_Y(y) \, dy
-$$
-
-Essas medidas são essenciais para entender e quantificar a tendência central e a dispersão dos dados associados às variáveis aleatórias.
+[^mit-prob]: MIT OpenCourseWare, "6.041SC Probabilistic Systems Analysis and Applied Probability", Fall 2013, https://ocw.mit.edu/courses/6-041sc-probabilistic-systems-analysis-and-applied-probability-fall-2013/

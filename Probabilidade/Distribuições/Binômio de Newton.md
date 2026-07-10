@@ -1,39 +1,47 @@
 ---
 dg-publish: true
+aliases:
+  - Binomial Theorem
+  - Binômio de Newton
 ---
 
-O **binômio de Newton** é um teorema fundamental da matemática que fornece uma maneira eficiente para expandir expressões do tipo $(a + b)^n$, onde $a$ e $b$ são quaisquer números, variáveis ou expressões algébricas, e $n$ é um número inteiro não-negativo.
+# Binomial Theorem
 
-A fórmula do binômio de Newton pode ser escrita como:
+Compact study note.
 
-$$
-(a + b)^n = \sum_{k=0}^{n} \binom{n}{k} a^{n-k}b^k,
-$$
+## Summary
 
-onde $\binom{n}{k}$ é o coeficiente binomial, que representa o número de maneiras de escolher $k$ elementos de um conjunto com $n$ elementos. Este coeficiente pode ser calculado usando a fórmula:
+The binomial theorem expands powers of a sum and supplies the combinatorial coefficients used in the binomial distribution.[^openstax-discrete]
 
-$$
-\binom{n}{k} = \frac{n!}{k!(n-k)!}.
-$$
+## Prerequisites
 
-Por exemplo, considere a expansão de $(x + y)^3$. Usando o binômio de Newton, temos:
+- Prerequisites: None
 
-$$
-(x + y)^3 = \sum_{k=0}^{3} \binom{3}{k} x^{3-k}y^k.
-$$
+## Notation and Assumptions
 
-Desenvolvendo esta expressão termo a termo, obtemos:
+For integer $n\ge0$, $\binom{n}{k}=n!/[k!(n-k)!]$ counts $k$-subsets of an $n$-element set.
 
-$$
-\begin{align*}
+## Essential Result
 
-(x + y)^3 &= \binom{3}{0}x^3y^0 + \binom{3}{1}x^2y^1 + \binom{3}{2}x^1y^2 + \binom{3}{3}x^0y^3 \\
+Expansion formula:
 
-&= 1 \cdot x^3 \cdot 1 + 3 \cdot x^2 \cdot y + 3 \cdot x \cdot y^2 + 1 \cdot 1 \cdot y^3 \\
+$$(a+b)^n=\sum_{k=0}^{n}\binom{n}{k}a^{n-k}b^k.$$
 
-&= x^3 + 3x^2y + 3xy^2 + y^3.
+## Small Example
 
-\end{align*}
-$$
+$(x+y)^3=x^3+3x^2y+3xy^2+y^3$.
 
-Este exemplo ilustra como o binômio de Newton simplifica a expansão de expressões polinomiais, permitindo que sejam calculadas com facilidade e precisão.
+## Common Mistakes
+
+- Using the theorem for noninteger exponents without the infinite-series version.
+- Forgetting that $k$ runs from $0$ to $n$.
+
+## Connections
+
+- [[Distribuição Binomial|Binomial Distribution]]
+- [[Distribuição Binomial Negativa|Negative Binomial Distribution]]
+- [[Distribuições|Distributions]]
+
+## References
+
+[^openstax-discrete]: OpenStax, *Introductory Statistics 2e*, "Chapter 4: Discrete Random Variables", https://openstax.org/books/introductory-statistics-2e/pages/4-introduction

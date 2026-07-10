@@ -1,53 +1,52 @@
 ---
 dg-publish: true
+aliases:
+  - Probability Density Function
+  - PDF
+  - Densidade de Probabilidade
 ---
 
-A densidade de probabilidade é uma medida importante em teoria da probabilidade que descreve a distribuição de probabilidade de uma variável aleatória contínua. Ela fornece informações sobre a probabilidade de que a variável aleatória assuma valores dentro de um intervalo específico.
+# Probability Density Function
 
-## Definição
+Compact study note.
 
-A densidade de probabilidade de uma variável aleatória contínua X é definida como:
+## Summary
 
-$$
-f(x) = \frac{d}{dx} F(x)
-$$
+One probability density function describes how probability is distributed across a continuum. Probabilities are integrals of the density over intervals.[^openstax-continuous]
 
-onde F(x) é a função de distribuição acumulada (FAD) da variável aleatória X.
+## Prerequisites
 
-## Exemplo
+- [[Variável Aleatória Contínua|Continuous Random Variable]]
 
-Suponha que tenhamos uma variável aleatória X que segue uma distribuição normal com média μ = 0 e desvio padrão σ = 1. A FAD dessa distribuição é dada por:
+## Notation and Assumptions
 
-$$
-F(x) = \frac{1}{2} \left[ 1 + \text{erf} \left( \frac{x}{\sqrt{2}} \right) \right]
-$$
+Density assumptions:
 
-onde erf é a função de erro.
+$$f_X(x)\ge0, \qquad \int_{-\infty}^{\infty}f_X(x)\,dx=1.$$
 
-A densidade de probabilidade dessa distribuição é então:
+For measurable event set $C$,
 
-$$
-f(x) = \frac{d}{dx} F(x) = \frac{1}{\sqrt{2\pi}} e^{-x^2/2}
-$$
+$$P(X\in C)=\int_C f_X(x)\,dx.$$
 
-**Relação com Funções de Probabilidade**
+## Essential Result
 
-A densidade de probabilidade está relacionada às funções de probabilidade ($FP$) por meio da seguinte equação:
+Density values may exceed $1$; only integrated area is probability.
 
-$$
-P(a \leq X \leq b) = \int_{a}^{b} f(x) dx
-$$
+## Small Example
 
-onde $P(a ≤ X ≤ b)$ é a probabilidade de que a variável aleatória X assuma valores entre a e b.
+For $X\sim\operatorname{Uniform}(0,0.5)$, $f_X(x)=2$ on $(0,0.5)$, but $P(0<X<0.25)=2(0.25)=0.5$.
 
-**Caso Discreto**
+## Common Mistakes
 
-No caso de uma variável aleatória discreta, a densidade de probabilidade não existe. Em vez disso, usamos as funções de probabilidade ($FP$) para descrever a distribuição da variável aleatória. A $FP$ é definida como:
+- Calling $f_X(3)$ the probability that $X=3$.
+- Forgetting to verify total area equals one.
 
-$$
-P(X = x_i) = p_i
-$$
+## Connections
 
-onde $x_i$ são os valores possíveis da variável aleatória e $p_i$ são as probabilidades associadas a esses valores.
+- [[Função de Distribuição Acumulada|Cumulative Distribution Function]]
+- [[Variável Aleatória Contínua|Continuous Random Variable]]
+- [[Distribuição Uniforme|Continuous Uniform Distribution]]
 
-A densidade de probabilidade pode ser vista como uma generalização das funções de probabilidade para o caso contínuo. Ela fornece informações sobre a distribuição da variável aleatória em um intervalo específico, enquanto as FP descrevem a distribuição da variável aleatória nos valores discretos.
+## References
+
+[^openstax-continuous]: OpenStax, *Introductory Statistics 2e*, "Chapter 5: Continuous Random Variables", https://openstax.org/books/introductory-statistics-2e/pages/5-introduction

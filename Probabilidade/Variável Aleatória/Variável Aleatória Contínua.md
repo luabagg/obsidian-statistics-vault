@@ -1,23 +1,51 @@
 ---
 dg-publish: true
+aliases:
+  - Continuous Random Variable
+  - Variavel Aleatoria Continua
+  - Variável Aleatória Contínua
 ---
 
-Seja $X$ uma variável aleatória com função de distribuição acumulada (FDA) $F_X(x)$ absolutamente contínua. Dizemos que $X$ é uma variável aleatória contínua.  
+# Continuous Random Variable
 
-## Definição
+Compact study note.
 
-Se $X$ é uma variável aleatória contínua, então existe uma função não negativa $f$, chamada **função densidade de probabilidade (PDF - Probability Density Function)**, tal que:  
+## Summary
 
-$$
-F_X(x) = \int_{-\infty}^{x} f(t) dt, \quad \forall x \in \mathbb{R}
-$$
+One continuous random variable is commonly represented by a probability density function. Probabilities come from areas under the density, not from density values at points.[^openstax-continuous]
 
-Essa relação garante que a FDA pode ser obtida a partir da integral da densidade $f(x)$.  
+## Prerequisites
 
-## Probabilidades para Intervalos
+- [[Variável Aleatória|Random Variable]]
+- [[Densidade de Probabilidade|Probability Density Function]]
 
-Seja $X$ uma variável aleatória contínua com função de densidade $f_X(x)$. Para quaisquer $a, b \in \mathbb{R}$, com $a \leq b$, a probabilidade de $X$ assumir valores no intervalo $[a, b]$ é dada por:
+## Notation and Assumptions
 
-$$
-P(a \leq X \leq b) = \int_a^b f_X(x) dx
-$$
+One continuous random variable with density $f_X$ has $F_X(x)=\int_{-\infty}^{x}f_X(u)\,du$ and $f_X(u)\ge0$ with total integral $1$.
+
+## Essential Result
+
+For interval endpoints $l<u$,
+
+$$P(l\le X\le u)=\int_l^u f_X(x)\,dx.$$
+
+Also $P(X=c)=0$ for every single point $c$.
+
+## Small Example
+
+If $X\sim\operatorname{Uniform}(0,1)$, then $P(0.2<X<0.5)=\int_{0.2}^{0.5}1\,dx=0.3$.
+
+## Common Mistakes
+
+- Interpreting $f_X(x)$ itself as point probability.
+- Expecting endpoint inclusions to matter for continuous distributions.
+
+## Connections
+
+- [[Densidade de Probabilidade|Probability Density Function]]
+- [[Função de Distribuição Acumulada|Cumulative Distribution Function]]
+- [[Distribuição Normal|Normal Distribution]]
+
+## References
+
+[^openstax-continuous]: OpenStax, *Introductory Statistics 2e*, "Chapter 5: Continuous Random Variables", https://openstax.org/books/introductory-statistics-2e/pages/5-introduction

@@ -1,40 +1,48 @@
 ---
 dg-publish: true
+aliases:
+  - Borel Sigma-Algebra
+  - Borel sigma algebra
+  - Sigma-Álgebra de Borel
 ---
 
-## Introdução à Sigma Álgebra de Borel
+# Borel Sigma-Algebra
 
-A **[sigma álgebra](Sigma-Álgebra) de Borel** é um conceito fundamental na teoria da medida e na probabilidade. Ela é construída a partir dos conjuntos abertos em um espaço topológico, particularmente no espaço real $\mathbb{R}$. A sigma álgebra de Borel é denotada por $\mathcal{B}$.
+Compact study note.
 
-### Definição
+## Summary
 
-A **sigma álgebra de Borel** em $\mathbb{R}$ é a menor sigma álgebra que contém todos os conjuntos abertos. Matematicamente, podemos escrever:
+The Borel sigma-algebra on the real line is the smallest sigma-algebra containing all open subsets of $\mathbb{R}$. It is the standard measurable-event structure for real-valued random variables.[^mit-prob]
 
-$$
-\mathcal{B} = \sigma(\{\text{conjuntos abertos em } \mathbb{R}\})
-$$
+## Prerequisites
 
-### Exemplos de Conjuntos Borel
+- [[Sigma-Álgebra|Sigma-Algebra]]
 
-1. **Conjuntos Abertos**: Qualquer conjunto que pode ser escrito como uma união contável de intervalos abertos é um exemplo básico de conjuntos borel.
-2. **Intervalos Fechados e Semi-abertos**: Intervalos fechados $[a, b]$, semi-abertos $(a, b]$ ou $[a, b)$ também são conjuntos borel.
-3. **Conjuntos Contáveis e Conjuntos Nulos**: Qualquer conjunto contável (por exemplo, os números racionais) ou qualquer conjunto de medida zero (como a reta irracional) é um conjunto borel.
+## Notation and Assumptions
 
-### Propriedades Importantes
+$\mathcal{B}(\mathbb{R})=\sigma(\{G\subseteq\mathbb{R}:G\text{ is open}\})$. It also contains closed intervals, half-open intervals, countable sets including $\mathbb{Q}$, and the set of irrational numbers $\mathbb{R}\setminus\mathbb{Q}$.
 
-1. **Fechamento sob União Contável**: A sigma álgebra de Borel é fechada sob uniões contáveis e interseções contáveis.
-2. **Fecho e Interior**: Qualquer conjunto borel pode ser escrito como a diferença entre um conjunto fechado e um conjunto aberto.
+## Essential Result
 
-### Aplicações
+One real-valued random variable $X$ is measurable when $X^{-1}(B)\in\mathcal{F}$ for every $B\in\mathcal{B}(\mathbb{R})$. Not every Borel set is simply 'closed minus open'; the correct definition is generation by open sets.
 
-A sigma álgebra de Borel é crucial na definição de medidas, especialmente no contexto da teoria da medida e probabilidade. Ela permite a construção de espaços de probabilidade onde eventos podem ser medidos com precisão.
+## Small Example
 
-Por exemplo, em uma distribuição normal $\mathcal{N}(\mu, \sigma^2)$, os conjuntos borel são usados para definir as probabilidades dos eventos associados aos intervalos de valores possíveis.
+Closed intervals are Borel. For example,
 
-## Variável Aleatória
+$$[l,u]=\mathbb{R}\setminus((-\infty,l)\cup(u,\infty)).$$
 
-A escolha da σ-algebra de Borel é crucial para garantir que as variáveis aleatórias sejam bem definidas. Isso ocorre porque a σ-algebra de Borel permite que todas as operações comuns em conjuntos reais, como interseções e uniões contáveis, sejam tratadas adequadamente.
+## Common Mistakes
 
-### Exemplo
+- Claiming every Borel set has one simple closed-minus-open form.
+- Using nonstandard phrases including 'irrational line' instead of 'set of irrational numbers'.
 
-Considere uma variável aleatória $X$ que representa o tempo de espera até a próxima chegada de um cliente em uma fila. Se $\Omega = \{0, 1, 2, \ldots\}$ e $P(\{\omega\}) > 0$ para cada $\omega$, então $X: \Omega \to [0, +\infty)$ é uma variável aleatória. Para que $X$ seja bem definida, precisamos garantir que o conjunto inverso de qualquer intervalo fechado ou aberto no $\mathbb{R}$ pertença à σ-algebra $\mathcal{F}$. Isso é assegurado pela escolha da σ-algebra de Borel.
+## Connections
+
+- [[Sigma-Álgebra|Sigma-Algebra]]
+- [[Variável Aleatória|Random Variable]]
+- [[Espaço de Probabilidade Produzido por Variável Aleatória|Distribution Induced by a Random Variable]]
+
+## References
+
+[^mit-prob]: MIT OpenCourseWare, "6.041SC Probabilistic Systems Analysis and Applied Probability", Fall 2013, https://ocw.mit.edu/courses/6-041sc-probabilistic-systems-analysis-and-applied-probability-fall-2013/

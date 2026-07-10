@@ -1,38 +1,71 @@
 ---
 dg-publish: true
+aliases:
+  - Weibull Distribution
+  - Distribuição Weibull
 ---
 
-Dizemos que a variável aleatória $X$ tem distribuição Weibull com parâmetros $\gamma > 0$ e $\epsilon > 0$, denotada por $X \sim \text{Weibull}(\gamma, \epsilon)$, se sua função de densidade estiver dada por:
+# Weibull Distribution
 
-$$
-f(x; \gamma, \epsilon) = 
-\begin{cases} 
-\frac{\epsilon}{\gamma} \left( \frac{x}{\gamma} \right)^{\epsilon-1} e^{-(x/\gamma)^\epsilon}, & x \geq 0 \\
-0, & x < 0
-\end{cases}
-$$
+Compact study note.
 
-## Características da Distribuição Weibull
+## Summary
 
-1. **Forma Flexível**: A distribuição Weibull é bastante flexível e pode modelar uma ampla variedade de formas de curva de densidade, desde distribuições unimodais até exponenciais.
-2. **Parâmetros**:
-   - $\gamma > 0$: Escala (ou forma). Alterações nesse parâmetro afetam a escala da variável aleatória.
-   - $\epsilon > 0$: Forma. Alterações nesse parâmetro afetam a forma da distribuição, podendo modelar comportamentos de falha ou vida útil.
+The Weibull distribution is a flexible positive distribution often used for lifetimes and reliability. Its shape parameter controls increasing, constant, or decreasing hazard behavior.[^nist-gallery]
 
-3. **Relação com Outras Distribuições**:
-   - Para $\epsilon = 1$, a distribuição Weibull se torna uma distribuição exponencial.
-   - Para $\gamma = 1$ e $\epsilon > 0$, a distribuição Weibull é conhecida como distribuição de Weibull padrão.
+## Prerequisites
 
-4. **Exemplo**:
-   Considere uma situação onde se deseja modelar o tempo de vida de um componente eletrônico, com $\gamma = 2$ e $\epsilon = 3$. A função de densidade seria:
+- [[Variável Aleatória Contínua|Continuous Random Variable]]
+- [[Função Gama|Gamma Function]]
 
-   $$
-   f(x; 2, 3) = 
-   \begin{cases} 
-   \frac{3}{2} \left( \frac{x}{2} \right)^2 e^{-(x/2)^3}, & x \geq 0 \\
-   0, & x < 0
-   \end{cases}
-   
-$$
+## Definition
 
-   Essa função descreveria a probabilidade de o componente falhar em diferentes instantes $x$.
+$X\sim\operatorname{Weibull}(k,\lambda)$ with shape $k$ and scale $\lambda$.
+
+## Notation and Assumptions
+
+$k>0$ and $\lambda>0$. This note uses $\lambda$ like scale, not rate.
+
+## Parameters
+
+$k>0$ and $\lambda>0$.
+
+## Support
+
+$[0,\infty)$.
+
+## PMF or PDF
+
+$f_X(x)=(k/\lambda)(x/\lambda)^{k-1}e^{-(x/\lambda)^k}$ for $x\ge0$.
+
+## CDF
+
+$F_X(x)=1-e^{-(x/\lambda)^k}$ for $x\ge0$.
+
+## Moments
+
+$E[X]=\lambda\Gamma(1+1/k)$ and $\operatorname{Var}(X)=\lambda^2[\Gamma(1+2/k)-\Gamma(1+1/k)^2]$.
+
+## Essential Result
+
+When $k=1$, Weibull$(1,\lambda)$ is exponential with rate $1/\lambda$.
+
+## Small Example
+
+If $k=1$ and $\lambda=5$, then $E[X]=5$, matching an exponential distribution with rate $0.2$.
+
+## Common Mistakes
+
+- Mixing Weibull scale with exponential rate.
+- Assuming all Weibull models are memoryless; only $k=1$ is.
+
+## Connections
+
+- [[Distribuição Exponencial|Exponential Distribution]]
+- [[Função Gama|Gamma Function]]
+- [[Distribuição Gama|Gamma Distribution]]
+
+## References
+
+[^nist-gallery]: NIST/SEMATECH, *e-Handbook of Statistical Methods*, "1.3.6.6 Gallery of Distributions", https://www.itl.nist.gov/div898/handbook/eda/section3/eda366.htm
+[^dlmf-gamma]: NIST Digital Library of Mathematical Functions, "Chapter 5: Gamma Function", https://dlmf.nist.gov/5

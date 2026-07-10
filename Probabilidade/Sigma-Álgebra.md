@@ -1,33 +1,48 @@
 ---
 dg-publish: true
+aliases:
+  - Sigma-Algebra
+  - Sigma Algebra
+  - Sigma-Álgebra
 ---
 
-Uma **sigma álgebra** (ou $\sigma$-álgebra) é um conceito fundamental na teoria da medida e probabilidade. Formalmente, uma sigma álgebra sobre um conjunto $X$ é uma coleção de subconjuntos de $X$, denotada por $\mathcal{F}$, que satisfaz as seguintes propriedades:
+# Sigma-Algebra
 
-1. **$\emptyset \in \mathcal{F}$**: O conjunto vazio pertence à sigma álgebra.
-2. **Se $A \in \mathcal{F}$, então $X \setminus A \in \mathcal{F}$**: Se um subconjunto estiver na sigma álgebra, seu complemento também deve estar presente.
-3. **Se $\{A_n\}_{n=1}^{\infty}$ for uma sequência contável de elementos em $\mathcal{F}$, então $\bigcup_{n=1}^{\infty} A_n \in \mathcal{F}$**: A união contável de subconjuntos na sigma álgebra também deve estar presente.
+Compact study note.
 
-## Exemplos
+## Summary
 
-### Exemplo 1: Espaço Métrico
+One sigma-algebra is the collection of events on which a probability measure is allowed to operate. It is closed under complements and countable unions, so probability rules remain stable under repeated event operations.[^mit-prob]
 
-Considere o conjunto $X = [0, 1]$. Uma sigma álgebra sobre este conjunto pode ser a coleção de todos os subintervalos fechados e abertos em $[0, 1]$.
+## Prerequisites
 
-### Exemplo 2: Conjunto Finito
+- [[Espaço Amostral e Eventos|Sample Space and Events]]
 
-Seja $X = \{a, b, c\}$. A maior sigma álgebra possível é $\mathcal{P}(X) = \{\emptyset, \{a\}, \{b\}, \{c\}, \{a, b\}, \{a, c\}, \{b, c\}, \{a, b, c\}\}$.
+## Notation and Assumptions
 
-## Aplicações
+Collection $\mathcal{F}\subseteq\mathcal{P}(\Omega)$ is sigma-algebra when it contains $\Omega$, is closed under complements, and is closed under countable unions:
 
-### Teoria da Medida
+$$A_1,A_2,\ldots\in\mathcal{F} \implies \bigcup_{n=1}^{\infty}A_n\in\mathcal{F}.$$
 
-As sigma álgebras são essenciais na definição de medidas. Uma medida $\mu$ é uma função que associa a cada conjunto em uma sigma álgebra um valor não negativo ou infinito, representado por:
+## Essential Result
 
-$$
-\mu: \mathcal{F} \to [0, +\infty]
-$$
+One correct finite example is $\mathcal{F}=\mathcal{P}(\{1,2,3\})$. On $[0,1]$, the collection of all intervals is not one sigma-algebra because countable unions of intervals need not be intervals.
 
-### Probabilidade
+## Small Example
 
-Em probabilidade, as sigma álgebras são usadas para definir eventos e suas probabilidades. Se $\Omega$ é o espaço amostral de um experimento aleatório, uma sigma álgebra sobre $\Omega$ define os eventos que podem ocorrer.
+With $\Omega=\{H,T\}$, $\mathcal{F}=\{\emptyset,\{H\},\{T\},\Omega\}$ is a sigma-algebra. Complements and countable unions stay inside the same collection.
+
+## Common Mistakes
+
+- Saying 'all intervals' form one sigma-algebra.
+- Forgetting countable closure; finite closure alone defines only an algebra of sets.
+
+## Connections
+
+- [[Sigma-Álgebra De Borel|Borel Sigma-Algebra]]
+- [[Espaço de Probabilidade|Probability Space]]
+- [[Variável Aleatória|Random Variable]]
+
+## References
+
+[^mit-prob]: MIT OpenCourseWare, "6.041SC Probabilistic Systems Analysis and Applied Probability", Fall 2013, https://ocw.mit.edu/courses/6-041sc-probabilistic-systems-analysis-and-applied-probability-fall-2013/

@@ -1,44 +1,45 @@
 ---
 dg-publish: true
+aliases:
+  - Gamma Function
+  - Função Gama
 ---
 
-A função gama, denotada por $\Gamma(z)$, é uma extensão do conceito de fatorial para números complexos. Foi introduzida pelo matemático Leonhard Euler em 1729. A definição fundamental da função gama é dada pela integral:
+# Gamma Function
 
-$$
-\Gamma(z) = \int_0^\infty t^{z-1}e^{-t}\,dt,
-$$
+Compact study note.
 
-onde $z$ é um número complexo com parte real positiva.
+## Summary
 
-## Propriedades Principais
+The gamma function extends factorials from positive integers to positive real and complex arguments. It normalizes gamma, chi-square, t, and F densities.[^dlmf-gamma]
 
-1. **Relação com o Fatorial**:
-   Para números inteiros positivos $n$, a função gama satisfaz $\Gamma(n) = (n-1)!$. Por exemplo, $\Gamma(5) = 4! = 24$.
+## Prerequisites
 
-2. **Recursividade**:
-   A função gama também possui uma propriedade recursiva dada por:
-$$
-\Gamma(z+1) = z\Gamma(z).
-$$
-3. **Identidade de Euler**:
-   Uma das identidades mais famosas envolvendo a função gama é a fórmula de Euler, que relaciona o valor da função gama em um número complexo $z$ com a constante de Euler-Mascheroni $\gamma$ e a série harmônica:
+- Prerequisites: None
 
-$$
-\Gamma(z+1) = z\Gamma(z) = \frac{e^{-\gamma z}}{z}\prod_{n=1}^\infty \left(1 + \frac{z}{n}\right)^{-1}e^{z/n},
-$$
+## Notation and Assumptions
 
-   onde $\gamma$ é a constante de Euler-Mascheroni.
+For $x>0$, $\Gamma(x)=\int_0^{\infty}t^{x-1}e^{-t}\,dt$.
 
-1. **Simetria**:
-   A função gama possui uma simetria interessante em relação ao plano complexo, dada pela relação:
-$$
-\Gamma(z)\Gamma(1-z) = \frac{\pi}{\sin(\pi z)}.
-$$
+## Essential Result
 
-2. **Valores Especiais**:
-   Existem vários valores especiais da função gama que são úteis em aplicações práticas, como $\Gamma(1/2) = \sqrt{\pi}$.
+$\Gamma(x+1)=x\Gamma(x)$ and $\Gamma(n)=(n-1)!$ for positive integers $n$.
 
-3. **Convergência**:
-   A integral definindo a função gama converge para todos os números complexos $z$ com parte real positiva. Para outros valores de $z$, a função é estendida por análise complexa, garantindo sua continuidade em todo o plano complexo exceto nos pontos negativos inteiros.
+## Small Example
 
-A função gama desempenha um papel crucial na matemática aplicada e teórica, aparecendo frequentemente em áreas como probabilidade, física teórica, e análise complexa.
+$\Gamma(3)=2\Gamma(2)=2\cdot1\Gamma(1)=2!$.
+
+## Common Mistakes
+
+- Using $\Gamma(n)=n!$ instead of $\Gamma(n)=(n-1)!$ for positive integers.
+- Forgetting that distribution formulas often require positive shape parameters.
+
+## Connections
+
+- [[Distribuição Gama|Gamma Distribution]]
+- [[Distribuição Qui-Quadrado|Chi-Square Distribution]]
+- [[Distribuição T-Student|Student's t Distribution]]
+
+## References
+
+[^dlmf-gamma]: NIST Digital Library of Mathematical Functions, "Chapter 5: Gamma Function", https://dlmf.nist.gov/5

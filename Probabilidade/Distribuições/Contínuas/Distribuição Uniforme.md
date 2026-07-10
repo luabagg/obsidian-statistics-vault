@@ -1,53 +1,81 @@
 ---
 dg-publish: true
+aliases:
+  - Continuous Uniform Distribution
+  - Distribuição Uniforme Contínua
 ---
 
-A distribuição uniforme é uma distribuição de probabilidade contínua onde todos os valores em um intervalo $[a, b]$ têm a mesma probabilidade de ocorrer.
+# Continuous Uniform Distribution
 
-## Função de Densidade (FDP)
+Compact study note.
 
-A função de densidade de probabilidade é dada por:
+## Summary
 
-$$
-f(x) = \begin{cases} 
-\frac{1}{b - a} & \text{se } a \leq x \leq b \\
-0 & \text{caso contrário}
-\end{cases}
-$$
+The continuous uniform distribution gives constant density over a finite interval. It models an ideal measurement equally likely across that interval.[^openstax-continuous]
 
-Essa função é constante no intervalo $[a, b]$, indicando que a probabilidade é uniformemente distribuída.
+## Prerequisites
 
-## Função Acumulada (FDA)
+- [[Variável Aleatória Contínua|Continuous Random Variable]]
 
-A função de distribuição acumulada é definida como:
+## Definition
 
-$$
-F(x) = \begin{cases} 
-0 & \text{se } x < a \\
-\frac{x - a}{b - a} & \text{se } a \leq x \leq b \\
-1 & \text{se } x > b
-\end{cases}
-$$
+Distribution notation:
 
-A CDF representa a probabilidade de que a variável aleatória $X$ seja menor ou igual a $x$, aumentando linearmente de 0 a 1 no intervalo $[a, b]$.
+$$X\sim\operatorname{Uniform}(l,u), \qquad l<u.$$
 
-## Exemplos
+## Notation and Assumptions
 
-Considere o tempo $T$ que uma pessoa passa em uma fila, onde $T$ pode variar entre 0 e 30 minutos. A função densidade de probabilidade seria:
+Every subinterval probability is proportional to its length.
 
-$$
-f(t) =
-\begin{cases}
-\frac{1}{30-0} & \text{para } 0 \leq t \leq 30 \\
-0 & \text{caso contrário}
-\end{cases}
-=
+## Parameters
 
-\begin{cases}
+$$l,u\in\mathbb{R}, \qquad l<u.$$
 
-\frac{1}{30} & \text{para } 0 \leq t \leq 30 \\
+## Support
 
-0 & \text{caso contrário}
+$[a,b]$; endpoint choice does not change probabilities.
 
-\end{cases}
-$$
+## PMF or PDF
+
+$$f_X(x)=1/(u-l), \qquad l\le x\le u,$$
+
+and $0$ otherwise.
+
+## CDF
+
+$$F_X(x)=0, \quad x<l.$$
+
+$$F_X(x)=\frac{x-l}{u-l}, \quad l\le x\le u.$$
+
+$$F_X(x)=1, \quad x>u.$$
+
+## Moments
+
+$$E[X]=(l+u)/2.$$
+
+$$\operatorname{Var}(X)=(u-l)^2/12.$$
+
+$$M_X(t)=\frac{\exp(tu)-\exp(tl)}{t(u-l)}, \qquad t\ne0.$$
+
+## Essential Result
+
+Probabilities are interval lengths divided by total length.
+
+## Small Example
+
+If $X\sim\operatorname{Uniform}(0,30)$, then $P(5<X<15)=10/30=1/3$.
+
+## Common Mistakes
+
+- Saying each individual real value is equally probable with positive probability.
+- Forgetting the density changes when interval length changes.
+
+## Connections
+
+- [[Densidade de Probabilidade|Probability Density Function]]
+- [[Quantis|Quantiles]]
+- [[Probabilidade/Distribuições/Discretas/Distribuição Uniforme|Discrete Uniform Distribution]]
+
+## References
+
+[^openstax-continuous]: OpenStax, *Introductory Statistics 2e*, "Chapter 5: Continuous Random Variables", https://openstax.org/books/introductory-statistics-2e/pages/5-introduction

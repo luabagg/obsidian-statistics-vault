@@ -1,31 +1,69 @@
 ---
 dg-publish: true
+aliases:
+  - Discrete Uniform Distribution
+  - Distribuição Uniforme Discreta
 ---
 
-A **distribuição uniforme** é uma das distribuições de probabilidade mais simples. Ela descreve um cenário onde cada valor dentro de um intervalo específico tem a mesma probabilidade de ocorrer.
+# Discrete Uniform Distribution
 
-## Casos Discretos
+Compact study note.
 
-- **Definição**: Em casos discretos, a distribuição uniforme se aplica quando há um conjunto finito e igualmente provável de resultados. Por exemplo, o lançamento de um dado justo (6 faces) é um caso clássico.
-  - **Exemplo**:
-    $$
+## Summary
 
-    P(X = x_i) = \frac{1}{n}
-    
-$$
-    onde $n$ é o número total de possíveis resultados e $x_i$ representa cada resultado possível.
+One discrete uniform distribution assigns equal probability to each value in a finite set.[^openstax-discrete]
 
-- **Características**:
-  - Todos os valores possíveis têm a mesma probabilidade.
-  - A função de probabilidade é constante entre os limites do intervalo.
+## Prerequisites
 
+- [[Variável Aleatória Discreta|Discrete Random Variable]]
 
+## Definition
 
-## Exemplos
+$X$ is discrete uniform on $\{x_1,\ldots,x_n\}$ when each support point has probability $1/n$.
 
-Suponha que um dado justo seja lançado. Cada face tem uma probabilidade uniforme de $\frac{1}{6}$.
-$$
+## Notation and Assumptions
 
-P(X = 1) = P(X = 2) = P(X = 3) = P(X = 4) = P(X = 5) = P(X = 6) = \frac{1}{6}
+The support is finite and all listed outcomes are equally likely.
 
-$$
+## Parameters
+
+$n\in\{1,2,\ldots\}$.
+
+## Support
+
+$\{x_1,\ldots,x_n\}$.
+
+## PMF or PDF
+
+$P(X=x_i)=1/n$ for $i=1,\ldots,n$.
+
+## CDF
+
+$F_X(x)=n^{-1}\#\{i:x_i\le x\}$.
+
+## Moments
+
+For support $\{1,\ldots,n\}$, $E[X]=(n+1)/2$ and $\operatorname{Var}(X)=(n^2-1)/12$.
+
+## Essential Result
+
+Use this model only when equal likelihood is part of the experiment design or assumption.
+
+## Small Example
+
+One fair six-sided die has $P(X=k)=1/6$ for $k=1,\ldots,6$.
+
+## Common Mistakes
+
+- Assuming all finite outcomes are equally likely without justification.
+- Confusing discrete uniform with continuous uniform.
+
+## Connections
+
+- [[Distribuição Binomial|Binomial Distribution]]
+- [[Probabilidade/Distribuições/Contínuas/Distribuição Uniforme|Continuous Uniform Distribution]]
+- [[Discretas|Discrete Distributions]]
+
+## References
+
+[^openstax-discrete]: OpenStax, *Introductory Statistics 2e*, "Chapter 4: Discrete Random Variables", https://openstax.org/books/introductory-statistics-2e/pages/4-introduction

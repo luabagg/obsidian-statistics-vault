@@ -1,61 +1,55 @@
 ---
 dg-publish: true
+aliases:
+  - De Morgan's Laws
+  - Leis de Morgan
 ---
 
-## Introdução às Leis de Morgan e Suas Propriedades
+# De Morgan's Laws
 
-As leis de Morgan são fundamentais na lógica booleana, teoria da computação e matemática discreta. Elas descrevem como os operadores lógicos "não" (¬) podem ser usados para transformar expressões que contêm operações lógicas "ou" (∨) e "e" (∧). Essas leis foram propostas pelo matemático e logista Charles Sanders Peirce, mas são mais conhecidas por Augustus De Morgan.
+Compact study note.
 
-### 1. Definição das Leis de Morgan
+## Summary
 
-As leis de Morgan podem ser expressas da seguinte forma:
+De Morgan's laws describe how complements distribute over unions and intersections. They are used constantly when translating probability statements involving 'not', 'and', and 'or'.[^openstax-prob]
 
-$$
-\text{Lei de Morgan para "ou": } \neg (A \lor B) = \neg A \land \neg B
-$$
+## Prerequisites
 
-$$
-\text{Lei de Morgan para "e": } \neg (A \land B) = \neg A \lor \neg B
-$$
+- [[Espaço Amostral e Eventos|Sample Space and Events]]
 
-Essas leis permitem que expressões lógicas complexas sejam simplificadas ou reescritas, facilitando o processo de análise e resolução de problemas em sistemas digitais e circuitos elétricos.
+## Notation and Assumptions
 
-### 2. Exemplos de Aplicação
+Complements are taken relative to $\Omega$:
 
-**Exemplo 1: Simplificação de Expressão Lógica**
+$$A^c=\Omega\setminus A.$$
 
-Considere a expressão lógica :
+## Essential Result
 
-$$
-\neg (P \lor Q)
-$$
+De Morgan identities:
 
-Usando a lei de Morgan para "ou", podemos reescrever essa expressão como:
+$$(A\cup B)^c=A^c\cap B^c.$$
 
-$$
-\neg (P \lor Q) = \neg P \land \neg Q
-$$
-**Exemplo 2: Simplificação em Circuitos Lógicos**
+$$(A\cap B)^c=A^c\cup B^c.$$
 
-Em um circuito lógico, se temos uma porta OR seguida por uma porta NOT, podemos simplificar o circuito usando a lei de Morgan. Por exemplo:
+The same identities hold for countable families.
 
-- Se $A$ e $B$ são entradas de uma porta OR, e essa saída é conectada à entrada de uma porta NOT, a expressão lógica seria:
-$$
-\neg (A \lor B)
-$$
+## Small Example
 
-Usando a lei de Morgan, isso pode ser simplificado para:
+If events are 'rain' and 'wind', then 'neither rain nor wind' is
 
-$$
-\neg A \land \neg B
-$$
+$$(R\cup W)^c=R^c\cap W^c.$$
 
-### 3. Propriedades das Leis de Morgan
+## Common Mistakes
 
-As leis de Morgan possuem algumas propriedades importantes:
+- Confusing 'not both' with 'neither'.
+- Forgetting that complements depend on the chosen sample space.
 
-- **Comutatividade:** As leis de Morgan são comutativas, ou seja, a ordem dos operandos não altera o resultado.
-- **Associatividade:** Elas também são associativas, permitindo que múltiplas operações sejam agrupadas sem alterar o resultado.
-- **Distributividade:** Embora as leis de Morgan não sejam distributivas em si mesmas, elas podem ser usadas para simplificar expressões complexas que envolvem distribuição.
+## Connections
 
-As leis de Morgan são essenciais na simplificação e otimização de circuitos lógicos, facilitando a implementação eficiente de sistemas digitais. Elas também têm aplicações em programação, onde podem ser usadas para otimizar algoritmos e expressões booleanas.
+- [[Sigma-Álgebra|Sigma-Algebra]]
+- [[Probabilidade Condicional|Conditional Probability]]
+- [[Independência|Independence]]
+
+## References
+
+[^openstax-prob]: OpenStax, *Introductory Statistics 2e*, "Chapter 3: Probability Topics", https://openstax.org/books/introductory-statistics-2e/pages/3-introduction

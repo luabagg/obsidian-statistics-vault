@@ -1,64 +1,73 @@
 ---
 dg-publish: true
+aliases:
+  - Poisson Distribution
+  - Distribuição Poisson
 ---
 
-A **distribuição Poisson** é uma importante distribuição de probabilidade discreta que descreve o número de eventos ocorridos em um intervalo de tempo ou espaço, dado que esses eventos ocorrem com uma taxa constante e independentemente do tempo desde o último evento. Esta distribuição é frequentemente utilizada para modelar fenômenos como a chegada de clientes em um estabelecimento comercial, a ocorrência de defeitos em um processo industrial, ou até mesmo a quantidade de chuva caindo em uma área durante um determinado período.
+# Poisson Distribution
 
-## Definição e Parâmetros
+Compact study note.
 
-A distribuição Poisson é definida por uma única parâmetro, que é a **taxa média** (ou taxa esperada) de ocorrência do evento no intervalo considerado. Denotamos esta taxa por $\lambda > 0$. A função de probabilidade da distribuição Poisson para um número inteiro $k \geq 0$ é dada pela expressão:
+## Summary
 
-$$
-P(X = k) = \frac{\lambda^k e^{-\lambda}}{k!}
-$$
+The Poisson distribution models counts of events in a fixed interval when events occur independently at one constant average rate.[^openstax-discrete]
 
-Aqui, $X$ representa a variável aleatória que segue a distribuição Poisson.
+## Prerequisites
 
-## Exemplos de Aplicações
+- [[Variável Aleatória Discreta|Discrete Random Variable]]
 
-1. **Chamadas Telefônicas em um Call Center**: Suponha que o número médio de chamadas telefônicas recebidas por minuto é $\lambda = 5$. A probabilidade de receber exatamente $k$ chamadas no próximo minuto pode ser calculada usando a distribuição Poisson.
-2. **Defeitos em um Processo Industrial**: Considere que o número médio de defeitos em uma linha de produção por hora é $\lambda = 3$. A probabilidade de ocorrerem exatamente $k$ defeitos em uma hora pode ser determinada usando a distribuição Poisson.
+## Definition
 
-## Função de Probabilidade
+$X\sim\operatorname{Poisson}(\lambda)$ with rate parameter $\lambda$ equal to the expected count in the interval.
 
-A função de probabilidade da distribuição Poisson é:
+## Notation and Assumptions
 
-$$
-P(X = k) = \frac{\lambda^k e^{-\lambda}}{k!}
-$$
+The interval is fixed, the average rate is constant, and events do not cluster beyond the model's independence assumptions.
 
-onde:
+## Parameters
 
-- $X$ é a variável aleatória que segue a distribuição Poisson.
-- $\lambda > 0$ é a taxa média de ocorrência do evento no intervalo considerado.
-- $k \geq 0$ é um número inteiro representando o número de eventos.
+$\lambda>0$.
 
-## Função de Distribuição Cumulativa
+## Support
 
-A função de distribuição cumulativa (FDC) da distribuição Poisson, que denotamos por $F(k)$, é a probabilidade de que o número de eventos seja menor ou igual a $k$:
+$\{0,1,2,\ldots\}$.
 
-$$
-F(k) = P(X \leq k) = \sum_{i=0}^{k} \frac{\lambda^i e^{-\lambda}}{i!}
-$$
+## PMF or PDF
 
-## Exemplo de Cálculo
+$P(X=k)=e^{-\lambda}\lambda^k/k!$ for $k=0,1,2,\ldots$.
 
-Suponha que $\lambda = 4$. A probabilidade de ocorrerem exatamente $3$ eventos (por exemplo, defeitos em uma linha de produção) é:
+## CDF
 
-$$
-P(X = 3) = \frac{4^3 e^{-4}}{3!} = \frac{64 e^{-4}}{6} \approx 0.1956
-$$
+$F_X(k)=\sum_{j=0}^{\lfloor k\rfloor}e^{-\lambda}\lambda^j/j!$.
 
-## Média e Variância
+## Moments
 
-A **média** (esperança matemática) da distribuição Poisson é igual ao seu parâmetro $\lambda$:
+Moments and MGF:
 
-$$
-E[X] = \lambda
-$$
+$$E[X]=\lambda, \qquad \operatorname{Var}(X)=\lambda.$$
 
-A **variação** (variância) também é igual a $\lambda$:
+$$M_X(t)=\exp(\lambda(\exp(t)-1)).$$
 
-$$
-\text{Var}(X) = \lambda
-$$
+## Essential Result
+
+Poisson counts connect to exponential waiting times in a Poisson process.
+
+## Small Example
+
+If defects average $4$ per hour, $P(X=3)=e^{-4}4^3/3!\approx0.1954$.
+
+## Common Mistakes
+
+- Using Poisson when the rate changes across the interval.
+- Forgetting that the variance equals the mean under the basic model.
+
+## Connections
+
+- [[Distribuição Exponencial|Exponential Distribution]]
+- [[Distribuição Binomial|Binomial Distribution]]
+- [[Distribuições|Distributions]]
+
+## References
+
+[^openstax-discrete]: OpenStax, *Introductory Statistics 2e*, "Chapter 4: Discrete Random Variables", https://openstax.org/books/introductory-statistics-2e/pages/4-introduction

@@ -1,62 +1,51 @@
 ---
 dg-publish: true
+aliases:
+  - Expectation from an MGF
+  - Esperança a Partir da Função Geradora de Momentos
 ---
 
-Para calcular a esperança (ou valor esperado) de uma variável aleatória $X$ a partir da função geradora de momentos, denotada por $M_X(t)$, podemos seguir os passos abaixo:
+# Expectation from a Moment Generating Function
 
-1. **Definição da Função Geradora de Momentos**:
-   A função geradora de momentos é definida como:
-$$
-   M_X(t) = E[e^{tX}] = \sum_{k=0}^{\infty} \frac{E[X^k]}{k!} t^k
-$$
+Compact study note.
 
-   para uma variável aleatória discreta, ou
+## Summary
 
-$$
-   M_X(t) = E[e^{tX}] = \int_{-\infty}^{\infty} e^{tx} f(x) dx
-$$
+When an MGF exists near zero, derivatives at zero recover raw moments. This is a compact way to derive means and variances for many standard distributions.[^mit-prob]
 
-   para uma variável aleatória contínua, onde $f(x)$ é a função de densidade de probabilidade.
+## Prerequisites
 
-1. **Calculando a Esperança**:
-   A esperança $E[X]$ pode ser obtida derivando a função geradora de momentos em relação ao parâmetro $t$ e avaliando no ponto $t = 0$. Isso se deve à propriedade da função geradora de momentos que relaciona os momentos da variável aleatória com suas derivadas.
+- [[Funções Geradoras de Momento|Moment Generating Functions]]
 
-   - **Derivada Primeira**:
-$$
-     M_X'(t) = \frac{d}{dt} E[e^{tX}] = E[Xe^{tX}]
-$$
-     Avaliando em $t = 0$:
-$$
-     M_X'(0) = E[X]
-$$
-   - **Derivada Segunda**:
-$$
-     M_X''(t) = \frac{d^2}{dt^2} E[e^{tX}] = E[X^2e^{tX}]
-$$
-     Avaliando em $t = 0$:
-$$
-     M_X''(0) = E[X^2]
-$$
-2. **Exemplo**:
-   Considere uma variável aleatória discreta $X$ com [[Distribuição de Bernoulli]], onde $P(X=1) = p$ e $P(X=0) = 1-p$. A função geradora de momentos é:
-$$
-   M_X(t) = E[e^{tX}] = (1-p) + pe^t
-$$
+## Notation and Assumptions
 
-   Derivando em relação a $t$:
+MGF definition:
 
-$$
-   M_X'(t) = pe^t
-$$
+$$M_X(t)=E[\exp(tX)].$$
 
-   Avaliando em $t = 0$:
+If differentiation under the expectation is justified near $0$, then
 
-$$
-   M_X'(0) = p
-$$
+$$M_X'(0)=E[X], \qquad M_X''(0)=E[X^2].$$
 
-   Portanto, a esperança é:
+## Essential Result
 
-$$
-   E[X] = p
-$$
+$\operatorname{Var}(X)=M_X''(0)-[M_X'(0)]^2$.
+
+## Small Example
+
+For Bernoulli $X$, $M_X(t)=1-p+pe^t$. Then $M_X'(0)=p$, $M_X''(0)=p$, and $\operatorname{Var}(X)=p(1-p)$.
+
+## Common Mistakes
+
+- Differentiating an expression outside its domain of convergence.
+- Using this method for a distribution whose MGF does not exist near zero.
+
+## Connections
+
+- [[Funções Geradoras de Momento|Moment Generating Functions]]
+- [[Esperança de uma Variável Aleatória|Expected Value]]
+- [[Variância de uma Variável Aleatória|Variance]]
+
+## References
+
+[^mit-prob]: MIT OpenCourseWare, "6.041SC Probabilistic Systems Analysis and Applied Probability", Fall 2013, https://ocw.mit.edu/courses/6-041sc-probabilistic-systems-analysis-and-applied-probability-fall-2013/

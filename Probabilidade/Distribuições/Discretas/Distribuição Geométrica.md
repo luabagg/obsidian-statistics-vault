@@ -1,111 +1,74 @@
 ---
 dg-publish: true
+aliases:
+  - Geometric Distribution
+  - Distribuição Geométrica
 ---
 
-Considere que vamos realizar ensaios independentes de Bernoulli até a ocorrência do primeiro sucesso. Cada ensaio é um experimento binomial, onde há apenas dois possíveis resultados: sucesso ou fracasso. A probabilidade de sucesso em cada ensaio é denotada por $p$, e consequentemente, a probabilidade de fracasso é $1 - p = q$.
+# Geometric Distribution
 
-## Distribuição Geométrica
+Compact study note.
 
-A distribuição geométrica descreve o número de ensaios necessários para obter o primeiro sucesso. Seja $X$ a variável aleatória que representa o número de ensaios até o primeiro sucesso. A função de probabilidade da distribuição geométrica é dada por:
+## Summary
 
-$$
-P(X = k) = (1 - p)^{k-1}p, \quad k = 1, 2, 3, \ldots
-$$
+The geometric distribution models the trial number of the first success in independent Bernoulli trials.[^openstax-discrete]
 
-Onde:
+## Prerequisites
 
-- $k$ é o número de ensaios até o primeiro sucesso.
-- $p$ é a probabilidade de sucesso em cada ensaio.
+- [[Distribuição de Bernoulli|Bernoulli Distribution]]
+- [[Independência|Independence]]
 
-## Exemplo
+## Definition
 
-Suponha que uma moeda justa seja lançada repetidamente até obter a primeira cabeça (sucesso). A probabilidade de obter uma cabeça ($p = 0.5$) e a probabilidade de obter uma coroa ($q = 0.5$) são iguais.
+$X\sim\operatorname{Geometric}(p)$ here means $X$ counts trials until the first success.
 
-- A probabilidade de obter o primeiro sucesso no primeiro lançamento é:
-$$
-  P(X = 1) = (1 - 0.5)^{1-1} \cdot 0.5 = 0.5
-$$
-- A probabilidade de obter o primeiro sucesso no segundo lançamento é:
-$$
-  P(X = 2) = (1 - 0.5)^{2-1} \cdot 0.5 = 0.5^2 \cdot 0.5 = 0.25
-$$
+## Notation and Assumptions
 
-## Parâmetros e Propriedades
+Trials are independent and each has success probability $p$.
 
-A distribuição geométrica é completamente determinada pelo único parâmetro $p$, que representa a probabilidade de sucesso em cada ensaio.
+## Parameters
 
-- **Esperança (Média):** A esperança da variável aleatória $X$ é:
-$$
-  E(X) = \frac{1}{p}
-$$
-- **Variação:** A variância da variável aleatória $X$ é:
-$$
-  Var(X) = \frac{q}{p^2} = \frac{1 - p}{p^2}
-$$
+$0<p\le1$.
 
-## Aplicações Práticas
+## Support
 
-A distribuição geométrica tem diversas aplicações em problemas reais, como:
+$\{1,2,3,\ldots\}$.
 
-- **Probabilidade de obter o primeiro sucesso em experimentos repetidos:** Por exemplo, a probabilidade de um jogador de basquete marcar seu primeiro arremesso no jogo.
-- **Tempo até a ocorrência do primeiro evento específico:** Como o tempo até que um cliente entre em uma loja após o início da operação.
+## PMF or PDF
 
-## Cálculo da Esperança a Partir da Função Geradora de Momentos
+$P(X=k)=(1-p)^{k-1}p$ for $k=1,2,\ldots$.
 
-A **função geradora de momentos (FGM)** de uma variável aleatória discreta $X$ é definida como:
+## CDF
 
-$$
-M_X(t) = E[e^{tX}]
-$$
+$F_X(k)=1-(1-p)^{\lfloor k\rfloor}$ for $k\ge1$.
 
-Para a distribuição geométrica, onde $X$ representa o número de ensaios até o primeiro sucesso, com $P(X = k) = (1 - p)^{k-1}p$, temos:
+## Moments
 
-$$
-M_X(t) = \sum_{k=1}^{\infty} e^{tk} (1 - p)^{k-1} p
-$$
+Moments and MGF:
 
-Essa soma pode ser manipulada como uma série geométrica. Reescrevendo:
+$$E[X]=1/p, \qquad \operatorname{Var}(X)=(1-p)/p^2.$$
 
-$$
-M_X(t) = p e^t \sum_{k=0}^{\infty} \left[(1 - p)e^t\right]^k = \frac{p e^t}{1 - (1 - p)e^t}, \quad \text{para } e^t < \frac{1}{1 - p}
-$$
+$$M_X(t)=\frac{p\exp(t)}{1-(1-p)\exp(t)}, \qquad t<-\log(1-p).$$
 
-Para obter a esperança $E(X)$ a partir da FGM, basta derivar $M_X(t)$ em relação a $t$ e avaliar em $t = 0$:
+## Essential Result
 
-$$
-E(X) = M_X’(0)
-$$
+The geometric distribution is memoryless: $P(X>m+n\mid X>m)=P(X>n)$.
 
-Calculando a derivada de $M_X(t)$:
+## Small Example
 
-Seja
+With $p=0.25$, $P(X=3)=(0.75)^2(0.25)=0.140625$.
 
-$$
-M_X(t) = \frac{p e^t}{1 - (1 - p)e^t}
-$$
+## Common Mistakes
 
-Derivando com a regra do quociente:
+- Mixing the trial-count version with the failure-count version.
+- Using memorylessness for non-geometric waiting models.
 
-$$
-M_X’(t) = \frac{[p e^t][1 - (1 - p)e^t] + [p e^t (1 - p) e^t]}{[1 - (1 - p)e^t]^2}
-$$
+## Connections
 
-Simplificando e substituindo $t = 0$:
+- [[Distribuição de Bernoulli|Bernoulli Distribution]]
+- [[Distribuição Binomial Negativa|Negative Binomial Distribution]]
+- [[Distribuição Exponencial|Exponential Distribution]]
 
-$$
-M_X’(0) = \frac{p}{(1 - (1 - p))^2} = \frac{p}{p^2} = \frac{1}{p}
-$$
+## References
 
-Portanto, como esperado:
-
-$$
-E(X) = \frac{1}{p}
-$$
-
-## Observações Finais
-
-- A distribuição geométrica é **sem memória**, ou seja, a probabilidade de obter um sucesso nos próximos ensaios **não depende** de quantos fracassos já ocorreram. Formalmente:
-$$
-    P(X > m + n \mid X > m) = P(X > n)
-$$
-- Essa propriedade a torna especialmente útil em processos de **espera** e em **modelagens com tempo até o primeiro evento**, principalmente quando os eventos são independentes e ocorrem com a mesma probabilidade.
+[^openstax-discrete]: OpenStax, *Introductory Statistics 2e*, "Chapter 4: Discrete Random Variables", https://openstax.org/books/introductory-statistics-2e/pages/4-introduction

@@ -1,38 +1,71 @@
 ---
 dg-publish: true
+aliases:
+  - F Distribution
+  - Fisher-Snedecor F Distribution
+  - Distribuição F
 ---
-A distribuição F é uma distribuição de probabilidade contínua usada em estatística para testar hipóteses sobre as variâncias ou os parâmetros de distribuições normais. Ela é nomeada em homenagem ao matemático Ronald Fisher, que a introduziu.
 
-## Definição
+# F Distribution (Fisher-Snedecor)
 
-A distribuição F é definida como a razão entre duas quantidades independentes e idênticas, cada uma seguindo uma distribuição χ² (cubo de uma variável aleatória normal). A fórmula geral para a distribuição F é:
+Compact study note.
 
-$$
-F(x) = \frac{\chi^2_1 / k_1}{\chi^2_2 / k_2}
-$$
+## Summary
 
-onde $x$ é o valor da razão, $\chi^2_1$ e $\chi^2_2$ são as quantidades χ² independentes, e $k_1$ e $k_2$ são os graus de liberdade associados a cada uma delas.
+The F distribution is the distribution of a ratio of two independent chi-square variables divided by their degrees of freedom. The name refers to Fisher and Snedecor; the old path title is retained only for link stability.[^nist-gallery]
 
-## Propriedades
+## Prerequisites
 
-A distribuição F tem várias propriedades importantes:
+- [[Distribuição Qui-Quadrado|Chi-Square Distribution]]
 
-* **Simetria**: A distribuição F é simétrica em relação ao valor 1.
-* **Limites**: A distribuição F tem limites finitos, ou seja, ela não pode assumir valores infinitos.
-* **Independência**: As quantidades χ² independentes são independentes entre si.
+## Definition
 
-## Aplicações
+If $U\sim\chi^2_{d_1}$, $V\sim\chi^2_{d_2}$, and $U,V$ are independent, then $X=(U/d_1)/(V/d_2)\sim F_{d_1,d_2}$.
 
-A distribuição F é amplamente usada em estatística para:
+## Notation and Assumptions
 
-* **Testar hipóteses sobre variâncias**: A distribuição F é usada para testar se as variâncias de duas populações são iguais ou diferentes.
-* **Testar hipóteses sobre parâmetros de distribuições normais**: A distribuição F também é usada para testar se os parâmetros de distribuições normais (como a média e a variância) são iguais ou diferentes.
+$d_1$ and $d_2$ are numerator and denominator degrees of freedom.
 
-## Exemplos
+## Parameters
 
-Aqui estão alguns exemplos de como a distribuição F pode ser usada:
+$d_1>0$ and $d_2>0$.
 
-* **Teste de igualdade de variâncias**: Suponha que você tenha duas amostras independentes, $X_1$ e $X_2$, com níveis de confiança diferentes. Você deseja testar se as variâncias das duas populações são iguais ou diferentes.
-* **Teste de igualdade de parâmetros**: Suponha que você tenha uma amostra, $X$, e deseje testar se a média da população é igual a um valor específico.
+## Support
 
-Esses exemplos ilustram como a distribuição F pode ser usada para resolver problemas práticos em estatística.
+$(0,\infty)$.
+
+## PMF or PDF
+
+$f_X(x)=\frac{(d_1/d_2)^{d_1/2}x^{d_1/2-1}}{B(d_1/2,d_2/2)(1+d_1x/d_2)^{(d_1+d_2)/2}}$ for $x>0$.
+
+## CDF
+
+The CDF is computed through the regularized beta function.
+
+## Moments
+
+$E[X]=d_2/(d_2-2)$ for $d_2>2$; $\operatorname{Var}(X)=\frac{2d_2^2(d_1+d_2-2)}{d_1(d_2-2)^2(d_2-4)}$ for $d_2>4$.
+
+## Essential Result
+
+The F distribution is right-skewed and has no finite upper endpoint.
+
+## Small Example
+
+If $U\sim\chi^2_5$ and $V\sim\chi^2_{10}$ are independent, then $(U/5)/(V/10)\sim F_{5,10}$.
+
+## Common Mistakes
+
+- Calling the distribution symmetric or bounded above.
+- Describing chi-square variables like cubes of normals instead of sums of squared standard normals.
+
+## Connections
+
+- [[Distribuição Qui-Quadrado|Chi-Square Distribution]]
+- [[Distribuição T-Student|Student's t Distribution]]
+- [[Função Gama|Gamma Function]]
+
+## References
+
+[^nist-gallery]: NIST/SEMATECH, *e-Handbook of Statistical Methods*, "1.3.6.6 Gallery of Distributions", https://www.itl.nist.gov/div898/handbook/eda/section3/eda366.htm
+[^dlmf-beta]: NIST Digital Library of Mathematical Functions, "5.12 Beta Function", https://dlmf.nist.gov/5.12

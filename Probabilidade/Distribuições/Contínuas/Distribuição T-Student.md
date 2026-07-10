@@ -1,66 +1,72 @@
 ---
 dg-publish: true
+aliases:
+  - Student's t Distribution
+  - Student t Distribution
+  - Distribuição T-Student
 ---
 
-A distribuição T de Student é uma distribuição de probabilidade contínua utilizada para testar hipóteses sobre a média de uma população quando a amostra é pequena e a variância da população não é conhecida.
+# Student's t Distribution
 
-## Definição
+Compact study note.
 
-A distribuição T de Student é definida como:
+## Summary
 
-$$
-t = \frac{\bar{x} - \mu}{s / \sqrt{n}}
-$$
+Student's t distribution is a continuous distribution with heavier tails than the standard normal. Its single parameter is degrees of freedom.[^nist-gallery]
 
-onde:
+## Prerequisites
 
-* $\bar{x}$ é a média amostral;
-* $\mu$ é a média da população;
-* $s$ é o desvio-padrão amostral;
-* $n$ é o tamanho da amostra.
+- [[Distribuição Normal|Normal Distribution]]
+- [[Distribuição Qui-Quadrado|Chi-Square Distribution]]
 
-## Parâmetros
+## Definition
 
-A distribuição T de Student tem dois parâmetros:
+If $Z\sim N(0,1)$, $V\sim\chi^2_\nu$, and $Z$ is independent of $V$, then $T=Z/\sqrt{V/\nu}\sim t_\nu$.
 
-* $k = n - 1$, que é o grau de liberdade;
-* $\nu = k$, que é o grau de liberdade.
+## Notation and Assumptions
 
-## Propriedades
+$\nu>0$ controls tail thickness. Larger $\nu$ makes the distribution closer to $N(0,1)$.
 
-Algumas propriedades importantes da distribuição T de Student incluem:
+## Parameters
 
-* **Simetria**: A distribuição T de Student é simétrica em relação ao eixo dos x.
-* **Moda**: A moda da distribuição T de Student é zero.
-* **Escala**: A escala da distribuição T de Student depende do grau de liberdade.
+$\nu>0$.
 
-## Exemplos
+## Support
 
-Exemplo 1: Uma empresa quer testar se a média salarial de seus funcionários é maior que R$ 2.000,00. Uma amostra de 25 funcionários tem uma média salarial de R$ 2.500,00 e um desvio-padrão de R$ 300,00. A variância da população não é conhecida.
+$\mathbb{R}$.
 
-Nesse caso, podemos usar a distribuição T de Student para testar a hipótese:
+## PMF or PDF
 
-$$
-H_0: \mu = 2000
-$$
+$f_T(t)=\frac{\Gamma((\nu+1)/2)}{\sqrt{\nu\pi}\Gamma(\nu/2)}\left(1+t^2/\nu\right)^{-(\nu+1)/2}$.
 
-Com uma amostra de tamanho $n = 25$, o grau de liberdade é $k = n - 1 = 24$.
+## CDF
 
-Exemplo 2: Uma pesquisa quer avaliar se a média de tempo que os usuários passam em um aplicativo móvel é maior que 30 minutos. Uma amostra de 50 usuários tem uma média de tempo de 35 minutos e um desvio-padrão de 10 minutos.
+No elementary closed-form CDF; it is evaluated numerically.
 
-Nesse caso, podemos usar a distribuição T de Student para testar a hipótese:
+## Moments
 
-$$
-H_0: \mu = 30
-$$
+$E[T]=0$ for $\nu>1$; $\operatorname{Var}(T)=\nu/(\nu-2)$ for $\nu>2$. The ordinary MGF does not exist for nonzero $t$.
 
-Com uma amostra de tamanho $n = 50$, o grau de liberdade é $k = n - 1 = 49$.
+## Essential Result
 
-## Aplicação
+The one-sample t statistic has one $t_{n-1}$ distribution under normal sampling with unknown variance.
 
-A distribuição T de Student é amplamente utilizada em estatística para testar hipóteses sobre a média de uma população quando a amostra é pequena e a variância da população não é conhecida. Além disso, ela também é usada para calcular intervalos de confiança para a média de uma população.
+## Small Example
 
-## Referências
+With $n=10$ normal observations and unknown variance, the usual one-sample statistic uses $\nu=9$ degrees of freedom.
 
-* Fisher, R.A. (1925). Statistical Methods for Research Workers. Edinburgh: Oliver and Boyd.
-* Student (1908). "The probable error of a mean". Biometrika, 6(2), 1-25.
+## Common Mistakes
+
+- Defining the distribution only through test-statistic usage.
+- Listing two parameters when standard Student's t has one degree-of-freedom parameter.
+
+## Connections
+
+- [[Distribuição Normal|Normal Distribution]]
+- [[Distribuição Qui-Quadrado|Chi-Square Distribution]]
+- [[Distribuição F (Distribuição de Freira)|F Distribution]]
+
+## References
+
+[^nist-gallery]: NIST/SEMATECH, *e-Handbook of Statistical Methods*, "1.3.6.6 Gallery of Distributions", https://www.itl.nist.gov/div898/handbook/eda/section3/eda366.htm
+[^dlmf-gamma]: NIST Digital Library of Mathematical Functions, "Chapter 5: Gamma Function", https://dlmf.nist.gov/5

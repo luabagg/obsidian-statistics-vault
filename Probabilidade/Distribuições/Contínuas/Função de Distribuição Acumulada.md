@@ -1,58 +1,50 @@
 ---
 dg-publish: true
+aliases:
+  - Cumulative Distribution Function
+  - CDF
+  - Função de Distribuição Acumulada
 ---
-A função de distribuição acumulada (CDF) para variáveis contínuas, como a normal, é uma ferramenta fundamental em estatística que permite determinar a probabilidade de uma variável aleatória contínua assumir valores menores ou iguais a um valor específico.
 
-## Definição Formal
+# Cumulative Distribution Function
 
-A CDF, denotada por $F(x)$, é definida como:
+Compact study note.
 
-$$
+## Summary
 
+The cumulative distribution function gives probability that random variable values are at or below chosen thresholds. Every real-valued random variable has a CDF.[^openstax-continuous]
 
-F(x) = P(X \leq x)
+## Prerequisites
 
+- [[Variável Aleatória|Random Variable]]
 
-$$
+## Notation and Assumptions
 
-para todo $x \in \mathbb{R}$. Ela representa a probabilidade acumulada até o ponto $x$.
+$F_X(x)=P(X\le x)$ for all real $x$. CDFs are nondecreasing, right-continuous, and have limits $0$ at $-\infty$ and $1$ at $+\infty$.
 
-## Relação com a Função de Densidade de Probabilidade (PDF)
+## Essential Result
 
-A CDF é obtida integrando a função densidade de probabilidade (PDF) da variável contínua do ponto negativo infinito ao ponto $x$:
+For continuous variables, interval probability is CDF difference:
 
-$$
+$$P(l<X\le u)=F_X(u)-F_X(l).$$
 
+For discrete variables, jump sizes give point probabilities.
 
-F(x) = \int_{-\infty}^{x} f(t) \, dt
+## Small Example
 
+If $X$ is uniform on $[0,1]$, then $F_X(0.3)=0.3$.
 
-$$
+## Common Mistakes
 
-Onde $f(t)$ é a PDF.
+- Assuming every CDF is continuous; discrete CDFs jump.
+- Using $F_X(b)-F_X(a)$ with wrong endpoint conventions for atoms.
 
-## Caso da Distribuição Normal
+## Connections
 
-Para a distribuição normal padrão ($N(\mu, \sigma^2)$), a CDF não possui uma expressão fechada simples. No entanto, ela pode ser calculada usando métodos numéricos ou referringindo-se à tabela de valores padronizados.
+- [[Quantis|Quantiles]]
+- [[Densidade de Probabilidade|Probability Density Function]]
+- [[Variável Aleatória Discreta|Discrete Random Variable]]
 
-## Exemplo Prático
+## References
 
-Considerando uma variável $X \sim N(8, 4)$, para calcular $P(X \leq 10)$:
-
-$$
-
-
-P(X \leq 10) = F(10)
-
-
-$$
-
-Isso pode ser determinado usando a CDF da distribuição normal, que geralmente é implementada em softwares estatísticos ou calculadoras.
-
-## Características Importantes
-
-- A CDF é uma função não-decrescente.
-- Ela é contínua para variáveis contínuas.
-- Valores da CDF variam de 0 a 1.
-
-A CDF é essencial em aplicativos estatísticos, como testes de hipótese e cálculos de intervalos de confiança.
+[^openstax-continuous]: OpenStax, *Introductory Statistics 2e*, "Chapter 5: Continuous Random Variables", https://openstax.org/books/introductory-statistics-2e/pages/5-introduction

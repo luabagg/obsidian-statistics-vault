@@ -1,85 +1,48 @@
 ---
 dg-publish: true
+aliases:
+  - Moment Generating Functions
+  - MGF
+  - Funções Geradoras de Momento
 ---
 
-## Definição e Introdução
+# Moment Generating Functions
 
-As funções geradoras de momento (FGM) são ferramentas poderosas em teoria das probabilidades e estatística. Elas permitem a obtenção de informações sobre a distribuição de uma variável aleatória através da análise de suas momentos, que são valores esperados de potências da variável.
+Compact study note.
 
-## Tipos de Funções Geradoras de Momento
+## Summary
 
-Existem três tipos principais de funções geradoras de momento:
+Moment generating functions package moments through expectations of exponentials when they exist near zero.[^mit-prob]
 
-1. **Função Geradora de Momento (MGF)**
-2. **Função Geradora de Momento Central (CGF)**
-3. **Função Geradora de Momento Asimétrico (AGF)**
+$$M_X(t)=E[\exp(tX)], \qquad K_X(t)=\log M_X(t).$$
 
-### Função Geradora de Momento (MGF)
+## Prerequisites
 
-A função geradora de momento é definida como:
+- [[Esperança de uma Variável Aleatória|Expected Value]]
 
-$$
-M_X(t) = E(e^{tX})
-$$
+## Notation and Assumptions
 
-onde $X$ é uma variável aleatória e $t$ é um parâmetro real. A MGF existe se a esperança $E(e^{tX})$ for finita para algum intervalo de $t$.
+Use $M_X(t)$ for the MGF and $K_X(t)$ for the cumulant generating function. Do not use nonstandard 'central MGF' or 'asymmetric MGF' like separate standard objects.
 
-**Exemplo:**
-Para uma variável aleatória exponencial com parâmetro $\lambda$, a função geradora de momento é:
-$$
-M_X(t) = \frac{\lambda}{\lambda - t} \quad \text{para} \quad t < \lambda
-$$
+## Essential Result
 
-### Função Geradora de Momento Central (CGF)
+If $M_X$ exists near $0$, then $E[X^n]=M_X^{(n)}(0)$. If independent $X,Y$ have MGFs near $0$, then $M_{X+Y}(t)=M_X(t)M_Y(t)$.
 
-A função geradora de momento central é definida como:
+## Small Example
 
-$$
-C_X(t) = E(e^{tX^2/2})
-$$
+For $X\sim\operatorname{Bernoulli}(p)$, $M_X(t)=(1-p)+pe^t$ and $M_X'(0)=p$.
 
-ela fornece informações sobre a distribuição em termos dos momentos centrados.
+## Common Mistakes
 
-**Exemplo:**
-Para uma variável aleatória normal $N(\mu, \sigma^2)$, a CGF é:
-$$
-C_X(t) = e^{\mu t + \frac{1}{2} \sigma^2 t^2}
-$$
+- Assuming every distribution has an MGF near zero; log-normal does not.
+- Confusing an MGF with one characteristic function, which always exists.
 
-### Função Geradora de Momento Asimétrico (AGF)
+## Connections
 
-A função geradora de momento asimétrico é definida como:
+- [[Esperança a Partir da Função Geradora de Momentos|Expectation from an MGF]]
+- [[Função Característica|Characteristic Function]]
+- [[Distribuição de Bernoulli|Bernoulli Distribution]]
 
-$$
-A_X(t) = E(e^{tX - \mu X})
-$$
+## References
 
-onde $\mu$ é a média da variável aleatória.
-
-**Exemplo:**
-Para uma variável aleatória log-normal, a AGF é:
-$$
-A_X(t) = e^{\mu t + \frac{1}{2} \sigma^2 t^2}
-$$
-
-## Propriedades das Funções Geradoras de Momento
-
-As FGM possuem várias propriedades úteis:
-
-- **Unicidade**: Se $M_X(t) = M_Y(t)$, então $X$ e $Y$ têm a mesma distribuição.
-- **Momentos**: Os momentos da variável aleatória podem ser obtidos através das derivadas da função geradora de momento. Por exemplo, o primeiro momento (esperança) é dado por:
-$$
-  E(X) = M_X'(0)
-$$
-
-## Aplicações
-
-As FGM são amplamente utilizadas em várias áreas:
-
-- **Teoria dos Sinais**: Para análise de sistemas lineares e não-lineares.
-- **Física Estatística**: Para modelagem de fenômenos físicos.
-- **Economia Financeira**: Para análise de riscos e portfólios.
-
-## Conclusão
-
-As funções geradoras de momento são ferramentas essenciais na teoria das probabilidades, permitindo a obtenção de informações sobre distribuições de variáveis aleatórias através da análise de seus momentos.
+[^mit-prob]: MIT OpenCourseWare, "6.041SC Probabilistic Systems Analysis and Applied Probability", Fall 2013, https://ocw.mit.edu/courses/6-041sc-probabilistic-systems-analysis-and-applied-probability-fall-2013/
