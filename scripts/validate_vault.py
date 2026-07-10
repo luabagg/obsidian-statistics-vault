@@ -261,9 +261,21 @@ def validate_empty_sections(rel: Path, text: str) -> list[Finding]:
     findings: list[Finding] = []
     matches = list(HEADING_RE.finditer(text))
     for index, match in enumerate(matches):
+        level = len(match.group(1))
+        # The level-one heading is the note title, not instructional content.
+        if level == 1:
+            continue
+        # A parent section whose next heading is deeper is a container for
+        # subsections; the subsections are checked independently.
+        if index + 1 < len(matches) and len(matches[index + 1].group(1)) > level:
+            continue
         start = match.end()
         end = matches[index + 1].start() if index + 1 < len(matches) else len(text)
         body = text[start:end]
+        # A parent section can legitimately contain only child headings; its
+        # children are checked independently below.
+        if re.search(rf"^#{{{level + 1},6}}\s+", body, flags=re.MULTILINE):
+            continue
         if is_effectively_empty(body):
             findings.append(
                 Finding(

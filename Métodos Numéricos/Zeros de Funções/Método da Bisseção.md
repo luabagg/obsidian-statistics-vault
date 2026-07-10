@@ -104,6 +104,10 @@ function bisection(f, a, b, tol, max_iter):
 - Multiple roots in $[a,b]$ (any one may be returned)
 - Extremely flat $f$ near the root (residual criterion may mislead)
 
+## Visual Explanation
+
+The interval-halving invariant is shown in [[Videos/Bisection Convergence/BisectionConvergence.mp4|Bisection convergence (Manim)]].
+
 ## Connections
 
 - [[Método da Falsa Posição]] keeps a bracket but uses a secant intercept
