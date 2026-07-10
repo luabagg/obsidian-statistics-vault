@@ -40,6 +40,17 @@ Use these paths as reading orders, not as rigid courses. Each finished note shou
 7. [[Variância de uma Variável Aleatória]]
 8. [[Funções Geradoras de Momento]]
 
+## Statistical Inference
+
+1. [[Inferência Estatística/Estimação Pontual|Point Estimation]]
+2. [[Inferência Estatística/Máxima Verossimilhança|Maximum Likelihood Estimation]]
+3. [[Inferência Estatística/Intervalos de Confiança|Confidence Intervals]]
+4. [[Inferência Estatística/Teste de Hipóteses|Hypothesis Testing]]
+5. [[Inferência Estatística/p-valor|p-values]]
+6. [[Inferência Estatística/Erros Tipo I e II|Type I and Type II Errors]]
+7. [[Inferência Estatística/Regressão Linear|Simple Linear Regression]]
+8. [[Inferência Estatística/ANOVA|One-Way ANOVA]]
+
 ## Distributions
 
 1. [[Distribuições]]
