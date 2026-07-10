@@ -45,6 +45,12 @@ Prerequisites: high-school algebra (equations, inequalities, graphing on the coo
 - Analytic geometry support: [[Geometria Analítica]]
 - Linear algebra foundations: [[Álgebra Linear]]
 
+## Connections
+
+- Foundations: [[Geometria Analítica]] and [[Functions]]
+- Next topic: [[Cálculo]]
+- Applications: [[Probabilidade]] and [[Álgebra Linear]]
+
 ## References
 
 Pre-calculus topics here follow standard OpenStax coverage of functions, algebra of functions, and trigonometry.[^openstax-precalc]

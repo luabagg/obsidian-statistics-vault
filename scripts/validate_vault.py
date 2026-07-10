@@ -26,6 +26,8 @@ UTILITY_MARKDOWN = {
     "CONTRIBUTING.md",
     "LEARNING_PATHS.md",
     "adjust-info.md",
+    "plan.md",
+    "Exemplos Latex (MathJax).md",
 }
 PLACEHOLDER_RE = re.compile(
     r"TODO_TEMPLATE\b|\{\{[^}\n]+\}\}|<([A-Za-z][A-Za-z0-9 _./-]{1,60})>"
@@ -56,10 +58,14 @@ FOOTNOTE_DEFINITION_RE = re.compile(r"^\[\^([^\]\s]+)\]:", re.MULTILINE)
 HEADING_RE = re.compile(r"^(#{1,6})\s+(.+?)\s*$", re.MULTILINE)
 PORTUGUESE_WORD_RE = re.compile(
     r"\b("
-    r"a|ao|aos|as|com|como|da|das|de|do|dos|e|em|entre|esta|este|"
-    r"fun[cç][aã]o|m[eé]dia|m[eé]todo|n[aã]o|onde|para|por|probabilidade|"
-    r"quando|que|seja|teorema|uma|vari[aá]vel"
-    r")\b",
+    r"amostra(?:s|l)?|amostral|aleat[oó]ria|aleat[oó]rias|"
+    r"amplitude|capacidade|converg[eê]ncia|conformes|controle|"
+    r"correla[cç][aã]o|defeitos|derivada|derivadas|distribui[cç][aã]o|"
+    r"distribui[cç][oõ]es|equac[aã]o|equac[oõ]es|espa[cç]o|eventos|"
+    r"fun[cç][aã]o|fun[cç][oõ]es|integra[cç][aã]o|m[eé]dia|m[eé]todo|"
+    r"n[aã]o|n[uú]mero|n[uú]meros|probabilidade|processo|resolu[cç][aã]o|"
+    r"sistema|soma|teorema|vari[aá]vel|vari[aá]veis"
+    r")\\b",
     re.IGNORECASE,
 )
 ACCENT_RE = re.compile(r"[ãõáéíóúâêôàç]")
@@ -187,6 +193,10 @@ def section_body(text: str, heading_name: str) -> str:
 
 
 def is_effectively_empty(body: str) -> bool:
+    # A code block is meaningful section content even when its prose is
+    # intentionally minimal (for example a pseudocode section).
+    if re.search(r"```.*?```", body, flags=re.DOTALL):
+        return False
     cleaned = strip_code_blocks(body)
     cleaned = re.sub(r"<!--.*?-->", "", cleaned, flags=re.DOTALL)
     cleaned = re.sub(r"[-*_`#>\s|:]+", "", cleaned)
@@ -299,9 +309,10 @@ def validate_english(rel: Path, text: str) -> list[Finding]:
         stripped = line.strip()
         if not stripped or stripped.startswith(("$$", "|", "- [", "[^")):
             continue
-        word_hits = PORTUGUESE_WORD_RE.findall(stripped)
-        accent_hit = ACCENT_RE.search(stripped.lower())
-        if len(word_hits) >= 2 or (word_hits and accent_hit):
+        visible = WIKILINK_RE.sub("", stripped)
+        visible = re.sub(r"\[\^[^\]]+\]", "", visible)
+        word_hits = PORTUGUESE_WORD_RE.findall(visible)
+        if word_hits:
             hits.append((line_index, stripped[:100]))
     if not hits:
         return []

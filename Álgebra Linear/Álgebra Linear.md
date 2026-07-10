@@ -49,6 +49,12 @@ A map $f(\mathbf{x}) = A\mathbf{x}$ (matrix–vector product) is **linear**. An 
 - Analytic geometry support: [[Lines and Planes]], [[Vectors and Dot Product]]
 - Applications: least squares links to regression and [[Mínimos Quadrados]] when available
 
+## Connections
+
+- Foundations: [[Functions]] and [[Geometria Analítica]]
+- Numerical methods: [[Métodos Numéricos]]
+- Statistical applications: [[Probabilidade]]
+
 ## References
 
 Core linear algebra structure follows MIT OCW 18.06 and standard matrix-theory curricula.[^mit-1806][^openstax-calc3-la]

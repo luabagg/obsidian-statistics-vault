@@ -47,6 +47,11 @@ Analytic geometry studies geometric objects with coordinates, equations, and vec
 - Linear algebra: [[Álgebra Linear]], especially [[Vector Spaces and Bases]] and [[Orthogonality and Projections]]
 - Calculus: multivariable topics under [[Cálculo]]
 
+## Connections
+
+- Foundations: [[Pré-Cálculo]], [[Functions]], and [[Vectors and Dot Product]]
+- Next topics: [[Cálculo]] and [[Álgebra Linear]]
+
 ## References
 
 Coordinate geometry topics align with OpenStax Precalculus and Calculus treatments of analytic geometry.[^openstax-precalc-ag][^openstax-calc-ag]

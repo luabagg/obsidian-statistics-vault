@@ -59,8 +59,8 @@ Parts is the wrong primary tool for this integral.
 
 ## Connections
 
-- Related techniques: substitution, tabular parts for $\int x^n e^{ax}$, reduction formulas
-- Series: integration of power series term by term
+- Related techniques: [[Integrais]], [[Derivadas]], substitution, and reduction formulas
+- Series: [[Séries Infinitas]] and term-by-term integration
 
 ## References
 
