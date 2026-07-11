@@ -51,6 +51,10 @@ Exact: \(1/3\approx 0.333\).
 - Claiming a specific absolute accuracy from a large \(n\) without using the error formula or a comparison integral.
 - Applying the smooth-error formula across singularities.
 
+## Visual Explanation
+
+![[TrapezoidalRule.mp4]]
+
 ## Connections
 
 - Related: [[Midpoint Rule]], [[Simpson 1-3 Rule]]
