@@ -21,7 +21,7 @@ Autocorrelation is common in continuous chemical processes, sensor streams, temp
 
 ## Definition
 
-For an autocorrelated series \(y_t\), a robust SPC approach models the predictable structure first and charts residuals:
+For an autocorrelated series $y_t$, a robust SPC approach models the predictable structure first and charts residuals:
 
 $$
 e_t = y_t - \hat{y}_{t|t-1}.
@@ -38,7 +38,7 @@ The residual chart asks whether the unexplained part of the process changed.
 
 ## Control Limits / Formula
 
-For residuals with mean near zero and estimated residual standard deviation \(\hat{\sigma}_e\):
+For residuals with mean near zero and estimated residual standard deviation $\hat{\sigma}_e$:
 
 $$
 UCL_e = 3\hat{\sigma}_e,\qquad CL_e=0,\qquad LCL_e=-3\hat{\sigma}_e.
@@ -55,10 +55,10 @@ This residual chart formula is not universal for all autocorrelated processes.
 
 ## Worked Example
 
-One furnace temperature series follows the forecast \(\hat{y}_{t|t-1}=0.8y_{t-1}+20\).
-If one observation is \(y_{t-1}=100\), the forecast is \(100\).
-If the next observed value is \(104\), the residual is \(e_t=4\).
-With \(\hat{\sigma}_e=1.2\), the residual UCL is \(3.6\), so this residual is a signal.
+One furnace temperature series follows the forecast $\hat{y}_{t|t-1}=0.8y_{t-1}+20$.
+If one observation is $y_{t-1}=100$, the forecast is $100$.
+If the next observed value is $104$, the residual is $e_t=4$.
+With $\hat{\sigma}_e=1.2$, the residual UCL is $3.6$, so this residual is a signal.
 
 ## Common Mistakes
 

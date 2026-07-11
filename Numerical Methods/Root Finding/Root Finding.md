@@ -13,7 +13,7 @@ aliases:
 
 ## Summary
 
-Root-finding algorithms approximate solutions of \(f(x)=0\). Bracket methods need a sign change; open methods need a good initial guess and often a derivative.
+Root-finding algorithms approximate solutions of $f(x)=0$. Bracket methods need a sign change; open methods need a good initial guess and often a derivative.
 
 ## Prerequisites
 
@@ -34,7 +34,7 @@ Root-finding algorithms approximate solutions of \(f(x)=0\). Bracket methods nee
 | Bisection | sign change | slow | yes on bracket |
 | False position | sign change | often faster than bisection | stays bracketed |
 | Secant | two starts | superlinear typical | local |
-| Newton | \(f'\) and one start | quadratic near simple root | local |
+| Newton | $f'$ and one start | quadratic near simple root | local |
 
 ## Connections
 

@@ -20,19 +20,19 @@ The squeeze theorem (sandwich theorem) finds a limit by trapping a function betw
 
 ## Definition / Theorem
 
-Suppose \(g(x)\le f(x)\le h(x)\) for all \(x\) in a deleted neighborhood of \(a\). If
+Suppose $g(x)\le f(x)\le h(x)$ for all $x$ in a deleted neighborhood of $a$. If
 
-\[
+$$
 \lim_{x\to a}g(x)=\lim_{x\to a}h(x)=L,
-\]
+$$
 
 then
 
-\[
+$$
 \lim_{x\to a}f(x)=L.
-\]
+$$
 
-The same idea works for one-sided limits and for \(x\to\pm\infty\).
+The same idea works for one-sided limits and for $x\to\pm\infty$.
 
 ## Conditions / Assumptions
 
@@ -41,21 +41,21 @@ The same idea works for one-sided limits and for \(x\to\pm\infty\).
 
 ## Worked Example
 
-Because \(-1\le\sin(1/x)\le 1\) for \(x\neq 0\),
+Because $-1\le\sin(1/x)\le 1$ for $x\neq 0$,
 
-\[
+$$
 -|x|\le x\sin(1/x)\le |x|.
-\]
+$$
 
-Since \(\lim_{x\to 0}(-|x|)=\lim_{x\to 0}|x|=0\), the squeeze theorem gives
+Since $\lim_{x\to 0}(-|x|)=\lim_{x\to 0}|x|=0$, the squeeze theorem gives
 
-\[
+$$
 \lim_{x\to 0}x\sin(1/x)=0.
-\]
+$$
 
 ## Common Mistakes
 
-- Using only an upper bound (for example \(0<e^{-x^2}<x^4\)) and concluding a wrong limit. In fact \(\lim_{x\to\infty}e^{-x^2}=0\).
+- Using only an upper bound (for example $0<e^{-x^2}<x^4$) and concluding a wrong limit. In fact $\lim_{x\to\infty}e^{-x^2}=0$.
 - Applying the theorem when the two bounds have different limits.
 
 ## Connections

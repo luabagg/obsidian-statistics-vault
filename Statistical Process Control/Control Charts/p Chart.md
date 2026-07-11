@@ -21,7 +21,7 @@ Sample sizes may vary.
 
 ## Definition
 
-For sample \(i\), let \(D_i\) be the number of nonconforming units and \(n_i\) the number inspected. The plotted statistic is:
+For sample $i$, let $D_i$ be the number of nonconforming units and $n_i$ the number inspected. The plotted statistic is:
 
 $$
 \hat{p}_i = \frac{D_i}{n_i}.
@@ -38,10 +38,10 @@ $$
 
 | Symbol | Meaning |
 |---|---|
-| \(D_i\) | Nonconforming units in sample \(i\) |
-| \(n_i\) | Inspected units in sample \(i\) |
-| \(\hat{p}_i\) | Sample proportion nonconforming |
-| \(\bar{p}\) | Pooled estimate of process fraction nonconforming |
+| $D_i$ | Nonconforming units in sample $i$ |
+| $n_i$ | Inspected units in sample $i$ |
+| $\hat{p}_i$ | Sample proportion nonconforming |
+| $\bar{p}$ | Pooled estimate of process fraction nonconforming |
 
 ## Control Limits / Formula
 
@@ -51,7 +51,7 @@ $$
 \bar{p}=\frac{\sum_i D_i}{\sum_i n_i}.
 $$
 
-For sample \(i\):
+For sample $i$:
 
 $$
 UCL_i=\bar{p}+3\sqrt{\frac{\bar{p}(1-\bar{p})}{n_i}}
@@ -69,12 +69,12 @@ $$
 
 - Points above the UCL suggest a worse-than-stable nonconforming rate.
 - Points below the LCL can signal improvement, inspection changes, or classification changes.
-- Variable \(n_i\) means variable limits.
-- If \(n_i\) is fixed and counts are easier to communicate, an np chart is equivalent.
+- Variable $n_i$ means variable limits.
+- If $n_i$ is fixed and counts are easier to communicate, an np chart is equivalent.
 
 ## Worked Example
 
-Five samples of 100 units have nonconforming counts \(4,7,5,6,8\). Then \(\bar{p}=30/500=0.06\).
+Five samples of 100 units have nonconforming counts $4,7,5,6,8$. Then $\bar{p}=30/500=0.06$.
 
 $$
 UCL=0.06+3\sqrt{\frac{0.06(0.94)}{100}}=0.1313
@@ -84,7 +84,7 @@ $$
 LCL=\max(0,0.06-0.0713)=0.
 $$
 
-The observed proportions \(0.04,0.07,0.05,0.06,0.08\) are inside the limits.
+The observed proportions $0.04,0.07,0.05,0.06,0.08$ are inside the limits.
 
 ## Common Mistakes
 

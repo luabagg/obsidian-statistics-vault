@@ -15,26 +15,26 @@ Prerequisites: binomial distribution and p chart logic.
 
 ## Process Context
 
-Use an np chart when each sample has the same inspected size \(n\) and the audience should see counts rather than proportions.
+Use an np chart when each sample has the same inspected size $n$ and the audience should see counts rather than proportions.
 
 ## Definition
 
-For sample \(i\), plot \(D_i\), the number of nonconforming units. Under stable conditions, \(D_i\) is modeled as binomial with parameters \(n\) and \(p\).
+For sample $i$, plot $D_i$, the number of nonconforming units. Under stable conditions, $D_i$ is modeled as binomial with parameters $n$ and $p$.
 
 ## Assumptions / Requirements
 
-- Fixed sample size \(n\).
+- Fixed sample size $n$.
 - Each unit has two possible classifications.
 - Unit classifications are independent.
-- The probability \(p\) is stable when only common causes are present.
+- The probability $p$ is stable when only common causes are present.
 
 ## Notation
 
 | Symbol | Meaning |
 |---|---|
-| \(D_i\) | Nonconforming units in sample \(i\) |
-| \(n\) | Fixed inspected sample size |
-| \(\bar{p}\) | Pooled estimate of fraction nonconforming |
+| $D_i$ | Nonconforming units in sample $i$ |
+| $n$ | Fixed inspected sample size |
+| $\bar{p}$ | Pooled estimate of fraction nonconforming |
 
 ## Control Limits / Formula
 
@@ -58,7 +58,7 @@ $$
 
 ## Worked Example
 
-Five samples of \(n=100\) units have nonconforming counts \(4,7,5,6,8\). The pooled estimate is \(\bar{p}=0.06\), so \(CL=6\).
+Five samples of $n=100$ units have nonconforming counts $4,7,5,6,8$. The pooled estimate is $\bar{p}=0.06$, so $CL=6$.
 
 $$
 UCL=6+3\sqrt{100(0.06)(0.94)}=13.13

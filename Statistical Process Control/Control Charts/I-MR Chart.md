@@ -20,7 +20,7 @@ Use I-MR for low-volume production, destructive tests, long cycle times, adminis
 
 ## Definition
 
-The individuals chart plots \(x_i\). The moving range chart plots the absolute difference between consecutive observations:
+The individuals chart plots $x_i$. The moving range chart plots the absolute difference between consecutive observations:
 
 $$
 MR_i = |x_i - x_{i-1}|.
@@ -38,11 +38,11 @@ $$
 
 | Symbol | Meaning |
 |---|---|
-| \(x_i\) | Individual observation at time \(i\) |
-| \(\bar{x}\) | Average of individual observations |
-| \(MR_i\) | Moving range between \(x_i\) and \(x_{i-1}\) |
-| \(\overline{MR}\) | Average moving range |
-| \(d_2\) | Range constant, \(1.128\) for moving ranges of length 2 |
+| $x_i$ | Individual observation at time $i$ |
+| $\bar{x}$ | Average of individual observations |
+| $MR_i$ | Moving range between $x_i$ and $x_{i-1}$ |
+| $\overline{MR}$ | Average moving range |
+| $d_2$ | Range constant, $1.128$ for moving ranges of length 2 |
 
 ## Control Limits / Formula
 
@@ -76,7 +76,7 @@ $$
 
 ## Worked Example
 
-Five individual measurements are \(10.1, 9.9, 10.3, 10.2, 10.0\). Then \(\bar{x}=10.10\), moving ranges are \(0.2, 0.4, 0.1, 0.2\), and \(\overline{MR}=0.225\).
+Five individual measurements are $10.1, 9.9, 10.3, 10.2, 10.0$. Then $\bar{x}=10.10$, moving ranges are $0.2, 0.4, 0.1, 0.2$, and $\overline{MR}=0.225$.
 
 $$
 UCL_X=10.10+2.66(0.225)=10.6985

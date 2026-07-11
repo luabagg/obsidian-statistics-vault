@@ -12,7 +12,7 @@ aliases:
 
 ## Summary
 
-Polynomial interpolation constructs a polynomial that passes through given data points. For distinct nodes, the polynomial of degree at most \(n\) through \(n+1\) points is unique.
+Polynomial interpolation constructs a polynomial that passes through given data points. For distinct nodes, the polynomial of degree at most $n$ through $n+1$ points is unique.
 
 ## Prerequisites
 

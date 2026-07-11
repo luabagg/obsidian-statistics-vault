@@ -20,7 +20,7 @@ Use a c chart when the opportunity for defects is essentially constant from samp
 
 ## Definition
 
-The plotted value \(c_i\) is the count of nonconformities in inspection unit \(i\). A unit can have more than one nonconformity.
+The plotted value $c_i$ is the count of nonconformities in inspection unit $i$. A unit can have more than one nonconformity.
 
 ## Assumptions / Requirements
 
@@ -33,8 +33,8 @@ The plotted value \(c_i\) is the count of nonconformities in inspection unit \(i
 
 | Symbol | Meaning |
 |---|---|
-| \(c_i\) | Defects in inspection unit \(i\) |
-| \(\bar{c}\) | Average defect count per inspection unit |
+| $c_i$ | Defects in inspection unit $i$ |
+| $\bar{c}$ | Average defect count per inspection unit |
 
 ## Control Limits / Formula
 
@@ -58,7 +58,7 @@ $$
 
 ## Worked Example
 
-Five equal-area panels have defect counts \(3,5,2,4,6\). Then \(\bar{c}=4\).
+Five equal-area panels have defect counts $3,5,2,4,6$. Then $\bar{c}=4$.
 
 $$
 UCL=4+3\sqrt{4}=10

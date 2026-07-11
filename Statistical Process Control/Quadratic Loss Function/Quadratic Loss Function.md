@@ -17,40 +17,40 @@ Prerequisites: target value, specification limits, process variation.
 
 ## Definition
 
-For measured value \(y\), target \(T\), and proportionality constant \(k\):
+For measured value $y$, target $T$, and proportionality constant $k$:
 
 $$
 L(y)=k(y-T)^2.
 $$
 
-The constant \(k\) converts squared deviation into money, warranty cost, performance loss, or another loss scale.
+The constant $k$ converts squared deviation into money, warranty cost, performance loss, or another loss scale.
 
 ## Assumptions / Requirements
 
 - The target value is meaningful.
-- Loss increases symmetrically when \(y\) moves away from \(T\), unless asymmetric loss is justified.
-- The cost at a known deviation can be used to estimate \(k\).
+- Loss increases symmetrically when $y$ moves away from $T$, unless asymmetric loss is justified.
+- The cost at a known deviation can be used to estimate $k$.
 - Specification limits remain requirements; the loss function does not replace conformance decisions.
 
 ## Notation
 
 | Symbol | Meaning |
 |---|---|
-| \(y\) | Observed quality characteristic |
-| \(T\) | Target or nominal value |
-| \(L(y)\) | Loss at value \(y\) |
-| \(k\) | Loss constant |
+| $y$ | Observed quality characteristic |
+| $T$ | Target or nominal value |
+| $L(y)$ | Loss at value $y$ |
+| $k$ | Loss constant |
 
 ## Worked Example
 
-Rotor thickness target is \(T=2.00\) mm.
-Deviation of \(0.10\) mm is estimated to cost 20 monetary units, so:
+Rotor thickness target is $T=2.00$ mm.
+Deviation of $0.10$ mm is estimated to cost 20 monetary units, so:
 
 $$
 k=\frac{20}{0.10^2}=2000.
 $$
 
-If one rotor measures \(2.04\) mm:
+If one rotor measures $2.04$ mm:
 
 $$
 L(2.04)=2000(2.04-2.00)^2=3.2.
@@ -67,7 +67,7 @@ The part may still be inside specification, but it is not loss-free.
 ## Common Mistakes
 
 - Treating all in-spec values as equally good.
-- Using Taguchi loss without defining \(k\).
+- Using Taguchi loss without defining $k$.
 - Ignoring asymmetric customer loss when one side of the target is more costly.
 - Confusing target value with control-chart center line.
 

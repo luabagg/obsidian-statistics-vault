@@ -27,7 +27,7 @@ Control limits are statistical boundaries computed from the process data or from
 
 ## Worked Example
 
-A stable process has \(\bar{x}=10.00\), \(\hat{\sigma}=0.10\), so approximate individuals control limits are \(9.70\) and \(10.30\). The drawing specification is \(9.90\) to \(10.10\). The process can be statistically stable while producing too many parts outside specification; stability does not imply capability.
+A stable process has $\bar{x}=10.00$, $\hat{\sigma}=0.10$, so approximate individuals control limits are $9.70$ and $10.30$. The drawing specification is $9.90$ to $10.10$. The process can be statistically stable while producing too many parts outside specification; stability does not imply capability.
 
 ## Common Mistakes
 

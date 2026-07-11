@@ -26,13 +26,13 @@ Curve fitting chooses a model family and parameters that match data in an approx
 
 ## Key Distinctions
 
-- **Interpolation** forces \(P(x_i)=y_i\) exactly.
-- **Fitting / regression** allows residual \(y_i-f(x_i)\neq 0\) and minimizes a loss.
-- A model can be nonlinear in \(x\) yet linear in parameters (e.g. \(a+bx+cx^2\)).
+- **Interpolation** forces $P(x_i)=y_i$ exactly.
+- **Fitting / regression** allows residual $y_i-f(x_i)\neq 0$ and minimizes a loss.
+- A model can be nonlinear in $x$ yet linear in parameters (e.g. $a+bx+cx^2$).
 
 ## Worked Example Pointer
 
-For \((1,2),(2,3),(3,5)\), the OLS line is \(y=\frac13+\frac32 x\). Details in [[Least Squares]].
+For $(1,2),(2,3),(3,5)$, the OLS line is $y=\frac13+\frac32 x$. Details in [[Least Squares]].
 
 ## Connections
 

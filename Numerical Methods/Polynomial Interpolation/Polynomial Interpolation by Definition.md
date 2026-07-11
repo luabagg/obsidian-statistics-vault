@@ -11,7 +11,7 @@ aliases:
 
 ## Summary
 
-The interpolating polynomial can be written in the monomial basis and found by solving a Vandermonde system. Existence and uniqueness for distinct nodes guarantee a single solution of degree at most \(n\).
+The interpolating polynomial can be written in the monomial basis and found by solving a Vandermonde system. Existence and uniqueness for distinct nodes guarantee a single solution of degree at most $n$.
 
 ## Prerequisites
 
@@ -19,9 +19,9 @@ The interpolating polynomial can be written in the monomial basis and found by s
 
 ## Method Definition
 
-Seek \(P(x)=c_0+c_1x+\cdots+c_n x^n\) such that \(P(x_i)=y_i\) for distinct \(x_0,\ldots,x_n\). In matrix form,
+Seek $P(x)=c_0+c_1x+\cdots+c_n x^n$ such that $P(x_i)=y_i$ for distinct $x_0,\ldots,x_n$. In matrix form,
 
-\[
+$$
 \begin{pmatrix}
 1&x_0&\cdots&x_0^n\\
 \vdots&\vdots&\ddots&\vdots\\
@@ -30,16 +30,16 @@ Seek \(P(x)=c_0+c_1x+\cdots+c_n x^n\) such that \(P(x_i)=y_i\) for distinct \(x_
 \begin{pmatrix}c_0\\\vdots\\c_n\end{pmatrix}
 =
 \begin{pmatrix}y_0\\\vdots\\y_n\end{pmatrix}.
-\]
+$$
 
 ## Worked Example
 
-Nodes \((0,2),(1,3)\): solve \(c_0=2\), \(c_0+c_1=3\) → \(P(x)=2+x\).
+Nodes $(0,2),(1,3)$: solve $c_0=2$, $c_0+c_1=3$ → $P(x)=2+x$.
 
 ## Common Failure Modes
 
 - Repeated nodes make the Vandermonde matrix singular.
-- High \(n\) yields ill-conditioned Vandermonde systems; prefer Newton form in practice.
+- High $n$ yields ill-conditioned Vandermonde systems; prefer Newton form in practice.
 
 ## Connections
 

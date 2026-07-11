@@ -20,7 +20,7 @@ Use Xbar-S when subgroup standard deviations are more appropriate than ranges, e
 
 ## Definition
 
-For subgroup \(i\), compute \(\bar{x}_i\) and sample standard deviation \(s_i\). The S chart checks whether short-term variation is stable; the Xbar chart checks whether subgroup means are stable.
+For subgroup $i$, compute $\bar{x}_i$ and sample standard deviation $s_i$. The S chart checks whether short-term variation is stable; the Xbar chart checks whether subgroup means are stable.
 
 ## Assumptions / Requirements
 
@@ -34,12 +34,12 @@ For subgroup \(i\), compute \(\bar{x}_i\) and sample standard deviation \(s_i\).
 
 | Symbol | Meaning |
 |---|---|
-| \(n\) | Subgroup size |
-| \(\bar{x}_i\) | Mean of subgroup \(i\) |
-| \(s_i\) | Sample standard deviation of subgroup \(i\) |
-| \(\bar{\bar{x}}\) | Average of subgroup means |
-| \(\bar{s}\) | Average of subgroup standard deviations |
-| \(A_3,B_3,B_4\) | Control chart constants based on \(n\) |
+| $n$ | Subgroup size |
+| $\bar{x}_i$ | Mean of subgroup $i$ |
+| $s_i$ | Sample standard deviation of subgroup $i$ |
+| $\bar{\bar{x}}$ | Average of subgroup means |
+| $\bar{s}$ | Average of subgroup standard deviations |
+| $A_3,B_3,B_4$ | Control chart constants based on $n$ |
 
 ## Control Limits / Formula
 
@@ -56,7 +56,7 @@ LCL_S &= B_3\bar{s}.
 \end{aligned}
 $$
 
-For \(n=5\), common constants are \(A_3=1.427\), \(B_3=0\), and \(B_4=2.089\).[^montgomery-spc]
+For $n=5$, common constants are $A_3=1.427$, $B_3=0$, and $B_4=2.089$.[^montgomery-spc]
 
 ## Interpretation Rules
 
@@ -67,7 +67,7 @@ For \(n=5\), common constants are \(A_3=1.427\), \(B_3=0\), and \(B_4=2.089\).[^
 
 ## Worked Example
 
-Four subgroups of size \(n=5\) have means \(10.02, 9.98, 10.05, 10.00\) and standard deviations \(0.04, 0.05, 0.03, 0.06\). Then \(\bar{\bar{x}}=10.0125\) and \(\bar{s}=0.045\).
+Four subgroups of size $n=5$ have means $10.02, 9.98, 10.05, 10.00$ and standard deviations $0.04, 0.05, 0.03, 0.06$. Then $\bar{\bar{x}}=10.0125$ and $\bar{s}=0.045$.
 
 $$
 UCL_{\bar{X}}=10.0125+1.427(0.045)=10.0767
