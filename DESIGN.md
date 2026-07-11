@@ -70,7 +70,7 @@ LaTeX is NOT installed — do not use TeX-based Mobjects.
 2. Inspect the final frame for clipping, overlap, or readability issues.
 3. Render at high quality (`-qh`) only after the preview looks correct.
 4. Commit the MP4, `plan.md`, and `script.py` to git.
-5. Embed the video in the relevant note using `![[<FileName>.mp4]]`.
+5. Embed the video in the relevant note using `![[TrapezoidalRule.mp4]]`.
 
 ## Note Structure Standard
 

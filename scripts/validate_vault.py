@@ -28,6 +28,7 @@ UTILITY_MARKDOWN = {
     "adjust-info.md",
     "plan.md",
     "LaTeX Examples.md",
+    "DESIGN.md",
 }
 PLACEHOLDER_RE = re.compile(
     r"TODO_TEMPLATE\b|\{\{[^}\n]+\}\}|<([A-Za-z][A-Za-z0-9 _./-]{1,60})>"
