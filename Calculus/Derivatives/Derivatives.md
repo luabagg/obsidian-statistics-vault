@@ -8,15 +8,14 @@ tags:
 
 %% Begin Waypoint %%
 - **[[Derivatives]]**
+	- **[[Directional Derivative]]**
 	- [[Chain Rules]]
 	- [[Differentiability of a Function]]
 	- [[Differential of a Function]]
-	- **[[Directional Derivative]]**
 	- [[Higher-Order Derivatives]]
 	- [[Implicit Differentiation]]
 	- [[Partial Derivatives]]
 	- [[Tangent Plane]]
-
 %% End Waypoint %%
 
 # Derivatives

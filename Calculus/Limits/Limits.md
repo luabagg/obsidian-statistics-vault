@@ -11,7 +11,6 @@ tags:
 	- [[Fundamental Limits of Calculus]]
 	- [[Limits and Continuity of Two-Variable Functions]]
 	- [[Squeeze Theorem]]
-
 %% End Waypoint %%
 
 # Limits

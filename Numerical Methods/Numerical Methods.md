@@ -8,6 +8,15 @@ aliases:
   - Numerical Methods
 ---
 
+%% Begin Waypoint %%
+- **[[Numerical Methods]]**
+	- **[[Curve Fitting]]**
+	- **[[Linear Systems]]**
+	- **[[Numerical Integration]]**
+	- **[[Polynomial Interpolation]]**
+	- **[[Root Finding]]**
+%% End Waypoint %%
+
 # Numerical Methods
 
 ## Summary

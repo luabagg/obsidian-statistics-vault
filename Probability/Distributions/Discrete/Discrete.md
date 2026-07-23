@@ -1,9 +1,25 @@
 ---
 dg-publish: true
+dg-show-local-graph: true
+tags:
+  - probability
+  - distributions
+  - discrete
 aliases:
   - Discrete Distributions
   - Discretas
 ---
+
+%% Begin Waypoint %%
+- **[[Discrete]]**
+	- [[Bernoulli Distribution]]
+	- [[Binomial Distribution]]
+	- [[Geometric Distribution]]
+	- [[Hypergeometric Distribution]]
+	- [[Negative Binomial Distribution]]
+	- [[Poisson Distribution]]
+	- [[Uniform Distribution]]
+%% End Waypoint %%
 
 # Discrete Distributions
 

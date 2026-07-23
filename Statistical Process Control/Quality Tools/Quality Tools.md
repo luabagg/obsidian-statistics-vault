@@ -1,10 +1,19 @@
 ---
 dg-publish: true
 dg-show-local-graph: true
+tags:
+  - spc
+  - quality-tools
+  - hub
 aliases:
   - Quality Tools
   - Seven Basic Quality Tools
 ---
+
+%% Begin Waypoint %%
+- **[[Quality Tools]]**
+	- **[[Case - Discos Gheno]]**
+%% End Waypoint %%
 
 # Quality Tools
 

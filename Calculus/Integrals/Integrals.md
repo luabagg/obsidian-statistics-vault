@@ -9,11 +9,10 @@ tags:
 %% Begin Waypoint %%
 - **[[Integrals]]**
 	- **[[Double Integrals]]**
+	- **[[Triple Integrals]]**
 	- [[Fubini's Theorem]]
 	- [[Integration by Parts]]
 	- [[Riemann Sum]]
-	- **[[Triple Integrals]]**
-
 %% End Waypoint %%
 
 # Integrals

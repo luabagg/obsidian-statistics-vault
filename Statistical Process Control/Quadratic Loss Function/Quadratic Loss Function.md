@@ -1,9 +1,17 @@
 ---
 dg-publish: true
+dg-show-local-graph: true
+tags:
+  - spc
+  - quadratic-loss
 aliases:
   - Quadratic Loss Function
   - Taguchi Loss Function
 ---
+
+%% Begin Waypoint %%
+- **[[Quadratic Loss Function]]**
+%% End Waypoint %%
 
 # Quadratic Loss Function
 

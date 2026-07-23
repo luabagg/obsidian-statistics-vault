@@ -1,9 +1,29 @@
 ---
 dg-publish: true
+dg-show-local-graph: true
+tags:
+  - spc
+  - control-charts
+  - hub
 aliases:
   - Control Charts
   - Shewhart Charts
 ---
+
+%% Begin Waypoint %%
+- **[[Control Charts]]**
+	- [[Autocorrelated Data]]
+	- [[c Chart]]
+	- [[Common-Cause and Special-Cause Variation]]
+	- [[Control Limits and Specification Limits]]
+	- [[Defects per Unit]]
+	- [[I-MR Chart]]
+	- [[np Chart]]
+	- [[p Chart]]
+	- [[Process Capability]]
+	- [[Xbar-R Chart]]
+	- [[Xbar-S Chart]]
+%% End Waypoint %%
 
 # Control Charts
 

@@ -1,10 +1,19 @@
 ---
 dg-publish: true
 dg-show-local-graph: true
+tags:
+  - spc
+  - quality-tools
+  - case-study
 aliases:
   - Discos Gheno Case
   - GHENOrtrs Case
 ---
+
+%% Begin Waypoint %%
+- **[[Case - Discos Gheno]]**
+	- **[[Process Flowchart]]**
+%% End Waypoint %%
 
 # Discos Gheno Case
 

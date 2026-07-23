@@ -1,3 +1,7 @@
+---
+dg-publish: true
+dg-show-local-graph: true
+---
 # Learning Paths
 
 Use these paths as reading orders, not as rigid courses. Each finished note should name its prerequisites near the top, point to next steps near the bottom, and cite sources with Markdown footnotes.[^openstax-statistics]

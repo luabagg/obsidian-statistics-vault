@@ -1,15 +1,14 @@
 ---
 dg-publish: true
+dg-show-local-graph: true
 tags:
   - calculus
   - integrals
-  - multivariable
+  - triple-integrals
 ---
 
 %% Begin Waypoint %%
 - **[[Triple Integrals]]**
-
-
 %% End Waypoint %%
 
 # Triple Integrals

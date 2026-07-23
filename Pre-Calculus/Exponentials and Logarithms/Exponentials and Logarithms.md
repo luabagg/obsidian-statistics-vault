@@ -1,5 +1,6 @@
 ---
 dg-publish: true
+dg-show-local-graph: true
 tags:
   - precalculus
   - exponentials
@@ -9,6 +10,10 @@ aliases:
   - Logarithmic Functions
   - Logarithms
 ---
+
+%% Begin Waypoint %%
+- **[[Exponentials and Logarithms]]**
+%% End Waypoint %%
 
 # Exponentials and Logarithms
 

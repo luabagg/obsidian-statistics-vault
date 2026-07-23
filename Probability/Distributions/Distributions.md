@@ -1,9 +1,23 @@
 ---
 dg-publish: true
+dg-show-local-graph: true
+tags:
+  - probability
+  - distributions
+  - hub
 aliases:
   - Distributions
   - Distribuições
 ---
+
+%% Begin Waypoint %%
+- **[[Distributions]]**
+	- **[[Continuous]]**
+	- **[[Discrete]]**
+	- [[Characteristic Function]]
+	- [[Expectation from the MGF]]
+	- [[Newton Binomial]]
+%% End Waypoint %%
 
 # Distributions
 

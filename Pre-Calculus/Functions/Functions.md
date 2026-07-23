@@ -1,5 +1,6 @@
 ---
 dg-publish: true
+dg-show-local-graph: true
 tags:
   - precalculus
   - functions
@@ -7,6 +8,10 @@ aliases:
   - Function
   - Domain and Range
 ---
+
+%% Begin Waypoint %%
+- **[[Functions]]**
+%% End Waypoint %%
 
 # Functions
 

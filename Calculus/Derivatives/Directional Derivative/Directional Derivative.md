@@ -4,13 +4,12 @@ dg-show-local-graph: true
 tags:
   - calculus
   - derivatives
-  - multivariable
+  - directional-derivative
 ---
 
 %% Begin Waypoint %%
 - **[[Directional Derivative]]**
 	- [[Maximum Rate of Directional Derivative]]
-
 %% End Waypoint %%
 
 # Directional Derivative

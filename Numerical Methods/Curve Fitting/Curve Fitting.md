@@ -1,5 +1,6 @@
 ---
 dg-publish: true
+dg-show-local-graph: true
 tags:
   - numerical-methods
   - curve-fitting
@@ -7,6 +8,11 @@ tags:
 aliases:
   - Curve Fitting
 ---
+
+%% Begin Waypoint %%
+- **[[Curve Fitting]]**
+	- [[Least Squares]]
+%% End Waypoint %%
 
 # Curve Fitting
 

@@ -1,5 +1,6 @@
 ---
 dg-publish: true
+dg-show-local-graph: true
 tags:
   - precalculus
   - hub
@@ -14,7 +15,6 @@ aliases:
 	- **[[Functions]]**
 	- **[[Polynomials and Rational Functions]]**
 	- **[[Trigonometry]]**
-
 %% End Waypoint %%
 
 # Pre-Calculus

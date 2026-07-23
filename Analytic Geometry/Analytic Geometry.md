@@ -1,5 +1,6 @@
 ---
 dg-publish: true
+dg-show-local-graph: true
 tags:
   - geometry
   - analytic-geometry
@@ -16,7 +17,6 @@ aliases:
 	- [[Distance and Midpoint]]
 	- [[Lines and Planes]]
 	- [[Vectors and Dot Product]]
-
 %% End Waypoint %%
 
 # Analytic Geometry

@@ -4,14 +4,13 @@ dg-show-local-graph: true
 tags:
   - calculus
   - integrals
-  - multivariable
+  - double-integrals
 ---
 
 %% Begin Waypoint %%
 - **[[Double Integrals]]**
 	- [[Double Integrals in Polar Coordinates]]
 	- [[Double Integrals over General Regions]]
-
 %% End Waypoint %%
 
 # Double Integrals

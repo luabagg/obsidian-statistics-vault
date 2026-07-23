@@ -1,10 +1,27 @@
 ---
 dg-publish: true
+dg-show-local-graph: true
+tags:
+  - probability
+  - random-variable
+  - hub
 aliases:
   - Random Variable
   - Variavel Aleatoria
   - Variável Aleatória
 ---
+
+%% Begin Waypoint %%
+- **[[Random Variable]]**
+	- [[Continuous Random Variable]]
+	- [[Discrete Random Variable]]
+	- [[Expectation of a Random Variable]]
+	- [[Functions of Random Variables]]
+	- [[Mixed Random Variable]]
+	- [[Moment Generating Functions]]
+	- [[Probability Space Induced by Random Variable]]
+	- [[Variance of a Random Variable]]
+%% End Waypoint %%
 
 # Random Variable
 

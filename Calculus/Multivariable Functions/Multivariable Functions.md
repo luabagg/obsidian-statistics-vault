@@ -3,7 +3,7 @@ dg-publish: true
 dg-show-local-graph: true
 tags:
   - calculus
-  - multivariable
+  - multivariable-functions
 ---
 
 %% Begin Waypoint %%
@@ -14,7 +14,6 @@ tags:
 	- [[Maxima and Minima]]
 	- [[Polar Coordinates]]
 	- [[Spherical Coordinates]]
-
 %% End Waypoint %%
 
 # Functions of Several Variables

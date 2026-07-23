@@ -1,5 +1,6 @@
 ---
 dg-publish: true
+dg-show-local-graph: true
 tags:
   - precalculus
   - trigonometry
@@ -10,7 +11,6 @@ aliases:
 
 %% Begin Waypoint %%
 - **[[Trigonometry]]**
-
 %% End Waypoint %%
 
 # Trigonometry

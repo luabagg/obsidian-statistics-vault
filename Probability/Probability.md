@@ -1,9 +1,33 @@
 ---
 dg-publish: true
+dg-show-local-graph: true
+tags:
+  - probability
+  - hub
 aliases:
   - Probability
   - Probabilidade
 ---
+
+%% Begin Waypoint %%
+- **[[Probability]]**
+	- **[[Distributions]]**
+	- **[[Random Variable]]**
+	- [[Borel Sigma-Algebra]]
+	- [[Central Limit Theorem]]
+	- [[Conditional Probability]]
+	- [[Covariance and Correlation]]
+	- [[De Morgan Laws]]
+	- [[IID Random Variables]]
+	- [[Independence]]
+	- [[Joint Marginal and Conditional Distributions]]
+	- [[Law of Large Numbers]]
+	- [[Probability Space]]
+	- [[Quantiles]]
+	- [[Sample Space and Events]]
+	- [[Sigma-Algebra]]
+	- [[Total Probability and Bayes Theorem]]
+%% End Waypoint %%
 
 # Probability
 

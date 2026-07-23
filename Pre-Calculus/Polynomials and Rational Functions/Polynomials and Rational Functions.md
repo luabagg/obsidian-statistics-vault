@@ -1,5 +1,6 @@
 ---
 dg-publish: true
+dg-show-local-graph: true
 tags:
   - precalculus
   - polynomials
@@ -8,6 +9,10 @@ aliases:
   - Polynomials
   - Rational Functions
 ---
+
+%% Begin Waypoint %%
+- **[[Polynomials and Rational Functions]]**
+%% End Waypoint %%
 
 # Polynomials and Rational Functions
 

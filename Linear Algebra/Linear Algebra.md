@@ -1,5 +1,6 @@
 ---
 dg-publish: true
+dg-show-local-graph: true
 tags:
   - linear-algebra
   - hub
@@ -17,7 +18,6 @@ aliases:
 	- [[Orthogonality and Projections]]
 	- [[Systems of Linear Equations]]
 	- [[Vector Spaces and Bases]]
-
 %% End Waypoint %%
 
 # Linear Algebra

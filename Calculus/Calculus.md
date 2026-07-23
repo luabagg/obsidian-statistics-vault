@@ -11,12 +11,11 @@ aliases:
 %% Begin Waypoint %%
 - **[[Calculus]]**
 	- **[[Derivatives]]**
-	- [[Fundamental Theorem of Calculus]]
 	- **[[Infinite Series]]**
 	- **[[Integrals]]**
 	- **[[Limits]]**
 	- **[[Multivariable Functions]]**
-
+	- [[Fundamental Theorem of Calculus]]
 %% End Waypoint %%
 
 # Calculus

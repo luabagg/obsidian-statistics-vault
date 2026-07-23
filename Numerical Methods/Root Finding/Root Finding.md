@@ -9,6 +9,16 @@ aliases:
   - Roots of Functions
 ---
 
+%% Begin Waypoint %%
+- **[[Root Finding]]**
+	- [[Bisection Method]]
+	- [[Bolzano's Theorem]]
+	- [[False Position Method]]
+	- [[Graphical Method]]
+	- [[Newton-Raphson Method]]
+	- [[Secant Method]]
+%% End Waypoint %%
+
 # Roots of Functions
 
 ## Summary

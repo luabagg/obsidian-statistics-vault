@@ -1,5 +1,6 @@
 ---
 dg-publish: true
+dg-show-local-graph: true
 tags:
   - numerical-methods
   - interpolation
@@ -7,6 +8,14 @@ tags:
 aliases:
   - Polynomial Interpolation
 ---
+
+%% Begin Waypoint %%
+- **[[Polynomial Interpolation]]**
+	- [[Existence and Uniqueness of Interpolating Polynomial]]
+	- [[Lagrange Polynomial]]
+	- [[Newton Polynomial]]
+	- [[Polynomial Interpolation by Definition]]
+%% End Waypoint %%
 
 # Polynomial Interpolation
 

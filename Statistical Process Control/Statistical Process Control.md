@@ -1,11 +1,23 @@
 ---
 dg-publish: true
 dg-show-local-graph: true
+tags:
+  - spc
+  - statistics
+  - hub
 aliases:
   - Statistical Process Control
   - SPC
   - CEP
 ---
+
+%% Begin Waypoint %%
+- **[[Statistical Process Control]]**
+	- **[[Control Charts]]**
+	- **[[Quadratic Loss Function]]**
+	- **[[Quality Tools]]**
+	- [[What is SPC]]
+%% End Waypoint %%
 
 # Statistical Process Control
 

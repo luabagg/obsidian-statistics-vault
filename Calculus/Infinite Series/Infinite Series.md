@@ -5,6 +5,7 @@ tags:
   - calculus
   - series
   - hub
+  - infinite-series
 aliases:
   - Infinite Series
 ---
@@ -28,7 +29,6 @@ aliases:
 	- [[Series Sums by Partial Sums]]
 	- [[Taylor Series]]
 	- [[Telescoping Series]]
-
 %% End Waypoint %%
 
 # Infinite Series

@@ -1,9 +1,30 @@
 ---
 dg-publish: true
+dg-show-local-graph: true
+tags:
+  - probability
+  - distributions
+  - continuous
 aliases:
   - Continuous Distributions
   - Contínuas
 ---
+
+%% Begin Waypoint %%
+- **[[Continuous]]**
+	- [[Chi-Square Distribution]]
+	- [[Cumulative Distribution Function]]
+	- [[Exponential Distribution]]
+	- [[F Distribution]]
+	- [[Gamma Distribution]]
+	- [[Gamma Function]]
+	- [[Log-Normal Distribution]]
+	- [[Normal Distribution]]
+	- [[Probability Density]]
+	- [[Student t Distribution]]
+	- [[Uniform Distribution]]
+	- [[Weibull Distribution]]
+%% End Waypoint %%
 
 # Continuous Distributions
 
