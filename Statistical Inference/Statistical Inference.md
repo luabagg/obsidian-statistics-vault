@@ -14,6 +14,7 @@ aliases:
 %% Begin Waypoint %%
 - **[[Statistical Inference]]**
 	- [[ANOVA]]
+	- [[Binomial Test]]
 	- [[Confidence Intervals]]
 	- [[Hypothesis Testing]]
 	- [[Linear Regression]]
@@ -34,6 +35,7 @@ Inferential statistics: estimation, hypothesis testing, intervals, regression, a
 ### Notes
 
 - [[ANOVA]]
+- [[Binomial Test]]
 - [[Confidence Intervals]]
 - [[Hypothesis Testing]]
 - [[Linear Regression]]
@@ -50,8 +52,9 @@ Inferential statistics: estimation, hypothesis testing, intervals, regression, a
 4. [[Hypothesis Testing]] — tests and decisions
 5. [[p-value]] — evidence against a null
 6. [[Type I and Type II Errors]] — error rates and power
-7. [[Linear Regression]] — simple linear models
-8. [[ANOVA]] — comparing group means
+7. [[Binomial Test]] — exact test for a proportion
+8. [[Linear Regression]] — simple linear models
+9. [[ANOVA]] — comparing group means
 
 ## Connections
 

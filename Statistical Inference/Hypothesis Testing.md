@@ -74,6 +74,7 @@ Since $|2|>1.96$, reject $H_0$ at the 5% level.
 - [[Statistical Inference/Type I and Type II Errors|Type I and Type II Errors]]
 - [[Statistical Inference/Confidence Intervals|Confidence Intervals]]
 - [[Statistical Inference/Maximum Likelihood|Maximum Likelihood]]
+- [[Statistical Inference/Binomial Test|Binomial Test]]
 
 ## References
 

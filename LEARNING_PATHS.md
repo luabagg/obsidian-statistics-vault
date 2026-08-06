@@ -52,8 +52,9 @@ Use these paths as reading orders, not as rigid courses. Each finished note shou
 4. [[Statistical Inference/Hypothesis Testing|Hypothesis Testing]]
 5. [[Statistical Inference/p-value|p-values]]
 6. [[Statistical Inference/Type I and Type II Errors|Type I and Type II Errors]]
-7. [[Statistical Inference/Linear Regression|Simple Linear Regression]]
-8. [[Inferência Estatística/ANOVA|One-Way ANOVA]]
+7. [[Statistical Inference/Binomial Test|Binomial Test]]
+8. [[Statistical Inference/Linear Regression|Simple Linear Regression]]
+9. [[Inferência Estatística/ANOVA|One-Way ANOVA]]
 
 ## Distributions
 
